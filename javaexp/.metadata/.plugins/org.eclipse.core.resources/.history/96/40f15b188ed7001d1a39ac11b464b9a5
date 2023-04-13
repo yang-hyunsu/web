@@ -1,0 +1,18 @@
+package z02_util;
+
+public class A03_Input3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("실행먼저");
+		int firstPrice = Integer.parseInt(args[0]);
+		int secondPrice = Integer.parseInt(args[1]);
+		int thirdPrice = Integer.parseInt(args[2]);
+		int tot = firstPrice + secondPrice + thirdPrice;
+		System.out.println("토마토:"+firstPrice);
+		System.out.println("딸기:"+secondPrice);
+		System.out.println("귤:"+thirdPrice);
+		System.out.println("총 비용:"+tot);
+	}
+
+}

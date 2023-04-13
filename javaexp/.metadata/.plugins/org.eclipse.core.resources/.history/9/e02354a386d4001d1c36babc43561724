@@ -1,0 +1,14 @@
+package z03_exp;
+
+public class A01_exp {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+//		[1단계:코드] 9. 반에 학생이 30명, 5개반에 임의의 점수(0~100)을 할당하고 점수를 아래와 같이 출력하세요
+//        1반 1번 @@ 점...
+		int [][][]
+		
+		
+	}
+
+}

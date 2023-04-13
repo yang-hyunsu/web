@@ -1,0 +1,60 @@
+# 웹프로그래밍 지식체계 계열화 내용
+1. network에 대한 이해
+	1) web
+	2) 프로토콜, ip, 도메인, port
+		프로토콜 http/ftp/telnet/smtp/pop...
+		패킷 : 네트워크에서 데이터를 정달하는 단위
+		http는 html데이터를 최적으로 전달하는 네트웍상
+			프로토콜 (네트웍상 전달방식)을 선택하여 전달한다.
+		http://www.naver.com:8080/shouw.html	
+	3) 서버/클라이언트 개념
+		-웹서버(톰캣,jeus,)
+		-웹클라이언트(크롬,사파리,인터넷익스플러로)
+2. 웹포르그램의 작동 원리
+	1) 서버가 데몬으로 특정한 위치(ip)에서 실행(웹서버 가동)
+	2) 브라우저에 url(도메인,ip)로 특정 서버에 접근
+		url : http://www.naver.com:8080/shouw.html
+		- port, 접근하는 자원에 따라서 브러우저에
+			전달(steam- html을 전달)
+		브라우저(크롬,사파리..)는 html을 전달 받아서 해석(랜더링)
+			<h1>안녕</h1> 안녕이라는 문자를 타이틀 형태로
+			적당하게 크고 진한 문자열로 웹 화면에 표현
+	3) 웹서버/WAS
+		Web server : html(html,css,js)
+			front단 : html css js jquery, 부트스트랩
+			
+			중간에 js로 back단으로 비동기적으로 호출해서
+				처리하는 js형식을 ajax
+		Web application server (java 컴파일 실행)
+			java (운영체제에 있는 프로그램을 처리,로직, DB처리) 	
+			java + html ==> html 클라이언트에 전달
+			back단 : java, DB, jsp(java+html),
+					springframework		
+# html
+1. 웹 페이지 기본 구성
+	1) html의 계층적 구성
+	2) html에서 오류 찾기(js)
+		f12
+2. 기본 태그
+3. 입력양식(jsp,java와 연동해서 처리)**
+	- 기본 코드, css, js, jsp(java)
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+							

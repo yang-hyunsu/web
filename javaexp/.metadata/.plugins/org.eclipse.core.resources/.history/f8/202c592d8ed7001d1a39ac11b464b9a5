@@ -1,0 +1,234 @@
+package z01_home;
+
+import java.util.Scanner;
+
+public class A03_0403 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+//		04/03
+//		[1단계:개념] 1. 3항 연산자의 기본형식을 새로운 예제로 설명하세요
+//		[1단계:코드] 2. 3항 연산자를 활용하여 문제(3+4=?)를 내고, 해당 문제의 정답이 맞을 때, 정답 그외는 오답으로 처리하세요
+//		[1단계:개념] 3. Math.random 클래스와 메서드의 기능을 정수의 임의범위 처리 예제를 통해서 기술하세요
+//		[1단계:코드] 4. 두 친구가 주사위 2개를 던져서 값을 확인려고 한다. 각각 홍길동/김길동일 때, 각각 나온 주사위 합을 출력하세요
+//		[1단계:개념] 5. if 조건 구문의 기본형식 3개를 예제를 만들어 기술하세요 
+//		[1단계:코드] 6. 넌센스 퀴즈를 검색해서 문제로 만들어 문제가 맞을 때, 정답 그외는 오답이 되게 처리하세요
+//		[1단계:코드] 7. Math.random/Scanner활용하여 컴퓨터가 임의로 구슬을 1~10개 랜덤으로 쥐게하되,
+//					  0) 해당 갯수를 맞추는지 여부에 따라 success/failure 처리하게 하세요
+//					  1) 1입력시 홀, 0입력시 짝으로 하여 success/failure 처리하게 하세요
+//					  2) 홀/짝을 입력하여, success/failure 처리하세요.
+//		[1단계:개념] 8. if else if 구문의 기본예제를 만들어 해당 구문의 기본형식을 설명하세요.
+//		[1단계:코드] 9. 주사위가 임의로 나오게 하여, 컴퓨터가 낸 임의 주사위 수와 내가 낸 임의 주사위 수를
+//					  비교하여, 승/무/패를 출력하세요.
+//		[1단계:개념] 10. switch case문의 기본형식과 기능내용을 기본 예제를 만들어 설명하세요.
+//		[1단계:코드] 11. 가고자하는 위치 2개와 집에 가는 노선버스를 검색하여, switch case처리하여 해당 최종 위치를 처리하고, 그외는 정보가 없습니다 라고 표시하세요.
+//      ======================================================================================================================================
+		
+//		[1단계:개념] 1. 3항 연산자의 기본형식을 새로운 예제로 설명하세요
+//		# 삼항연산자 기본 형식
+//			- 비교연산자|논리연산자? true일때:false일때
+//			ex) 80점 이상이면 합격, 그 외는 불합격 처리
+//			String isPass = point>=80?"합격":"불합격";
+
+//		[1단계:코드] 2. 3항 연산자를 활용하여 문제(3+4=?)를 내고, 해당 문제의 정답이 맞을 때, 정답 그외는 오답으로 처리하세요
+		Scanner sc = new Scanner(System.in);
+		System.out.print("3+4=? 정답을 적으시오: ");
+		int answer = Integer.parseInt(sc.nextLine());
+		String divAnswer = (answer ==7)?"정답":"오답"; 
+		System.out.println("결과: "+divAnswer);
+		
+//		[1단계:개념] 3. Math.random 클래스와 메서드의 기능을 정수의 임의범위 처리 예제를 통해서 기술하세요
+//		# 여러가지 임의의 수를 가져와 프로그램에 적용하여 처리할때 활용하는 내장된 기능함수 (메서드)
+//		임의범위 처리
+//		System.out.println("임의의 수");
+//		double num01 = Math.random();
+//		System.out.println(num01);
+//		System.out.println(num01*10);
+//		System.out.println((int)(num01*100));
+//		System.out.println((int)(num01*100+1));
+//		
+		
+//		[1단계:코드] 4. 두 친구가 주사위 2개를 던져서 값을 확인려고 한다. 각각 홍길동/김길동일 때, 각각 나온 주사위 합을 출력하세요
+		int hong1 = (int)(Math.random()*6+1);
+		int hong2 = (int)(Math.random()*6+1);
+		int kim1 = (int)(Math.random()*6+1);
+		int kim2 = (int)(Math.random()*6+1);
+		int hong = hong1+hong2;
+		int kim = kim1+kim2;
+		int sum = hong+kim;
+		System.out.println("홍길동의 주사위:" +hong);
+		System.out.println("김길동의 주사위:" +kim);
+		System.out.println("홍길동과 김길동 주사위 합: "+sum);
+		
+//		[1단계:개념] 5. if 조건 구문의 기본형식 3개를 예제를 만들어 기술하세요 
+//		1) 중괄호 블럭 : 여러라인이 있는 경우
+//		if(조건문){
+//			조건문에 해당할 때, 코드
+//			..
+//			..	
+//		}
+//		2) 바로 옆에 있는 내용 수행
+//		if(조건문1) 조건문1일 때, 처리할 내용;
+//		if(조건문2) 조건문2일 때, 처리할 내용;
+		
+//		3) 바로 밑에 1 line의 내용 수행
+//		if(조건문1)
+//			조건문1일 때 수행할 내용..
+//		if(조건문2)
+//		조건문2일 때 수행할 내용..
+		
+		
+//		[1단계:코드] 6. 넌센스 퀴즈를 검색해서 문제로 만들어 문제가 맞을 때, 정답 그외는 오답이 되게 처리하세요
+		System.out.println("Q: 태어날 때 머리는 하얗지만 늙으면서 까매지는 것은? \n1.붓 2.성냥 3.물감");
+		int corAnswer = 1;
+		Scanner sc2 = new Scanner(System.in);
+		System.out.print("A: ");
+		int inAnswer = sc2.nextInt();
+		
+		if(inAnswer == corAnswer) {
+			System.out.println("정답입니다!");
+		}else {
+			System.out.println("땡!");
+		}
+		// 단답형으로 문자열을 입력받을 때는 문자형 그대로 처리
+		
+//		[1단계:코드] 7. Math.random/Scanner활용하여 컴퓨터가 임의로 구슬을 1~10개 랜덤으로 쥐게하되,
+//					  0) 해당 갯수를 맞추는지 여부에 따라 success/failure 처리하게 하세요
+//					  1) 1입력시 홀, 0입력시 짝으로 하여 success/failure 처리하게 하세요
+//					  2) 홀/짝을 입력하여, success/failure 처리하세요.
+		Scanner ran = new Scanner(System.in);
+		int ranBall = (int)(Math.random()*10+1);
+		int me = ran.nextInt();
+//		System.out.println("컴퓨터 구슬의 갯수: " +ranBall);
+//		System.out.println("내가 입력한 구슬 수: "+me);
+//		if(ranBall==me) {
+//			System.out.println("Success");
+//		}else {
+//			System.out.println("Failure");
+//		}
+		System.out.println("홀일 때는 1, 짝일 떄는 0입력");
+		int divIdx = sc.nextInt();
+		System.out.println("입력한 구분자:"+divIdx);
+		System.out.println("구슬 수:"+ranBall);
+		int corIdx = ranBall%2;
+		System.out.println("홀/짝?:"+(corIdx==1?"홀":"짝"));
+//		[1단계:개념] 8. if else if 구문의 기본예제를 만들어 해당 구문의 기본형식을 설명하세요.
+//		기본형식
+//	 	if(조건1){
+//	 		조건1에 해당하는 코드 처리
+//	 	}else if(조건2){	
+//	 		조건1이 아니고, 조건2에 해당하는 코드 처리
+//	 	}else if(조건3){
+//	 		위에 나열된 조건이 아니고 조건3에 해당하는 코드
+//	 	}...
+//	 	
+//	 	}else{
+//	 		상단에 나열된 조건이외의 경우 처리할 코드 수행
+//	 	}
+		
+		//# point 40<= vip / point >=30 || point<40 R / point >=20 || 30<point S / point >=10 || point<20 A
+	 	/*int point = (int)(Math.random()*101);//0~100임의
+		System.out.println("점수:"+point);
+		if(point>=40) { // if(point<90 && point>=80)
+			System.out.println("VIP석");
+		}else if(point>=30 || point<40) {
+			System.out.println("R석");
+		}else if(point>=20||point<30) {
+			System.out.println("S석");
+		}else if(point>=10||point<20) {
+			System.out.println("A석");
+		}else {
+			System.out.println("자리가 없습니다");
+		}
+		*/
+		
+		
+//		[1단계:코드] 9. 주사위가 임의로 나오게 하여, 컴퓨터가 낸 임의 주사위 수와 내가 낸 임의 주사위 수를
+//					  비교하여, 승/무/패를 출력하세요.
+		int ranDice = (int)(Math.random()*6+1);
+		Scanner sc4 = new Scanner(System.in);
+		System.out.print("내 주사위 숫자 정하기: ");
+		int myDice = sc4.nextInt();
+		System.out.println("컴퓨터 주사위: "+ranDice);
+		if(ranDice>myDice) {
+			System.out.println("패");
+		}else if(ranDice<myDice) {
+			System.out.println("승");
+		}else {
+			System.out.println("무");
+		}
+		
+//		[1단계:개념] 10. switch case문의 기본형식과 기능내용을 기본 예제를 만들어 설명하세요.
+		/*
+		System.out.print("제 생일의 달을 맞춰보세: ");
+		Scanner sc = new Scanner(System.in);
+		int chMonth = sc.nextInt();
+		System.out.println("입력한 정답: "+chMonth);
+		
+		switch(chMonth) {
+			case 1:
+				System.out.println("오답");
+				break;
+			case 2:
+				System.out.println("정");
+				break;
+			case 3:
+				System.out.println("오");
+				break;
+			case 4:
+				System.out.println("오답");
+				break;
+			case 5:
+				System.out.println("오답");
+				break;
+			case 6:
+				System.out.println("오답");
+				break;
+			case 7:
+				System.out.println("오답");
+				break;
+			case 8:
+				System.out.println("오답");
+				break;
+			case 9:
+				System.out.println("오답");
+				break;
+			case 10:
+				System.out.println("오답");
+				break;
+			case 11:
+				System.out.println("오답");
+				break;
+			case 12:
+				System.out.println("오답");
+				break;
+		
+			default:
+				System.out.println("월의 입력범위는 1~12월까지 입니다.");
+		}
+		  
+		 
+		*/
+		
+//		[1단계:코드] 11. 가고자하는 위치 2개와 집에 가는 노선버스를 검색하여, switch case처리하여 해당 최종 위치를 처리하고, 그외는 정보가 없습니다 라고 표시하세요.
+		char museum = 'M';
+		char  theater = 'T';
+		char home = 'H';
+		switch (home) {
+			case 1:
+			case 2:
+			case 3:
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}

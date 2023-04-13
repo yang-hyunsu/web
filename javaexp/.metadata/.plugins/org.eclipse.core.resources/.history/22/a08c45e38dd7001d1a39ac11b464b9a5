@@ -1,0 +1,66 @@
+package a05_process;
+
+import java.util.Scanner;
+
+public class A03_if_else {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		/*
+		# if else 구문
+		1. 특정 조건이 true/false에 분기하여 처하는 경우를 말한다.
+		2. 기본형식
+		 	if(조건문){
+		 		조건문이 true일 떄, 처리할 구문
+		 	}else{
+		 		조건문이 false일 때, 처리할 구문
+		 	}
+		 	ex)
+		 	if(iNum == 3){
+		 		System.out.println("정답입니다!!");		 		
+		 	}else{
+		 		System.out.println("오답입니다!!");
+		 	}
+		*/
+//		System.out.print("3+4=? 정답을 입력하세요:");
+//		Scanner sc = new Scanner(System.in);
+//		int inputNum = sc.nextInt();
+//		if(inputNum == 7) { //  입력한 값이 7일 경우..
+//			System.out.println("정답입니다.");
+//		}else { //그외일 경우
+//			System.out.println("오답입니다.");
+//		}
+//		int ranNum = (int)(Math.random()*9+1);
+//		int ranNum2 = (int)(Math.random()*9+1);
+//		int corNum = ranNum + ranNum2;
+//		System.out.print(ranNum+"+"+ranNum2+"=? 정답을 입력하세요: ");
+//		Scanner sc = new Scanner(System.in);
+//		int inputNum = sc.nextInt();
+//		if(inputNum == corNum) { //  입력한 값이 정답인 경우..
+//			System.out.println("정답입니다.");
+//		}else { //그외일 경우
+//			System.out.println("오답입니다.");
+//		}
+//		ex) 구구단 게임 컴퓨터가 낸 구구단 문제 정답을 입력하여
+//			정답/오답 처리로 하게 하세요..
+//			grade(2~9, 경우의수?, 시작수? )
+//			cnt(1~9, 경우의수?, 시작수? )
+		int gradeNum = (int)(Math.random()*8+2); // 8= 경우의 수, 2= 시작 수
+		int countCnt = (int)(Math.random()*9+1);
+		int corNum = gradeNum * countCnt;
+		System.out.print(gradeNum+"×"+countCnt+"=? 정답을 입력하세요: ");
+		Scanner sc = new Scanner(System.in);
+		int inputNum = sc.nextInt();
+		if(inputNum == corNum) {
+			System.out.println("정답");	
+		}else {
+			System.out.println("오답");
+			System.out.println("정답은 "+ corNum+"입니다.");
+		}
+		
+		
+		
+		
+	}
+
+}

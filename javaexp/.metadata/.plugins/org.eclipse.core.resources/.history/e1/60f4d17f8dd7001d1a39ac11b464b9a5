@@ -1,0 +1,46 @@
+package javaexp.a07_classObject2;
+
+public class A04_ParameterData {
+	// static : 객체 생성 없이 사용 키워드
+	// void : 리턴값 없이 사용 메서드
+	static void call(int num01) {
+		System.out.println("매개변수로 온 숫자:"+num01);
+	}
+	static void call02(double num02) {
+		System.out.println("매개변수로 온 숫자2:"+num02);
+	}
+	static void call03(String name, int age) {
+		System.out.println("#두개의 매개변수로 온 함수#");
+		System.out.println(name);
+		System.out.println(age);
+	}
+	public static void main(String[] args) {
+		call03("사과",25);
+		// call("사과"); (X) int num01 = "사과";
+		call(25);
+		call((int)25.7); //캐스팅
+		call(25);
+		call02(25.7);
+		call02(75); // double num02 = 75; 실수형 데이터가 정수형 데이터보다 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		// TODO Auto-generated method stub
+		/*
+		# 매개변수철
+		1. 매개변수 생성자와 메서드에서 사용되는 데이터 전달
+		 	기능 수행하는 변수이다.
+		2. 매개변수의 유형에 따라서 데이터를 전달할 수 있다.
+			- 함수의 명과 데이터유형이 맞아야 된다.
+		3. 매개변수는 순서, 타입, 갯수에 맞게 전달하여야 한다.
+		*/
+
+	}
+
+}

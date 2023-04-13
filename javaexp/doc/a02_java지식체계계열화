@@ -1,0 +1,566 @@
+# 자바 지식체계 계열화
+1. 자바의 기본 메모리 구조(이론)
+	1) 기본 데이터 유형
+		stack : 한정된 데이터를 저장할 때 사용
+		정수, 실수, boolean, 객체의 주소
+	2) 객체형 데이터 유형
+		stack/heap
+			new 키워드를 일반적으로 사용
+			heap메모리에 할당, heap메모리의 주소값 stack에 저장
+			
+		배열, String, api(내장객체), class(사용자 정의 객체), 
+2. 자바의 입/출력
+	1) 출력(console)
+		System.out.println(); System.out.print()
+	    \t, \n, \"
+	2) 입력(console)
+		- String[] args   java 클래스명 args[0] args[1]...
+		- Scanner sc = new Scanner(System.in);
+		  sc.nextLine()
+		  Integer.parseInt(sc.nextLine()) sc.nextInt()
+		  Double.parseDouble(sc.nextLine()) sc.nextDouble()
+3. 자바의 변수 설정
+	1) 기본 데이터 유형
+		데이터의 최소 단위 bit - 0,1
+		숫자 : 정수형 : byte(8bits), short, char,
+					  *int, long
+			  실수형 : float, *double 
+		boolean true/false
+	   객체형
+	   	배열, String..(int ==> char ==> char[] ==> String)
+	   		 Object..
+	2) 데이터 유형의 변환
+	    작은 유형 ==> 큰 유형 : promote (자동형변환)
+	    	byte num01 = 25;
+	    	int num02 = num01;
+	    	double num03 = num02;
+	    casting(강제형변환)
+	    	double num04 = 3.14;
+	    	int num05 = (int)num04; 
+	    		반드시 casting(int)을 명시화하여야 한다.
+	    	정수형 나눗셈 연산시 소숫점을 표현할려면 casting
+	    	이 필요하다.
+	    		10/3 ==> 3, 10/(double)3 ==> 3.3333
+	    	int codeVal = 65
+	    	char code = (char)codeVal;  'A'
+	    		연결되어 있는 문자가 확인한다.
+	    		주의) char유형은 저장이 숫자형으로 되어 있다.
+	    	int codeVal = (int)'A';  65
+
+	    	해당 데이터를 할당하는 것보다 데이터와 함께 해당
+	    	틀(데이터가 가지고 있는 타입-용기)와 함께 할당한다.
+		
+			숫자형 문자열 : "25", "3.14", "이십오"(X)
+				"25"+"15" ==> "2515"
+			숫자 : 25, 3.14
+				25 + 15 ==> 40
+		문자열 ==> 숫자
+			int num01 = Integer.parseInt("25");
+				ex) int num01 = Integer.parseInt(args[0]);    	
+				ex) int num02 = Integer.parseInt(sc.nextLine());    	
+		문자열 <== 숫자
+			String numStr = ""+25
+			Integer wrapNum = new Integer(25)
+			wrapNum.toString(); 
+			# 숫자는 앞에 문자가 있으면 문자열로 변환이 된다.
+			그래서 연산할 때는 최우선 연산자(소괄호-())를
+			활용한다.
+			System.out.println("2+5="+2+5); ==> "25" 
+			System.out.println("2+5="+(2+5)); ==> 7 
+	3) 변수 설정의 규칙
+		- 필수
+			int num01 = 25;
+			int 25num = 4; X
+			변수명은 문자열 시작한다. 숫자로 시작하면 에러발생
+			변수명은 대/소문자를 구분하여 다른 변수로 인식
+			int $num01 = 30; (O)
+			int num_30 = 30; (O)
+			String name# = 40; (X)
+			특수문자는 $, _만 허용한다.
+			int nuM01 = 30;
+			변수명은 예약어(내장명령어)를 사용하지 않는다.
+			int break;(X) String if;
+			상단에 선언된 동일한 변수명은 선언하지 않는다.
+			int num01 = 30; (X)
+			num01 = 40; (O) - 재할당
+			초기화하지 않고 사용할 수 없다.
+			int num01;
+			System.out.println(num01) X
+			int num02 = num01 + 25; X
+			int num01 = 0; 숫자형은 0
+			boolean isPass = false; boolean false
+			String num02 = null; 객체형을 null
+		
+		- 가독성의 위한 규칙
+			일단 변수명 영문 소문자로 시작한다. 한글(X)
+			클래명은 대문자로 시작해서 사용한다.
+			복합어의 경우 구분자를 _나 대문자로 삽입한다.
+				setName, bank_count
+			전역변수의 경우, 가능한한 의미 있는 변수를 활용하세요.
+				
+4. 자바의 연산자
+	1) 연산자의 유형과 종류
+		+, -, *, /, %
+		=, +=
+		25 + 30
+		point == 30
+		&&,||, !
+		point>=70?"합격":"불합격"	
+	2) 대입연산자 =
+		오른쪽에 있는데이터를 왼쪽에 =에 의해 할당.
+		int num01,num02,num03,num04;
+		num01 = num02 = num03 = num04 = 0;
+		
+	3) 산술연산자
+		사칙연산자 + %
+		정수형/정수형 ==> 정수값
+		정수형/실수형 ==> 실수값
+	   증감연산자
+	   	cnt++  1씩증가
+	   	cnt--  1씩감소
+	   증감대입연산자
+	    cnt = cnt + 2
+	    cnt += 2
+	    cnt = cnt - 5
+	    cnt -= 5
+	    cnt *=2; cnt/=2; cnt%=2;
+	   	
+	4) 비교연산자
+		boolean 값(true/false)
+			==, !=, >, <, >=, <=,
+		boolean isPass = point>=60;
+		
+		stack영역의 데이터를 비교
+		기본데이터유형은 stack영역에 할당
+		객체유형은 stack영역 주소값이 할당 비교
+			Person p01 = new Person();
+			Person p02 = new Person();
+			System.out.println(p01 == p02);
+			heap영역에 할당된 주소값 비교
+			String name01 = "홍길동";
+			String name02 = "홍길동";
+			String name03 = "김길동";
+			String name04 = new String("홍길동");
+			String name05 = new String("홍길동");
+			String name06 = new String("신길동");
+			주의) console을 통해 데이터를 입력하거나, 
+			network를 통해서 데이터를 전달받거나, DB서버를
+			통해서 데이터를 가져오는 등 처리는 name04의 형태인
+			new String()로 문자열 데이터를 가져오는 주소값이
+			다른 문자열로 가져온다.
+			키워드 new가 사용되면 heap영역에 다른 주소값을 사용
+			name04,name05,name06다른 heap영역을 사용하므로
+			name04 == name05 false, 
+			name05 == name06 false이다.
+			예외적으로 선언하여 할당할 때는 String name01 = "홍길동";
+			"홍길동"이란 문자열이 있는 heap영역에 저장되어
+			대입연산자를 바로 할당하는 경우 모두 다 같은 
+			주소값을 바라본다.
+			name01 == name02 true
+			name02 == name03 false
+			name01 == name04 false
+			# 결론 : 문자열의 데이터 자체에 대한 비교를 할 때는
+			.equals()를 활용하여 처리한다.
+			name02.equals(name03) true
+			name01.equals(name04) true
+			name01.equals(name06) false		
+	5) 논리연산자
+		비교연산자 2개이상을 사용하는  경우
+			&&(and) : 두개의 비교연산자가 모두 true일 때, true
+				하나라도 false이면 false
+				청소년 요금제 구역 :age>=14 && age<18
+				login에서 id, pass가 모두가 맞을 때, 
+				id.equals("himan") && pass.equals("7777")
+			||(or) : 두개의 비교연산자가 모두 false일 때, false
+				하나라도 true이면 true
+				나이에 따른 입장료 무료 구간 
+				age<5 || age>=65
+				국어점수이든 영어점수이든 90이상인 경우
+				kor>=90 || eng>=90 
+			    
+		비교연산자 1개만 사용하는 경우
+			boolean isPass = point>=60; 합격하는 경우
+			boolean isNotPass1 = !(isPass);  불합격하는 경우
+			boolean isNotPass2 = point<60;  불합격하는 경우
+			입장료 유료 구간
+			boolean isFree = age<5 || age>=65 무료인경우
+			boolean isNotFree1 = !(isFree); 유료인경우
+			boolean isNotFree2 = age>=5 && age<65; 유료인경우
+			
+		
+	6) 삼항연산자
+		(조건문)?데이터1:데이터2
+		해당 조건문에 true일 때, 데이터1로 처리
+		해당 조건문에 false일 때, 데이터2로 처리
+	
+	7) 연산자의 우선순위
+		- 아래 우선 순위는 순서 상관없이 먼저 처리가 된다.
+		- (*,/) 끼리는 우선 순위와 상관 없이 결과값이 동일
+		- (+,-) 끼리는 우선 순위와 상관 없이 결과값이 동일
+		() : 1 순위 연산식
+		*, / : 2 순위
+		+, - : 3 순위
+	
+5. 조건문 처리
+	1) if(조건문){
+	      처리할 내용(다중행)
+	      처리할 내용(다중행)
+	   }
+	   if(조건문) 조건문일 때, 처리할 내용..(바로 옆 내용)
+	   if(조건문)
+	       조건문일 때, 처리할 내용(바로 밑 한 행)
+	2) if(조건문){
+	   	   조건문이 true
+	   }else{
+	       조건문이 false
+	   }      
+    3) if(조건1){
+    
+       }else if(조건2){
+       
+       }else if(조건3){
+       
+       }...
+       }else{
+       	   위 라인에 조건에 해당하지 않을 때.
+       }
+     4) switch(변수){
+     	    case 데이터1:
+     	    	처리할 내용
+     	    	break;
+     	    case 데이터2:
+     	    	처리할 내용
+     	    case 데이터3:
+     	    	처리할 내용
+     	    	break;
+     	    default :
+     	    	처리할 내용
+        }  
+        변수를 기준을 각 case의 지정한 데이터일 때 처리하고,
+        break문을 만났을 때, switch을 벗어난다.
+        break문이 없는 case는 아래 case로 진행을 처리된다.
+        default는 더 이상 하단에 처리할 내용이 없기에 break가
+        필요없다.
+6. 반복문 처리
+	for(초기값1;반복조건2;증감연산자4){
+		반복할 내용3
+	}
+	1,2,3,4,2,3,4,2,3,4....
+	while(반복할조건){
+	
+	}
+	do{
+		일단 1번은 수행...
+	}while(반복할조건);
+	
+	반복문의 출력형태
+	반복문과 조건문 : 비교/논리식에 따라 반복문을 처리
+	반복문에서 Scanner 활용 : 입력값에 따라 반복 수행
+		진행여부 처리
+	이중 반복문 처리 : 하나의 단위 스텝별로 반복문을 이중으로
+		수행 처리
+		for(int grade=2;grade<=9;grade++){
+			for(int cnt =1;cnt<=9;cnt++){
+				System.out.print(grade+"x"+cnt+
+								"="+(grade*cnt));			
+			}
+		}
+		 * 1 ~ 9 : 단마다 계속 반복하는 데이터 - 내부 for문
+		 내부 for문이 끝날 때마다 큰단위로 데이터가 반복될 때,
+		 외부 for문 수행..
+		 주로 계층 구조화된 내용을 사용할 2중 for문을 사용한다.
+		 즉, 상위단계의 데이터 안에서 하위 단계의 데이터를 처리
+		 하는 경우를 말한다.
+		 ex) 목차 - 상위 목차에 세부 내용은 하위 내용에 대한 처리.
+		 과목별로 핵심 내용이 있다..
+		 java, html, js, jsp, spring
+		 java - 프로그래밍 기초, 조건문 반복문, 배열, 객체...
+		 html - 네트워크 환경, 웹프로그램, 기초태그, form, 테이블
+		 		화면영역 구성.
+		 2차원 배열에 대한 처리 : 상위 index별로 처리하여서 포함된
+		 	하위 데이터를 처리하는 경우
+		 ex) int[][] records = {{70,80,90,100},{80,90,100,100},
+		 					    {90,80,90,100}};
+		 for(int idx=0;idx<records.length;idx++){
+		 	for(int jdx=0;jdx<records[idx].length;jdx++){
+		 		System.out.println(records[idx][jdx]);
+		 	}
+		 }					    	
+		 // 10:05~ 
+		 
+		2 * 1 = 2
+		....
+		
+		
+		3 * 1 = 3.
+		...
+		
+		3 * 9 = 27
+		...
+	continue : 조건문과 함께 해당 step에서 반복문 수행
+	break : 조건문과 함께 반복문을 중단처리
+		ex) 무한 반복문(while)에서 특정 프로세스를 중단할 때
+		주로 활용된다.
+		while(true){ // 무한 반복문
+			String menu = sc.nextLine();
+			// 특정 데이터 입력시, 반복문 수행 중단처리..
+			if(menu.equals("Q")){
+				break;
+			}
+		}
+# Math.random()
+1. 임의의 수가져오기 : 0.0<=Math.random()<1.0
+2. 특정한 범위의 정수 임의의 수 가져오기
+	 (int)(Math.random()*경우의수+시작수)
+	 ex) 주사위(1~6) : (int)(Math.random()*6+1)
+-----------------------
+7. 배열 객체
+	1) 배열의 선언(어떤 유형으로 어떤 이름으로 사용할지 정의)
+		주의 선언으로는 초기화가 되지 않으면 사용할 수 없다.
+		데이터유형 [] 배열명;
+		int [] arry; 
+		int [][] arry; 
+		String [] arry;
+		Math [] arry;
+		Person [] array;
+		선언은 배열명만 선언되기에 초기화를 하여야 사용가능;
+	2) 배열의 초기화(배열을 사용하기 위하여 기본 데이터 할당)
+		- heap 영역 할당하지 않음
+			arry = null; 
+		- heap 영역에 할당하여 초기화
+			배열명 = new 타입[크기]; : default데이터 할당
+			- 초기값으로 할당.
+				arry = new int[3]; {0,0,0}	
+				arry = new boolean[3]; {false,false,false}	
+				arry = new String[3]; {null,null,null}
+			- 실제 사용할 데이터를 할당	
+				arry = new int[]{1000,2000,3000};
+				arry = new String[]{"홍길동","김길동","신길동"}
+			// 할당과 함께 초기화 처리
+			cf) 주의 선언과 할당을 동시에 하는 경우 new 데이터유형[]
+			생략가능  
+				String []arry = new String[]{"사과","바나나","딸기"}
+				==>
+				String []arry = {"사과","바나나","딸기"}
+			ps) 참고 대부분 언어  배열명 = [데이터1,데이터2,데이터2];	
+	3) 배열의 활용
+		index : 배열명을 기준으로 각 데이터를 구분할 때,
+		사용하는 개념. 0부터 시작된다. 마지막은 배열의크기-1로 접근가능
+		배열명[index번호](호출), 
+		배열명[index번호]  
+		System.out.println(arry[0]); 
+		arry[2]="오렌지" : 배열의 크기가 3개일 때 마지막
+			데이터
+		배열명.length : 배열의 크기
+		# 배열과 for문 처리
+		배열의 크기를 조건으로, for문에 index를 활용하여
+		호출할 수 있다.
+		배열의 크기(배열명.length), 
+		반복 조건(idx<배열명.length) - 배열의 크기와
+			index는 -1 차이가 있으므로 정수형으로 보다
+			적다는 조건을 설정
+		for(int idx=0;idx<arry.length;idx++){
+			arry[idx] : 호출 및 할당 가능
+			// 숫자형 입력
+			arry[idx] = Integer.parseInt(sc.nextLine());
+			// 배열의 크기만큼 임의의 점수(0~100)사이의 데이터 입력
+			arry[idx] = (int)(Math.random()*101);
+		}
+		배열의 크기가 같은 데이터는 위와 같이 index로 접근
+		해서 활용 가능
+		String [] pnames = {"사과","바나나","딸기};
+		int [] prices = {1000,2000,3000};		
+		int [] cnts = {3,5,2};
+		for(int idx=0;idx<prices.length;idx++){
+			pnames[idx]
+			prices[idx]
+			cnts[idx]
+		}	
+		String [] games = {"가위","바위","보"};
+		games[0] games[1] games[2] 
+		int gIdx = (int)(Math.random()*3;
+		// gIdx 랜덤으로 0,1,2
+		games[gIdx] // 조건문 없이 가위/바위/보
+	4) 향상된 for문
+		for(단위데이터:배열) : 배열 안에 포함된 단위데이터를
+			하나씩 할당하여, 배열 안에 마지막데이터까지 로딩 후
+			종료 처리하는 반복문
+	
+		String [] pnames = {"사과","바나나","딸기"};
+		for(String pname:pnames){
+			System.out.println(pname);
+		}	
+		
+	5) 다차원 배열
+		배열안에 배열이 포함된 구조를 의미한다.
+		- 기차의 @@ 호차가 있고, 해당 @@호차 안에 좌석이 있듯이
+		특정한 연결형식의 호차 안에 또 내부적으로 들어가서 실제
+		좌석이 있는 형식을 말한다.
+		해당좌석에 예약이 되어 있을 때는 true, 그렇지 않을 때
+		false로 처리할 때, 2차원 배열 구조를 확인해보자.
+		7호차에 각 호차별로 70개좌석으로 기본적으로 예약되어 이
+		지 않음.
+		boolean[][] trains = new boolean[7][70];
+		 
+		
+		
+		- 반별 학생의 점수를 선언하는 경우, 반이라는 외부 배열안에
+		각 학생의 점수를 할당하고, 3차원으로 더 깊이 간단면 각
+		학생의 국어, 영어, 수학 점수로 나누는 형식을 말한다.
+		// 3개반, 2명의 3과목점수
+		int[][][] clsPt = new int[3][2][3];	
+		int[][][] clsPt = {
+			{{80,90,90},{80,90,90}},
+			{{70,90,70},{80,90,80}},
+			{{85,95,75},{85,95,82}}
+		};	
+		for(int idx=0;idx<clsPt.length;idx++){
+			for(int jdx=0;jdx<clsPt[idx].length;jdx++){
+				for(int kdx=0;kdx<clsPt[idx][jdx].length;kdx++){
+				    // idx : idx+1 반
+				    // jdx : jdx+1 번호
+				    // kdx : kdx+1 번째 과목
+					clsPt[idx][jdx][kdx]
+				}
+			}
+		}
+8. 일반 class 객체(사용자 정의 객체)
+	1) 객체란?
+		사람이 잘 인식할 수 있는 개념인 객체를 프로그래밍에
+		도입하여 보다 효과적으로 프로그래밍화한 기법이 
+		객체지향프로그램이라고 할 수 있고,
+		객체지향프로그램의 단위 요소라고할 수 있는 것이 객체이다.
+		
+		데이터 ==> 기능 처리 ==> 기능 처리 묶음 함수 
+		==> 여러데이터, 여러 기능 처리를 위한 객체
+		
+		데이터 : 메모리를 어떻게 저장할 것인가?
+			bit ==> byte ==> 숫자/문자 ==> 배열 ==> 객체
+		기능 처리를 선언하였다가 중복적으로 활용하는 것을 함수
+			데이터 + 연산식 + 조건/반복 원하는 데이터를
+			저장/처리하는 기능을 묶음으로 해놓은 것을 함수..
+			ex) 자판기
+			입력
+			처리프로세스
+			리턴할내용
+			ex) 쇼핑몰 안에 로그인기능 함수, 물품 구매,
+			회원가입 함수, 배송처리 함수, 물건리스트 함수..
+			
+			기능 함수의 주요 기능
+				- 저장
+				- 로직처리
+				- 처리된 결과 데이터를 리턴
+			
+			
+		객체의 기능
+			위의 데이터도 여러 형태를 가지게 하고
+			위 함수도 여러개의 함수를 선언하게 하여
+			하나의 객체 안에 데이터와 함수를 효과적으로 처리하여
+			원하는 기능을 수행할 수 있게 해주고,
+			더 나아가 이 객체와 객체들간에 상호작용하게 하여
+			효과적인 프로그래밍을 하는 것을 객체지향 프로그래밍이라고 한다.
+	2) 클래스와 객체의 차이점
+		클래스는 사용자 정의 객체를 위한 선언부분으로
+		객체를 만들기 위한 틀/설계도 역할을 한다.
+		ex) 롯데월드타워 도면을 통해서 서울에 롯데월드타워,
+			부산에 롯데월드타워, 제주에 롯데월드타워를 실제 건물
+			만들 수 있음.
+			롯데월드타워 도면은 클래스, 각 지역에 롯데월드타워
+			건물은 객체..
+			하나의 도면을 통해서 여러개의 건물을 만들 수 있듯이,
+			하나의 클래스를 통해서 여러개의 참조변수
+			(heap영역의 주소값을 가진 변수)를 통한
+			객체를 생성할 수 있다.
+	3) 클래스의 구성요소
+		필드(메모리 저장), 생성자(함수), 메서드(함수)
+	4) 필드
+		- 클래스(객체)의 전역변수, 클래스의 모든 구성요소에
+		영향을 미친다. 지역변수와 동일할 때, 구분자로 
+		this.필드명으로 사용된다.
+		ex) Person(String name){
+				this.name = name;
+		    }
+		- 필드의 사용
+			객체를 생성하면 각 객체마다 참조변수와 함께 필드명으로
+			사용이 가능하다.
+			Person p01 = new Person();
+			p01.name = "홍길동";
+			Person p02 = new Person();
+			p02.name = "김길동";
+			
+			    
+		    
+		- 필드는 자동으로 초기화되기에 객체의 참조변수와 함께 사용할 때
+		객체생성 후, 바로 사용 가능하다.
+		ex) main()
+			int num01;
+			System.out.println(num01);(X)
+			Person p01 = new Person();
+			System.out.println(p01.age);(O) 바로 사용가능
+			class Person{
+				int age;
+			}
+	5) 생성자 : 함수의 일부기능(*저장, 로직, 리턴X)
+		저장기능을 주로 처리한다.
+		객체 생성될 때, 필드에 초기값을 저장할 때 주로 사용.
+		ex)
+		Product p02 = new Product();
+		p02.name =  "사과"; 
+		p02.price =  2000; 
+		p02.cnt =  5; 
+		Product p01 = new Product("사과",3000,2);
+		1) 생성자 default 선언.
+			- 생성자가 선언되어 있지 않으면 컴파일러가 클래스명과
+			동일한 매개변수가 없는 생성자를 만들어서 실행시, 사용할 
+			수 있게 한다.(default 생성자)	
+		
+		
+		
+		
+			
+				
+	
+	
+	6) 메서드 : 함수의 모든 기능(저장,로직,리턴)
+9. 객체 vs 객체
+	1) 패키지
+	2) 접근제어자
+	3) 1:1객체
+	4) 배열형 객체
+	5) 1:다객체
+	6) 상속
+	7) 오버라이딩
+	8) 추상클래스
+	9) 인터페이스
+10. 예외 처리
+11. 내장된 객체 활용1(java.lang.패키지)
+12. 내장된 객체 활용2(java.util.패키지)
+13. 내장된 객체 활용3(java.io.패키지)
+	1) 데이터의 읽기
+	2) 데이터의 쓰기
+14. 데이터베이스 연동
+
+# 프로그램 학습시, 주의 사항
+1. 오타, 에러 발생
+	원인을 반드시 곰곰히 생각해서 추후에 정리 해놓도록 한다.
+	재발 방지 방법에 대하여 정리해본다. ==> 에러 노트 정리
+	주위 도움 받았으면 반드시 정리해놓는다.
+	코드를 최대한 정리하면서 처리(계층적)
+2. 실습시, 진행하는 코드 규칙(파일명, 폴드명)등의 주의 깊게 보아서
+	동일하게 하도록 한다.
+3. 수업시간에 카톡이나 다른 대화는 닫아 놓고 진행한다.
+	1) 집중력..
+	2) 환경적인 부분을 집중할 수 있고, 열심히 할 수 있게 만들어 놓는다.
+# 프로세서 문제 발생시
+1. 실행창 상단에 []빨간색 - terminator 클리
+2. ctrl+alt+del 작업관리자에서 eclipse 중단 처리
+
+	
+	
+
+1
+2
+3
+4
+				
+
