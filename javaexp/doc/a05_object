@@ -129,8 +129,25 @@
 		- 1:1 객체 개념
 		- 다중 객체 개념
 		- 1:다 객체 개념	
-		
-			 
+ex)
+	a05_pck
+		Passenger
+			선언
+			Bus b1;
+			Car c1;(X)
+			void call(){
+				b1 = new Bus(); (O)
+				b1 = new Bus(7788); (x)
+			    b1 = new Bus("서울행",9999) (O)
+			    System.out.println(b1.no); (O)	
+			    System.out.println(b1.target); (X)	
+			}				
+	a06_pck
+		Bus
+			no
+			target
+		Car	
+	12:00~		 
 			
 			
 		
