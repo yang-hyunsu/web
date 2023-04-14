@@ -1,5 +1,7 @@
 package javaexp.a08_relation;
 
+import javaexp.a08_relation.vo.Car;
+import javaexp.a08_relation.vo.CarRacer;
 import javaexp.a08_relation.vo.HPUser;
 import javaexp.a08_relation.vo.HandPhone;
 
@@ -20,6 +22,13 @@ public class A03_ObjVsObj {
 		
 		// Car, CarRacer객체 생성..
 		
-		
+		CarRacer cr = new CarRacer("김형식");
+		cr.buyCar( new Car("그랜저",3500) );
+		cr.drivingCar();
+		// 16:10~
+		// 	1) 주중 진행된 내용 전체 개념 내용 확인
+		//  2) 조별로 어려운 내용 review 필요한 내용 확인
+		//  3) 조별 개념 확인
+		//  4) 개인별 개념 확인 test
 	}
 }
