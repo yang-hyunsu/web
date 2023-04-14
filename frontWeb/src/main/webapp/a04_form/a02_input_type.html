@@ -14,14 +14,28 @@
 		2) password : 암호 입력을 위한 한줄 텍스트 입력 
 		3) button : 단순 버튼 모양
 		4) image : 이미지 버튼 모양
-		5) checkbox : 네모모양의 checkbox - 다중선택가능
+		5) checkbox : 네모 모양의 checkbox - 다중선택가능
+			서버에 데이터를 선택된 데이터를 모두 전달 ==> 배열
 		6) radio : 둥근모양의 radio box - 단일선택
+			서버에 하나를 선택해서 전달 ==> 단일
 		7) hidden : 데이터 전송할 때, 보이지 않게 처리하기
 			위한 설정시 필요함 숨김데이터 처리 
+			ex) update/insert/delete
+				동일한 서버의 자원을 호출하지만, 
+				실제 처리해야할 내용이 다른 경우
+				<input type="hidden" name="proc"
+					value="update"/> ==> value값이
+					js에 따라서 변경되는 처리
+				
 		8) submit : form 태그를 둘러쌓일 때,
 			form태그 하위에 있는 입력form 데이터 서버에 전송 처리
 			(버튼모양)
-		9) reset : form 태그를 둘어쌓은 범위의 form태그의
+			<form action="전송할서버자원-jsp/java">
+				form요소태그
+				<input type="submit"/>
+				<input type="reset"/>
+			</form>			
+		9) reset : form 태그를 둘러쌓인 범위의 form태그의
 			입력데이터를 초기화처리.
 		-------------------------------------------
 		10) file : 파일을 선택해서 서버에 전송시 사용
