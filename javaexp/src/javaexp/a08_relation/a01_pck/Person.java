@@ -16,6 +16,9 @@ public class Person {
 		// public 이기에 생성이 가능하다.
 //		p01 = new Product("사과"); // X 접근 불가
 		p01 = new Product(2500);
+		p01 = new Product("사과",3000);
+		System.out.println(p01.name); // name접근가능(pubic)
+//		System.out.println(p01.age); // age(X) 접근불가
 	}
 	
 	

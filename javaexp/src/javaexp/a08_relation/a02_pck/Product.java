@@ -14,6 +14,10 @@ public class Product {
 	// Product p01 = new Product();
 	// p01.name;
 	public Product(){}
+	public Product(String name, int age) {
+		this.name = name;
+		this.age = age;
+	}
 	// X : 다른 패키지는 접근 불가
 	Product(String name){
 		this.name = name;
