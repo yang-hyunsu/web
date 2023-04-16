@@ -30,5 +30,13 @@ public class A03_ObjVsObj {
 		//  2) 조별로 어려운 내용 review 필요한 내용 확인
 		//  3) 조별 개념 확인
 		//  4) 개인별 개념 확인 test
+		
+		Car c1 = new Car("SM5",3000); // // (SM5, 3000)  
+		c1.setCc(2000);  // (SM5, 2000) 입력
+		int cc = c1.getCc(); // 2000
+		String kind = c1.getKind();
+		
+		
+		
 	}
 }
