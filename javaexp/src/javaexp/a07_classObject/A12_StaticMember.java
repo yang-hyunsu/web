@@ -19,17 +19,19 @@ public class A12_StaticMember {
 		    	p01.name="김길동"; (x)
 		    	Person p02 = new Person();
 		    	p02.name="신길동"; (o)  
-		    	p02.name="신길동"; (x)		    	
+		    	p02.name="신길동"; (x)	
+		    		    	
 		    2) 객체공유 상수 = 클래스상수
 		    	class Person{
 		    		static final String KIND="황인";
-		    	}		    
+		    	}	
+		    	Person.KIND 로 class 안에 초기로 선언된 상수를 사용할 때
+		    	사용되고, 이것을 변경할 수 없다. 주로 대문자로 선언하여 사용한다.
 		    	Person p01 = new Person();
 		    	p01.KIND = "흑인"; (X)	
 		    	Person.KIND = "백인"; (X)
 		    	일반적으로 static final상수는 대문자로
 		    	사용한다.
-		    
 		# 클래스를 객체를 생성해서 사용하다보니,
 		 	동일한 클래스를 통해서 나온 객체들이 공유하는 메모리의 필요
 		 	성으로 생성된 것이 static 변수/상수이다.

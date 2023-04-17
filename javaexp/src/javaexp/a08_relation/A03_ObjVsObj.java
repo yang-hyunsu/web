@@ -35,7 +35,28 @@ public class A03_ObjVsObj {
 		c1.setCc(2000);  // (SM5, 2000) 입력
 		int cc = c1.getCc(); // 2000
 		String kind = c1.getKind();
+/*
+ex1) 1:1관계 
+package javaexp.a08_relation.vo에 추가하세요
+
+	Cpu(제조사,사양, showInf() 제조사 사양 출력) 클래스를 선언
+	Computer(종류(조립/완성품), Cpu,  addCpu(...), 
+		showCom 컴퓨터가 cpu가 없다/ cpu의 정보는 ...)
+
+1. javaexp.a08_relation.vo에
+	1) Cpu 클래스 선언 및 필드/생성자/메서드 추가
+			주의 메서드 : showInf()에서 제조사 사양 출력
+	2) Computer 클래스 선언 Cpu클래스를 포함한 필드 선언 생성자 기능메서드 선언
+			주의 메서드 : addCpu() Cpu객체 할당
+				       showCom() 통해서 Cpu객체가 할당되어 있을 때와
+				       	그렇지 않을 때를 구분하여 처리.
+				       
 		
+		
+		
+
+
+ * */		
 		
 		
 	}

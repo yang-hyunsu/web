@@ -92,6 +92,7 @@
 				td{text-align:center;}
 		
 	4. 테이블의 속성
+	    0) <table 속성="속성값"
 		1) 테이블의 테두리의 두께와 넓이, 폭등 여러가지 속성을
 			지정할 수 있다. 태그 자체 기본 속성
 		2) 주요 속성 내용
@@ -101,33 +102,27 @@
 				cell간을 border로 출력이 되게 한다.
 				주의 cell단 border을 굵기는 지정하지 않는다.
 				table border="5"
-				
+			- cellspacing : 테이블 내부 보더의 굵기
+				td(cell)간의 굵기를 지정한다.				
 			- width/height : 테이블의 넓이와 높이를 처리한다.
 				설정단위 - 절대단위:pt, px
 				  		 상대단위:% - 전체브라우저 대비 테이블
 				  		 크기
 				width = "80%" 전체 화면에서 table의 넓이를 설정
-				height : 상대단위 내용보다는 절대로 설정을 해준다.
-					  		 
-			- align : 전체 화면에서 table의 좌우정렬 설정
+				height : 상대단위 내용보다는 절대 단위로 설정을 해준다.
+					상대단위 %는 크기가 일정치 않아서 적용이 되지 않는다.					  		 
+			- align : 전체 화면에서 table의 좌우 정렬 설정
 			- cellpadding : 보더와 글자사이 간격
 				td(cell)안에 글자와 둘러쌓고 있는 border의 간격을
 				지정할 때, 사용하는 옵션.
-			- cellspacing : 내부 보더의 굵기
-				td(cell)간의 굵기를 지정한다.
+
 			# 기타 css 설정기능
 			테이블은 일반적으로 border가 2d로 2중 모양이다.
 			이러한 border를 1라인으로 처리할려면 css 속성으로
 			border-collapse옵션 처리를 해야 한다.
 				- separate : default
-				- collapse - border을 한라인으로 처리하는
-					옵션
-				  		  		
-		ex) 3X3테이블로 위에 기본 속성을 적용해서 테이블을
-		만들어 보세요..
-			
-	
-	
+				- collapse - border을 한라인으로 처리하는 옵션
+		ex) 3X3테이블로 위에 기본 속성을 적용해서 테이블을 만들어 보세요..
 	 -->
 	<h3>3X3테이블의 속성</h3>
 	<!--
@@ -142,13 +137,13 @@
 		그 다음 하단의 body에서 선언한 태그
 		그 다음 상단에 선언한 css
 		마지막으로 파일단위로 선언한 태그이다.
+		
+		css의 border 옵션 : border의 굵기에 관련된 옵션을 설정
+		굵기 모양 색상
 	 -->
-	
-	
 	<table style="border-collapse:collapse;
 				  border:1px solid green;"
-	
-	 align="center" cellpadding="17px"
+	 			align="center" cellpadding="17px"
 		cellspacing="3px"
 			border="5" width="150pt" height="150pt">
 		<tr><td>1</td><td>2</td><td>3</td></tr>

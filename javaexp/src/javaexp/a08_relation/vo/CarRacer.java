@@ -7,6 +7,7 @@ public class CarRacer {
 	//             Car객체가 있으면 @@가 차를 운행
 	//             TT 차가 없네요..
 	private String name;
+	// 포함될 클래스를 선언..
 	private Car car;
 	public CarRacer() {}
 	public CarRacer(String name) {

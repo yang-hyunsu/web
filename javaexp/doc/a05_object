@@ -65,9 +65,9 @@
 	
 	}	
 # 메모리 발전
-1. 하나의 변수 ==> 배열 ==> 클래스 ==> 객체안에 객체 ==> 객체안에
-	배열형 객체.. 	
-	
+1. 하나의 변수 ==> 배열(같은 유형/같은 이름-index)
+	 ==> 클래스(다른유형 참조명.속성) ==> **객체형 배열 ==> 객체안에 객체 
+	 ==> 객체안에 배열형 객체.. 	
 	
 # 관계형 객체
 1. 객체의 여러 관계를 통해서 효율적으로 객체지향적인 프로그램으로
@@ -75,12 +75,35 @@
 2. 관계형 객체에서 다룰 개념
 	1) 패키지개념 이해
 		- 순수한 객체는 패키지명.클래스가 실제 객체의 이름이다.
+			- 같은 패키지 내에서 같은 이름을 클래스 선언이 불가능
+			- 다른 패키지는 같은 이름을 클래스 선언으로 가능 
 		- 같은 패키지내에서 호출하는 객체
 			패키지명을 생략하여도 호출이 가능하다.
 			접근제어자가 public 아니더라도 접근이 가능하다.
+				- default 접근 제어자 : 접근 제어자가 붙지 않는다.
 			같은 패키지에 같은 클래스명을 선언하여 사용할 수 없다.
-	 	- 다른 패키지에 있는 객체를 호출
+	 	- 다른 패키지에 있는 클래스를 객체로 호출
 	 	    1) 접근제어가 public이어야지 접근이 된다.
+	 	    	package javaexp.a02;
+	 	    	선언이 가능 경우 : Person p1; ==> (public) class Person
+	 	    		# 주의 : 최상 클래스선언 접근이 불가능하면,
+	 	    		하위 구성요소에 대한 접근이 가능하더라도 접근할 수 없다.
+	 	    	생성이 가능한 경우 : p1 = new Person("마길동");
+	 	    	==> (public) Person(String name)
+	 	    	구성요소의 접근이 가능한 경우 : p1.name, p1.setName("홍길동");
+	 	    	==> (public) String name;
+	 	    		(public) void setName(String name){
+	 	    		
+	 	    	package javaexp.a01;
+	 	    	public class Person{
+	 	    		public name;
+	 	    		public Person(String name){
+	 	    			this.name = name;
+	 	    		}
+	 	    		public void setName(String name){
+	 	    			this.name = name;
+	 	    		}
+	 	    	}
 	 	    2) 외부에 패키지에 있는 클래스의 객체를 호출할 때는
 	 	    	import하여야 한다.
 	 	    	import를 하는 궁극적인 목적인 객체를 생성하거나
@@ -150,7 +173,7 @@ ex)
 # 1:1관계 객체
 1. class의 선언에서 앞으로 사용될 객체를 내부에서 호출하여
 	사용하는 것을 말한다. 
-2. 객체지향 프로그램에서 여러개의 객체를 사용하는 첫단계라고 할 수 
+2. 객체지향 프로그램에서 여러 개의 객체를 사용하는 첫단계라고 할 수 
 	있다.
 3. 처리 순서
 	1) 객체 관계 구조 결정(요구사항이나 업무적 처리를 기준으로)
@@ -158,6 +181,8 @@ ex)
 		핸드폰/핸드폰사용자 :
 		핸드폰사용자가 구매를 통해서 핸드폰 객체를 가지고,
 		핸드폰을 활용하는 처리를 프로그램상 구현해보자.. 
+		ex) 자동차안에 바퀴
+		ex) 컴퓨터안에 부품(Cpu, Ram, Ssd)
 			
 	2) 포함될 객체 클래스 선언
 		class HandPhone
@@ -167,20 +192,31 @@ ex)
 	3) 포함할 클래스에서 포함될 객체를 호출 및 선언
 	4) 기능 메서드 처리로 해당 포함될 객체 내용도 선언처리
 		class HPUser{
-			필드 : 사용자명, HandPhone
+			필드 : 사용자명, HandPhone phone;
 			메서드 :
-				void buyPhone(HandPhone) : 핸드폰객체 구매
+				void buyPhone(HandPhone phone) : 핸드폰객체 구매
+					this.phone = phone; 외부에 실제 폰객체가 생성해서 들어왔을 때 메모리에 할당.
 				void callByPhone() : 핸드폰으로 전화
+					if(phone==null){ 해당 객체에 메모리가 할당되지 않을 때.
+						phone.XXX :폰객체가 가지고 있는 메소드등을 사용불가능..
+						System.out.println("전화기가 없습니다.");
+					}else{ 메모리 할당되었을 때..
+						phone.show() : 폰객체가 가지고 있는 메소드등을 사용가능.
+					}
 				void checkMyPhoneInfo() :핸드폰 정보 확인
 				
 		}
 	5) main()
-		핸드폰 객체 생성
-		사용자 객체 생성
+		핸드폰 객체 생성 HandPhone p01 = new HandPhone();
+		사용자 객체 생성 HPUser hu01 = new HPUser();
 		사용자 객체의 핸드폰 정보확인메서드 호출 : 핸드폰이 없음.
+				hu01.callByPhone();
 		사용자 객체의 핸드폰 구매메서드 호출
+				hu01.buyPhone(p01);
 		사용자 객체의 핸드폰 사용메서드 호출
+				hu01.callByPhone(); : 핸드폰 객체를 사용가능
 		사용자 객체의 핸드폰 정보확인메서드 호출
+				hu01.checkMyPhoneInfo();
 		
 	
 	
