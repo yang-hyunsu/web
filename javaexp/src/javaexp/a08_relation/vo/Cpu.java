@@ -6,10 +6,12 @@ public class Cpu {
 	public Cpu() {
 		// TODO Auto-generated constructor stub
 	}
+	// Cpu cp01 = new Cpu("퀄컴", "3.5Ghz quard core");
 	public Cpu(String company, String spec) {
 		this.company = company;
 		this.spec = spec;
 	}
+	// cp01.showInf();
 	public void showInf() {
 		System.out.println("# cpu 정보 #");
 		System.out.println("제조사:"+company);
