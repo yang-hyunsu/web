@@ -2,6 +2,8 @@ package javaexp.a08_relation;
 
 import javaexp.a08_relation.vo.Car;
 import javaexp.a08_relation.vo.CarRacer;
+import javaexp.a08_relation.vo.Computer;
+import javaexp.a08_relation.vo.Cpu;
 import javaexp.a08_relation.vo.HPUser;
 import javaexp.a08_relation.vo.HandPhone;
 
@@ -50,14 +52,11 @@ package javaexp.a08_relation.vo에 추가하세요
 			주의 메서드 : addCpu() Cpu객체 할당
 				       showCom() 통해서 Cpu객체가 할당되어 있을 때와
 				       	그렇지 않을 때를 구분하여 처리.
-				       
-		
-		
-		
-
-
- * */		
-		
+ * */
+		Cpu cp1 = new Cpu("인텔","i7 3.4Ghz");	
+		Computer com1 = new Computer("조립");
+		com1.addCpu(cp1);
+		com1.showCom();
 		
 	}
 }
