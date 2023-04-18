@@ -294,7 +294,57 @@ ex)
 			System.out.print(emp.getSal()+"\t");
 			System.out.print(emp.getDeptno()+"\n");
 		}
-	
+# 1:다 관계형 객체
+1. 하나의 객체안에 여러 유형의 객체를 처리하는 것을 말한다.
+2. 쇼핑몰에 물건을 구매하거나, 쇼핑몰에 여러 회원을 관리하는 등,
+	실무적으로 많이 활용되는 객체 관계 구조이다.
+3. 추후, 상속에서 다형성이라는 개념에 의해 여러 종류의 객체로 할당할 수 있다.
+4. 기본 구조
+	1) 포함될 단위 클래스 선언
+		class Product
+			name, price, cnt
+	2) 포함할 클래스 선언
+		- 기본 속성 정의
+		- 포함될 단위 클래스를 배열형태로 선언
+		- 생성자나 메서드에 의해 포함될 단위 객체의 갯수를 지정한다.
+		class Mart{
+			String name;
+			Product[] pArry;
+			int idx;// 포함될 배열객체의 시작 index 지정.
+			void goMartPlan(int cnt){
+				System.out.println("물건을 "+cnt+"종류를 구매하기로 했습니다");
+				pArry = new Product[cnt]; 
+				// 포함될 객체의 배열의 수를 지정해서 생성 
+			}
+			void buyProduct(Product prod){
+				if(idx<cnt){
+					pArry[idx]=prod;
+					idx++
+					System.out.println(prod.getName()+"를 "+
+						prod.getCnt()+"구매하였습니다");
+					if(idx==cnt){
+						System.out.println("구매할 물건 종류의 갯수를 채웠습니다");
+					}
+				}else{
+					System.out.println("구매할 종류의 갯수를 초과하였습니다");
+				}
+			}
+			void showProducts(){
+				System.out.println(name+"에서 구매한 물건들~~");
+				int tot=0;
+				-- 물건명  가격  갯수 단위계
+				for(Product prod:pArry){
+					prod.getName()
+					prod.getPrice()
+					prod.getCnt()
+					int sum =prod.getPrice()*prod.getCnt()
+					tot+=sum
+				}
+				System.out.println("구매비용총비용:"+tot;
+				
+			}
+			
+		} 
 				
 			
 		
