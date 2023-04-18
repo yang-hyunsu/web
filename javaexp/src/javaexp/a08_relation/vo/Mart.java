@@ -16,6 +16,8 @@ public class Mart {
 		this.buyer = buyer; // 구매자 
 		pArry = new Product[cnt]; // 구매할 물건의 종류 갯수 지정
 		bIdx = 0; // 구매자에 따라 구매 종류 갯수 초기화.
+		System.out.println(buyer+"가 물건 "+ cnt+
+				"종을 "+mname+"에서 구매하기로 했습니다!!");
 	}
 	// 단위 구매 내용 처리
 	public void buyProduct(Product prod) {
@@ -31,10 +33,10 @@ public class Mart {
 				System.out.println("를 "+prod.getCnt()+"개 구매하다!");
 				bIdx++; // 3
 				if(bIdx == cnt) {
-					System.out.println("구매가 완료되었습니다.~~");
+					System.out.println("구매할 종류 갯수("+cnt+")가 완료되었습니다.");
 				}
 			}else {
-				System.out.println("구매할 종류 갯수("+cnt+")가 완료되었습니다.");
+				System.out.println("구매할 종류 갯수("+cnt+") 더이상 구매불가 합니다");
 			}
 		}else {
 			checkValid();
@@ -54,6 +56,8 @@ public class Mart {
 			checkValid();
 		}
 	}
+	// 외부 사용 필요없어서 private 현재 클래스에서 내부적으로
+	// 호출..
 	private void checkValid() {
 		System.out.println("구매자와 구매할 갯수를 입력 처리 필요합니다!");
 		System.out.println("buyProdPlan(구매자명,구매종류 갯수)호출 필요!");		
