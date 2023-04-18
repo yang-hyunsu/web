@@ -21,7 +21,6 @@ public class A05_ObjVsObjArray {
 		m01.buyList();
 		
 		
-		
 	}
 
 }
