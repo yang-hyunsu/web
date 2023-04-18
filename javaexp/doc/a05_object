@@ -184,23 +184,28 @@ ex)
 		ex) 자동차안에 바퀴
 		ex) 컴퓨터안에 부품(Cpu, Ram, Ssd)
 			
-	2) 포함될 객체 클래스 선언
+	2) 포함될 객체 클래스 선언(속성, 생성자, 기능메서드)
 		class HandPhone
 			필드 : 제조사, 가격
 			메서드 : 사용  @@제조사의 핸드폰으로 통화하다.
 					정보출력 제조사:@@@, 가격:@@@
 	3) 포함할 클래스에서 포함될 객체를 호출 및 선언
+		 포함할 클래스의 고유 속성 : 이름, 회사명, 마트명, 쇼핑몰명..
+		 포함될 객체의 선언 : 클래스명 참조명	
 	4) 기능 메서드 처리로 해당 포함될 객체 내용도 선언처리
 		class HPUser{
 			필드 : 사용자명, HandPhone phone;
 			메서드 :
+				포함될 객체가 들어오는 메서드
 				void buyPhone(HandPhone phone) : 핸드폰객체 구매
 					this.phone = phone; 외부에 실제 폰객체가 생성해서 들어왔을 때 메모리에 할당.
+					
 				void callByPhone() : 핸드폰으로 전화
 					if(phone==null){ 해당 객체에 메모리가 할당되지 않을 때.
 						phone.XXX :폰객체가 가지고 있는 메소드등을 사용불가능..
+							nullpointerexception 발생..
 						System.out.println("전화기가 없습니다.");
-					}else{ 메모리 할당되었을 때..
+					}else{ 메모리 할당되었을 때..(phone!=null)
 						phone.show() : 폰객체가 가지고 있는 메소드등을 사용가능.
 					}
 				void checkMyPhoneInfo() :핸드폰 정보 확인
@@ -236,6 +241,12 @@ ex)
 		double sal;
 		int deptno
 	}	
+	# VO(value object)클래스 선언 방법
+	1) 2차원테이블의 컬럼명과 데이터를 확인해서 데이터유형 속성명을 결정한 후
+	2) 필드는 private로 접근제어자 선언
+	3) 생성자는 매개변수가 없는 생성자, 전체데이터를 입력할 수 있는 생성자 생성
+	4) public set/getXXX 메서드 생성
+	5) 추가적인 기능 처리 메서드 선언.. 	
 	==> 이 클래스를 여러 개로 배열에 할당하여, list된 데이터를
 	처리한다.
 	Emp[] elist = {
@@ -265,6 +276,7 @@ ex)
 		2) 바로 객체 생성과 함께 할당
 			 클래스명[] 참조변수 = {new 생성자(...),new 생성자(...)..}
 		3) List형으로 선언후, 할당(generic, collection 이후 진행)
+			실무적으로 DB에서 가져오는 유형은 List형태가 많다.
 			import java.util.*;
 			List<클래스명> list = new ArrayList<클래스명>();
 			list.append(new 생성자(....));
@@ -273,6 +285,14 @@ ex)
 	6) 반복문을 통한 조회 및 활용..
 		for(단위 객체:객체형배열참조변수){
 			객체.메서드호출();
+		}
+		ex) 
+		for(Emp emp:elist){
+			System.out.print(emp.getEmpno()+"\t");
+			System.out.print(emp.getEname()+"\t");
+			System.out.print(emp.getJob()+"\t");
+			System.out.print(emp.getSal()+"\t");
+			System.out.print(emp.getDeptno()+"\n");
 		}
 	
 				
