@@ -49,6 +49,28 @@
 # 가정을 꾸린 행복한 나뭇꾼..
 1. 나뭇꾼의 집
 	나뭇꾼, 선녀,  아들2(상속), 막내딸(상속), 노모	
+	private String privSec = "개인적인 비밀 내용";
+	String ourHomeSec = "우리 가족이 사용할 돈은 뒷마당에 장독 안에 있음";
+	protected String inheritSec = "상속할 재산 배분 내용";
+	public String announce = "우리 막내딸이 5월의 신부가 됩니다";
+	
+	public void callWoodInfo(){
+		WoodCutter wc = new WoodCutter();
+		System.out.println("private:"+wc.privSec);
+		System.out.println("default(x):"+wc.ourHomeSec);
+		System.out.println("protected:"+wc.inheritSec);
+		System.out.println("public:"+wc.announce);
+	}
+	// 상속 클래스
+	public void callWoodInfo(){
+		System.out.println("private:"+privSec);
+		System.out.println("default(x):"+ourHomeSec);
+		System.out.println("protected:"+inheritSec);
+		System.out.println("public:"+announce);
+	}	
+	
+	
+	
 	1) private : 개인적인 비밀(행복한 현실 가정) 
 		나뭇꾼 객체만 가지고 있어야 하는 정보
 		ps) 상속을 하더라도 직접 접근 불가
@@ -62,11 +84,28 @@
 		가능한 접근제어자..	
 	4) public : 막내딸이 결혼하는 축하할 내용을 모두다 공지	
 2. 나뭇꾼의 이웃
-3. 사냥꾼..		
+#3. 사냥꾼..		
 4. 아들1의 집
 	아들1(상속), 며느리
 
-
+# 2차 전체 access 처리
+javaexp.a08_relation.access
+하위에
+ourhome
+	Father
+		private
+		X
+		protected
+		public 
+		void callFatherInfo1(){
+			Father f = new Father
+		}
+		// 상속자
+		void callFatherInfo2(){ 
+		}	
+unclehome
+sisterhome
+	Sister
 
 
 		
