@@ -4,6 +4,7 @@ import javaexp.a08_relation.vo.Emp;
 import javaexp.a08_relation.vo.Student;
 
 public class A04_ObjectArray {
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

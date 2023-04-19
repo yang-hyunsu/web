@@ -6,12 +6,19 @@ public class Mart {
 	private String buyer;
 	private int bIdx; // 구매 index
 	public Mart() {
+		
 		// TODO Auto-generated constructor stub
 	}
 	public Mart(String mname) {
 		this.mname = mname;
 	}
 	// 구매 갯수와 구매자 처리 메서드
+	/*
+	# 1:다관계에서 배열로 다중 객체를 선언할 때는 배열자체가 초기에
+	크기를 설정하여 처리하여야 하는 부분이 있고, 한번 크기가 설정된
+	배열을 다시 객체를 생성하기 전까지는 변경이 불가하여 아래와 같이
+	추할 때, 로직이 필요로 하다.
+	 * */
 	public void buyProdPlan(String buyer, int cnt) {
 		this.buyer = buyer; // 구매자 
 		pArry = new Product[cnt]; // 구매할 물건의 종류 갯수 지정

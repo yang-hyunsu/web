@@ -67,7 +67,20 @@
 # 메모리 발전
 1. 하나의 변수 ==> 배열(같은 유형/같은 이름-index)
 	 ==> 클래스(다른유형 참조명.속성) ==> **객체형 배열 ==> 객체안에 객체 
-	 ==> 객체안에 배열형 객체.. 	
+	 ==> 객체안에 배열형 객체/객체안에 collection형 객체
+	  	
+	# collection형 객체
+	1. list(index값 가진 나열형), set(중복불가하는 객체), map(key/value형태 객체)
+	# list형(활용도가 가능 높음)
+	1. List<Product> plist = new ArrayList<Product>();
+	   plist.add(new Product("사과",3000,2));
+	   plist.add(new Product("바나나",4000,3));
+	   plist.add(new Product("딸기",12000,4));
+	   plist.get(0) : new Product("사과",3000,2)
+	   plist.size() : 리스트객체의 크기
+	   for(Product pro:plist){
+	   		pro.getName();..
+	   }
 	
 # 관계형 객체
 1. 객체의 여러 관계를 통해서 효율적으로 객체지향적인 프로그램으로
