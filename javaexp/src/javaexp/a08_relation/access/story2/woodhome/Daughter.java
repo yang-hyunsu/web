@@ -8,6 +8,7 @@ public class Daughter extends WoodCutter{
 		System.out.println("protected:"+wc.inheritSec);
 		System.out.println("public:"+wc.announce);
 	}
+	
 	// 상속 클래스
 	public void callWoodInfo2(){
 //		System.out.println("private:"+privSec);

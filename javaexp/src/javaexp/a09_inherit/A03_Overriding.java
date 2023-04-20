@@ -1,6 +1,6 @@
 package javaexp.a09_inherit;
 
-public class A02_Overriding {
+public class A03_Overriding {
 	
 
 	public static void main(String[] args) {
@@ -101,11 +101,16 @@ class Company{
 }
 class HyunDae extends Company{
 	public HyunDae() {
+		// 상속시 상위 있는 생성자를 호출하여야 한다.
+		// 직접적으로 접근하지 못하는 상위 private name을 
+		// 간접적으로 접근하여 처리하였음.
 		super("현대중공업");
 	}
+	// overriding은 상위에 있는 메서드를 동일하게 처리하면서
+	// 상위 기능과 다르게 처리하는 것을 말한다.
 	public void earnMoney() {
 		System.out.print("배를 만들어서 ");
-		super.earnMoney();
+		super.earnMoney(); // 상위 메서드를 호출. super.
 	}
 }
 class Samsung extends Company{
@@ -117,3 +122,32 @@ class Samsung extends Company{
 		super.earnMoney();
 	}
 }
+/*
+		Company
+			earnMoney()
+HyunDae    Samsung  	DaumKakao
+earnMoney  earnMoney 	earnMoney
+
+상위 공통된 Company을 통해서 상속받은 하위 객체들이
+다양한 객체로 같은 메서드이지만 다른 기능을 처리한다.
+이것을 다양한 객체들로 만들어 진다고 하여 다형성(polymorphism)이라는
+개념으로 사용하는 것이다.
+
+Company com1 = new HyunDae();
+Company com2 = new Samsung();
+Company com3 = new DaumKakao();
+# 하나의 상위 메모리를 통해 상속관계와 overriding이 되어 있으면,
+다양한 하위 기능을 가진 동일한 이름의 메서드 호출을 통해서 처리될 수 있다.
+Company[] arry = {new HyunDae(),new Samsung(),new DaumKakao()}
+arry[0].earnMoney();
+arry[1].earnMoney();
+arry[2].earnMoney();
+
+
+
+	
+	
+ * 
+ * */
+
+

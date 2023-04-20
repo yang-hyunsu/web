@@ -7,6 +7,7 @@ public class WoodCutter {
 	public String announce = "우리 막내딸이 5월의 신부가 됩니다";
 	
 	
+	
 	public void callWoodInfo(){
 		WoodCutter wc = new WoodCutter();
 		System.out.println("private:"+wc.privSec);

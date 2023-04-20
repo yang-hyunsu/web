@@ -13,6 +13,7 @@ public class Son1 extends WoodCutter{
 //		System.out.println("protected:"+wc.inheritSec);
 		System.out.println("public:"+wc.announce);
 	}
+	
 	// 상속 클래스
 	public void callWoodInfo2(){
 		// private 개인

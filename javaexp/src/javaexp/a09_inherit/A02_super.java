@@ -1,6 +1,6 @@
 package javaexp.a09_inherit;
 
-public class A03_super {
+public class A02_super {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
