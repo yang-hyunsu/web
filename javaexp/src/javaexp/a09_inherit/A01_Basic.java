@@ -10,12 +10,23 @@ public class A01_Basic {
 			호출할 때, 주로 사용된다.
 			1) this.필드 : 지역변수와 구분하여 class의 전체 전역변수에 사용되는
 				변수를 호출해서 할당/사용할 때 사용된다.
+				ex) public void setName(String name){
+						this.name = name;
+					}
+				
 			2) this(), this(25), this("홍길동",25) :
-			 	생성자가 overloading으로 여러개 선언되어 있을 때,
+			 	생성자가 overloading으로 여러 개 선언되어 있을 때,
 			 	다른 생성자를 호출해서 데이터를 할당할 때, 사용된다.
 			 	- 호출시, 반드시 생성자 선언 첫라인에서 호출하여야 한다.
-			ex) Product 클래스 선언하고, 기본생성자~매개변수3개 생성자를
-			 	선언하고 필드값 물건명, 가격, 갯수를 호출하게 하세요.
+				ex) Product 클래스 선언하고, 기본생성자~매개변수3개 생성자를
+				 	선언하고 필드값 물건명, 가격, 갯수를 호출하게 하세요.
+				 Product(){
+				 	System.out.println("매개변수없음");
+				 }	
+				 Product(String name){
+				 	this(); // 상위에 선언한 매개변수 없는 생성자 호출
+				 	System.out.println("매개변수1개");
+				 	this(); (X) 반드시 첫라인에 호출..				 }
 			 	 
 		2. 상속관계에 있어서 this, super의 활용
 			 1) 필드, 생성자, 메서드 다 활용된다.
@@ -23,6 +34,16 @@ public class A01_Basic {
 			 	사용된다.
 			 	this 현재 클래스가 가지고 있는 멤버를 지칭
 			 	super 는 상위 클래스가 가지고 있는 멤버를 지칭
+			 	ex)
+			 	class Father{
+			 		String name="홍판서"
+			 	class Son extends Father{
+			 		//int name = 25;  재정의 아님..(동일한 필드는 타입과 변수명 같을 때)
+			 		String name="홍길동" 필드도 재정의하고 있다.
+			 		
+			 		void call(){	
+			 			super.name : 상위에 있는 필드 지정
+			 			this.name : 현재객체(하위)에 있는 필드 지정
 			 3) 상위 선언된 메서드와 동일한 이름/매개변수가 동일하게 선언하고,
 			 	사용이 가능한데 이것을 메서드 overriding일 때,
 			 	상위 클래스의 메서드 : super.메서드(), 하위 클래스의 메서드
@@ -31,7 +52,24 @@ public class A01_Basic {
 			  		한다.(주의)
 			  	- 일반적으로는 default 생성자를 호출
 			  	- 상위에 default를 사용하지 않을 때, 반드시 추가 선언 필요
-			  		
+			  	ex) 
+			  	class Mother{
+			  		Mother(){}
+			  		Mother(String name){ // default 생성자 사라짐.
+			  	
+			  	class Daughter extends Mother{
+  	 	
+			  		// public Daughter(){ super(){} } 
+			  		// default 생성자가 보이지 않지만 컴파일시 자동 생성
+			  		// 위에 생성자를 반드시 호출하여야 한다.
+			  		//public Daughter(){
+			  		//	super("홍리나"); // 명시적으로 상위에 있는 생성자호출
+			  		//}
+			  	
+			  # 주의! 주의!
+			  1. import할 때, 동일한 이름의 클래스이지만 다른 패키지의 경우
+			  		해당 기능이 동일하더라도 1:1관계나 상속관계에서 에러가 발생
+			  		하는 경우가 많다. 
 		*/
 		Person p01 = new Person("홍길동",25,"서울");
 		Product prod = new Product("사과",3000,2);
