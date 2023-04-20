@@ -10,15 +10,20 @@ public class A05_Poly_Parts {
 		com01.showPartsInfo();
 		com01.addPart(new Ram("8G"));
 		com01.showPartsInfo();
+		com01.addPart(new Ssd("500G"));
+		com01.showPartsInfo();
+		
 		// addPart(String name)
 		// Part part1 = new Cpu("i7 3.4GHZ")
 		// Part part2 = new Ram("8G")
 		// addPart(Part part)
 		// 
+		// ex) Ssd를 상속해서 추가하고 main()에서 호출해보세요..
 		
 	}
 
 }
+
 class Part{
 	private String kind;
 	private String spec;
@@ -50,6 +55,16 @@ class Ram extends Part{
 	public void showInfo() {
 		super.showInfo();
 		System.out.println("Ram 메모리는 컴퓨터의 휘발성 임시 메모리를 처리한다.");
+	}	
+}
+class Ssd extends Part{
+	public Ssd(String spec) {
+		super("SSD메모리", spec);
+	}
+	@Override
+	public void showInfo() {
+		super.showInfo();
+		System.out.println("SSD 메모리는 하드웨어적으로 지속적인 메모리 공간에 할당한다.");
 	}	
 }
 class Computer{
