@@ -15,12 +15,81 @@ public class A01_List {
 		Person p01 = plist.get(1);
 		System.out.println("두번째 객체의 이름:"+p01.getName());
 		System.out.println("5번째 객체의 이름:"+plist.get(4).getName());
+		// ex) plist  forEach, for(int idx) 구문을 처리해보세요.
+		for(Person p : plist) {
+			System.out.print(p.getName()+"\t");
+			System.out.print(p.getAge()+"\t");
+			System.out.print(p.getLoc()+"\n");
+		}
+		for(int idx=0;idx<plist.size();idx++) {
+			Person p = plist.get(idx);
+			System.out.print(p.getName()+"\t");
+			System.out.print(p.getAge()+"\t");
+			System.out.print(p.getLoc()+"\n");			
+		}
+		
+		
+		
 		// ex) Student 반, 번호, 이름, 점수 속성 VO ArrayList에 할당
 		//     3개 할당 후, 마지막객체의 이름 호출, 첫번째 객체의 점수호출.
+		ArrayList<Student> slist = new ArrayList<Student>();
+		slist.add(new Student(1,1,"홍길동",80));
+		slist.add(new Student(2,3,"김길동",70));
+		slist.add(new Student(4,2,"마길동",90));
+		System.out.println("마지막 학생의 이름:"+slist.get(2).getName());
+		System.out.println("첫번째 학생의 점수:"+slist.get(0).getPoint());
+		System.out.println("반\t번호\t이름\t점수");
+		for(Student st:slist) {
+			System.out.print(st.getCls()+"\t");
+			System.out.print(st.getNo()+"\t");
+			System.out.print(st.getName()+"\t");
+			System.out.print(st.getPoint()+"\n");
+		}
 		
 	}
 
 }
+class Student{
+	private int cls;
+	private int no;
+	private String name;
+	private int point;
+	public Student() {
+		// TODO Auto-generated constructor stub
+	}
+	public Student(int cls, int no, String name, int point) {
+		this.cls = cls;
+		this.no = no;
+		this.name = name;
+		this.point = point;
+	}
+	public int getCls() {
+		return cls;
+	}
+	public void setCls(int cls) {
+		this.cls = cls;
+	}
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getPoint() {
+		return point;
+	}
+	public void setPoint(int point) {
+		this.point = point;
+	}
+	
+}
+
 class Person{
 	private String name;
 	private int age;
