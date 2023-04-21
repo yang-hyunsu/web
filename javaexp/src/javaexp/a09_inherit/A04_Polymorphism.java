@@ -12,14 +12,31 @@ public class A04_Polymorphism {
 		2. 상위 ==> 여러가지 하위 객체를 통해, 다양한 기능을 처리
 			하는 것을 말한다.
 			ex) 컴퓨터 부품(Cpu, Ram, Ssd....)
+				class Part{
+					void showInf()
+				class Cpu extends Part{
+					void showInf() : 메서드 오버라이딩 처리
+						super.showInf()
+						각 부품별 추가되는 기능 처리
+				class Ram extends Part{}
+				class Ssd extends Part{}
+				class .. extends Part{} 
+				// 계속 추가 부품을 처리가능
+			
+			
+			
 				class Computer{
 					String kind;
 					Cpu c;
 					Ram r;  ==> Part[] (상위 객체)
-					Ssd s;
+					Ssd s;		
 					...
 					GrapCar....
-					
+					개별적으로 Computer 클래스에서 부품이 추가할 때
+					마다 변경하는 것이 아니라, 공통 상위 클래스를 선언하여
+					해다 부품들이 다형성에 의해서 추가가 될 수 있는 
+					보다 유연한 구조로 처리가능 하는 것이 다형성의
+					핵심이라고 할 수 있다.
 					void addPart(Part p )
 					 	plist.add(p);
 					void showParts()
@@ -31,6 +48,9 @@ public class A04_Polymorphism {
 				com.addPart(new Ram());
 				com.addPart(new Ssd());
 				Part p1 = new Cpu();
+				다형성은 상속 하는 상위 객체의 메모리에
+					여러가지 하위 객체들이 할당되어 기능적으로 
+					다양한 처리를 하는 구조를 말한다.
 				Part p2 = new Ram();
 				Part p3 = new Ssd();
 		3. 기본형식
