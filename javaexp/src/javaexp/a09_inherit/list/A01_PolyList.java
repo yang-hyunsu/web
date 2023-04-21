@@ -31,13 +31,71 @@ public class A01_PolyList {
 		for(Duck d:dlist) {
 			d.swimming();
 		}
+		ArrayList<Part> plist = new ArrayList<Part>();
+		plist.add(new Cpu("i7 3.4GHZ"));
+		plist.add(new Ram("8G"));
+		plist.add(new Ram("8G"));
+		plist.add(new Ssd("256G"));
+		plist.add(new Ssd("512G"));
+		for(Part p:plist) {
+			p.showInfo();
+		}
+		
 	}
 	// ex) Part 클래스 하위 Cpu, Ram, Ssd 만들고,
 	//     위 ArrayList<Part>에 담아서 재정의된 메서드로 호출하세요..
 	
+}
+class Part{
+	private String kind;
+	private String spec;
+	public Part(String kind, String spec) {
+		this.kind = kind;
+		this.spec = spec;
+	}
+	public void showInfo() {
+		System.out.println("부품명:"+kind);
+		System.out.println("부품사양:"+spec);
+	}
+	public String getKind() {
+		return kind;
+	}
+	
 	
 	
 }
+class Cpu extends Part{
+	public Cpu(String spec) {
+		super("CPU", spec);
+	}
+	@Override
+	public void showInfo() {
+		super.showInfo();
+		System.out.println("CPU는 중앙 처리 장치입니다!!");
+	}
+}
+class Ram extends Part{
+	public Ram(String spec) {
+		super("RAM", spec);
+	}
+	@Override
+	public void showInfo() {
+		super.showInfo();
+		System.out.println("RAM은 휘발성 메모리를 사용하는 장치입니다.");
+	}
+}
+class Ssd extends Part{
+	public Ssd(String spec) {
+		super("SSD", spec);
+	}
+	@Override
+	public void showInfo() {
+		super.showInfo();
+		System.out.println("SSD는 물리적 저장 공간을 사용하는 장치입니다.");
+	}
+}
+
+
 class Duck{
 	private String kind;
 	public Duck(String kind) {
