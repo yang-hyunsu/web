@@ -1,0 +1,112 @@
+# 컬렉션
+1. 동적으로 여러가지 데이터나 객체를 담을 수 있는 컨테이너형 객체로
+	java api(내장된 객체)로 지원되고 있다.
+2. 종류
+	1) set
+	2) list : 나열형 데이터 처리..
+	3) map
+	형태가 있는데,
+3. List 인터페이스를 상속 받은 ArrayList형태로 진행하자.
+
+# 사전개념
+1. generic
+	1) 모든 자바객체는 Object라는 내장된 api 객체를 상속받는다.
+	2) 그래서, 기본 ArrayList는 이 객체를 포함하는 객체가 기본이다.
+	3) 그런데, generic이라는 개념을 사용하면,
+	4) typecasting과 같이, 특정한 객체만 할당하게 정의하여 처리할
+		수 있게 하는 개념이다.
+	5) 기본형식
+		컨테이너형객체<타입>
+		ArrayList ==> ArrayList<Object>가 포함되어 있음.
+		상위 = 하위(큰타입 = 작은타입)
+		Object ob = new Person(); 다형성 처리
+		하위 = 상위(작은타입 = 큰타입)
+		Person p = (Person)ob; 타입캐스팅 필요
+		
+		
+		이 때, Object에 타입캐스팅 필요 없이 바로 Person객체가
+		들어 올 수 있게 선언하는 형식이
+		Object<Person> ob1 = new Person(); 다형성 처리
+		이렇게 되면 타입캐스트없이도
+		Person p = ob1;  할당할 수 있다.
+		이것이 generic에 의한 객체 처리이다.
+		 여기에는 Object 타입만 들어올 수 있는 동적인 구조체
+		 ArrayList == ArrayList<Object>
+		   ((ob1),(ob2),(ob3))
+		   add(new Person())  Object ob1 = new Person()
+		   add(new Woman())   Object ob2 = new Woman()
+		   add(new Man())     Object ob3 = new Man()   
+		   get(0) ==> 첫번째 객체..
+		   ==> ob1
+		   Person p01 = (Person)ob1;
+		   Person p01 = (Person)get(0);
+		   Woman w01 = (Woman)get(1);
+		   
+		위에 ArrayList ==> ArrayList<Object> 포함되어 있어서
+		ArrayList li = new ArrayList();
+		li.add(new Person());  Object ob1 = new Person()
+						       Person p01 = (Person)ob1;
+						       
+		li.add(new Woman());   Object ob2 = new Woman()
+		li.add(new Man());     Object ob3 = new Man()
+		
+		li.add(new Person());  Object ob1 = new Person()
+		li.get(0); ? Object, Person ? 
+		
+		
+		
+		
+		Person p01 = li.get(0);
+		
+		
+		
+		이렇게 처리하여야 하는데..
+		ArrayList<Person> li2 = new ArrayList<Person>();
+		li2.add(new Person());
+		li2.add(new Woman()); (X)
+		Person p02 = li2.get(0); 로 타입캐스트 없이도 처리할 수
+		있다.
+# ArrayList
+1. 사용방법
+	1) 객체의 생성(동적객체를 생성)
+	    [(홍길동),(김길동)] : 동적으로 객체를 할당했다가 삭제 변경이 가능...
+		ArrayList<할당할타입> list = new ArrayList<할당할타입>();
+		ex) ArrayList<Person> list = new ArrayList<Person>();
+	2) 객체의 할당(하나씩 하나씩 추가)
+		참조명.add(객체);	
+		ex) list.add(new Person("홍길동",25));
+		ex) list.add(new Person("김길동",27));
+	3) 전체 크기를 확인
+		list.size(); 2개 주의) 배열.length와 구분..
+	4) 추가되어 있는 동적인 구성요소를 확인
+		참조명.get(index번호)
+		ex) list.get(0) ==> new Person("홍길동",25)
+		ex) list.get(1) ==> new Person("김길동",27)
+	5) 반복문에서는 foreach로도 for index 구분으로도 활용된다.
+		for(Person p:list){
+			p.getName()
+		}
+		for(int idx=0;idx<list.size();idx++){
+			Person p = list.get(idx);
+			p.getName();
+		}
+2. 개발 순서
+	1) 하나의 단위 데이터 class 선언(필드/생성자/get.set메서드)
+		class Person
+	2) list 객체 선언 및 생성
+		import java.util.ArrayList; 
+		ArrayList<Person> list = new ArrayList<Person>();
+	3) 구성 객체 추가.
+		list.add(new Person());
+	4) 반복문을 이용해 호출 및 처리
+		for(Person p:list){
+			p.getName()
+		}	
+	
+			
+				
+		
+		
+
+
+	
