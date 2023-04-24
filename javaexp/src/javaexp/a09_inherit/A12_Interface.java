@@ -39,6 +39,11 @@ public class A12_Interface {
 		 	 	메서드 : 인터페이스의 재정의 메서드는 기본적으로 추상메서드이다.
 		 	 		void fly(); 앞에 public abstract 생략..
 		 	 	기타 : 디폴드 메서드, 정적 메소드 지원
+		 	 5) 인터페이스는 다중 상속이 가능하다.
+		 	 	- extends 클래스 상속은 부모를 1개만 상속할 수 있지만
+		 	 	 인터페이스는 여러개의 상위 객체를 implements할 수 있다.
+		 	 	 기능적으로 여러개의 상위 인터페이스를 상속받아서 재정의 할 수
+		 	 	 있다.
 
 		# 처리순서
 		1. 상위 인터페이스 선언
@@ -133,7 +138,7 @@ class Robot{
 }
 
 
-
+// SwimmingWay, Wing
 interface Wing{
 	String NAME ="날개"; // public static final 생략..
 	void fly(); // public abstract 생략됨..
