@@ -62,6 +62,22 @@ public class A04_Polymorphism {
 				
 				Animal an01 = new Cat();
 				Animal an02 = new Bird();
+				an01.sound(); // 다양한 기능적 재정의 메서드 처리
+				an02.sound(); // 다양한 기능적 재정의 메서드 처리
+				
+				이들을 처리하는 포함 관계 클래스에서 
+				1:1처리와 1:다관계 처리를 한다.
+				class Zoo{
+					private Animal ani   
+					// 동물원에 여러 종류 중 하나의 동물만 할당할 수 있게 처리 
+				}
+				class Zoo{
+					private ArrayList<Animal> animals;
+					// 동물원에 여러 종류의 다양한 동물들을 할당할 수 있게 처리
+				}
+			
+			
+				
 			2) 2단계
 				상위클래스 : 큰메모리
 				하위클래스 : 작은메모리
@@ -70,6 +86,11 @@ public class A04_Polymorphism {
 				- 작은메모리 = (작은메모리)큰메모리; casting(강제형변환)
 					하위객체 = (하위클래스)상위객체; (***) 
 					ps) 예고 상위<generic> ==> 상위<하위객체> 
+					
+					
+					ArrayList<Animal> alist = new ArrayList<Animal>()
+					alist.add(new Cat());
+					alist.add(new Dog());
 					
 		*/
 		Animal ani01 = new Cat();

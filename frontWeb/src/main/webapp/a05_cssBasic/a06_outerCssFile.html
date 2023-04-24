@@ -15,6 +15,15 @@
 			1) link 태그 이용
 				head
 					link href="파일명.css" type="text/css" rel="stylesheet"
+					ex) href 위치는 일반적으로 webapp 하위를 기준으로
+					서버가 호출되었을 때, default 위치인 context명으로 설정
+					(웹서버단에서 설정-보통 프로젝트명으로 default설정 됨)하고
+					공통 폴드 com 하위에 지정하는 경우가 많다.
+					ex) href="/frontWeb/com/comm.css"
+					
+					
+					
+					
 			2) @import 이용
 				style
 					@import:url(파일명.css)

@@ -20,14 +20,23 @@ public class A03_Overriding {
 				}
 			}
 			class 하위1 extends 상위{
-				void 기능메서드(){ // 상위와 동일한 메서드 정의
+				void 기능메서드(){ 
+				// 상위와 동일한 메서드명 정의
+				/*
+				# 주의 
+				1. 매개변수의 유형과 갯수가 달라지면 오버로딩이 된다.
+				   메서드명과 매개변수 유형과 갯수도 동일할 때를 말한다.
+				2. 상위에서 선언한 내용과 하위마다 기능적 차별성 있어야
+				   한다. 
+				3. 접근제어자는 하위 객체에서 재정의하는 메서드는
+					상위와 같거나 더 넓어져야 한다.
+					상위 default 하위 default/protected/public(O)
+					상위 public 하위 default(X)				 
+					}
 				}
-			}
-		4. 주의 : 접근제어자는 하위 객체에서 재정의하는 메서드는
-			상위와 같거나 더 넓어져야 한다.
-			상위 default 하위 default/protected/public(O)
-			상위 public 하위 default(X)
 		*/
+					
+
 		HyunDae com1 = new HyunDae();
 		com1.earnMoney();
 		Samsung com2 = new Samsung();
@@ -66,7 +75,14 @@ class Police extends Worker{
 	public void working() {
 		System.out.print("치안을 유지하기 위해 ");
 		super.working();
-	}	
+		// 상위 working와 구분하기 위하여, super.오버라이딩메서드() 선언
+	}
+	public void call() {
+		this.working(); // 현재 클래스의 working()메서드 호출 
+		working(); // 현재 클래스의 working()메서드 호출 this생략 가능
+		super.working(); // 상위 클래스의 working()메서드 호출
+	}
+	
 }
 class Programmer extends Worker{
 	public Programmer() {

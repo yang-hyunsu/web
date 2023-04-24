@@ -32,7 +32,7 @@ public class A10_Final {
 	}
 }
 final class Riger{}
-//class NewSpec extends Riger{}
+//class NewSpec extends Riger{} 컴파일 에러..
 class Book{
 	void showPrice() {
 		System.out.println("책의 가격 보여 주기~~");

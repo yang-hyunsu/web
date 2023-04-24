@@ -5,6 +5,19 @@ import java.util.ArrayList;
 public class A01_StarcraftWorld {
 
 	public static void main(String[] args) {
+		// 추상 클래스는 혼자 객체를 생성하지 못한다.
+		// 추상 클래스의 목적이 하위 클래스의 공통 기능 선언과
+		//    다형성(메서드 재정의를 통해)이기 때문에
+		// 추상 클래스는 다형성 처리할 메서드를 강제성 있게 처리할 목적이기에
+		// 실제 클래스가 필요없게 만든다.
+//		Larba lb = new Larba("드론","빨강"); 에러 발생.
+		Larba lb100 = new Dron("파랑"); // 추상 = 하위실제();
+		lb100.move();  // 상속해서 사용할 공통 내용
+		lb100.getUnit(); // 상속해서 사용할 공통 내용
+		lb100.attack(); 
+		// 상속해서 사용할 다형성 처리 내용, 재정의가 강제하고 있다.
+		
+		
 		// TODO Auto-generated method stub
 		/*
 	    # 추상클래스의 목적
