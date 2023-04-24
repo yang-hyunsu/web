@@ -11,11 +11,12 @@ public class A01_StarcraftWorld {
 		// 추상 클래스는 다형성 처리할 메서드를 강제성 있게 처리할 목적이기에
 		// 실제 클래스가 필요없게 만든다.
 //		Larba lb = new Larba("드론","빨강"); 에러 발생.
-		Larba lb100 = new Dron("파랑"); // 추상 = 하위실제();
+		Larba lb100 = new Dron(); // 추상 = 하위실제();
 		lb100.move();  // 상속해서 사용할 공통 내용
 		lb100.getUnit(); // 상속해서 사용할 공통 내용
 		lb100.attack(); 
 		// 상속해서 사용할 다형성 처리 내용, 재정의가 강제하고 있다.
+		
 		
 		
 		// TODO Auto-generated method stub
@@ -44,10 +45,10 @@ public class A01_StarcraftWorld {
 		# 추상클래스를 통한 다형성 처리하기
 		 * */
 		ArrayList<Larba> myUnits = new ArrayList<Larba>();
-		myUnits.add(new Dron("빨강"));
-		myUnits.add(new Zerggling("파강"));
-		myUnits.add(new Zerggling("노랑"));
-		myUnits.add(new Hydralisk("흰"));
+		myUnits.add(new Dron());
+		myUnits.add(new Zerggling());
+		myUnits.add(new Zerggling());
+		myUnits.add(new Hydralisk());
 		System.out.println("사용할 유닉들");
 		for(Larba lb:myUnits) {
 			lb.move(); // 공통메서드
@@ -65,24 +66,24 @@ public class A01_StarcraftWorld {
 // Larba l3 = new Hydralist();
 abstract class Larba{ 
 	private String kind;
-	private String color;
-	public Larba(String kind, String color) {
+	//private String color;
+	public Larba(String kind) {
 		this.kind = kind;
-		this.color = color;
+		//this.color = color;
 	}
 	public String getUnit() {
-		return color+"색 "+ kind;
+		return kind;
 	}
 	// 공통 메서드.
 	public void move() {
-		System.out.println(color+"색 "+kind+" 이동합니다.");
+		System.out.println(kind+" 이동합니다.");
 	}
 	// 상속받는 하위에서 반드시 재정의 메서드
 	public abstract void attack();
 }
 class Dron extends Larba{
-	public Dron(String color) {
-		super("드론", color);
+	public Dron() {
+		super("드론");
 		// TODO Auto-generated constructor stub
 	}
 	@Override
@@ -92,8 +93,8 @@ class Dron extends Larba{
 	}
 }
 class Zerggling extends Larba{
-	public Zerggling(String color) {
-		super("저글링", color);
+	public Zerggling() {
+		super("저글링");
 		// TODO Auto-generated constructor stub
 	}
 	@Override
@@ -102,8 +103,8 @@ class Zerggling extends Larba{
 	}
 }
 class Hydralisk extends Larba{
-	public Hydralisk( String color) {
-		super("히드라리스크", color);
+	public Hydralisk() {
+		super("히드라리스크");
 	}
 	@Override
 	public void attack() {
