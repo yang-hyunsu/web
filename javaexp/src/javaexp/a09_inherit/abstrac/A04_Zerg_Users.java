@@ -6,7 +6,16 @@ public class A04_Zerg_Users {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		ZergUser z01 = new ZergUser("파랑");
+		z01.makeUnit(new Zerggling());
+		z01.makeUnit(new Zerggling());
+		z01.allAttack();
+		ZergUser z02 = new ZergUser("빨강");
+		z02.makeUnit(new Dron());
+		z02.makeUnit(new Dron());
+		z02.makeUnit(new Hydralisk());
+		z02.makeUnit(new Hydralisk());
+		z02.allAttack();
 	}
 
 }
@@ -26,9 +35,11 @@ class ZergUser{
 	public void allAttack() {
 		System.out.println(color+" 모든 유닉이 공격을 합니다.");
 		if(units.size()>0) {
-			System.out.println("전체 유닉 "+units.size()+"공격을 합니다.");
+			System.out.println(color+"전체 유닉 "+units.size()+" 공격을 합니다.");
 			for(Larba lb:units) {
+				System.out.print("\t");
 				lb.move(); // 공통메서드
+				System.out.print("\t");
 				lb.attack(); // 재정의 메서드..
 			}
 		}else {
