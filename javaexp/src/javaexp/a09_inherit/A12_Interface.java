@@ -54,9 +54,86 @@ public class A12_Interface {
 		// ex) SwimmingWay 인터페이스를 선언하고 상수로 "수영" 추상메서드 swimming()
 		//     Swimming01 우리동네 풀장을 수영하다. Swimming02 호수를 수영하다..
 		//     로 선언하여 다형성으로 호출 처리하세요..
+		SwimmingWay sw1 = new Swimming01();
+		SwimmingWay sw2 = new Swimming02();
+		sw1.swimming();
+		sw2.swimming();
+		Robot r1 = new Robot("MZ");
+		r1.adapterWing(new Wing01());
+		r1.adapterWing(new Wing02());
+		r1.flying();
+		
+		SwimmingPlayer wp1 = new SwimmingPlayer("홍길동");
+		wp1.addSkill(new Swimming01());
+		wp1.addSkill(new Swimming02());
+		wp1.swimming();
 		
 	}
 }
+// ex) SwimmingPlayer 클래스 선언하여, 이름과 SwimmingWay로 필드선언
+//     addSkill()로 SwimmingWay 할당하여, 
+//     swimming()메서드를 통해, 해당 선수의 이름과 수영하는 것을 처리하세요.
+class SwimmingPlayer{
+	private String name;
+	private SwimmingWay swimmingWay;
+	public SwimmingPlayer(String name) {
+		this.name = name;
+	}
+	public void addSkill(SwimmingWay swimmingWay) {
+		this.swimmingWay= swimmingWay;
+		System.out.println(name+" 수영 기술을 익혔습니다.");
+	}
+	public void swimming() {
+		System.out.print(name+" ");
+		if(swimmingWay==null) {
+			System.out.println("아직 수영 기술을 익히지 못 했습니다.");
+		}else {
+			swimmingWay.swimming();
+		}
+	}
+}
+
+
+
+interface SwimmingWay{
+	String ACTION="수영하다";
+	void swimming();
+}
+class Swimming01 implements SwimmingWay{
+	@Override
+	public void swimming() {
+		System.out.println("우리동네 풀장을 "+ACTION);
+	}
+}
+class Swimming02 implements SwimmingWay{
+	@Override
+	public void swimming() {
+		System.out.println("호수를 "+ACTION);
+	}
+}
+class Robot{
+	private String kind;
+	// 인터페이식을 인식할 수 있는 메모리 선언..
+	private Wing wing;
+	public Robot(String kind) {
+		this.kind = kind;
+	}
+	public void adapterWing(Wing wing) {
+		this.wing = wing;
+		System.out.println(Wing.NAME+"를 " + kind+"어깨에 붙이다");
+	}
+	public void flying() {
+		System.out.print(kind+ "로봇은 ");
+		if(wing==null) {
+			System.out.println("아직 날지 못한다.");
+		}else {
+			wing.fly();
+		}
+	}
+}
+
+
+
 interface Wing{
 	String NAME ="날개"; // public static final 생략..
 	void fly(); // public abstract 생략됨..
