@@ -14,11 +14,12 @@ public class A01_Basic {
 			System.out.println("라인3");
 			System.out.println("라인4");
 			System.out.println(args[0]); // 예외 던짐
+			// throw new Exception() 내부적으로 예외 객체를 던진다.
 				// 예외를 던지면 이후 내용이 수행되지 않음
 			System.out.println("라인5");
 			System.out.println("라인6");			
 			
-		}catch(Exception e) {
+		}catch(Exception e) { // 상속관계의 최상위이기에 모든 예외를 받을 수 있다.
 			// 예외가 발생했을 때 처리 코드..
 			System.out.println("# 예외 처리 블럭#");
 			// e.XXXX : 여러 기능메서드를 통해서 예외에 대한 상세 내용을
@@ -29,6 +30,7 @@ public class A01_Basic {
 			//     처리 내용을 수행 하게 하세요.. 
 			///    2단계 try{}안에 1~100 for문 처리하여 조건으로 50일때
 			//     1/0코드가 수행되게 처리해보세요..
+			
 			System.out.println(e.getMessage());
 			System.out.println("라인7");
 			System.out.println("라인8");			
