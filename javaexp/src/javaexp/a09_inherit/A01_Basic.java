@@ -1,5 +1,5 @@
 package javaexp.a09_inherit;
-
+// javaexp.a09_inherit.A01_Basic
 public class A01_Basic {
 
 	public static void main(String[] args) {
