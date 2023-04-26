@@ -31,12 +31,15 @@ public class A10_UserException {
 		 * */
 		System.out.println("#사용자 정의 예외 시작#");
 		try {
-			for(int cnt = 1;cnt<=10;cnt++) {
-				System.out.println("번호:"+cnt);
-				if(cnt == 5) {
-					throw new User01Exception(cnt+"번에서 예외발생");
-				}
-			}
+			//for(int cnt = 1;cnt<=10;cnt++) {
+			//	System.out.println("번호:"+cnt);
+			//	if(cnt == 5) {
+			//		throw new User01Exception(cnt+"번에서 예외발생");
+			System.out.println("라인1");
+			System.out.println("라인2");
+			throw new User01Exception("특정라인 예외발생");
+			//	}
+			//}
 		// 15:10~	
 		}catch(User01Exception e) {
 			System.out.println("# 예외 발생 #");
@@ -46,8 +49,6 @@ public class A10_UserException {
 			System.out.println("예외 상관없이 처리될 내용");
 		}
 		System.out.println("#사용자 정의 예외 종료#");
-		
-		
 	}
 
 }
