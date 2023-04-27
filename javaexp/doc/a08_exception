@@ -70,7 +70,14 @@
 			
 		}
 	3) 3단계 예외의 위임
-		메소드별로 예외를 위임하여 처리
+		필요성 : 예외가 나오는 구문을 위 try{}catch{}블럭으로
+		모든 곳에 메서드별로 처리해야 하는데, 이것을 기능메서드별로 구분하여 처리하지 않고,
+		이 메서드가 호출할 때, 처리하는 것을 예외의 위임이라고 한다.
+		- 코드의 중복성을 줄이고,try{}catch{}블럭
+		- 체계적으로 분류하여 예외 처리를 관리하기 위한 목적 : 다중 예외처리를 통해 효과적
+			으로 관리할 수 있다.
+		
+		메소드별로 예외를 위임하여 처리 : 2개 이상도 예외를 위임할 수 있다.
 		void 메소드명() throws 위임할예외1, 위임할예외2...{
 			예외가 처리될 가능성이 있는 코드
 		}
@@ -92,9 +99,23 @@
 			// ex) e.getMessage() :예외메시지전달!! 처리가 된다.
 			// 추가기능메서드 선언.
 		}	
+		# Exception 추측
+		class Exception{
+			private String message;
+			Exception(){}
+			Exception(String message){
+				this.message = message;
+			}
+			String getMessage(){
+				return message;
+			}
+		}
+		
 		try{
 			if(조건) 특정조건에 사용자정의 예외를 던지는 코드 처리..
 				throw new 사용자정의예외();	
+				
+				
 		}catch(사용자정의예외 ){
 		
 		}

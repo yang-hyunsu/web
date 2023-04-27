@@ -2,6 +2,8 @@ package javaexp.a10_exception;
 
 import java.io.IOException;
 
+import javaexp.a08_relation.vo.Person;
+
 public class A09_ThrowsException {
 	/// 블럭내에서 처리할 내용을 위임하여 처리한다.
 	static void call01() throws ClassNotFoundException {
@@ -34,8 +36,32 @@ public class A09_ThrowsException {
 		System.out.println("# 문자를 한자 입력하세요(메서드3) #");
 		System.out.println("입력한문자:"+(char)System.in.read()); 
 	}	
-
+	static void call07(String[] arry) throws ArrayIndexOutOfBoundsException {
+		
+		String name = arry[0];
+		
+	}
+	static void call08(String str) {} // String str = "홍길동";
+	static void call08(int str) {} // int str = 25;
+	static void call08(Person p) {} // Person p = new Person();
+	static void call08(String[] arr) {} 
+	// String [] args= {"데이터"};
+	// String [] arr = args;
 	public static void main(String[] args) {
+		call08("홍길동");
+		call08(25);
+		call08(new Person());
+		call08(args);
+		call08(new String[]{"25"});
+		call08(new String[3]);
+		
+		try {
+			call07(args);
+		}catch(ArrayIndexOutOfBoundsException ex) {
+			
+		}
+		
+		
 		// TODO Auto-generated method stub
 		/*
 		# 예외 위임(throws)처리
@@ -100,7 +126,20 @@ public class A09_ThrowsException {
 			System.out.println("예외 상관없이 수행");
 		}
 		System.out.println("# io예외 종료 #");
-		
+		// 다중 예외 처리로, ClassNotFoundExcepiton과
+		// IOException을 한번에 처리할 수도 있다.
+		try {
+			call01();
+			call02();
+		} catch (ClassNotFoundException e) {
+			// 클래스에 관련된 예외 처리(구체적 상세 내용 처리)
+			e.printStackTrace();
+		} catch (IOException e) {
+			// IO에 관련된 예외(구체적 상세 내용 처리)
+			e.printStackTrace();
+		} catch (Exception e) { // 기타예외 처리
+			System.out.println("기타 예외:"+e.getMessage());
+		}
 	}
 
 }

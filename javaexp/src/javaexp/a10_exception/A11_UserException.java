@@ -5,7 +5,7 @@ public class A11_UserException {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("# 프로그램 시작 #");
-		int num01 = (int)(Math.random()*2+1);
+		int num01 = (int)(Math.random()*2+1); // 1,2
 		System.out.println("나온 수:"+num01);
 		try {
 			if(num01==1) {
@@ -29,6 +29,8 @@ class User02Exception extends Exception{
 		// TODO Auto-generated method stub
 		return "[재정의된 메서드 호출]"+super.getMessage();
 	}
+	// 여러가지 처리할 기능적인 메서드..
+	
 }
 
 
