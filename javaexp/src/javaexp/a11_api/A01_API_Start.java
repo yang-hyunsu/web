@@ -37,6 +37,65 @@ public class A01_API_Start {
 				
 				
 		 * */
+		Person p = new Person();
+		Person p1 = new Person();
+		Person p2 = p;
+		System.out.println("참조변수:"+p);
+		// toString()으로 정의된 내용을 출력된다.
+		System.out.println("hashCode:"+p.hashCode());
+		System.out.println("hashCode:"+p1.hashCode());
+		System.out.println("hashCode:"+p2.hashCode());
+		// 특정한 객체의 고유 코드값으로 생성시 마다 다른 코드값을 가지고 있다.
+		// 해당 객체의 참조변수가 같은지 확인할 때, 사용된다.
+		System.out.println("equals:"+p.equals(new Object()));
+		try {
+			System.out.println("clone:"+p.clone());
+		} catch (CloneNotSupportedException e) {
+			System.out.println("예외 발생:"+e.getMessage());
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		}
+		System.out.println("toString:"+p.toString());
+		
 	}
 
 }
+// 최상위 Object
+class Person{
+	// 주소값을 hash코드로 가져온다.
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode(); // 10진수로 고유코드값을 가져온다.
+	}
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		return super.equals(obj);
+	}
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		return super.clone();
+	}
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		// 패키지명.클래스명@16진수 주소값 
+		// 참조변수만 호출할 때, 처리되는 내용...
+//		return "안녕하세요! toString()";
+		return super.toString();
+	}
+
+	@Override
+	protected void finalize() throws Throwable {
+		// TODO Auto-generated method stub
+		super.finalize();
+		// deprecated 메서드 : 폐기될 예정
+	}
+	
+	
+}
+
+
+
