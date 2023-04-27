@@ -150,9 +150,7 @@ public class A16_0426 {
 				System.out.println("#! 예외발생 !#");
 				System.out.println(e.getMessage());
 			}
-
 		}
-
 	}
 }
 
