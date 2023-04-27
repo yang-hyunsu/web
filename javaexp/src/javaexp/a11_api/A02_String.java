@@ -71,6 +71,27 @@ public class A02_String {
 		}
 		String str2 = new String(arr1);
 		System.out.println("알파벳 임의 문자:"+str2);
+		// char[] 8들어 갈수 있는 배열
+		char [] arr2 = new char[8];
+		for(int idx=0;idx<arr2.length;idx++) {
+			                  // 65~90 
+			arr2[idx] = (char)(Math.random()*26 + 65);
+		}
+		String str3 = new String(arr2);
+		System.out.println("알파벳 임의 문자:"+str3);	
+		// 알파벳 대문자 A~Z임의로 8자리 생성..: 대문자의 범위 65~90,
+		// 알파벳 소/대문자   대문자의 범위 65~90, 소문자의 범위 97~122 
+		char [] arr3 = new char[8];
+		for(int idx=0;idx<arr3.length;idx++) {
+			int ranNum = (int)(Math.random()*52+65);
+			// ranNum  65 ~ 116
+			if(ranNum>90) ranNum+=6;
+			arr3[idx] = (char)ranNum;
+		}
+		String str4 = new String(arr3);
+		System.out.println("알파벳 대소문 임의:"+str4);	
+		// 알파벳 소/대문자/숫자 ==> 과제?? 
+		// 숫자 48~57 대문자의 범위 65~90, 소문자의 범위 97~122,
 		
 	}
 
