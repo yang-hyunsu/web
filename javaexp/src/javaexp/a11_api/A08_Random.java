@@ -20,7 +20,7 @@ public class A08_Random {
 		System.out.println(r1.nextInt());
 		// r1.nextInt(경우의수)+시작수
 		System.out.println(r1.nextInt(5)+1);
-		System.out.println("주사위:"+r1.nextInt(6)+1);
+		System.out.println("주사위:"+(r1.nextInt(6)+1));
 		System.out.println("0~100:"+r1.nextInt(101));
 	}
 
