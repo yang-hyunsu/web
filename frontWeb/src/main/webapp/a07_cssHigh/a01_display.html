@@ -6,9 +6,10 @@
 		<style type="text/css">
 		/*
 		# 컨테이너형 요소의 배치관련 속성
-		1. css로 컨테이너형 요소를 배치 처리하는 속성은 아래와 같다.
+		1. css로 컨테이너형 요소(div)를 배치 처리하는 속성은 아래와 같다.
 		2. 속성
 			1) display : block, inline, inline-block 속성을 지정할 때 활용
+						cf) flex, grid
 				ex) span ==> inline  span{display:block;}
 					태그에 원래 가지고 있는 속성에서 변경이 된다.
 			2) position : 위치를 지정 형태를 설정할 때 사용.. 
@@ -16,6 +17,9 @@
 			3) left, right, top, bottom
 				:절대 위치에서 특정 화면상의 특정 위치를 지정할 때 사용
 				왼쪽에서 얼마정도, 위에서 얼마정도 등..
+				ex) left:10px; 왼쪽으로 부터 오른쪽으로 10px 이동합니다. 
+				    top:50px; 위로부터 밑으로 50px 이동합니다.
+				
 			4) float : 유동 배치로 배치 순서를 지정할 때
 				왼쪽에서 오른쪽으로, 오른쪽에서 왼쪽으로 
 			5) z-index : 요소객체가 절대적 위치를 지정할 때, 켭치는 경우가
@@ -38,10 +42,11 @@
 					- 블럭 박스 내에만 배치
 					- 옆에 다른 요소 배치 불가능
 						h1 h1 
-					
-					
 					- width, height으로 크기 조절가능
 					- padding, border, margin 조절 가능
+					ex) css은 기본적으로 inline속성을 가진 태그들을
+						block속성으로 변경할 수 있다.
+						span, strong, b, font, a{display:block}
 				2) inline 속성
 					- 새 라인에서 시작 못함. 바로 옆에서 처리된다.
 						span  span

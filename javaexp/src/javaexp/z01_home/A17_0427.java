@@ -77,6 +77,9 @@ public class A17_0427 {
                                        (top:0px; left:0px;) 
                                           - 오른쪽 하단 꼭지점을 기준으로 x/y 이동처리
                                             (bottom:0px; right:0px;)
+                         div#div01{
+                         	position:absolute;top:10px;left:20px;
+                         }                   
                   - fixed: 고정 배치로 화면을 스크롤 상관없이 특정 위치를 고수하여 처리되는 것을 말한다.
       */
   
@@ -124,13 +127,26 @@ public class A17_0427 {
          */
      
 //  [1단계:확인] 10. 임시비밀번호를 알파벳 대소문자 숫자를 조합해서 10자를 만드는 프로그램을 만드세요
+     System.out.println("# 코드값 #");
+     for(int cnt=0;cnt<=128;cnt++) {
+    	 System.out.println(cnt+":"+((char)cnt));
+     }
      char[] arr = new char[10];
      for(int idx=0; idx<arr.length; idx++) {
+    	// 경우수 : 알파벳 26*2 ==> 52, 숫자 0~9 ==> 10
+    	/*
         int ranNum = (int)(Math.random() * 69 + 48);   // ranNum 48~116
         if(ranNum>57 && ranNum<65) ranNum+=7;   // ranNum 57부터는, ranNum에 7을 더해 대문자가 나올 수 있게 함
         if(ranNum>90) ranNum+=6;
         arr[idx] = (char)ranNum;
+        */
+    	int ranNum = (int)(Math.random()*62+48);
+    	if(ranNum>57) ranNum +=7; // 58~64 65가 A  
+    	if(ranNum>90) ranNum +=6; // 91~96 97이 a  
+    	arr[idx] = (char)ranNum;
      }
+     
+     
      String str1 = new String(arr);
      System.out.println("대/소문자/숫자 조합 10자리: " + str1);
 
@@ -142,14 +158,27 @@ public class A17_0427 {
      String middle = "은재동민혜다석수소아";
      String last = "빈희영현원훈원윤영구";
      
+     // first.charAt(0~9)
+     // first.charAt(랜덤범위로 0~9) : 특정한 문자 하나가 랜덤 나온다.
+     String []names = new String[3]; // 이름3개..
      for(int idx=0; idx<3; idx++) {
-        int ran1 = (int)(Math.random()*10);
-        int ran2 = (int)(Math.random()*10);
-        int ran3 = (int)(Math.random()*10);
+        int ran1 = (int)(Math.random()*first.length());
+        int ran2 = (int)(Math.random()*middle.length());
+        int ran3 = (int)(Math.random()*last.length());
         System.out.print("임의의 이름" + (idx+1) + ": ");
+        char []name = new char[3];
         System.out.print(first.charAt(ran1));
         System.out.print(middle.charAt(ran2));
         System.out.println(last.charAt(ran3));
+        name[0] = first.charAt(ran1);
+        name[1] = middle.charAt(ran2);
+        name[2] = last.charAt(ran3);
+        names[idx] = new String(name); 
+        // 이름 3개가 배열로 할당.
+     }
+     System.out.println("#임의의 이름 3개#");
+     for(String name:names) {
+    	 System.out.println(name);
      }
      
   }   

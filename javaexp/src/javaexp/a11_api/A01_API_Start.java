@@ -60,8 +60,16 @@ public class A01_API_Start {
 	}
 
 }
+
 // 최상위 Object
-class Person{
+// class Person extends Object{}
+class Product{
+	
+}
+
+class Person {
+	
+	
 	// 주소값을 hash코드로 가져온다.
 	@Override
 	public int hashCode() {
@@ -83,8 +91,8 @@ class Person{
 		// TODO Auto-generated method stub
 		// 패키지명.클래스명@16진수 주소값 
 		// 참조변수만 호출할 때, 처리되는 내용...
-//		return "안녕하세요! toString()";
-		return super.toString();
+		return "안녕하세요! toString()";
+//		return super.toString();
 	}
 
 	@Override

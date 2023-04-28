@@ -49,10 +49,6 @@ public class A02_String {
 				new String(char[])
 				new String("문자열")
 				
-				
-				
-				
-				
 		 * */
 		char [] arr = {'H','e','l','l','o'};
 		String str = new String(arr);
