@@ -156,8 +156,7 @@ public class A17_0427 {
 //           가장 많이 사용하는 이름 중간자, 가장 많이 사용하는 마지막자를 조합하여 임의의 이름 3개를 출력하세요
      String first = "김이박최정조강윤장임";
      String middle = "은재동민혜다석수소아";
-     String last = "빈희영현원훈원윤영구";
-     
+     String last = "빈희영현원훈원윤영구"; 
      // first.charAt(0~9)
      // first.charAt(랜덤범위로 0~9) : 특정한 문자 하나가 랜덤 나온다.
      String []names = new String[3]; // 이름3개..
