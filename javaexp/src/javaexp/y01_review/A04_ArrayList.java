@@ -1,10 +1,27 @@
 package javaexp.y01_review;
 
+import java.util.ArrayList;
+
 public class A04_ArrayList {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		ArrayList<Student> slist = new ArrayList<Student>();
+		slist.add(new Student(
+				"20060201","홍길동",80,1,19,90,80));
+		slist.add(new Student(
+				"20060203","김길동",90,2,18,70,90));
+		slist.add(new Student(
+				"20060204","신길동",100,3,17,90,90));
+		/// 하나의 객체 가져오기..
+		Student stu = slist.get(0);
+		System.out.println("이름:"+stu.getName());
+		System.out.println("총점:"+stu.totPoint());
+		System.out.println("등급:"+stu.getStuGrade());
+		for(Student st:slist) {
+			System.out.print(st.getName()+"\t");
+			System.out.println(st.getStuGrade()+"\t");
+		}
 	}
 
 }
@@ -70,6 +87,7 @@ class Student{
 		int attAll =  (int)(attPt/(absPt+attPt)*20); // 20점
 		int homePt = this.homePt*10; // 10점
 		int tstAll = (midTst+lstTst)/2*70; // 70점
+	
 		
 		return attAll+homePt+tstAll;
 	}
