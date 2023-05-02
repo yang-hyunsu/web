@@ -25,7 +25,7 @@
                 0~255 RGB색상 표현 : js에서 색상값을 호출하면 이 형식으로 호출
                 된다.   
 
-       2) 크기
+       2) 크기 : css 속성뿐만 아니라, 기본속성에서도 width, height등 사용      		
           - 상대적 
             상대적 크기라는 것은 해당 선택자(태그)가 가지고 있는 고유의 크기를
             기준으로 몇 배, 몇 %로 지정하여 처리하는 것을 말한다.
@@ -66,7 +66,8 @@
 </head>
 <body>
 	<!-- 테이블의 높이는 상대단위 처리 안된다. -->
-    <table border="5pt" align="center" width="50%" height="250pt">
+    <table border="5pt" align="center"
+           width="50%" height="250pt">
     	<!-- 상대 단위로 폭의 비율 지정 -->
          <col width="50%"><col width="50%">
          <tr><td style="font-size:2em;">1(2em)</td>
