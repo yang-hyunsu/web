@@ -97,22 +97,32 @@ public class A05_StringBuffer {
 		// 과일명 3개를 Scanner에 의해 ,단위로 구분하여 입력 받아서
 		// 최종적으로 입력받은 과일 리스트를 출력하되, 입력 받을 때
 		// 마다 주소값을 확인해보자..
-		Scanner sc = new Scanner(System.in);
-		StringBuffer fruits = new StringBuffer("구매할 과일리스트\n");
-		System.out.println("초기주소값:"+System.identityHashCode(fruits));
+//		Scanner sc = new Scanner(System.in);
+//		StringBuffer fruits = new StringBuffer("구매할 과일리스트\n");
+//		System.out.println("초기주소값:"+System.identityHashCode(fruits));
+//		for(int cnt=1;cnt<=3;cnt++) {
+//			System.out.print("구매할 "+cnt+"번째 과일 입력:");
+//			fruits.append(sc.nextLine()+",");
+//			System.out.println("주소"+cnt+":"+
+//					System.identityHashCode(fruits));
+//		}
+//		System.out.println("#최종#");
+//		System.out.println("주소:"+System.identityHashCode(fruits));		
+//		System.out.println(fruits);
+		// ex) 구매정보를 단위당 \n(줄바꿈)으로 입력받게하여
+		//     물건명 구매갯수를 입력하여 물건정보 3개를 
+		//     StringBuffer에 입력하여 출력되게 하세요
+		Scanner sc2 = new Scanner(System.in);
+		StringBuffer prods = new StringBuffer("물건명\t구매갯수\n");
+		System.out.println("시작 주소:"+System.identityHashCode(prods));
 		for(int cnt=1;cnt<=3;cnt++) {
-			System.out.print("구매할 "+cnt+
-					"번째 과일 입력:");
-			fruits.append(sc.nextLine()+",");
-			System.out.println("주소"+cnt+":"+
-					System.identityHashCode(fruits));
+			System.out.print(cnt+"번째 물건명 입력:");
+			prods.append(sc2.nextLine()+"\t");
+			System.out.print(cnt+"번째 물건 구매 갯수 입력:");
+			prods.append(sc2.nextLine()+"\n");
 		}
-		System.out.println("#최종#");
-		System.out.println("주소:"+System.identityHashCode(fruits));		
-		System.out.println(fruits);
-		
-		
-		
+		System.out.println(prods);
+		System.out.println("마지막 주소:"+System.identityHashCode(prods));
 	}
 
 }
