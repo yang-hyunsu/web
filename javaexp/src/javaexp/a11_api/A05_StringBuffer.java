@@ -6,12 +6,19 @@ public class A05_StringBuffer {
 		// TODO Auto-generated method stub
 		/*
 		# String문자열의 메모활용의 문제점...
+		1. +=으로 추가할 때 마다 다시 객체가 생성이 된다.
+		2. 반복문에서 =(대입)으로 할당하는 순간, 각각 문자열이
+			다르면 다른 위치를 기준으로 객체가 생성된다.
+		3. 특히, 반복문에 대입을 잘못 활용하는 경우 메모리에
+			문제가 생겨, 더 이상 프로그램이 진행되지 못 하는
+			경우가 발생한다.
 		*/
 		String name1="김길동";
 		String name2="김길동";
 		String name3=new String("김길동");
 		String name4=new String("김길동");
 		// System.identityHashCode() : 실제주소값 비교
+		// name1과 name2는 "김길동"이 할당된 동일한 주소
 		System.out.println(System.identityHashCode(name1));
 		System.out.println(System.identityHashCode(name2));
 		System.out.println(System.identityHashCode(name3));
@@ -30,11 +37,12 @@ public class A05_StringBuffer {
 		}
 		System.out.println(strData);
 		System.out.println("마지막 주소:"+strData.hashCode());
-		/*# 문자열을 사용해서 += 기호를 통해서 데이터 누적할당하면
+		/*# 문자열을 사용해서 += 또는 = 기호(누적/대입연산자)를 통해서 데이터 누적할당하면
 		 * heap영역을 계속만들어서 사용되는 것을 볼 수 있다.
 		 * 이렇게 데이터를 처리하면 메모리 overflow가 발생한다.
 		문자열 데이터를 처리할 때, 문자열이 늘어나더라도 동일한
-		heap주소안에서 데이터를 처리할 수 있는 객체가 필요 
+		heap주소안에서 데이터를 처리할 수 있는 객체가 필요
+		문자열 추가시에도 동일한 메모리 사용이라는 처리를 위해서
 		==> StringBuffer
 		# StringBuffer의 활용
 		1. 객체 생성
@@ -43,7 +51,10 @@ public class A05_StringBuffer {
 		2. 문자열 추가
 			sb.append("추가문자열");
 		3. 추가된 문자열 확인
+			sb : 모든 객체의 참조변수만으로도 호출되는 default 메서드가
+				toString()에 선언된 내용이기에 생략가능..
 			sb.toString()
+			
 		4. 기타 기능 메서드
 			insert(int offset,"문자열" ) : 특정한 위치에 문자열 삽입
 			delete(int start, int end) : 특정

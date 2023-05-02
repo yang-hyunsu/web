@@ -68,9 +68,10 @@ class Product{
 }
 
 class Person {
-	
-	
 	// 주소값을 hash코드로 가져온다.
+	// 같은 값이 있는 경우에는 동일한 hash코드가 나오기에
+	// String이나 Wrapper의 동일한 데이터의 경우 한계가 있다.
+	// 객체는 주소값을 가져올 수 있다.
 	@Override
 	public int hashCode() {
 		// TODO Auto-generated method stub
