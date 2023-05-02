@@ -12,7 +12,7 @@ public class A04_ArrayList {
 		slist.add(new Student(
 				"20060203","김길동",90,2,18,70,90));
 		slist.add(new Student(
-				"20060204","신길동",100,3,17,90,90));
+				"20060204","신길동",100,1,19,90,90));
 		/// 하나의 객체 가져오기..
 		Student stu = slist.get(0);
 		System.out.println("이름:"+stu.getName());

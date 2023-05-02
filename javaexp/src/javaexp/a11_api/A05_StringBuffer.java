@@ -1,5 +1,7 @@
 package javaexp.a11_api;
 
+import java.util.Scanner;
+
 public class A05_StringBuffer {
 
 	public static void main(String[] args) {
@@ -73,7 +75,7 @@ public class A05_StringBuffer {
 		sb.append("길");
 		System.out.println(System.identityHashCode(sb));
 		sb.append("마");
-		System.out.println(sb.toString());
+		System.out.println(sb); // sb.toString()
 		// 추가 이후에도 동일한 주소값을 확인 할 수 있다.
 		System.out.println(System.identityHashCode(sb));
 		// ex) StringBuffer를 이용해서, 초기 문자열 코드를 "1"을
@@ -91,6 +93,26 @@ public class A05_StringBuffer {
 		System.out.println("데이터 추가 후, 주소:"+
 				System.identityHashCode(strNums));
 		System.out.println(strNums.reverse());
+		// StringBuffer를 이용하여, 
+		// 과일명 3개를 Scanner에 의해 ,단위로 구분하여 입력 받아서
+		// 최종적으로 입력받은 과일 리스트를 출력하되, 입력 받을 때
+		// 마다 주소값을 확인해보자..
+		Scanner sc = new Scanner(System.in);
+		StringBuffer fruits = new StringBuffer("구매할 과일리스트\n");
+		System.out.println("초기주소값:"+System.identityHashCode(fruits));
+		for(int cnt=1;cnt<=3;cnt++) {
+			System.out.print("구매할 "+cnt+
+					"번째 과일 입력:");
+			fruits.append(sc.nextLine()+",");
+			System.out.println("주소"+cnt+":"+
+					System.identityHashCode(fruits));
+		}
+		System.out.println("#최종#");
+		System.out.println("주소:"+System.identityHashCode(fruits));		
+		System.out.println(fruits);
+		
+		
+		
 	}
 
 }
