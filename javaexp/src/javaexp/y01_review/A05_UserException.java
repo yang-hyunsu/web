@@ -14,10 +14,14 @@ public class A05_UserException {
 				int len = id.length();
 				if(len<8 || len>16) {
 					throw new InIdExcep(len+"자");
+					// 유효하지 않을 때, 예외 던짐
 				}
+				// 유효할 때, 하단 내용 처리 및 break를 통해
+				// 반복문 벗어남..
 				System.out.println("등록할 id:"+id);
 				break;
 			}catch(InIdExcep e) {
+				// 예외 내용 처리
 				System.out.println(e.getMessage());
 			}
 		}

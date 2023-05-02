@@ -82,7 +82,7 @@ public class A06_WrapperClass {
 		iList.add(Integer.valueOf(75));
 		iList.add(30); // Integer num = 30 할당 가능..
 		iList.add(70);
-		System.out.println("# auto boxing에 의해 바로 연산 가능#");
+		System.out.println("# auto unboxing에 의해 바로 연산 가능#");
 		for(Integer i : iList) {
 			System.out.println(i+50);
 		}
