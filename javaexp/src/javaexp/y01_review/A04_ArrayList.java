@@ -20,6 +20,7 @@ public class A04_ArrayList {
 		System.out.println("등급:"+stu.getStuGrade());
 		for(Student st:slist) {
 			System.out.print(st.getName()+"\t");
+			System.out.print(st.totPoint()+"\t");
 			System.out.println(st.getStuGrade()+"\t");
 		}
 	}
@@ -85,11 +86,8 @@ class Student{
 	public int totPoint() {
 		// 출결점수 20%반영, 과제점수 10%반영, 시험점수 70%
 		int attAll =  (int)((attPt/(double)(absPt+attPt))*20); // 20점
-		System.out.println("점수1:"+attAll);
 		int homePt = (int)(this.homePt*0.1); // 10점
-		System.out.println("점수2:"+homePt);
 		int tstAll = (int)((midTst+lstTst)/2*0.7); // 70점
-		System.out.println("점수3:"+tstAll);
 		return attAll+homePt+tstAll;
 	}
 	public String getStuGrade() {
