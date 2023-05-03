@@ -1,6 +1,8 @@
 package javaexp.z01_home;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -96,27 +98,27 @@ public class A19_0502 {
       //                 0+2 == 2  (가위)
       //                 1+2%3 == 0  (바위)
       //                 2+2%3 == 1  (보)
-      int win,eq,def; win=eq=def=0; // 선언과 초기화
-      for(int i=1; i<=3; i++) {
-    	  int comIdx = rd1.nextInt(3); //0,1,2
-    	  System.out.print(i+"번째 게임 가위는 1번, 바위는 2번, 보는 3번 입력:");
-    	  int myIdx = sc31.nextInt()-1; // 0,1,2
-    	  System.out.println("컴이 낸 가위/바위/보:"+games[comIdx]);
-    	  System.out.println("내가 낸 가위/바위/보:"+games[myIdx]);
-    	  if(comIdx==myIdx) {
-    		  System.out.println("무승부"); eq++;
-    	  }else if(((comIdx+1)%3) ==myIdx) {
-    	  // 컴에서 나온 랜덤 index값에서 +1한 값이 내가 선택한 index와 같으면
-    	   // 내가 승  ex) games[0]은 가위 이고, games[1] 바위이면
-    	   // index 기준으로 0과 1을 비교해서 0+1이 1과 같을때는 내가 승리하는 바위가
-    	///    처리된다
-    		  System.out.println("나의 승"); win++;
-    	  }else {
-    		  System.out.println("컴퓨터 승"); def++;
-    	  }
-    	  
-      }
-      System.out.println("승:"+win+", 무:"+eq+", 패:"+def);
+//      int win,eq,def; win=eq=def=0; // 선언과 초기화
+//      for(int i=1; i<=3; i++) {
+//    	  int comIdx = rd1.nextInt(3); //0,1,2
+//    	  System.out.print(i+"번째 게임 가위는 1번, 바위는 2번, 보는 3번 입력:");
+//    	  int myIdx = sc31.nextInt()-1; // 0,1,2
+//    	  System.out.println("컴이 낸 가위/바위/보:"+games[comIdx]);
+//    	  System.out.println("내가 낸 가위/바위/보:"+games[myIdx]);
+//    	  if(comIdx==myIdx) {
+//    		  System.out.println("무승부"); eq++;
+//    	  }else if(((comIdx+1)%3) ==myIdx) {
+//    	  // 컴에서 나온 랜덤 index값에서 +1한 값이 내가 선택한 index와 같으면
+//    	   // 내가 승  ex) games[0]은 가위 이고, games[1] 바위이면
+//    	   // index 기준으로 0과 1을 비교해서 0+1이 1과 같을때는 내가 승리하는 바위가
+//    	///    처리된다
+//    		  System.out.println("나의 승"); win++;
+//    	  }else {
+//    		  System.out.println("컴퓨터 승"); def++;
+//    	  }
+//    	  
+//      }
+//      System.out.println("승:"+win+", 무:"+eq+", 패:"+def);
       // 10:05~ 시작
 	  
 //      [1단계:개념] 5. 컬렉션 상위 3개 인터페이스의 특징을 기술하세요.
@@ -132,39 +134,119 @@ public class A19_0502 {
 //      [단계별:확인] 
 //      1단계 1~10까지 숫자 카드를 만들어 List<String>에 담아서, 임의의 숫자를 1개를 출력하세요
       Random rd2 = new Random();
-      int rnum1 = rd2.nextInt(10);
+      int rnum1 = rd2.nextInt(10); //0~9
       List<String> card1 = new ArrayList<String>();
-      for(int i=0; i<10; i++) {
-         card1.add(i,(i+1)+"");
+//      for(int i=0; i<10; i++) {     
+//         card1.add(i,(i+1)+"");
+//      }
+      for(int cnt=1;cnt<=10;cnt++) {
+    	  card1.add(cnt+"");
       }
       System.out.println("임의의 숫자: "+card1.get(rnum1));
       
-//      2단계 A~10,J,Q,K번호 문자로 만들어 List<String>를 임의의 카드를 7장을 출력하세요
-
+//    2단계 A~10,J,Q,K번호 문자로 만들어 List<String>를 임의의 카드를 7장을 출력하세요
+      List<String> card2 = new ArrayList<String>();
+      card2.add("A");
+      for(int cnt=2;cnt<=10;cnt++) {
+    	  card2.add(""+cnt); 
+      }
+      card2.add("J");card2.add("Q");card2.add("K");
+      int rIdx2 = rd2.nextInt(13); 
+      System.out.println("임의의 번호2:"+card2.get(rIdx2));
       
 //      3단계 카드클래스(두가지 속성 - 모양♣,♥,♠,◆,번호 A~10,J,Q,K)를 선언하고, 
 //         52개의 카드를 만들어(for문 활용) List에 담아서 출력하세요
+      // 클래스 Card를 만들고 속성을 2가지 담을 수 있게 선언
+      // 이 정보를 list로 담을 객체 선언..
       List<Card> clist = new ArrayList<Card>();
-      Card cd = new Card();
       
-      for(int i=1; i<=4; i++) {
-         if(i==1) {cd.shape ="♣"; }
-         else if(i==2) {cd.shape ="♥"; }
-         else if(i==3) {cd.shape = "♠"; }
-         else {cd.shape = "◆";}
-         
-         for(int j=1; j<=13; j++) {
-            cd.num = j+"";
-            if(i==1) {cd.num = "A"; }
-            clist.add(cd);
-         }
+      // 모양 4가지 배열
+      String[] shapes = {"♣","♥","♠","◆"};
+      // 숫자 A,2...10, J, Q, K 담을 동적 배열
+      List<String> card3 = new ArrayList<String>();
+      card3.add("A");
+      for(int cnt=2;cnt<=10;cnt++) {
+    	  card3.add(""+cnt); 
       }
-      for(Card c:clist) {
-         System.out.print(c.shape +c.num+" ");
+      card3.add("J");card3.add("Q");card3.add("K");
+      
+      
+      System.out.println("# 카드 52개 #");
+      // 상위 반복은 모양
+      for(String shape:shapes) {
+    	  // 하위 반복은 숫자.
+    	  for(String num:card3) {
+    		  // 모양별로 숫자를 할당..
+    		  //System.out.print(shape+num+" ");
+    		  clist.add(new Card(shape,num));
+    	  }
+    	  //System.out.println();
       }
+      for(Card c : clist) {
+    	  System.out.println(c.getShape()+c.getNum()+" ");
+      }
+      System.out.println("카드의 총갯수:"+clist.size());
+      
+      
+//      Card cd = new Card();
+//      
+//      for(int i=1; i<=4; i++) {
+//         if(i==1) {cd.shape ="♣"; }
+//         else if(i==2) {cd.shape ="♥"; }
+//         else if(i==3) {cd.shape = "♠"; }
+//         else {cd.shape = "◆";}
+//         
+//         for(int j=1; j<=13; j++) {
+//            cd.num = j+"";
+//            if(i==1) {cd.num = "A"; }
+//            clist.add(cd);
+//         }
+//      }
+//      for(Card c:clist) {
+//         System.out.print(c.shape +c.num+" ");
+//      }
       
 //      4단계 카드클래스(모양,번호)를 선언하고, 52개의 카드를 만들어(for문 활용) List에 담아서, 
 //      임의의 카드를 7장을 출력하세요 4명의 참가자에게 돌리세요.
+      Collections.shuffle(clist);
+      System.out.println("\n섞은 후 카드들..");
+      List<Card> mem01 = new ArrayList<Card>();
+      List<Card> mem02 = new ArrayList<Card>();
+      List<Card> mem03 = new ArrayList<Card>();
+      List<Card> mem04 = new ArrayList<Card>();
+      // 4명에게 각 7장씩 카드 전달.
+      for(int idx=0;idx<28;idx++) {
+    	  Card d = clist.get(idx);
+    	  if(idx%4==0) mem01.add(d);
+    	  if(idx%4==1) mem02.add(d);
+    	  if(idx%4==2) mem03.add(d);
+    	  if(idx%4==3) {
+    		  mem04.add(d);
+    		  System.out.println((idx/4)+1+"번째 카드 돌린 후 내용");
+    		  Card c1 = mem01.get(idx/4);
+    		  System.out.println("1번째 플레이어:"+
+    				  c1.getShape()+c1.getNum());
+    	  }
+      }
+      System.out.println("# 각 플레어별 카드 내용 #");
+      for(Card c:mem01) {
+    	  System.out.print(c.getShape()+c.getNum());
+      }
+      System.out.println();
+      for(Card c:mem02) {
+    	  System.out.print(c.getShape()+c.getNum());
+      }
+      System.out.println();
+      for(Card c:mem03) {
+    	  System.out.print(c.getShape()+c.getNum());
+      }
+      System.out.println();
+      for(Card c:mem04) {
+    	  System.out.print(c.getShape()+c.getNum());
+      }
+      System.out.println();
+      
+      
       
    }
 }
@@ -178,6 +260,23 @@ class Card{
       this.shape = shape;
       this.num = num;
    }
+
+	public String getShape() {
+		return shape;
+	}
+	
+	public void setShape(String shape) {
+		this.shape = shape;
+	}
+	
+	public String getNum() {
+		return num;
+	}
+	
+	public void setNum(String num) {
+		this.num = num;
+	}
+   
 }
 class CorrectException extends Exception{
    public CorrectException(String ans) {
