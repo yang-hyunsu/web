@@ -21,7 +21,29 @@ public class A03_File {
 				파일의 크기, 파일 이름, 파일의 속성(쓰기/읽기/권한)
 				파일의 생성/삭제
 				디렉토리의 생성, 디렉토리에 포함된 파일 객체 가져오기
-				
+		3. 기능 메서드		
+			createNewFile() : 파일 생성
+			mkdir() : 디렉 토리 생성
+			mkdirs() : 경로상에 없는 모드 디렉토리 생성
+			delete() : 파일 또는 디렉토리 삭제.
+			canExecute() : 실행 파일 여부
+			canRead() : 읽을 수 있는지 여부
+			canWrite() : 쓸 수 있는지 여부
+			getParaent() : 부모 디렉토리 리턴
+			getName() : 파일 이름 리턴
+			File getParentFile() : 부모 디렉토리를 File객체로
+				생성 후 리턴
+			String getPath() : 전체 경로 리턴
+			isDirectory() : 디렉토리 인지
+			isFile() : 파일인지
+			long length() : 파일의 크기 리턴
+			String[] list() : 경로에 포함된 파일 또는 서브디렉토리
+			 	배열명 리턴
+			File[] listFiles() : 경로에 포함된 파일 및 서브 디렉토리 목록
+				전부를 File 배열로 리턴
+			
+			 
+		
 		 * */
 		// 1. 같은 폴드에 있는 파일 객체 생성
 		File f01 = new File("C:\\Users\\user\\git\\web2\\javaexp\\src\\javaexp\\a13_io\\z01_data.txt");
