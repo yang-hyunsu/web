@@ -245,7 +245,7 @@ public class A19_0502 {
     	  System.out.print(c.getShape()+c.getNum());
       }
       System.out.println();
-      
+       
       
       
    }
