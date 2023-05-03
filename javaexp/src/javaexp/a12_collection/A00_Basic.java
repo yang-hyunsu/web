@@ -19,11 +19,11 @@ public class A00_Basic {
 				ex) List<Person> plist = new ArrayList<Person>();
 			# 컬렉션 프레임웤의 주요 인터페이스
 			1. 인터페이스와 실제 객체들
-				1) List - ArrayList, Vector, LinkedList 
+				1) *List - ArrayList, Vector, LinkedList 
 						인터페이스를 상속받아서 사용자 정의 실제 클래스를
 						정의가 가능하다.
 				2) Set - HashSet, TreeSet
-				3) Map - HashMap, Hashtable, TreeMap, Properties
+				3) *Map - HashMap, Hashtable, TreeMap, Properties
 			2. 인터페이스별 주요 특징
 				1) List : 순서를 유지하고 저장
 						  중복 저장 가능
