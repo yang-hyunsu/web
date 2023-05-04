@@ -39,7 +39,7 @@ public class A05_0405 {
 	         int[] array01;
 	         String[] array02;
 	         Math[] array03; // 내장된 api 객체
-	         Person[] array04; // 사용자 정의 클래스 객체
+	         Personnn[] array04; // 사용자 정의 클래스 객체
 	         
 	         // 데이터 할당
 	         // 배열명 = new 데이터유형[데이터값]; 
