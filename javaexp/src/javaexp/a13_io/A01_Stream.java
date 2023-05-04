@@ -33,10 +33,21 @@ public class A01_Stream {
 		 	1) InputSteam is1 = System.in;
 		 	2) 기본 입력 Stream 객체는 다음과 같이 데이터를 처리한다.
 		 		int data = is1.read(); 문자(char)를 byte형으로 입력받는다.
+		 		byte[] bytes = new byte[10];
+		 		is1.read(bytes);
+		 		문자(영문)으로 10자를 입력해서 해당 입력 데이터가
+		 		bytes라는 배열에 코드값이 입력된다.
+		 		for(byte b:bytes){
+		 			(char)b;  // 입력된 문자 하나씩 가져와서 처리가능
+		 		}
+		 		==> Scanner는 이러한 Stream객체를 포함하여 데이터를 
+		 		문자열까지 입력받아서 효율적으로 사용할 수 있게 객체로 만듦..
 		 	3) char 형변환 처리
 		 		char ch01 =(char)data;
 		 	4) OutputStream os1 = System.out;
-		 		os1.println("입력한 문자 출력:"+ch01);
+		 		os1.write(data); // 코드값을 char문자로 변환해서 출력
+		 	
+		 		System.out.println("입력한 문자 출력:"+ch01);
 		 	5) 필수 예외 처리하기 is1.read()에서 io가 발생하기에
 		 		컴파일 예외 처리를 하여야 한다.
 		 * */

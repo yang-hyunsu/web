@@ -25,14 +25,28 @@ public class A06_WriteFile {
 				 
 		 * */
 		String path = "C:\\Users\\user\\git\\web2\\javaexp\\src\\javaexp\\a13_io\\";
+		/*
+		# 파일내 쓰기 기능 처리 
+		1. 기존 내용을 삭제하고 데이터 입력하기
+			new FileWriter("경로명\\파일명");
+			.write("저장할 문자열")
+			.append("위 write처리 이후에 더 추가할 내용 처리")
+		2. 기존 내용을 그대로 두고 데이터 입력하기
+			new FileWriter("경로명\\파일명",true);
+			.("추가할 문자열");
+			
+		 * 
+		 * */
+		
+		
 		Writer fout=null;
 		try {
-			fout = new FileWriter(path+"z02_data.txt");
+			fout = new FileWriter(path+"z02_data.txt", true);
 			Scanner sc = new Scanner(System.in);
 			System.out.println("파일에 쓸 내용을 입력하세요!!");
 			String data = sc.nextLine();
-			fout.write(data);
-			fout.append("\n"+data); // 누적 저장(기존 + 추가 내용)
+			fout.write("\n"+data); // 누적 저장(기존 + 추가 내용)
+			//fout.append("\n"+data); // 누적 저장(기존 + 추가 내용)
 			fout.flush();// 버퍼에 있는 임시 메모리를 비워주기
 			System.out.println("입력완료!");
 		} catch (IOException e) {
