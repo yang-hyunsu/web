@@ -655,17 +655,164 @@
 			}
 			Company com01 = new Samsung();
 			com01.getMoney(); com01.working();
-			10:05~
 	9) 인터페이스
-	
+		기능적으로 추가할 내용에 대한 부분을 인터페이스로 선언하여
+		상속받은 실제 클래스로 사용할 수 있다.
+		- 특징
+			static 멤버는 인터페이스.멤버로 사용가능
+			재정의메서드, default메서드는 하위객체를 참조로 하여 사용
+			ex) FlyWay fw1 = new ContryFlying();
+			    fw1.flying(); 
+			ex) FlyWay fw2 = new WorldFlying();
+				fw2.flying(); 
+		- 구성
+			인터페이스의 필드는 public static final을 default포함(생략가능)한다.
+			추상메서드 public abstract default포함(생략가능) 
+			-- 8버젼 이후 추가된 내용 --
+			public default 메서드명(){} 구상메서드(공통) 추가
+				주의) 직접적으로 default라고 선언하여야 함.
+			public static 메서드(){} static 구상메서드(공통)
+		ex) interface FlyWay{
+				[public abstract]void fly();
+		    }	
+			class CountryFlying implements FlyWay{
+				public void fly(){
+					우리 동네를 나르다...
+				}
+			}
+			class WorldFlying implements FlyWay{
+				public void fly(){
+					세계 창공을 누비다...
+				}
+			}				 
+			FlyWay fw1 = new CountryFlying();
+		ex) 인터페이스는 실제 다른 클래스 안에서 선언되어 사용된다.
+			class Mz{
+				private FlyWay fw;
+				public void setWing(FlyWay fw){
+					this.fw = fw;
+				}
+				public void flying(){
+					if(fw!=null) // 하늘을 나르다.
+						fw.flying();
+				}
+			}	
+			Mz m1 = new Mz();
+			m1.setWing(new CountryFlying());
+			m1.flying();
 10. 예외 처리
+	프로그램의 안정성을 위한 처리, 예외가 처리되면 프로그래밍이
+	에러나 외부적인 처리가 불가능한 상황에 대비하여 기능적으로 처리가
+	가능하다.
+	1) 예외 처리의 구분
+		- 컴파일 예외
+		- 실행 예외
+	2) 예외의 상속 구조
+		- Exception 상위로 하여 여러가지 예외 클래스는 상속 구조
+	3) 예외 처리의 핵심 멤버
+		생성자
+			super(메시지) : 문자열 매개변수 생성자는 기능 메서드
+				getMessage()로 가져온다.
+		메서드
+			getMessage() : 예외의 기본 메시지 처리
+			printStackTrace() : 예외가 처리되는 과정을 class
+				메서드 단위로 표시..
+	4) 단계별 예외 처리 형태				
+	    - 예외 처리 1단계(예외 처리 기본)
+		try{
+			컴파일예외 내지 실행 예외
+			예외 발생 즉시, 해당 라인에서 catch 블럭과 Exception 
+			매개변수로 예외를 던진다.
+		}catch(Exception e){
+			예외가 던져지면 해당 예외를 처리하는 블럭
+		}	
+		- 예외 처리 2단계(계층 구조 및 finally블럭)
+		try{
+		
+		}catch(하위예외클래스 ){ //사용자정의나 구체적인 예외 클래스 정의
+		
+		}catch(Exception e){ // 상위 예외 정의..
+			상위 클래스 예외가 메모리가 제일 크므로 가장 나중에 예외 처리
+		
+		}finally{
+			예외가 있든 없든 처리..
+		}
+		- 예외 처리 3단계(기능메서드별로 예외 위임)
+		void 메서드() throws 위임할예외클래스1,위임할예외클래스2..{
+			예외 처리될 코드..
+		}
+		호출하는 곳
+		try{
+			메서드1();
+			메서드2();
+			메서드3();
+		}catch(위임되예외클래스 e){}
+		- 예외 처리 4단계(사용자 정의 예외 처리)
+		class 사용자정의예외 extends Exception{
+			생성자(){
+				super("메시지처리");
+			}
+			public String getMessage(){} // 재정의할 내용
+			public void call01(){} // 추가할 내용.
+		}
+		try{
+			if(조건)
+				throw new 사용자정의예외();
+		}catch(사용자정의예외 e){}
+		
 11. 내장된 객체 활용1(java.lang.패키지)
+	Wrapper 클래스(Integer, Double...)
+		Boxing/UnBoxing/AutoBoxing/AutoUnBoxing
+		기본유형 <==> 객체
+	String
+		new String(byte[])
+		split() : 구분자를 통해서 배열객체를 생성 처리
+			String []arry = "홍길동^김길동^신길동".splict("^") 
+		substring() : 문자열을 추출하여 데이터로 활용 처리
+			"891212-2902715".substring(0,2) "89" 연도 추출 
+		charAt(index) : 특정한 문자 추출 
+		length() : 문자의 길이 반환
 12. 내장된 객체 활용2(java.util.패키지)
+	Collection
+		Set : 중복삭제, 위치 임의
+		List : 선형구조, 중복가능, index로 데이터할당, 동적
+			배열 처리
+		Map : key, value 형식 데이터 할당 호출.
+			keySet() : 키만 Set형식으로 가져오기
+			get(키) : 키로 값가져오기
+		- 주요 기능 메서드 : add(), get(), put(), size()
 13. 내장된 객체 활용3(java.io.패키지)
-	1) 데이터의 읽기
-	2) 데이터의 쓰기
+	1) 데이터의 읽기 InputStream
+		int code = read() char단위로 가져오기
+			(char)code
+		read(byte[] bytes) char[]배열로 가져오기. (byte[]==>char[])
+			for(byte b:bytes){
+				(char)b
+			}
+		InputStream is = System.in
+	2) 데이터의 쓰기 OutputStream
+		OutputStream os = System.out
+		os.write(byte[]) : 코드값을 처리하면 매칭되는 문자char가져온다.
+	3) File객체
+		File f = new File("경로/파일명")
+			경로나 파일을 생성하는 객체
+		f.mkdir() : 경로를 생성하는 메서드
+		f.createNewFile() : 파일을 물리적으로 생성하는 메서드
+			is 발생 필수 예외 처리.
+		Reader fr = new FileReader("경로/파일명") 
+		파일의 내용을 읽어오는 객체
+		fr.read() : char단위로 읽어오는 객체.
+		
+		Writer wt = new FileWriter("경로/파일명")
+		wt.append(); wt.write()
+		파일의 내용을 쓰는 객체.	
 ==========================	
 14. 데이터베이스 연동
+	1) sql 익히기
+	2) DB 서버 접속
+	3) sql명령을 통해 서버에 명령 처리
+	4) 결과값으로 ResultSet 객체로 담아서
+	5) Vo객체나 List<Vo>에 담아서 데이터를 처리..
 
 # 프로그램 학습시, 주의 사항
 1. 오타, 에러 발생
