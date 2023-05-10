@@ -2,7 +2,13 @@
 <html>
 <head>
     <script>
+        // BOM vs DOM
+        // browser object model : 윈도우 창.
+        // 
         window.onload = function () {
+            // 이벤트로 브라우저가 완전히
+            // 로딩된 후에 수행할 함수를
+            // 익명함수로 선언.
             // 변수를 선언합니다.
             var list = '';
             // 연산자를 사용합니다.
@@ -11,6 +17,15 @@
             list += '    <li>JavaScript..!</li>';
             list += '</ul>';
             // 문서에 출력합니다.
+            /*
+            document. : DOM
+            body.  : body객체를 접근  <body></body> 지칭
+            .innerHTML : html 태그를 해석해서 출력 
+            .innerText : html 태그를 해석하지 않고 출력.
+            
+            */
+
+
             document.body.innerHTML = list;
         };
     </script>

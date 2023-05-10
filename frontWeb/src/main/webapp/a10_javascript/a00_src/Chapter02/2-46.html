@@ -3,9 +3,15 @@
 <head>
     <script>
         // 변수를 선언합니다.
+        // Math.random() : java와 동일
         var number = Math.sqrt(-3);
         // 변수를 출력합니다.
         alert(number);
+        // parseInt() : 숫자형 문자열을 정수로 변경
+        //      casting까지 해준다.
+        var dice1 = parseInt(Math.random()*6+1)
+        var dice2 = Math.floor(Math.random()*6+1)
+        alert(dice1+":"+dice2)
     </script>
 </head>
 <body>
