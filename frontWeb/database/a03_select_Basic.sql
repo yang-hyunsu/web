@@ -74,4 +74,19 @@ SELECT '사원의 이름은 '||ename ||'이고 급여와 보너스(급여15%)의
 ' 합산은 '|| (sal + sal*0.15) ||' 만원 입니다.' msg
 FROM emp;
 -- 문자열안에 연산을 처리할 때는 ()로 우선연산을 처리해서 활용한다.
+SELECT deptno FROM emp;
+-- 중복되는 데이터를 제거하고 출력할 때 사용되는 distinct
+SELECT DISTINCT deptno FROM emp;
+SELECT * FROM emp;
+--ex) job과  mgr 각각 중복데이터를 제거한 데이터 내용을 리스트하세요
+SELECT DISTINCT job FROM emp;
+SELECT DISTINCT mgr FROM emp;
+SELECT * FROM emp;
+-- distinct 컬럼1, 컴럼2
+-- 컴럼1과 컴럼2 두개 모두를 비교해서 다른 데이터 로딩
+SELECT DISTINCT job, deptno 
+FROM emp
+ORDER BY job, deptno;
+
+
 
