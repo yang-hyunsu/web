@@ -5,13 +5,52 @@
         // 변수를 선언합니다.
         var value = 0;
         // while 반복문
-        while (value < 5) {
-            alert(value + '번째 반복');
-            value++;
+        /*
+        while(반복조건){
+            반복할 내용
         }
+        
+        */
+        // while (value < 5) {
+        //     alert(value + '번째 반복');
+        //     value++;
+        // }
     </script>
 </head>
 <body>
 
 </body>
+<script>
+    // let menus=[]
+    // while(true){
+    //     let addMenu = prompt("주문할 메뉴 입력하세요\n중지시 Q입력")
+    //     if(addMenu!='Q'){
+    //         menus.push(addMenu) // 메뉴 추가 처리..
+    //     }else{
+    //         alert("메뉴 주문 완료!")
+    //         break; // 중단 처리
+    //     }
+    // }
+    // document.body.innerHTML="<h1>주문 메뉴리스트</h1>"
+    // document.body.innerHTML+="<h2>"+menus+"</h2>"
+    // ex) 학생들의 점수를 입력받아서 입력받은 인원, 총점과 평균을 출력하세요.
+    //     -1 입력시 중단 처리..
+    let stuCnt=0;
+    let tot = 0;
+    while(true){
+        let pt = Number(prompt("점수를 입력하세요! 중단할려면 -1입력","0"))
+        if(pt>=0){
+            stuCnt++
+            tot += pt
+        }else if(pt==-1){
+            alert("입력 완료")
+            break;
+        }else{
+            alert("데이터를 숫자형으로 0이상 입력하세요")
+        }
+    }
+    let avg = tot/stuCnt;
+    document.body.innerHTML=`<h2>입력한 학생수:${stuCnt}</h2>`
+    document.body.innerHTML+=`<h2>총점:${tot}, 평균:${avg}</h2>`
+</script>
 </html>
