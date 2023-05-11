@@ -2,7 +2,28 @@
 <html>
 <head>
     <script>
-        // for 반복문
+        /*
+        1. for 반복문1
+            for(초기값;반복조건;증감연산자)
+        2. for(단위데이터:배열) (X) java
+           ==>
+            1) 배열
+                for(var idx in 배열)
+                    idx : 배열(문자열) 1,2 ==> '1','2' (주의)
+                    배열[idx] : 해당위치의 값..
+                for(var 단위데이터 of 배열)    
+            2) 객체
+                for(var pro in 객체){
+                    pro : 속성
+                    객체[pro] : 속성의 값
+                }
+            cf) 참고
+            forEach(배열, function(index, 단위데이터){
+
+            })        
+               
+        
+        */
         for (var value = 0; value < 5; value++) {
             alert(value + '번째 반복문');
         }
