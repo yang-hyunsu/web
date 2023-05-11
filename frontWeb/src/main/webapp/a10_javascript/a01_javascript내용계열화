@@ -2,13 +2,77 @@
 1. javascript 개요
 	1) 개론
 	2) 에러 트래킹
+		브라우저 화면 콘솔창 확인 : f12
+		각 라인별로 트래킹 처리 : console.log()
+		- 실행하는 코드 중간에 단계별로 nubering 해서, 프로세스가 잘 진행되는지 확인
+		  ex) console.log("1");
+		  ex) console.log("2");
+		  ex) console.log("3");
+		- 해당 데이터나 객체가 호출되는지 확인
+		  ex) console.log("obj:"+h1Obj);
+		  ex) console.log("data:"+num01);
+		# 실행 에러: 변수를 잘못 선언되거나 데이터 초기화 되지 않을 때
+		  null, undefined   
+
+
 	3) 입력/출력
+		- 입력
+			confirm("메시지") : true/false
+			prompt("메시지","입력초기") : 
+				문자열로 입력, null
+			DOM객체를 입력
+				이벤트나 함수에 의해 호출되어 입력된 내용을 아래와 같이
+				프로그램으로 가져와서 사용할 수 있다.
+				<input type="button" value="아이디값 확인"
+					onclick="checkId()">
+				function checkId(){	
+					var idObj = document.querySelector("input[name=id]")
+					var idVal = idObj.value;
+				}
+		- 출력
+			alert("경고창 출력")
+			console.log("f12 console에서 보이는 문자열")
+				console.log(obj01) : 객체의 변수를 할당했는 때,
+				객체의 속성까지 확인할 수 있기에 활용도가 높다.
+			document.write("태그")
+				화면에 출력할 내용을 javascript로 처리하는 부분.
+			document.body.innerHTML = "<h2>안녕</h2>"
+				DOM객체로 전체화면을  출력할 때, 사용된다.
+			
 2. javascript 기본 문법
 	1) 변수 선언과 자료형
-		let, var, const
-		null, undefined
-		Number, String, Boolean, Function, Object(Array)
-	2) 연산자
+		- 선언 형식
+			let(지역/전역변수 구분), 
+			var(전역변수) 
+			const(상수-할당후 변경 불가)
+			let num01 = 25;
+			var name = "홍길동";
+			const PI = 3.14;
+		null, undefined : 초기화되지 않거나 데이터값 없을 때,
+			나오는 실행에러 코드
+		javascript에서 사용되는 데이터 유형	
+			Number, String, Boolean, Function, Object(Array)
+			typeof 변수명, typeof(변수명) : 데이터 유형 확인
+			자바스크립트는 문자열은 자동 형변환
+				 단, + 연산자를 사용할 때는 반드시 형변환 함수 활용
+				 Number(), parseInt(), parseDouble()
+			자바스크립트의 주요 내장 객체
+				Math.floor(), Math.round(), Math.ceil()
+				Math.random()
+				임의의 수 처리 
+					Math.floor(Math.random()*경우의수+시작수)
+	2) 연산자 : 자바와 유사
+		비교연산자
+			== : 데이터비교(숫자형문자열과 숫자가 같으면 true)
+				 "25" == 25   true
+			=== : 데이터유형과 데이터를 비교
+				 "25" === 25   false
+				 25 === 25   true
+		논리연산자
+			&&, ||, !
+		산술연산자
+			+, -, *, /, %
+			
 	3) 조건문
 	4) 반복문
 3. 함수
