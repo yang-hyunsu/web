@@ -18,18 +18,37 @@
                     객체[pro] : 속성의 값
                 }
             cf) 참고
-            forEach(배열, function(index, 단위데이터){
+            배열.forEach( function(index, 단위데이터){
 
             })        
                
         
         */
-        for (var value = 0; value < 5; value++) {
-            alert(value + '번째 반복문');
-        }
+        // for (var value = 0; value < 5; value++) {
+        //     alert(value + '번째 반복문');
+        // }
     </script>
 </head>
 <body>
 
 </body>
+    <script>
+        //document.body.innerHTML // body 태그를 추가 처리
+        // for 기본 형식을 통해 카운트 1~ 카운트 10까지 
+        // 출력하세요
+        var show = ""
+        for(let cnt=1;cnt<=10;cnt++){
+            show += "<h2>카운트 "+cnt+"</h2>"
+        }
+        document.body.innerHTML = show
+        var colors = ['red','orange','yellow',
+        'green','blue','navy','purple']
+        for(let idx=0;idx<colors.length;idx++){
+            show +=`<h3 style=
+                'background-color:${colors[idx]}'>
+                ${colors[idx]}</h3>`
+        }
+        document.body.innerHTML += show
+
+    </script>
 </html>
