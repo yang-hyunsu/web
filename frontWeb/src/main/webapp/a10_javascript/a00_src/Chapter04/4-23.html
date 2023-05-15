@@ -38,7 +38,9 @@
         <thead>
             <tr><th>번호</th><th>점수</th></tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+
+        </tbody>
     </table>
 </body>
 <script>
@@ -46,6 +48,8 @@
     var tBOb = document.querySelector("table tbody")
     var show = ""
     points.forEach(function(pt,idx){
+        // pt : 70,80,90
+        // idx : 0,1,2 데이터 가져오기..
         show +=`<tr><th>${idx+1}</th><td>${pt}</td></tr>`
     })
     tBOb.innerHTML=show
