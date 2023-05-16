@@ -20,14 +20,33 @@
         */
         function buyPrice(){
             //alert(arguments)
+            var arry = []
             for(var idx in arguments){
-                alert(arguments[idx]);
+                // 배열명.push(추가데이터)
+                arry.push(arguments[idx])
+                //alert(arguments[idx]);
             }
+            alert("물건가격:"+arry)
+        }
+        // ex) 구입하는 물건을 동적으로 전달하여
+        //     1~3개 클릭시, 물건명 리스트를 출력하세요.
+        
+        function buy(){
+            var pnames = []
+            for(var idx in arguments){
+                pnames.push(arguments[idx])
+            }
+            alert("구매한 물건:"+pnames)
         }
         
     </script>
 </head>
 <body>
+    <h1>구매할 물건</h1>
+    <h2 onclick = "buy('사과')">사과</h2>
+    <h2 onclick = "buy('바나나,오렌지')"">바나나, 오렌지</h2>
+    <h2 onclick = "buy('수박','바나나,오렌지')"">수박, 바나나, 오렌지</h2>
+
     <h2 onclick="buyPrice(1000)">한개물건</h2>
     <h2 onclick="buyPrice(1000,2000)">두개물건</h2>
     <h2 onclick="buyPrice(1000,2000,3000)">세개물건</h2>
