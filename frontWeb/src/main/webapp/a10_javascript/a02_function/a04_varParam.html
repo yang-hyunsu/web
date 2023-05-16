@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title>자바스크립트</title>
+    <script>
+        /*
+        # 가변적인 매개변수 처리.
+        0. 매개변수가 없을 때, 1개 또는 여러개 있을 때
+           동일한 정의 함수를 이용해서 처리하면
+           매개변수는 배열이나 기능 내장 객체를 통해서
+           처리하는 것을 말한다.
+        1. 단계별 처리 내용
+            1) arguments 내장 객체 사용
+               매개변수의 인자의 갯수만큼의 배열로 받아서
+               데이터를 처리한다.
+            2) 매개변수명...  활용
+            3) 초기값 선언과 매개변수 처리
+
+        */
+        function buyPrice(){
+            //alert(arguments)
+            for(var idx in arguments){
+                alert(arguments[idx]);
+            }
+        }
+        
+    </script>
+</head>
+<body>
+    <h2 onclick="buyPrice(1000)">한개물건</h2>
+    <h2 onclick="buyPrice(1000,2000)">두개물건</h2>
+    <h2 onclick="buyPrice(1000,2000,3000)">세개물건</h2>
+
+</body>
+    <script>
+        /*
+        #  
+        */
+        
+    </script>
+</html>
