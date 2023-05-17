@@ -142,11 +142,57 @@
 		
 		
 3. 함수
-	1) 내장 함수
-	2) 사용자 정의 함수
+
+	1) 사용자 정의 함수
+		변수형
+		var 함수명 = function(매개변수){
+			
+			프로세스 처리..
+			
+			return 리턴데이터;
+		}
+			
+		선언적함수
 		function 함수명(매개변수...){
 			return 리턴데이터..
 		}
+		매개변수유형
+			- 데이터유형(number, string, boolean)
+				
+			- 데이터유형(object, function)
+				array(object에 포함)
+				function callArr(array){
+					for(var idx in array){
+						alert(array[idx])
+					}
+				}
+				<h1 onclick="callArr([1000,2000,3000])">
+					클릭하세요(배열전달)</h1>
+				function callObj(obj){
+					for(var pro in obj){
+					    // pro : 객체의 속성
+					    // obj[pro] : 객체의 값
+						alert(obj[pro])
+					}
+				}	
+				<h1 onclick="callObj({name:'홍길동',age:25})">
+					클릭하세요(객체전달)</h1>
+				function callDom(obj){
+					obj.align="center"
+					obj.style.color="blue;
+					obj.innerText="내용변경"
+				}	
+				<h1 onclick="callDom(this)">클릭하세요</h1>
+		매개변수의 갯수
+			- 없는 것
+			- 1개
+			- 2개 이상
+			- 가변적 매변변수 처리
+				arguments, 
+				...매개변수명(스프레스연산자 활용) :
+					매개변수를 배열로 설정해서 활용한다.
+	2) 내장 함수		
+		
 4. 객체
 	1) 배열
 		var 배열명 = [데이터1, 데이터2, ...]
