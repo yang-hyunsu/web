@@ -3,6 +3,10 @@
 1. 컬럼의 값이나 데이터 타입의 변경하는 경우
 2. 숫자 또는 날짜 데이터의 출력 형식이 변경하는 경우
 3. 하나 이상의 행에 대한 집계를 하는 경우
+   ex) select 함수(컬럼)
+       from 테이블
+       where 함수(컬럼) = 데이터
+       and 컬럼 = 함수(데이터)
 # SQL 함수의 유형
 1. 단일행 함수 : 테이블에 저장되어 있는 개별 행을 대상으로
 함수를 적용하여 하나의 결과를 반환하는 함수
@@ -40,6 +44,50 @@ FROM emp;
 SELECT INITCAP(ename)||' is a '||initcap(job)|| '!'
 	   intro
 FROM emp;
+/*  2. 대소문자 변환 함수 
+ * 	   주로 실무상 대소문자 구분없이 검색이 필요하거나,
+ *     또는 입력시/수정시 입력된 내용이 대문자/소문자로
+ *     변환해서 등록/수정되게 할 때, 주로 활용된다.
+ * 	   1) lower() : 문자열 전체를 소문자로 변환처리 한다.
+ *        ex) lower('Student') ==> student
+ *     2) upper() : 문자열 전체를 대문자로 변환처리 한다.
+ *        ex) upper('student') ==> STUDENT
+ * */
+ SELECT ename, lower(ename) "사원명(소문자)",
+        job||upper('- Hi! Man!!') "조합(대문자)"
+ FROM emp;
+SELECT first_name||' '||last_name "전체이름1",
+       upper(first_name||' '||last_name) "전체이름2"
+FROM EMPLOYEES e;
+SELECT *
+FROM EMPLOYEES;
+--  ex)job_id는 소문자, email은 소문자, first_name은 
+--   대문자로 변환하여 직책 @@@인  @@@의 이메일은 @@@ 입니다.
+--   라고 출력되게 하세요
+SELECT '직책 '||LOWER(job_id) ||'인  '||
+upper(first_name) 
+||'의 이메일은 '|| lower(email) ||' 입니다.' msg
+FROM EMPLOYEES e;
+--  검색시, 대소문자 입력 상관없이 검색을 처리해야 할 경우
+--  ex) first_name이 대소문자 상관없이 키워드 검색 처리
+--  1) 대상 컬럼의 데이터 대문자/소문자로 전환한다.
+--  2) 대문자변환 ==> 키워드로 대문자로 변경
+--  3) 소문자변환 ==> 키워드로 소문자로 변경
+--
+SELECT FIRST_NAME,LAST_NAME,email,JOB_ID,
+  upper(FIRST_NAME) 이름1, LOWER(FIRST_NAME) 이름2 
+FROM EMPLOYEES e;
+-- first_name을 대소문자 관계없이 키워드 검색
+SELECT lower(FIRST_NAME) 이름, e.*
+FROM EMPLOYEES e
+WHERE lower(FIRST_NAME) LIKE '%'||lower('j') ||'%';
+SELECT * 
+FROM EMPLOYEES e;
+--ex) email과 job_id이 대소문자 관계없이 키워드 검색되게 처리하세요.
+SELECT email, job_id, e.*  -- 추가컬럼, e.*
+FROM EMPLOYEES e -- 테이블명 alias
+WHERE email LIKE '%'|| upper('o') ||'%'
+AND lower(job_id) LIKE '%'||lower('A')||'%';
 
 
 

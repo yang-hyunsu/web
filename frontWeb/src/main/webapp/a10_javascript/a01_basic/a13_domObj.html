@@ -20,6 +20,9 @@
         }
         // ex) json 객체로 버스의 번호, 구간, 승객수를 속성/속성값으로 설정해서 
         // 클릭시, 해당 속성을 호출하여 출력되게 하세요.
+        // # call03 함수는 모든 객체의 구조를 다 받아서 처리할
+        // 수 있는 유연한 코드 처리이다.
+        // for(var pro in obj)
         function call03(bus){
             // bus = {no:3001,path:'서울~수원',pcnt:20}
             //alert(bus.no+":"+bus.path+":"+bus['pcnt']) // 번호, 구간, 승객수
@@ -49,7 +52,6 @@
             obj.style.background="navy";
             obj.style.color="yellow";
             obj.style.border="2px solid orange";
-
         }
     </script>
 </head>
