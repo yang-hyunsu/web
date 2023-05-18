@@ -26,7 +26,13 @@ public class A02_EmpDao {
 				rs = stmt.executeQuery(sql);
 				int row=1;
 				while(rs.next()) { // 행단위로 이동 다음 행이 없을 떄까지
-					System.out.println("행번호:"+row++);
+					System.out.print("행번호:"+row++);
+					System.out.print("\t"+rs.getInt("empno"));
+					System.out.print("\t"+rs.getString("ename"));
+					System.out.print("\t"+rs.getInt("mgr"));
+					System.out.println("\t"+rs.getDouble("sal"));
+					// ex) 사원명과 관리자번호, 급여  출력해보세요.
+					
 				}
 				/*
 				rs.next() : 반복을 통해서 행단위로 커서를 위치시키는
