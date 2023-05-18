@@ -46,7 +46,13 @@
 		- Statement : 대화객체
 			PreparedStatement : 준비된 대화 객체
 		- ResultSet : 서버에서 온 데이터를 저장	
-				
+		
+		# 모든 객체 메모리 할당관계는 순차별로 처리한다.
+		jdbc(클래스) =(Class.forName())
+		=> 메모리 객체로 생성(DriverManager)
+		==> Connection 객체 생성 ==> Statement 객체 ==> ResultSet
+		
+					
 		
 		
 		
