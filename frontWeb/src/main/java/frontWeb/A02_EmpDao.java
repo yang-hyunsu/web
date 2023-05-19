@@ -31,10 +31,13 @@ public class A02_EmpDao {
 					System.out.print("행번호:"+row++);
 					System.out.print("\t"+rs.getInt("empno"));
 					System.out.print("\t"+rs.getString("ename"));
+					System.out.print("\t"+rs.getString("job"));
 					System.out.print("\t"+rs.getInt("mgr"));
-					System.out.println("\t"+rs.getDouble("sal"));
-					// ex) 사원명과 관리자번호, 급여  출력해보세요.
-					
+					System.out.print("\t"+rs.getDate("hiredate"));
+					System.out.print("\t"+rs.getDouble("sal"));
+					System.out.print("\t"+rs.getDouble("comm"));
+					System.out.println("\t"+rs.getInt("deptno"));
+					// ex) 사원명과 관리자번호, 급여  출력해보세요					
 				}
 				/*
 				rs.next() : 반복을 통해서 행단위로 커서를 위치시키는
@@ -45,9 +48,36 @@ public class A02_EmpDao {
 				rs.get데이터유형("컬럼명")
 				 * 
 				 * */
-				// 자원해제				
+				// 자원해제 :역순위
+				rs.close();
+				stmt.close();
+				con.close();
+				
+				
 			} catch (SQLException e) {
 				System.out.println("DB 처리 예외:"+e.getMessage());
+			} catch( Exception e) {
+				System.out.println("공통 예외:"+e.getMessage());
+			}finally {
+				// 해제 전에 예외가 발생한 것을 처리.
+				try {
+					if(rs!=null)
+						rs.close();
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				}
+				try {
+					if(stmt!=null)
+						stmt.close();
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				}
+				try {
+					if(con!=null)
+						con.close();
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				}				
 			}
 	}
 	public static void main(String[] args) {
