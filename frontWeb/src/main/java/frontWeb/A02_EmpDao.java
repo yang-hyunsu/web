@@ -23,6 +23,8 @@ public class A02_EmpDao {
 				// 대화할 수 있는 객체는 연결(con)에 의해 생성
 				stmt = con.createStatement();
 				// 결과(ResultSet)
+				// Statement객체가 가지고 있는 executeQuery()
+				// 메서드를 통해서 ResultSet객체를 생성..
 				rs = stmt.executeQuery(sql);
 				int row=1;
 				while(rs.next()) { // 행단위로 이동 다음 행이 없을 떄까지
@@ -52,6 +54,7 @@ public class A02_EmpDao {
 		// TODO Auto-generated method stub
 		A02_EmpDao dao = new A02_EmpDao();
 		dao.empListAll();
+		
 	}
 
 }
