@@ -59,25 +59,8 @@ public class A02_EmpDao {
 			} catch( Exception e) {
 				System.out.println("공통 예외:"+e.getMessage());
 			}finally {
-				// 해제 전에 예외가 발생한 것을 처리.
-				try {
-					if(rs!=null)
-						rs.close();
-				} catch (SQLException e) {
-					System.out.println(e.getMessage());
-				}
-				try {
-					if(stmt!=null)
-						stmt.close();
-				} catch (SQLException e) {
-					System.out.println(e.getMessage());
-				}
-				try {
-					if(con!=null)
-						con.close();
-				} catch (SQLException e) {
-					System.out.println(e.getMessage());
-				}				
+				// 해제되지 않은 자원해제 처리..
+				DB.close(rs, stmt, con);
 			}
 	}
 	public static void main(String[] args) {

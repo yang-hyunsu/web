@@ -2,7 +2,9 @@ package frontWeb;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 // DB연동 공통 클래스..
 public class DB {
@@ -26,6 +28,26 @@ public class DB {
 		System.out.println("DB 접속 성공");
 		return con;
 	}
-	
+	public static void close(ResultSet rs, Statement stmt, Connection con) {
+		// 해제 전에 예외가 발생한 것을 처리.
+		try {
+			if(rs!=null)
+				rs.close();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		try {
+			if(stmt!=null)
+				stmt.close();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		try {
+			if(con!=null)
+				con.close();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}			
+	}
 	
 }
