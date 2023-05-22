@@ -104,19 +104,74 @@ public class A02_EmpDao {
 		
 
 	}
-	// A03_DeptDao.java
-	// 부서명을 키워드 검색 처리.(메서드 추가)
-	
-
+	// 입력값을 부서 번호, 리턴할 값은 해당 부서의 사원수
+	public int getDeptCount(int deptno) {
+		int count = 0;
+		String sql = "SELECT count(*) cnt \r\n"
+				+ "FROM emp02\r\n"
+				+ "WHERE deptno = "+deptno;
+		try {
+			// 1. 연결(예외처리)
+			con = DB.con();
+			// 2. 대화
+			stmt = con.createStatement();
+			// 3. 결과
+			rs = stmt.executeQuery(sql);
+			// 데이터가 한개만 나오는 경우(row단위)
+			if(rs.next()) count = rs.getInt("cnt");
+			// 4. 자원해제			
+			rs.close();
+			stmt.close();
+			con.close();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} catch(Exception e) {
+			System.out.println("일반예외:"+e.getMessage());
+		} finally {
+			DB.close(rs, stmt, con);
+		}		
+		return count;
+	}
+	// 사원번호의 급여를 리턴하는 메서드 선언.
+	public double getEmpnoSal(int empno) {
+		double sal = 0;
+		String sql = "SELECT sal\r\n"
+				+ "FROM emp02\r\n"
+				+ "WHERE empno = "+empno;
+		
+		try {
+			con = DB.con();
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
+			if(rs.next()) sal = rs.getDouble("sal");
+			rs.close();
+			stmt.close();
+			con.close();
+		} catch (SQLException e) {
+			System.out.println("DB 예외:"+e.getMessage());
+		} catch(Exception e) {
+			System.out.println("일반 예외:"+e.getMessage());
+		}finally {
+			DB.close(rs, stmt, con);
+		}
+		return sal;
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		A02_EmpDao dao = new A02_EmpDao();
 		dao.empListAll();
-		Scanner sc = new Scanner(System.in);
-		System.out.print("검색할 사원명을 입력하세요:");
-		String schEname = sc.nextLine();
-		dao.paramEmp(schEname); // 변수가 아닌 문자열..
-
+		System.out.println("급여:"+dao.getEmpnoSal(7499));
+//		System.out.println("30번 부서의 사원건수:"+
+//				dao.getDeptCount(30));
+//		Scanner sc = new Scanner(System.in);
+//		System.out.print("검색할 사원명을 입력하세요:");
+//		String schEname = sc.nextLine();
+//		dao.paramEmp(schEname); // 변수가 아닌 문자열..
+//		Scanner sc = new Scanner(System.in);
+//		System.out.print("확인할 부서번호 입력하세요:");
+//		int deptno = sc.nextInt();
+//		System.out.println(deptno+"번 부서의 사원건수:"+
+//		dao.getDeptCount(deptno));
 	}
 
 }

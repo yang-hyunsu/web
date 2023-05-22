@@ -85,6 +85,15 @@
 		특정한 결과가 1개의 유형의 데이터 일때
 		ex) 사원번호 7780의 급여
 		ex) 사원번호 7780의 사원명
+		-- 입력값 1, 사용할 값이 1개..
+		SELECT sal
+		FROM EMP02 e
+		WHERE empno = 7499;
+		-- 해당 부서의 사원수
+		SELECT count(*) cnt -- 그룹함수로 데이터의 건수.
+		FROM emp02
+		WHERE deptno = 10;		
+		
 	2) 한 개의 VO에 담기
 		ex) 사원번호 7780의 전체 컬럼 내용
 	3) 여러 개의 List<VO>
