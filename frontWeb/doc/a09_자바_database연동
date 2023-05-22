@@ -102,10 +102,8 @@
 		list.size() : 크기
 		for(Vo vo : list){
 		}
-	
-	
-	
 	4) sql inject에 대비한 PreparedStatement 객체
+		
 3. 여러가지 sql 활용 패턴
 	1) select
 	2) insert
@@ -220,7 +218,58 @@
 		..
 		
 	}
-					
+# PreparedStatement 객체 사용
+1. 기존 Statement를 대체하여 PreparedStatement를 처리하는 방식을 말한다.
+2. 왜??
+	1) SQL Injection의 방지
+		로그인
+		id [' or 1=1--]
+		pass [7777]
+		[로그인]
+		
+		select *
+		from member
+		where id = '' or 1=1--'and pass = '777'
+		==>
+		select *
+		where id = ?
+		and pass = ?
+	
+		PreparedStatement를 이용할 sql 처리.
+		sql부터 서버에 전송을 하고,
+		매개변수로 들어올 수 있는 값을 데이터유형에 맞게 
+		전송
+		setString(1, @@@)
+		setInt(2, @@@)
+		
+		
+		
+		
+	2) DB Server내 컴파일 속도를 향상
+		DB 서버 처리 속성
+		16:50 sql select * from emp 
+				해석 == 실행
+		16:51 sql select * from emp
+				이전 실행된걸 바로 실행
+		16:52 sql select * from emp where ename = '홍길동'
+				해석 == 실행
+		# PreparedStement를 쓰지 않을 때			
+		16:50 sql select * from emp where ename = '마길동
+				해석 == 실행
+		16:51 sql select * from emp where ename = '하길동
+				해석 == 실행
+		16:52 sql select * from emp where ename = '오길동'
+				해석 == 실행						
+		# PreparedStement를 쓸떄		
+		16:50 sql select * from emp where ename = ?
+				해석 == 실행
+		16:51 sql select * from emp where ename = ?
+				바로 실행
+				뒤에 매개변수를 전달
+		16:52 sql select * from emp where ename = ?
+				바로 실행
+				뒤에 매개변수를 전달	
+		17:05~								
 		
 		
 		

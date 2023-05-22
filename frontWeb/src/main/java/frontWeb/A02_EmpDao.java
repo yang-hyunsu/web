@@ -4,9 +4,12 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import frontWeb.vo.Emp;
 import frontWeb.vo.Job;
+import frontWeb.vo.Location;
 
 public class A02_EmpDao {
 	// 1. 필드선언(핵심 내장 객체)
@@ -233,14 +236,101 @@ public class A02_EmpDao {
 		
 		return job;
 	}
+	public List<Emp> getEmpList(Emp sch){
+		List<Emp> elist = new ArrayList<Emp>();
+		String sql = "	select *\r\n"
+				+ "	from emp02\r\n"
+				+ "	where ename like '%'||'"+sch.getEname()+"'||'%'\r\n"
+				+ "	AND job like '%'||'"+sch.getJob()+"'||'%'";
+		try {
+			con = DB.con();
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
+			while(rs.next()) { 
+				elist.add(new Emp(
+							rs.getInt(1),
+							rs.getString(2),
+							rs.getString(3),
+							rs.getInt(4),
+							rs.getDate(5),
+							rs.getDouble(6),
+							rs.getDouble(7),
+							rs.getInt(8)
+						));
+			}
+			rs.close();
+			stmt.close();
+			con.close();
+		} catch (SQLException e) {
+			System.out.println("DB 예외:"+e.getMessage());
+		} catch(Exception e) {
+			System.out.println("일반 예외:"+e.getMessage());
+		}finally {
+			DB.close(rs, stmt, con);
+		}			
+		
+		return elist;
+	}
+	public List<Location> getLocations(Location sch){
+		List<Location> loList = new ArrayList<Location>();
+		String sql = "SELECT * \r\n"
+				+ "FROM LOCATIONS\r\n"
+				+ "WHERE STREET_ADDRESS like '%'||'"+sch.getStreet_addres()+"'||'%'\r\n"
+				+ "AND city like '%'||'"+sch.getCity()+"'||'%' ";
+		try {
+			con = DB.con();
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
+			while(rs.next()) { 
+				loList.add(new Location(
+							rs.getInt(1),
+							rs.getString(2),
+							rs.getString(3),
+							rs.getString(4),
+							rs.getString(5),
+							rs.getString(6)
+						));
+			}
+			rs.close();
+			stmt.close();
+			con.close();
+		} catch (SQLException e) {
+			System.out.println("DB 예외:"+e.getMessage());
+		} catch(Exception e) {
+			System.out.println("일반 예외:"+e.getMessage());
+		}finally {
+			DB.close(rs, stmt, con);
+		}		
+		
+		
+		return loList;
+	}
+	
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		A02_EmpDao dao = new A02_EmpDao();
-		Job job = dao.getJob("AD_PRES");
-		System.out.println(job.getJob_id());
-		System.out.println(job.getJob_title());
-		System.out.println(job.getMax_salary());
-		System.out.println(job.getMin_salary());
+		for(Location l:dao.getLocations(new Location("",""))) {
+			System.out.print(l.getLocation_id()+"\t");
+			System.out.print(l.getCity()+"\t");
+			System.out.print(l.getCountry_id()+"\t");
+			System.out.print(l.getPostal_code()+"\t");
+			System.out.print(l.getState_province()+"\t");
+			System.out.print(l.getStreet_addres()+"\n");
+		}
+		
+		
+//		for(Emp e:dao.getEmpList(new Emp("A","A"))) {
+//			System.out.print(e.getEmpno()+"\t");
+//			System.out.print(e.getEname()+"\t");
+//			System.out.print(e.getJob()+"\t");
+//			System.out.print(e.getSal()+"\n");
+//		}
+//		Job job = dao.getJob("AD_PRES");
+//		System.out.println(job.getJob_id());
+//		System.out.println(job.getJob_title());
+//		System.out.println(job.getMax_salary());
+//		System.out.println(job.getMin_salary());
 //		dao.empListAll();
 ////		System.out.println("급여:"+dao.getEmpnoSal(7499));
 //		Emp e = dao.getEmp(7499);
