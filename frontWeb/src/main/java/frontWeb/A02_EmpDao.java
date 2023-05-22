@@ -4,7 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Scanner;
+
+import frontWeb.vo.Emp;
 
 public class A02_EmpDao {
 	// 1. 필드선언(핵심 내장 객체)
@@ -156,11 +157,57 @@ public class A02_EmpDao {
 		}
 		return sal;
 	}
+	public Emp getEmp(int empno) {
+		Emp emp =null;
+		String sql = "select *\r\n"
+				+ "from emp02\r\n"
+				+ "where empno =  "+empno;
+		try {
+			con = DB.con();
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
+			if(rs.next()) { // 한번함 호출
+				// empno 키이기에.. 
+				// select * 의 순서대로 컬럼, 순서를 사용
+				emp = new Emp(
+					rs.getInt("empno"),
+					rs.getString(2),
+					rs.getString(3),
+					rs.getInt("mgr"),
+					rs.getDate(5),
+					rs.getDouble("sal"),
+					rs.getDouble("comm"),
+					rs.getInt(8)
+				);
+			}
+			rs.close();
+			stmt.close();
+			con.close();
+		} catch (SQLException e) {
+			System.out.println("DB 예외:"+e.getMessage());
+		} catch(Exception e) {
+			System.out.println("일반 예외:"+e.getMessage());
+		}finally {
+			DB.close(rs, stmt, con);
+		}		
+		
+		
+		return emp;
+	}
+	// ex) A03_DeptDao.java  
+//	   select * from dept01 where deptno=10
+	// 부서번호별로 부서정보 가져오기 처리
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		A02_EmpDao dao = new A02_EmpDao();
 		dao.empListAll();
-		System.out.println("급여:"+dao.getEmpnoSal(7499));
+//		System.out.println("급여:"+dao.getEmpnoSal(7499));
+		Emp e = dao.getEmp(7499);
+		System.out.println("사원번호 7499");
+		System.out.println(e.getEname());
+		System.out.println(e.getJob());
+		System.out.println(e.getDeptno());
 //		System.out.println("30번 부서의 사원건수:"+
 //				dao.getDeptCount(30));
 //		Scanner sc = new Scanner(System.in);

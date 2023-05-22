@@ -116,6 +116,36 @@
 	매개변수 : 사원명(ename)
 3. DB 조회 처리 및 수행 내용 확인
 
+# 매개변수하나로 여러개의 열의 데이터 처리하기
+1. 사원번호로 사원전체 정보를 가져와서 사용하는 경우
+2. sql 확인
+	select *
+	from emp02
+	where empno = 7499
+	;
+3. 단일 열데이터를 확인하고, 여기에 맞는 property명과
+	생성자로 된 클래스 선언
+4. DB 메서드 선언
+	public Emp getEmp(int empno){
+		Emp emp;
+		
+		return emp;
+	}		
+5. DB 메서드 데이터 처리
+	if(rs.next){
+		emp = new Emp(
+			rs.getInt("empno"),
+			rs.getString("ename"),
+			rs.getString("job"),
+			rs.getInt("mgr"),
+			rs.getDate("hiredate"),
+			rs.getDate("comm"),
+			rs.getDate("dept")
+		);
+	}
+6. 메서드 호출 확인
+	Emp show = dao.getEmp(7499);
+	
 
 					
 		
