@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import frontWeb.vo.Emp;
+import frontWeb.vo.Job;
 
 public class A02_EmpDao {
 	// 1. 필드선언(핵심 내장 객체)
@@ -197,17 +198,56 @@ public class A02_EmpDao {
 	// ex) A03_DeptDao.java  
 //	   select * from dept01 where deptno=10
 	// 부서번호별로 부서정보 가져오기 처리
-	
+	/*
+	ex) SELECT * 
+		FROM jobs
+		WHERE JOB_ID = 'AD_PRES'
+	 * */
+	public Job getJob(String id) {
+		Job job=null;
+		String sql = "SELECT * \r\n"
+				+ "		FROM jobs\r\n"
+				+ "		WHERE JOB_ID = '"+id+"'";
+		try {
+			con = DB.con();
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql);
+			if(rs.next()) { //
+				job = new Job(
+					rs.getString(1),	
+					rs.getString(2),	
+					rs.getInt(3),	
+					rs.getInt(4)	
+				);
+			}
+			rs.close();
+			stmt.close();
+			con.close();
+		} catch (SQLException e) {
+			System.out.println("DB 예외:"+e.getMessage());
+		} catch(Exception e) {
+			System.out.println("일반 예외:"+e.getMessage());
+		}finally {
+			DB.close(rs, stmt, con);
+		}			
+		
+		return job;
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		A02_EmpDao dao = new A02_EmpDao();
-		dao.empListAll();
-//		System.out.println("급여:"+dao.getEmpnoSal(7499));
-		Emp e = dao.getEmp(7499);
-		System.out.println("사원번호 7499");
-		System.out.println(e.getEname());
-		System.out.println(e.getJob());
-		System.out.println(e.getDeptno());
+		Job job = dao.getJob("AD_PRES");
+		System.out.println(job.getJob_id());
+		System.out.println(job.getJob_title());
+		System.out.println(job.getMax_salary());
+		System.out.println(job.getMin_salary());
+//		dao.empListAll();
+////		System.out.println("급여:"+dao.getEmpnoSal(7499));
+//		Emp e = dao.getEmp(7499);
+//		System.out.println("사원번호 7499");
+//		System.out.println(e.getEname());
+//		System.out.println(e.getJob());
+//		System.out.println(e.getDeptno());
 //		System.out.println("30번 부서의 사원건수:"+
 //				dao.getDeptCount(30));
 //		Scanner sc = new Scanner(System.in);

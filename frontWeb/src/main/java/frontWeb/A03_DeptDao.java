@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
+import frontWeb.vo.Dept;
+
 public class A03_DeptDao {
 	// 부서정보 처리 dao
 	// 1. 공통 필드 선언
@@ -71,14 +73,55 @@ public class A03_DeptDao {
 			DB.close(rs, stmt, con);
 		}
 	}
+/*
+//	   select * from dept01 where deptno=10
+	// 부서번호별로 부서정보 가져오기 처리
+*/	
+	public Dept getDept(int deptno) {
+		Dept d=null;
+		String sql = "select * \r\n"
+				+ "from dept01 \r\n"
+				+ "where deptno="+deptno;
+		// 1. 연결(예외)
+		try {
+			con = DB.con();
+			// 2. 대화
+			stmt = con.createStatement();
+			// 3. 결과
+			rs = stmt.executeQuery(sql);
+			if(rs.next()) {
+				d = new Dept(
+					rs.getInt(1),
+					rs.getString(2),
+					rs.getString(3)
+				);
+			}
+			// 4. 자원해제			
+			rs.close();
+			stmt.close();
+			con.close();			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}catch(Exception e) {
+			System.out.println(e.getMessage());
+		}finally {
+			DB.close(rs, stmt, con);
+		}		
+		
+		return d;
+	}
+	// 15:05~
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		A03_DeptDao dao = new A03_DeptDao();
 		dao.showDeptList();
-		//dao.deptDnameSch("A");
-		Scanner sc = new Scanner(System.in);
-		System.out.print("검색할 사원명:");
-		dao.deptDnameSch(sc.nextLine());
+		Dept d = dao.getDept(30);
+		System.out.println(d.getDname());
+		System.out.println(d.getLoc());
+//		//dao.deptDnameSch("A");
+//		Scanner sc = new Scanner(System.in);
+//		System.out.print("검색할 사원명:");
+//		dao.deptDnameSch(sc.nextLine());
 	}
 
 }
