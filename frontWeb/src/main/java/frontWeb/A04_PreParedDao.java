@@ -14,6 +14,7 @@ import frontWeb.vo.Emp;
 import frontWeb.vo.Employee;
 import frontWeb.vo.Job;
 import frontWeb.vo.JobHistory;
+import frontWeb.vo.Location;
 
 /*
 # Dao(Database Access Object)
@@ -232,11 +233,111 @@ AND MIN_SALARY BETWEEN ? AND ?
 		return isInsert;
 	}
 	
+	public void updateEmp(Emp upt) {
+			String sql = "UPDATE EMP02 \r\n"
+					+ "	SET ENAME = ?,\r\n"
+					+ "	    job = ?,\r\n"
+					+ "	    sal = ?,\r\n"
+					+ "	    hiredate = to_date(?,'YYYY/MM/DD')\r\n"
+					+ "    WHERE empno = ?";
+			try {
+				con = DB.con();
+				// 자동 commit 방지
+				con.setAutoCommit(false);
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, upt.getEname());
+				pstmt.setString(2, upt.getJob());
+				pstmt.setDouble(3, upt.getSal());
+				pstmt.setString(4, upt.getHiredateS());
+				pstmt.setInt(5, upt.getEmpno());
+				int isUpt =  pstmt.executeUpdate();
+				con.commit(); // 입력시 확정		
+				pstmt.close();
+				con.close();
+				if(isUpt == 1)System.out.println("수정 성공");			
+			} catch (SQLException e) {
+				System.out.println("DB:"+e.getMessage());
+				try {
+					con.rollback(); // 원복 처리..
+				} catch (SQLException e1) {
+					System.out.println(e1.getMessage());
+				}
+			} catch (Exception e) {
+				System.out.println("일반:"+e.getMessage());
+			} finally {
+				DB.close(rs, pstmt, con);
+			}
+		}
+	//ex) SELECT * FROM DEPARTMENTS
+	// DEPARTMENTS를 입력 처리하세요;
+	public int updateLocation(Location upt) {
+		int isInsert=0;
+		String sql = "UPDATE locations10\r\n"
+				+ "	SET street_address = ?,\r\n"
+				+ "	    postal_code = ?,\r\n"
+				+ "	    city=?,\r\n"
+				+ "	    state_province=?,\r\n"
+				+ "	    country_id=?\r\n"
+				+ "	WHERE  location_id=?";
+		try {
+			con = DB.con();
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setString(1, upt.getStreet_addres());
+			pstmt.setString(2, upt.getPostal_code());
+			pstmt.setString(3, upt.getCity());
+			pstmt.setString(4, upt.getState_province());
+			pstmt.setString(5, upt.getCountry_id());
+			pstmt.setInt(6, upt.getLocation_id());
+			isInsert=pstmt.executeUpdate();
+			con.commit();
+			if(isInsert==1) System.out.println("수정 성공");
+		} catch (SQLException e) {
+			System.out.println("DB:"+e.getMessage());
+			try {
+				con.rollback(); // 원복 처리..
+			} catch (SQLException e1) {
+				System.out.println(e1.getMessage());
+			}
+		} catch (Exception e) {
+			System.out.println("일반:"+e.getMessage());
+		} finally {
+			DB.close(rs, pstmt, con);
+		}
+		
+		
+		return isInsert;
+	}
 	// INSERT INTO DEPARTMENTS10 values(350,'재무',300,1800);
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		A04_PreParedDao dao = new A04_PreParedDao();
-		dao.insertDepartments(new Department(350,"재무",300,1800));
+		// Location(int location_id, String street_addres,
+		// String postal_code, String city, String state_province,
+		//  String country_id)
+		/*
+UPDATE locations10
+	SET street_address = '종로 1가',
+	    postal_code = '343122',
+	    city='서울',
+	    state_province='서울',
+	    country_id='SE'
+	WHERE  location_id=1000
+		 * */
+		dao.updateLocation(new Location(1100, "삼성로", "401123", 
+				"서울", "서울", "SE"));
+		
+		/*
+UPDATE EMP02 
+	SET ENAME = '오길동(upt)',
+	    job = '대리',
+	    sal = 5000,
+	    hiredate = to_date('2023/06/01','YYYY/MM/DD')
+    WHERE empno = 7369
+		 * */
+//		dao.updateEmp(new Emp(7499, "오길동(upt)", "대리", "2023/06/01",5000.0));
+		//dao.insertDepartments(new Department(350,"재무",300,1800));
 		
 		/*
 INSERT INTO emp02 values(1003,'하기동','대리',7902,
@@ -248,9 +349,9 @@ Emp(int empno, String ename, String job, int mgr,
 		 * */
 		
 		
-		Emp ins = new Emp(1005,"오길동","과장",7902,
-			"2023-05-23",7000.0,1000.0,30);
-		dao.insertEmp(ins);
+//		Emp ins = new Emp(1005,"오길동","과장",7902,
+//			"2023-05-23",7000.0,1000.0,30);
+//		dao.insertEmp(ins);
 		
 		
 		
