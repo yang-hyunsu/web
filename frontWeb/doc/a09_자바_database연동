@@ -131,9 +131,13 @@
 		PreparedStatement pstmt;
 		
 3. 여러가지 sql 활용 패턴
-	1) select
-	2) insert
-	3) update
+	1) select : 여러가지 sql 구분을 통해서 처리하는 내용
+	2) insert :
+	 	    모든 데이터 입력 
+				insert into 테이블명 values(데이터1, 데이터2...)
+			특정 컬럼 데이터 입력
+				insert into 테이블명(컬럼1명, 컬럼2명) values(..)	
+	3) update :			
 	4) delete	
 4. 실무 처리 해보기
 	1) 회원가입
@@ -327,6 +331,49 @@
 			List<VO> list = new ArrayList<VO>();
 		while(rs.next)		
 			list.add(new VO(rs.getXXX(1),...));
+# 등록/수정/삭제 처리 순서
+1. sql 확인
+	INSERT INTO emp02 values(1003,'하기동','대리',7902,
+			to_date('2023-05-01','YYYY-MM-DD'), 4500,1000,20);
+	문자열로 작성할 sql
+	INSERT INTO emp02 values(?,?,?,?,to_date(?,'YYYY-MM-DD'), ?,?,?)	
+2. VO객체 만들기  
+	입력 VO/Map/배열
+	class Emp // 입력할 VO
+		private int empno;
+		private String ename;
+		private String job;
+		private int mgr;
+		private String hiredateS; // 추가 처리해서
+		private double sal;
+		private double comm;
+		private int deptno
+		생성자 만들기
+		get/set메서드 만들기.
+3. 메서드 선언.
+	public void insertEmp(Emp ins){
+		String sql = "";
+		1. DB연결
+			자동 autoCommit방지
+		2. PreparedStatement객체 생성
+		3. pstmt.setXXX(1,...)
+		4. 수행처리
+			pstmt.update()
+		5. 확정 commit()
+		6. 예외발생시 rollback처리		
+	}		
+4. main()에서 확인..
+
+
+
+
+
+
+
+
+
+
+
 		
 		
 		

@@ -8,6 +8,7 @@ public class Emp {
 	private String job;
 	private int mgr;
 	private Date hiredate;
+	private String hiredateS;
 	private Double sal;
 	private Double comm;
 	private int deptno;
@@ -20,9 +21,20 @@ public class Emp {
 		this.ename = ename;
 		this.job = job;
 	}	
+	
 
 
-
+	public Emp(int empno, String ename, String job, int mgr, 
+			String hiredateS, Double sal, Double comm, int deptno) {
+		this.empno = empno;
+		this.ename = ename;
+		this.job = job;
+		this.mgr = mgr;
+		this.hiredateS = hiredateS;
+		this.sal = sal;
+		this.comm = comm;
+		this.deptno = deptno;
+	}
 	public Emp(int empno, String ename, String job, int mgr, Date hiredate, Double sal, Double comm, int deptno) {
 		this.empno = empno;
 		this.ename = ename;
@@ -97,6 +109,12 @@ public class Emp {
 
 	public void setDeptno(int deptno) {
 		this.deptno = deptno;
+	}
+	public String getHiredateS() {
+		return hiredateS;
+	}
+	public void setHiredateS(String hiredateS) {
+		this.hiredateS = hiredateS;
 	}
 
 	

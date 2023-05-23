@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import frontWeb.vo.Emp;
 import frontWeb.vo.Employee;
 import frontWeb.vo.Job;
 import frontWeb.vo.JobHistory;
@@ -71,9 +72,7 @@ AND salary BETWEEN ? AND ?
 						   rs.getInt("department_id")
 						));
 			}
-			rs.close();
-			pstmt.close();
-			con.close();
+
 			
 			
 		} catch (SQLException e) {
@@ -153,9 +152,6 @@ AND MIN_SALARY BETWEEN ? AND ?
 							rs.getInt("max_salary")
 						    ));
 			}
-			rs.close();
-			pstmt.close();
-			con.close();
 		} catch (SQLException e) {
 			System.out.println("DB 예외:"+e.getMessage());
 		} catch(Exception e) {
@@ -165,22 +161,78 @@ AND MIN_SALARY BETWEEN ? AND ?
 		}
 		return jobList;
 	}	
+	public void insertEmp(Emp ins) {
+		String sql = "INSERT INTO emp02 values(?,?,?,?,"
+				+ "to_date(?,'YYYY-MM-DD'),?,?,?)";
+		try {
+			con = DB.con();
+			// 자동 commit 방지
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, ins.getEmpno());
+			pstmt.setString(2, ins.getEname());
+			pstmt.setString(3, ins.getJob());
+			pstmt.setInt(4, ins.getMgr());
+			pstmt.setString(5, ins.getHiredateS());
+			pstmt.setDouble(6, ins.getSal());
+			pstmt.setDouble(7, ins.getComm());
+			pstmt.setInt(8, ins.getDeptno());
+			System.out.println(pstmt.executeUpdate());
+			con.commit(); // 입력시 확정		
+			pstmt.close();
+			con.close();
+			System.out.println("등록성공");
+//			15:05~~
+			
+		} catch (SQLException e) {
+			System.out.println("DB:"+e.getMessage());
+			try {
+				con.rollback(); // 원복 처리..
+			} catch (SQLException e1) {
+				System.out.println(e1.getMessage());
+			}
+		} catch (Exception e) {
+			System.out.println("일반:"+e.getMessage());
+		} finally {
+			DB.close(rs, pstmt, con);
+		}
+	}
+	
+	
+	
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		A04_PreParedDao dao = new A04_PreParedDao();
+		/*
+INSERT INTO emp02 values(1003,'하기동','대리',7902,
+		to_date('2023-05-01','YYYY-MM-DD'), 4500,1000,20);
+
+Emp(int empno, String ename, String job, int mgr, 
+			String hiredateS, Double sal, Double comm, int deptno)
+
+		 * */
+		
+		
+		Emp ins = new Emp(1005,"오길동","과장",7902,
+			"2023-05-23",7000.0,1000.0,30);
+		dao.insertEmp(ins);
+		
+		
+		
 		Map<String, String> sch = new HashMap<String, String>();
 		/*  map에 쓸키 title, min_sal1, min_sal2
 		 *            S      1000      10000
 		 */
-		sch.put("title", "S");
-		sch.put("min_sal1", "1000");
-		sch.put("min_sal2", "10000");
-		for(Job job:dao.getJob(sch)) {
-			System.out.print(job.getJob_id()+"\t");
-			System.out.print(job.getJob_title()+"\t");
-			System.out.print(job.getMax_salary()+"\t");
-			System.out.print(job.getMin_salary()+"\n");
-		}
+//		sch.put("title", "S");
+//		sch.put("min_sal1", "1000");
+//		sch.put("min_sal2", "10000");
+//		for(Job job:dao.getJob(sch)) {
+//			System.out.print(job.getJob_id()+"\t");
+//			System.out.print(job.getJob_title()+"\t");
+//			System.out.print(job.getMax_salary()+"\t");
+//			System.out.print(job.getMin_salary()+"\n");
+//		}
 		
 		
 //		for(JobHistory jh:dao.getHistory(sch)) {
