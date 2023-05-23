@@ -61,10 +61,7 @@ public class A03_DeptDao {
 				System.out.print(rs.getString("dname")+"\t");
 				System.out.println(rs.getString("loc")+"\t");
 			}
-			// 4. 자원해제			
-			rs.close();
-			stmt.close();
-			con.close();			
+		
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}catch(Exception e) {
@@ -96,10 +93,7 @@ public class A03_DeptDao {
 					rs.getString(3)
 				);
 			}
-			// 4. 자원해제			
-			rs.close();
-			stmt.close();
-			con.close();			
+		
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}catch(Exception e) {

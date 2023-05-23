@@ -54,10 +54,7 @@ public class A02_EmpDao {
 			 * rs.get데이터유형("컬럼명")
 			 * 
 			 */
-			// 자원해제 :역순위
-			rs.close();
-			stmt.close();
-			con.close();
+
 
 		} catch (SQLException e) {
 			System.out.println("DB 처리 예외:" + e.getMessage());
@@ -94,11 +91,7 @@ public class A02_EmpDao {
 				System.out.print(rs.getDouble("sal")+"\n");
 				System.out.println("처리4");
 			}
-			// 4. 자원해제			
-			rs.close();
-			
-			stmt.close();
-			con.close();
+
 			System.out.println("처리5");
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -125,15 +118,13 @@ public class A02_EmpDao {
 			rs = stmt.executeQuery(sql);
 			// 데이터가 한개만 나오는 경우(row단위)
 			if(rs.next()) count = rs.getInt("cnt");
-			// 4. 자원해제			
-			rs.close();
-			stmt.close();
-			con.close();
+
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} catch(Exception e) {
 			System.out.println("일반예외:"+e.getMessage());
 		} finally {
+			// 자원해제
 			DB.close(rs, stmt, con);
 		}		
 		return count;
@@ -149,10 +140,6 @@ public class A02_EmpDao {
 			con = DB.con();
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
-			if(rs.next()) sal = rs.getDouble("sal");
-			rs.close();
-			stmt.close();
-			con.close();
 		} catch (SQLException e) {
 			System.out.println("DB 예외:"+e.getMessage());
 		} catch(Exception e) {
@@ -185,9 +172,6 @@ public class A02_EmpDao {
 					rs.getInt(8)
 				);
 			}
-			rs.close();
-			stmt.close();
-			con.close();
 		} catch (SQLException e) {
 			System.out.println("DB 예외:"+e.getMessage());
 		} catch(Exception e) {
@@ -224,9 +208,6 @@ public class A02_EmpDao {
 					rs.getInt(4)	
 				);
 			}
-			rs.close();
-			stmt.close();
-			con.close();
 		} catch (SQLException e) {
 			System.out.println("DB 예외:"+e.getMessage());
 		} catch(Exception e) {
@@ -259,9 +240,6 @@ public class A02_EmpDao {
 							rs.getInt(8)
 						));
 			}
-			rs.close();
-			stmt.close();
-			con.close();
 		} catch (SQLException e) {
 			System.out.println("DB 예외:"+e.getMessage());
 		} catch(Exception e) {
@@ -292,9 +270,6 @@ public class A02_EmpDao {
 							rs.getString(6)
 						));
 			}
-			rs.close();
-			stmt.close();
-			con.close();
 		} catch (SQLException e) {
 			System.out.println("DB 예외:"+e.getMessage());
 		} catch(Exception e) {
