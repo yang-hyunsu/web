@@ -309,10 +309,44 @@ AND MIN_SALARY BETWEEN ? AND ?
 		
 		return isInsert;
 	}
+	//ex) SELECT * FROM DEPARTMENTS
+	// DEPARTMENTS를 입력 처리하세요;
+	public int deleteLocation(int location_id) {
+		int isDelete=0;
+		String sql = "DELETE \r\n"
+				+ "FROM locations10\r\n"
+				+ "WHERE location_id=?";
+		try {
+			con = DB.con();
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, location_id);
+			isDelete=pstmt.executeUpdate();
+			con.commit();
+			if(isDelete==1) System.out.println("삭제 성공");
+		} catch (SQLException e) {
+			System.out.println("DB:"+e.getMessage());
+			try {
+				con.rollback(); // 원복 처리..
+			} catch (SQLException e1) {
+				System.out.println(e1.getMessage());
+			}
+		} catch (Exception e) {
+			System.out.println("일반:"+e.getMessage());
+		} finally {
+			DB.close(rs, pstmt, con);
+		}
+		
+		
+		return isDelete;
+	}
 	// INSERT INTO DEPARTMENTS10 values(350,'재무',300,1800);
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		A04_PreParedDao dao = new A04_PreParedDao();
+		dao.deleteLocation(1000);
+		dao.deleteLocation(1100);
+		dao.deleteLocation(1200);
 		// Location(int location_id, String street_addres,
 		// String postal_code, String city, String state_province,
 		//  String country_id)
@@ -325,8 +359,8 @@ UPDATE locations10
 	    country_id='SE'
 	WHERE  location_id=1000
 		 * */
-		dao.updateLocation(new Location(1100, "삼성로", "401123", 
-				"서울", "서울", "SE"));
+//		dao.updateLocation(new Location(1100, "삼성로", "401123", 
+//				"서울", "서울", "SE"));
 		
 		/*
 UPDATE EMP02 
