@@ -96,6 +96,7 @@ public class A02_EmpDao {
 			}
 			// 4. 자원해제			
 			rs.close();
+			
 			stmt.close();
 			con.close();
 			System.out.println("처리5");

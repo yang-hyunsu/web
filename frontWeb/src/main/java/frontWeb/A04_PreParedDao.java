@@ -5,12 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import frontWeb.vo.Employee;
+import frontWeb.vo.Job;
+import frontWeb.vo.JobHistory;
 
 /*
 # Dao(Database Access Object)
@@ -84,26 +85,125 @@ AND salary BETWEEN ? AND ?
 		}
 		return elist;
 	}
-	
-	
-	
-
+	public List<JobHistory> getHistory(Map<String, String> sch){
+		List<JobHistory> jobList = new ArrayList<JobHistory>();
+		String sql = "SELECT *\r\n"
+				+ "FROM JOB_HISTORY\r\n"
+				+ "WHERE job_id LIKE '%'||?||'%'\r\n"
+				+ "AND DEPARTMENT_ID BETWEEN ? AND ?";
+		try {
+			con = DB.con();
+			// job_id, mi_dId, mx_dId  
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, sch.get("job_id"));
+			pstmt.setInt(2,Integer.parseInt(sch.get("mi_dId")));
+			pstmt.setInt(3,Integer.parseInt(sch.get("mx_dId")));
+			rs = pstmt.executeQuery();
+			// JobHistory(int employee_id, Date start_date, 
+			// Date end_date, String job_id, int department_id) 
+			while(rs.next()) {
+				jobList.add(new JobHistory(
+							rs.getInt("employee_id"),
+							rs.getDate("start_date"),
+							rs.getDate("end_date"),
+							rs.getString("job_id"),
+							rs.getInt("department_id")
+						    ));
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			System.out.println("DB 예외:"+e.getMessage());
+		} catch(Exception e) {
+			System.out.println("일반 예외:"+e.getMessage());
+		} finally {
+			DB.close(rs, pstmt, con);
+		}
+		return jobList;
+	}
+	/*
+SELECT *
+FROM JOBS;
+SELECT *
+FROM jobs
+WHERE job_title LIKE '%'||?||'%'
+AND MIN_SALARY BETWEEN ? AND ?
+	 * */
+	public List<Job> getJob(Map<String, String> sch){
+		List<Job> jobList = new ArrayList<Job>();
+		String sql = "SELECT *\r\n"
+				+ "FROM jobs\r\n"
+				+ "WHERE job_title LIKE '%'||?||'%'\r\n"
+				+ "AND MIN_SALARY BETWEEN ? AND ?";
+		try {
+			con = DB.con();
+			// title, min_sal1, min_sal2
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, sch.get("title"));
+			pstmt.setInt(2,Integer.parseInt(sch.get("min_sal1")));
+			pstmt.setInt(3,Integer.parseInt(sch.get("min_sal2")));
+			rs = pstmt.executeQuery();
+			// Job(String job_id, String job_title, int min_salary, int max_salary)
+			while(rs.next()) {
+				jobList.add(new Job(
+							rs.getString("job_id"),
+							rs.getString("job_title"),
+							rs.getInt("min_salary"),
+							rs.getInt("max_salary")
+						    ));
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+		} catch (SQLException e) {
+			System.out.println("DB 예외:"+e.getMessage());
+		} catch(Exception e) {
+			System.out.println("일반 예외:"+e.getMessage());
+		} finally {
+			DB.close(rs, pstmt, con);
+		}
+		return jobList;
+	}	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		A04_PreParedDao dao = new A04_PreParedDao();
 		Map<String, String> sch = new HashMap<String, String>();
-		// name minSal maxSal
-		sch.put("name", "A");
-		sch.put("minSal", "0");
-		sch.put("maxSal", "12000");	
-		for(Employee e:dao.getEmpList(sch)) {
-			System.out.print(e.getEmployee_id()+"\t");
-			System.out.print(e.getLast_name()+"\t");
-			System.out.print(e.getFirst_name()+"\t");
-			System.out.print(e.getEmail()+"\t");
-			System.out.print(e.getSalary()+"\t");
-			System.out.print(e.getDepartment_id()+"\n");
+		/*  map에 쓸키 title, min_sal1, min_sal2
+		 *            S      1000      10000
+		 */
+		sch.put("title", "S");
+		sch.put("min_sal1", "1000");
+		sch.put("min_sal2", "10000");
+		for(Job job:dao.getJob(sch)) {
+			System.out.print(job.getJob_id()+"\t");
+			System.out.print(job.getJob_title()+"\t");
+			System.out.print(job.getMax_salary()+"\t");
+			System.out.print(job.getMin_salary()+"\n");
 		}
+		
+		
+//		for(JobHistory jh:dao.getHistory(sch)) {
+//			System.out.print(jh.getEmployee_id()+"\t");
+//			System.out.print(jh.getDepartment_id()+"\t");
+//			System.out.print(jh.getJob_id()+"\t");
+//			System.out.print(jh.getStart_date()+"\t");
+//			System.out.print(jh.getEnd_date()+"\n");
+//		}
+		
+		
+//		// name minSal maxSal
+//		sch.put("name", "A");
+//		sch.put("minSal", "0");
+//		sch.put("maxSal", "12000");	
+//		for(Employee e:dao.getEmpList(sch)) {
+//			System.out.print(e.getEmployee_id()+"\t");
+//			System.out.print(e.getLast_name()+"\t");
+//			System.out.print(e.getFirst_name()+"\t");
+//			System.out.print(e.getEmail()+"\t");
+//			System.out.print(e.getSalary()+"\t");
+//			System.out.print(e.getDepartment_id()+"\n");
+//		}
 	}
 
 }
