@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import frontWeb.vo.Department;
 import frontWeb.vo.Emp;
 import frontWeb.vo.Employee;
 import frontWeb.vo.Job;
@@ -182,7 +183,7 @@ AND MIN_SALARY BETWEEN ? AND ?
 			pstmt.close();
 			con.close();
 			System.out.println("등록성공");
-//			15:05~~
+//			
 			
 		} catch (SQLException e) {
 			System.out.println("DB:"+e.getMessage());
@@ -197,13 +198,46 @@ AND MIN_SALARY BETWEEN ? AND ?
 			DB.close(rs, pstmt, con);
 		}
 	}
+	//ex) SELECT * FROM DEPARTMENTS
+	// DEPARTMENTS를 입력 처리하세요;
+	public int insertDepartments(Department ins) {
+		int isInsert=0;
+		String sql = "INSERT INTO DEPARTMENTS10 values(?,?,?,?)";
+		try {
+			con = DB.con();
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			// INSERT INTO DEPARTMENTS10 values(300,'인사',200,1700);
+			pstmt.setInt(1, ins.getDepartment_id());
+			pstmt.setString(2, ins.getDepartment_name());
+			pstmt.setInt(3, ins.getManager_id());
+			pstmt.setInt(4, ins.getLocation_id());
+			isInsert=pstmt.executeUpdate();
+			con.commit();
+			if(isInsert==1) System.out.println("등록 성공");
+		} catch (SQLException e) {
+			System.out.println("DB:"+e.getMessage());
+			try {
+				con.rollback(); // 원복 처리..
+			} catch (SQLException e1) {
+				System.out.println(e1.getMessage());
+			}
+		} catch (Exception e) {
+			System.out.println("일반:"+e.getMessage());
+		} finally {
+			DB.close(rs, pstmt, con);
+		}
+		
+		
+		return isInsert;
+	}
 	
-	
-	
-	
+	// INSERT INTO DEPARTMENTS10 values(350,'재무',300,1800);
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		A04_PreParedDao dao = new A04_PreParedDao();
+		dao.insertDepartments(new Department(350,"재무",300,1800));
+		
 		/*
 INSERT INTO emp02 values(1003,'하기동','대리',7902,
 		to_date('2023-05-01','YYYY-MM-DD'), 4500,1000,20);
