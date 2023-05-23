@@ -111,9 +111,6 @@ AND salary BETWEEN ? AND ?
 							rs.getInt("department_id")
 						    ));
 			}
-			rs.close();
-			pstmt.close();
-			con.close();
 		} catch (SQLException e) {
 			System.out.println("DB 예외:"+e.getMessage());
 		} catch(Exception e) {
@@ -188,11 +185,7 @@ AND MIN_SALARY BETWEEN ? AND ?
 			
 		} catch (SQLException e) {
 			System.out.println("DB:"+e.getMessage());
-			try {
-				con.rollback(); // 원복 처리..
-			} catch (SQLException e1) {
-				System.out.println(e1.getMessage());
-			}
+			DB.rollback(con);
 		} catch (Exception e) {
 			System.out.println("일반:"+e.getMessage());
 		} finally {
@@ -218,18 +211,12 @@ AND MIN_SALARY BETWEEN ? AND ?
 			if(isInsert==1) System.out.println("등록 성공");
 		} catch (SQLException e) {
 			System.out.println("DB:"+e.getMessage());
-			try {
-				con.rollback(); // 원복 처리..
-			} catch (SQLException e1) {
-				System.out.println(e1.getMessage());
-			}
+			DB.rollback(con);
 		} catch (Exception e) {
 			System.out.println("일반:"+e.getMessage());
 		} finally {
 			DB.close(rs, pstmt, con);
 		}
-		
-		
 		return isInsert;
 	}
 	
@@ -252,16 +239,10 @@ AND MIN_SALARY BETWEEN ? AND ?
 				pstmt.setInt(5, upt.getEmpno());
 				int isUpt =  pstmt.executeUpdate();
 				con.commit(); // 입력시 확정		
-				pstmt.close();
-				con.close();
 				if(isUpt == 1)System.out.println("수정 성공");			
 			} catch (SQLException e) {
 				System.out.println("DB:"+e.getMessage());
-				try {
-					con.rollback(); // 원복 처리..
-				} catch (SQLException e1) {
-					System.out.println(e1.getMessage());
-				}
+				DB.rollback(con);
 			} catch (Exception e) {
 				System.out.println("일반:"+e.getMessage());
 			} finally {
@@ -295,18 +276,12 @@ AND MIN_SALARY BETWEEN ? AND ?
 			if(isInsert==1) System.out.println("수정 성공");
 		} catch (SQLException e) {
 			System.out.println("DB:"+e.getMessage());
-			try {
-				con.rollback(); // 원복 처리..
-			} catch (SQLException e1) {
-				System.out.println(e1.getMessage());
-			}
+			DB.rollback(con);
 		} catch (Exception e) {
 			System.out.println("일반:"+e.getMessage());
 		} finally {
 			DB.close(rs, pstmt, con);
 		}
-		
-		
 		return isInsert;
 	}
 	//ex) SELECT * FROM DEPARTMENTS
@@ -326,11 +301,7 @@ AND MIN_SALARY BETWEEN ? AND ?
 			if(isDelete==1) System.out.println("삭제 성공");
 		} catch (SQLException e) {
 			System.out.println("DB:"+e.getMessage());
-			try {
-				con.rollback(); // 원복 처리..
-			} catch (SQLException e1) {
-				System.out.println(e1.getMessage());
-			}
+			DB.rollback(con);
 		} catch (Exception e) {
 			System.out.println("일반:"+e.getMessage());
 		} finally {
