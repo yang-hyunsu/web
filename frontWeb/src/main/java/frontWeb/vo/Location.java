@@ -1,8 +1,9 @@
 package frontWeb.vo;
 
+
 public class Location {
 	private int location_id;
-	private String street_addres;
+	private String street_address;
 	private String postal_code;
 	private String city;
 	private String state_province;
@@ -11,13 +12,13 @@ public class Location {
 		// TODO Auto-generated constructor stub
 	}
 	public Location(String street_addres, String city) {
-		this.street_addres = street_addres;
+		this.street_address = street_addres;
 		this.city = city;
 	}
 	public Location(int location_id, String street_addres, String postal_code, String city, String state_province,
 			String country_id) {
 		this.location_id = location_id;
-		this.street_addres = street_addres;
+		this.street_address = street_addres;
 		this.postal_code = postal_code;
 		this.city = city;
 		this.state_province = state_province;
@@ -29,11 +30,11 @@ public class Location {
 	public void setLocation_id(int location_id) {
 		this.location_id = location_id;
 	}
-	public String getStreet_addres() {
-		return street_addres;
+	public String getStreet_address() {
+		return street_address;
 	}
 	public void setStreet_addres(String street_addres) {
-		this.street_addres = street_addres;
+		this.street_address = street_addres;
 	}
 	public String getPostal_code() {
 		return postal_code;
