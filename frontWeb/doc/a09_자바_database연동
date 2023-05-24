@@ -345,15 +345,15 @@
 		private int deptno
 		생성자 만들기
 		get/set메서드 만들기.
-3. 메서드 선언.
+3. 메서드 선언(매개변수, 리턴타입, 메서드명, sql)
 	public void insertEmp(Emp ins){
 		String sql = "";
 		1. DB연결
 			자동 autoCommit방지
 		2. PreparedStatement객체 생성
 		3. pstmt.setXXX(1,...)
-		4. 수행처리
-			pstmt.update()
+		4. 수행처리(등록/수정/삭제)
+			pstmt.executeUpdate()
 		5. 확정 commit()
 		6. 예외발생시 rollback처리		
 	}		
