@@ -24,7 +24,8 @@ public class A04_PreparedDao {
 
     public List<Employee> getEmpList(Map<String, String> sch) {
         List<Employee> elist = new ArrayList<>();
-        String sql = "SELECT * FROM EMPLOYEES WHERE UPPER(FIRST_NAME || last_name) LIKE UPPER(?) AND salary BETWEEN ? AND ?";
+        String sql = "SELECT * FROM EMPLOYEES "
+        		+ "WHERE UPPER(FIRST_NAME || last_name) LIKE UPPER(?) AND salary BETWEEN ? AND ?";
         try {
             con = DB.con();
             pstmt = con.prepareStatement(sql);
@@ -90,7 +91,11 @@ public class A04_PreparedDao {
 
     public List<Job> getJob(Map<String, String> sch) {
         List<Job> jobList = new ArrayList<>();
-        String sql = "SELECT * FROM jobs WHERE UPPER(job_title) LIKE UPPER(?) AND MIN_SALARY BETWEEN ? AND ?";
+        String sql = "SELECT * FROM jobs "
+        		+ "	WHERE UPPER(job_title) LIKE UPPER(?) AND MIN_SALARY BETWEEN ? AND ?";
+        // where upper(컬럼) : 대상데이터를 대문자 변경
+        // like LIKE UPPER(?) : 입력데이터로 대문자 변경
+        // 대소문자 상관없이 검색이 가능하도록 처리.
         try {
             con = DB.con();
             pstmt = con.prepareStatement(sql);
