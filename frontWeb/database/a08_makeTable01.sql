@@ -1,4 +1,8 @@
 /*
+ * 
+ * 
+ * 
+ * 
 # 테이블 생성
 1. 데이터베이스에서 핵심 객체인 테이블 생성 물리적으로
 	sql에 의해서 처리되는 것을 말한다.
@@ -80,6 +84,7 @@ INSERT INTO member01 values('himan','7777','홍길동',1000,'관리자');
 INSERT INTO member01 values('higirl','8888','오현정',2000,'일반사용자');
 INSERT INTO member01 values('goodman','5555','마길동',9000,'관리자');
 SELECT * FROM member01;
+
 -- ex) 학생정보2 테이블(학생번호, 학생명, 국어,영어,수학)
 -- 테이블 생성 및 데이터 입력
 CREATE TABLE STUDENT02(
