@@ -361,9 +361,89 @@
 
 
 # 실무적용
-1. 요구사항정의
+1. 요구사항정의 
+	ex) 아이디와 패스워드를 입력해서 로그인 성공 여부처리
+		아이디/패스워드/이름
+		성공시 @@님 로그인 성공
+		실패시 아이디는 인증된 계정이 아닙니다.
+	ex) 회원가입
+		아이디, 패스워스/패스워드확인, 이름, 권한, 포인트, (오늘날짜)
+		로 가입 처리
+			
+		
 2. ERD
-3. 
+	회원테이블
+	아이디
+	패스워드
+	이름
+3. 물리 설계 내용을 바탕으로 DB sql 테이블 생성 script로 테이블 생성
+	create table member20{
+		id varchar2(50) primary key,
+		pass varchar2(50),
+		name varchar2(50)
+	}
+4. 샘플 데이터 입력
+	insert into member20 values('himan','7777','홍길동');
+	# 회원가입
+	insert into member20 values('higirl','8888',
+	    '홍리나',1000,'관리자',sysdate);
+	    
+	
+5. 업무 내용에 맞게 Dao 처리
+	sql 
+	insert into member20 values(?,?,?,?,?,sysdate)		
+	VO
+		날짜이외 생성자 추가..
+	메서드처리
+		- 데이터베이스 처리(연결,대화,결과)
+	class MemberDao{
+		public Member login(String id, String pass){
+			Member m=null;
+			
+			return m;
+		}
+		public void insertMember(Member m){
+			int isInsert = 0;
+			String sql = "insert into member20 values(?,?,?,?,?,sysdate)	";
+			
+		}
+	}
+	
+	class ShoppingMall{
+		private MemberDao dao;
+		ShoppingMall(){
+			dao = new MemberDao();
+		}
+		public void registerMemberMenu(){
+		
+		}
+		void loginMenu(){ // 로그인 메뉴 처리
+			로그인 합니다. scanner 입력 처리.
+			인증 될 때까지 처리할려면 while(true)로 처리
+			아이디를 입력
+			패스워드를 이력
+			Member m = dao.login(id,pass);
+			if(m==null){
+				로그인 실패
+			}else{
+				m.getName() 님 로그인 성공하였습니다.
+			}
+		}
+		// 회원가입 메뉴 메서드
+		
+		// 회원관리 메뉴 메서드
+		
+		
+		public static void main(String args[]){
+			ShoppingMall sh = new ShoppingMall()
+			sh.loginMenu();
+		}
+	}
+	
+	
+
+
+	
 
 
 

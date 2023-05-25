@@ -17,6 +17,15 @@ public class Member {
 		this.id = id;
 		this.pass = pass;
 	}
+	// 등록을 위한 생성자
+	public Member(String id, String pass, String name, int point, String auth) {
+		this.id = id;
+		this.pass = pass;
+		this.name = name;
+		this.point = point;
+		this.auth = auth;
+	}	
+	
 	// 로그인 후, 데이터 가져올 때 사용.
 	public Member(String id, String pass, String name, int point, String auth, Date regdate) {
 		this.id = id;
@@ -26,6 +35,7 @@ public class Member {
 		this.auth = auth;
 		this.regdate = regdate;
 	}
+
 	public String getId() {
 		return id;
 	}
