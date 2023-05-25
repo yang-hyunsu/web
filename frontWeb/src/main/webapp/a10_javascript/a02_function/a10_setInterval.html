@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title>자바스크립트</title>
+    <script>
+        /*
+        #  
+        */
+        var idx =0;
+        var colors = ['red','orange','yellow','green',
+                      'blue','navy','purple']
+        var set01 = setInterval(()=>{
+            var h3Arr = document.querySelectorAll("h3")
+            h3Arr[idx].style.background=colors[idx]
+            h3Arr[idx++].innerText=idx+") 안녕하세요"
+            if(idx==7){
+                alert("종료!");
+                clearInterval(set01);
+            }
+        },1000)
+    </script>
+</head>
+<body>
+    <h2>setInterval연습</h2>
+    <h3></h3>
+    <h3></h3>
+    <h3></h3>
+    <h3></h3>
+    <h3></h3>
+    <h3></h3>
+    <h3></h3>
+
+
+
+
+
+
+
+</body>
+    <script>
+        /*
+        #  
+        */
+        
+    </script>
+</html>

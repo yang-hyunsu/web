@@ -197,7 +197,42 @@
 		     - 객체형 {속성:속성값}
 		     - DOM   this
 		     
-	2) 내장 함수		
+	2) 내장 함수	
+		- 시간관련 
+			var set01 = setTimeout(function(){
+				// 시간 후, 처리할 내용을 코드로 처리..
+			
+			
+				clearTimeout(set01); 
+			},1/1000);
+			특정한 시간이후에 수행되는 익명함수 지정..
+			clearTimeout(set01); : 자원의 해제
+			
+			var int01 = setInterval(function(){
+			
+			},1/1000초)
+			반복적인 수행 처리 처리할 때,
+			setInterval(function(){반복수행 내용}, 반복할 시간);
+		- 형변환
+			Number() : 정수/실수 다변환, 하지만, 숫자형이 아니면
+				에러 발생
+			parseInt(): 시작문자열이 숫자로 시작해서 끝날때까지 추출
+				해서 정수만 추출 형변환 처리
+			
+			parseFloat() : 시작문자열이 숫자로 시작해서 끝날때까지 추출
+				하는데, 실수 추출 형변환 처리
+				
+			eval() : 문자열을 실행코드로 변환해서, 실행처리해주는 함수
+				eval(`
+					var num01 = 25
+					var num02 = 30
+					alert(num01+num02)
+				
+				`)	
+			JSON.parse("") : 문자열을 json 객체로 변환 처리	
+			JSON.stringfy() : json 객체를 문자열 json으로 변환 처리
+			
+		
 		
 4. 객체
 	1) 배열
