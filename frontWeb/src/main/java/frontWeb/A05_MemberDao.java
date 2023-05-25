@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Scanner;
 
 import frontWeb.vo.Member;
 
@@ -12,6 +11,7 @@ public class A05_MemberDao {
 	private Connection con;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
+	// // Product 테이블(물건명,가격,갯수) ==> 
 	// 로그인 처리 메서드 정의
 	public Member login(String id, String pass) {
 		Member mem = null;
@@ -46,40 +46,114 @@ public class A05_MemberDao {
 		}finally {
 			DB.close(rs, pstmt, con);
 		}
-		
-		
 		return mem;
 	}
+	public void insertMember(Member ins) {
+		int isInsert = 0;
+		String sql = "INSERT INTO member02 "
+				+ "values(?,?,?,?,?,sysdate)";
+		try {
+			con = DB.con();
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			//insert into member20 values('higirl','8888',
+			//	    '홍리나',1000,'관리자',sysdate);			
+			pstmt.setString(1, ins.getId());
+			pstmt.setString(2, ins.getPass());
+			pstmt.setString(3, ins.getName());
+			pstmt.setInt(4, ins.getPoint());
+			pstmt.setString(5, ins.getAuth());
+			isInsert=pstmt.executeUpdate();
+			if(isInsert==1) {
+				con.commit();
+				System.out.println("회원 등록 성공!!");
+			}
+		} catch (SQLException e) {
+			System.out.println("DB:"+e.getMessage());
+			DB.rollback(con);
+			
+		} catch(Exception e) {
+			System.out.println("일반:"+e.getMessage());
+		}finally {
+			DB.close(rs, pstmt, con);
+		}
+	}
+	public void updateMember(Member ins) {
+		int isInsert = 0;
+		String sql = "INSERT INTO member02 "
+				+ "values(?,?,?,?,?,sysdate)";
+		try {
+			con = DB.con();
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			//insert into member20 values('higirl','8888',
+			//	    '홍리나',1000,'관리자',sysdate);			
+			pstmt.setString(1, ins.getId());
+			pstmt.setString(2, ins.getPass());
+			pstmt.setString(3, ins.getName());
+			pstmt.setInt(4, ins.getPoint());
+			pstmt.setString(5, ins.getAuth());
+			isInsert=pstmt.executeUpdate();
+			if(isInsert==1) {
+				con.commit();
+				System.out.println("회원 등록 성공!!");
+			}
+		} catch (SQLException e) {
+			System.out.println("DB:"+e.getMessage());
+			DB.rollback(con);
+			
+		} catch(Exception e) {
+			System.out.println("일반:"+e.getMessage());
+		}finally {
+			DB.close(rs, pstmt, con);
+		}
+		
+		
+		
+	}
 	
-	
-
+	public void deleteMember(Member ins) {
+		int isInsert = 0;
+		String sql = "INSERT INTO member02 "
+				+ "values(?,?,?,?,?,sysdate)";
+		try {
+			con = DB.con();
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			//insert into member20 values('higirl','8888',
+			//	    '홍리나',1000,'관리자',sysdate);			
+			pstmt.setString(1, ins.getId());
+			pstmt.setString(2, ins.getPass());
+			pstmt.setString(3, ins.getName());
+			pstmt.setInt(4, ins.getPoint());
+			pstmt.setString(5, ins.getAuth());
+			isInsert=pstmt.executeUpdate();
+			if(isInsert==1) {
+				con.commit();
+				System.out.println("회원 등록 성공!!");
+			}
+		} catch (SQLException e) {
+			System.out.println("DB:"+e.getMessage());
+			DB.rollback(con);
+			
+		} catch(Exception e) {
+			System.out.println("일반:"+e.getMessage());
+		}finally {
+			DB.close(rs, pstmt, con);
+		}
+		
+		
+		
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		// higirl,8888,'홍리나',2000,'관리자',
+		// 등록할 객체 생성
+		Member ins = new Member("higirl","8888","홍리나",2000,"관리자");
+		// Member(String id, String pass, String name, int point, String auth)
 		A05_MemberDao dao = new A05_MemberDao();
-		Scanner sc = new Scanner(System.in);
-		System.out.println("#로그인 시작!!#");
-		while(true) {
-			
-			System.out.print("아이디를 입력:");
-			String id = sc.nextLine();
-			System.out.print("패스워드를 입력:");
-			String pass = sc.nextLine();
-			Member mem = dao.login(id, pass);
-			if(mem!=null) {
-				System.out.println("로그인 성공!");
-				System.out.println(mem.getName()+"님 환영합니다.");
-				break;
-			}else {
-				System.out.println("로그인 실패");
-				System.out.println(id+"는 인증계정이 아닙니다.");
-				System.out.print("로그인 계속 하시겠습니까?(Y/N):");
-				String isYN = sc.nextLine();
-				if(!isYN.equals("Y")) {
-					break;
-				}
-			}		
-		}
-		System.out.println("로그인 프로그램 종료!");
+		dao.insertMember(ins);
+		
 	}
 
 }

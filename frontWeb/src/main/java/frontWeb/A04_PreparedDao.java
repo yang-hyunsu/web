@@ -122,6 +122,11 @@ public class A04_PreparedDao {
         return jobList;
     }
 
+    // void, int나 다른 유형을 하느냐?
+    // 외부이 이 메서드를 호출해서 등록/수정/삭제된 갯수를 알고자 할때.
+    // return int
+    // 등록/수정/삭제로 끝날 경우에는 void
+    
     public void insertEmp(Emp ins) {
         String sql = "INSERT INTO emp02 values(?,?,?,?,to_date(?,'YYYY-MM-DD'),?,?,?)";
         try {

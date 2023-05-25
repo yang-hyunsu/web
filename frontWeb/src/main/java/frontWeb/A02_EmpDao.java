@@ -254,7 +254,7 @@ public class A02_EmpDao {
 		List<Location> loList = new ArrayList<Location>();
 		String sql = "SELECT * \r\n"
 				+ "FROM LOCATIONS\r\n"
-				+ "WHERE STREET_ADDRESS like '%'||'"+sch.getStreet_addres()+"'||'%'\r\n"
+				+ "WHERE STREET_ADDRESS like '%'||'"+sch.getStreet_address()+"'||'%'\r\n"
 				+ "AND city like '%'||'"+sch.getCity()+"'||'%' ";
 		try {
 			con = DB.con();
@@ -292,7 +292,7 @@ public class A02_EmpDao {
 			System.out.print(l.getCountry_id()+"\t");
 			System.out.print(l.getPostal_code()+"\t");
 			System.out.print(l.getState_province()+"\t");
-			System.out.print(l.getStreet_addres()+"\n");
+			System.out.print(l.getStreet_address()+"\n");
 		}
 		
 		
