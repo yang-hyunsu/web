@@ -11,13 +11,19 @@
         갔다가 왔다가 하는 처리.
 
         */
+        var int01;
+        function end(){
+            alert("중단!!")
+            clearInterval(int01)
+        }
+        // <h2 onclick="end()">중단</h2>
         function start(){
             var idx=0;
             var tdArr = document.querySelectorAll("td");
             tdArr[idx].style.background="navy";
             var isFoward=true;
 
-            var int01 = setInterval(function(){
+            int01 = setInterval(function(){
                 // 호출시 마다 전체 td를 배경색상 흰색 변경
                 tdArr.forEach(function(ob){
                     ob.style.background="white"
@@ -39,11 +45,8 @@
                 // index로 판별하면 증/감 처리 기준을 
                 // 변경하지 못하기에 변수를 정해 주어야 한다.
                 // go(증가 조건-true, 감소조건-false)
-
                 tdArr[idx].style.background="navy";
-                //if(idx==4){
-                //    clearInterval(int01);
-                //}
+               
             },500);
             
         }
@@ -51,7 +54,7 @@
 </head>
 <body>
     <h2 onclick="start()">시작</h2>
-    <h2>종료</h2>
+    <h2 onclick="end()">종료</h2>
     <table height="100px" width="50%" border>
         <tr><td></td><td></td><td></td><td></td><td></td></tr>
     </table>
