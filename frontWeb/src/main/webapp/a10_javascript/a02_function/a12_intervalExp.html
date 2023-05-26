@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title>자바스크립트</title>
+    <style>
+        td{width:20%;height:100pt;text-align: center;
+            font-size:40pt;}
+    </style>
+    <script>
+        /*
+        # 3,6,9 게임 시작!! 클릭시,
+        1단계) h3 출력 1/2/짝 20까지 출력되게 하세요.
+
+        2단계)
+        DOM
+        하단에 4X4 테이블에서 순서로 
+        1,2,짝,4
+        5,짝,7,8
+        짝,10,11.. 
+        */
+        function start(){
+            var h1Ob = document.querySelector("h1")
+            var cnt = 0 // 숫자 카운트 처리
+            var show = "" // 출력할 내용(카운트/짝)
+            var int01 = setInterval(function(){
+                cnt++
+                // 3,6,9 가 들어가면 짝, 그외는 숫자 처리
+                if(cnt%10!=0 && cnt%10%3==0){
+                    show = "짝"
+                }else{
+                    show = cnt
+                }
+                h1Ob.innerText=show
+                if(cnt==20){
+                    alert("종료")
+                    clearInterval(int01)
+                }
+            },1000)
+        }
+        function start1(){
+            var tdArr = document.querySelectorAll("td")
+            var idx = 0; // DOM객체 변경, count 처리
+            var show = "" // 출력할 내용
+            // 반복 처리할 내용
+            var in01 = setInterval(function(){
+                // 3, 6, 9 로직 조건문 삽입.
+                //var cnt = idx+1;
+                if( (idx+1) %10!=0 && (idx+1)%10%3==0){
+                    show = "짝"
+                }else{
+                    show = idx+1;
+                }
+
+                tdArr[idx++].innerText=show
+                if(idx==16){
+                    alert("종료")
+                    clearInterval(in01)
+                }
+            },1000)
+        }        
+    </script>
+</head>
+<body>
+    <h2 onclick="start()">3,6,9 Lv01.</h2>
+    <h1></h1>
+    <h2 onclick="start1()">3,6,9 Lv02.</h2>
+    <table width="400pt" height="400pt" border>
+        <tr><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td></tr>
+    </table>
+
+</body>
+    <script>
+        /*
+        #  
+        */
+        
+    </script>
+</html>
