@@ -228,7 +228,8 @@
 					var num02 = 30
 					alert(num01+num02)
 				
-				`)	
+				`)
+				eval('25 + 5')	==> 30
 			JSON.parse("") : 문자열을 json 객체로 변환 처리	
 			JSON.stringfy() : json 객체를 문자열 json으로 변환 처리
 			
