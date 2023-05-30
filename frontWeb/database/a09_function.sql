@@ -80,7 +80,16 @@ FROM EMPLOYEES e;
 -- first_name을 대소문자 관계없이 키워드 검색
 SELECT lower(FIRST_NAME) 이름, e.*
 FROM EMPLOYEES e
-WHERE lower(FIRST_NAME) LIKE '%'||lower('j') ||'%';
+WHERE lower(FIRST_NAME) LIKE lower('%J%');
+/*
+WHERE lower(FIRST_NAME) LIKE lower(?)
+# 실제 Dao단 처리시, pstmt에는 
+pstmt.setString(1,"%"+emp.getFirst_name()+"%");
+
+ * */
+
+
+
 SELECT * 
 FROM EMPLOYEES e;
 --ex) email과 job_id이 대소문자 관계없이 키워드 검색되게 처리하세요.
