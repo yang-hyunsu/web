@@ -16,7 +16,7 @@ import frontWeb.vo.Employee;
 import frontWeb.vo.Job;
 import frontWeb.vo.JobHistory;
 import frontWeb.vo.Location;
-
+// frontWeb.A04_PreparedDao
 public class A04_PreparedDao {
     private Connection con;
     private PreparedStatement pstmt;
@@ -26,9 +26,13 @@ public class A04_PreparedDao {
         List<Employee> elist = new ArrayList<>();
         String sql = "SELECT * FROM EMPLOYEES "
         		+ "WHERE UPPER(FIRST_NAME || last_name) LIKE UPPER(?) AND salary BETWEEN ? AND ?";
+        System.out.println("# DB 접속 #");
+        System.out.println(sch.get("name"));
+        System.out.println(sch.get("minSal"));
+        System.out.println(sch.get("maxSal"));
         try {
             con = DB.con();
-            pstmt = con.prepareStatement(sql);
+            pstmt = con.prepareStatement(sql); 
             pstmt.setString(1, "%" + sch.get("name") + "%");
             pstmt.setDouble(2, Double.parseDouble(sch.get("minSal")));
             pstmt.setDouble(3, Double.parseDouble(sch.get("maxSal")));
