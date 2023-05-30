@@ -151,6 +151,8 @@
 			
 			return 리턴데이터;
 		}
+		var 함수명 = (매개변수)=>{ 프로세스처리 return데이터} 화살표 함수1..
+		var 함수명 = (매개변수)=>리턴값; 화살표 함수2..
 			
 		선언적함수
 		function 함수명(매개변수...){
@@ -214,11 +216,15 @@
 			반복적인 수행 처리 처리할 때,
 			setInterval(function(){반복수행 내용}, 반복할 시간);
 		- 형변환
-			Number() : 정수/실수 다변환, 하지만, 숫자형이 아니면
-				에러 발생
+			Number() : 정수/실수 변환, 하지만, 숫자형이 아니면
+				에러 발생(NaN)
 			parseInt(): 시작문자열이 숫자로 시작해서 끝날때까지 추출
 				해서 정수만 추출 형변환 처리
-			
+			    ex) parseInt("2500원"), parseInt("2500$")
+			    문자열이 나타나는 것까지 추출해준다.
+			    진법변환
+			    실수형을 정수형 변환까지
+			    parseInt("25.75") ==> 25.75 ==> 25
 			parseFloat() : 시작문자열이 숫자로 시작해서 끝날때까지 추출
 				하는데, 실수 추출 형변환 처리
 				
@@ -227,7 +233,6 @@
 					var num01 = 25
 					var num02 = 30
 					alert(num01+num02)
-				
 				`)
 				eval('25 + 5')	==> 30
 			JSON.parse("") : 문자열을 json 객체로 변환 처리	
@@ -307,6 +312,17 @@
 	   	   	    this.style.background = "yellow";
 	   	   	    this.innnerText = "클릭했습니다.";
 	   	   }
+	   	   // 여러 DOM객체에 대한 접근..
+	   	   var h2Arr = document.querySelectorAll("h2")
+	   	   // forEach로 단위 객체에 대한 선언 및 
+	   	   // 익명의 이벤트 핸들러 함수 선언..
+	   	   h2Arr.forEach(function(h2Ob){
+	   	   	   h2Ob.onclick=function(){
+                   // this : 이벤트를 클릭한 대상 h2를 지칭	   	   	   
+	   	   	   	   this.innerText="클릭되었습니다!!"
+	   	   	   }
+	   	   })	   
+	   	   
 7. 비동기 통신 처리
 	1) ajax : backend단의 서버 구성요소와 접근해서 
 		데이터 처리해주는 형식	   	   
