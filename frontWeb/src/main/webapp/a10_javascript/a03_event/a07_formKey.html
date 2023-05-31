@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style type="text/css">
+		/*
+		# css의 주석문
+		*/
+		
+		</style>
+		<script type="text/javascript">
+			/*
+			# form에 입력 처리되는 key이벤트
+			1. 유효성 처리
+				1) 입력 여부 
+				2) 값의 크기 유효성 처리
+			*/
+			
+		</script>				
+	</head>
+	<body>
+		<h2>form 하위 요소 key이벤트 처리</h2>
+		이름:<input type="text" name="name"/>
+		<span id="validId"></span><br>
+		기타사항<br>
+		<textarea name="content" rows="10" cols="20"></textarea><br>
+		<span id="validCont">0/25</span><br>
+		아이디:<input type="text" name="id"/>
+		<span id="validId2"></span><br><br>	
+	</body>
+		<script type="text/javascript">
+			var idOb = document.querySelector("[name=id]")
+			var validId2Ob = document.querySelector("#validId2")
+			idOb.onkeyup=function(){
+				var wLen = this.value.length
+				if(wLen>=8 && wLen<=16){
+					validId2Ob.innerText = "유효한 아이디 입니다"
+					validId2Ob.style.color="blue";
+				}else{
+					validId2Ob.innerText = "아이디는 8~16자입력입니다."
+					validId2Ob.style.color="red";
+				}
+			}
+			
+			
+			var nameOb = document.querySelector("[name=name]")
+			
+			
+			var validIdOb = document.querySelector("#validId")
+			var contentOb = document.querySelector("[name=content]")
+			var validContOb = document.querySelector("#validCont")
+			// ex) 아이디 입력 :[    ] [span]
+			//     입력시, 글자수가 8~16가 아니면 아이디는 8~16자입력입니다.
+			//     8~16 유효한 아이디 입니다. 출력. 배경색상도 표기.
+			contentOb.onkeyup=function(){
+				// this : 이벤트가 일어나고 있는 대상 객체
+				// value.length : 해당 객체에 입력된 값의 길이
+				var wLen = this.value.length
+				if(wLen>25){
+					this.value = this.value.substring(0,25)
+					this.style.background="pink";
+				}else{
+					this.style.background="white";
+				}
+				validContOb.innerText = wLen+"/25"
+				// 더 이상 입력되지 못 하게 처리//색상 경고
+				
+			}
+			// 이름 항목에 입력된 글자수를 키를 입력할 때마다
+			// 출력 표시
+			// DOM객체.onkeyup : 해당 키를 입력 처리되는 이벤트
+			// = function(){} : 처리되는 이벤트 핸들러 함수
+			nameOb.onkeyup=function(){
+				// nameOb.value.length() 자바의 글자수
+				// nameOb.value.length : 자바스크립트의 글자수
+				validIdOb.innerText="입력된 글자수:"
+					+nameOb.value.length+"자"
+				
+			}
+			// textarea를 만들고,
+			// @@/20 자  표시를 만들어 보세요..
+			// 전체 입력할 수 있는 글자 수 처리..
+			
+		</script>	
+</html>

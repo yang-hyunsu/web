@@ -4,6 +4,7 @@
     import="frontWeb.vo.Member"
     %>
 <%
+// a05_result.jsp?id=himan&pass=7777
 A05_MemberDao dao = new A05_MemberDao();
 // ?id=@@@&pass=@@@
 String id = request.getParameter("id");
@@ -17,6 +18,7 @@ boolean isSuccess = mem!=null;// DB에 데이터 있는지 여부 확인
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
+	// java+html ==> 네트워크 ==> html+js
 	var isSuccess = <%=isSuccess%>; // java ==> js 전환
 	if(isSuccess){
 		alert("로그인 성공:")

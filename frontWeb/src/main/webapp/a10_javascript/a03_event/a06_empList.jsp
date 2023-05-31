@@ -13,7 +13,12 @@
 </head>
 <body>
 <h2>사원정보 리스트</h2>
+<%-- name="name" value="<%=name%>" --%>
+<%-- name="minSal" value="<%=minSal%>" --%>
 <%
+// a06_empList.jsp
+
+// a06_empList.jsp?name=a&minSal=0&maxSal=99999
 String name = request.getParameter("name"); 
 if(name==null) name="";
 String minSal = request.getParameter("minSal"); 
@@ -28,7 +33,7 @@ if(maxSal==null) maxSal="99999";
 <input type="submit" value="검색"/>
 </form>
 <table border>
-	<tr><th>사원번호</th><th>사원명</th><th>급여</th>
+	<tr><th>사원번호</th><th>사원명1</th><th>사원명2</th><th>급여</th>
 	    <th>부서번호</th></tr>
 	<%
 	A04_PreparedDao dao = new A04_PreparedDao();
@@ -42,6 +47,7 @@ if(maxSal==null) maxSal="99999";
 	<tr>
 	     <td><%=e.getEmployee_id() %></td>
 	     <td><%=e.getFirst_name() %></td>
+	     <td><%=e.getLast_name() %></td>
 	     <td><%=e.getSalary() %></td>
 	     <td><%=e.getDepartment_id()%></td>
 	</tr>
