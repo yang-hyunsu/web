@@ -30,12 +30,28 @@
                 p02.show();
                 
         */
-        
+        function buy(){
+            //alert("함수 호출")
+            var pnameOb = document.querySelector("[name=pname]")
+            var priceOb = document.querySelector("[name=price]")
+            var cntOb = document.querySelector("[name=cnt]")
+            var p01 = new Product(pnameOb.value,priceOb.value); 
+            p01.buy(cntOb.value); p01.show()
+            pnameOb.value="";priceOb.value="";cntOb.value="";
+            pnameOb.focus();
+        }
+        // 14:05~
     </script>
 </head>
 <body>
     <h2>함수형 객체</h2>
-    <h2 align="center">구매정보</h2>
+    <p align="center">
+        물건명:<input type="text" name="pname"/><br>
+        가격:<input type="text" name="price"/><br>
+        갯수:<input type="text" name="cnt"/><br>
+        <input type="button" value="구매" onclick="buy()"/><br>
+    </p>
+    <h2 align="center">구매정보리스트</h2>
     <table id="show" border width="40%" align="center">
         <thead><tr><th>no</th><th>물건명</th><th>가격</th><th>갯수</th></tr></thead>
         <tbody></tbody>
