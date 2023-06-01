@@ -84,7 +84,12 @@
 	var h2Ob = document.querySelector("h2")
 	var cnt=1;
 	var set01 = setInterval(function(){
-	
+	  	h2Ob.innerText=(cnt++)+"번 Loading..."
+	  	if(cnt==6){
+	  		alert("중지!")
+	  		clearInterval(set01);
+	  	}
+	  	
 	},1000)
 	
 	
