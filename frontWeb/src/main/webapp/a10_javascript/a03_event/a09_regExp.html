@@ -36,6 +36,8 @@
 			var schTxt = document.querySelector("#schTxt")
 			var showInfo = document.querySelector("#showInfo")
 			schBtn.onclick=function(){
+				// var ptn01 = /사과/gi
+				// new RexExp(검색할문자열,'옵션')
 				var ptn01 = new RegExp(schTxt.value, 'gi'); // Create a regular expression dynamically
 				var str = text01.value;
 				var matches = str.match(ptn01)
@@ -43,7 +45,8 @@
 				if (matches === null) {
 					showInfo.innerHTML="데이터:없음, 조회 건수: 0, ";
 				} else {
-					showInfo.innerHTML="데이터:"+matches[0]+", 조회 건수:" + matches.length;
+					showInfo.innerHTML="데이터:"+matches[0]+", 조회 건수:"
+						+ matches.length;
 				}
 			}
 
@@ -77,6 +80,10 @@
 			phOb.onkeyup=function(){
 				// 전화번호의 정규식 유효 패턴
 				// 전화번호가 3자리-3~4자리-4자리 숫자로 구성되게 처리
+				// \d{3} : 숫자형으로 3자리가 있으면 
+				// ^\d{3} : 시작하면서 숫자로 3자리
+				// \d{4}$ : 마지막하면서 숫자로 3자리
+				// \d{3,3} : 중간에 숫자로 3자만. 최소, 최대
 				var phonePattern = /^\d{3}-\d{3,4}-\d{4}$/;
 				// 해당 패턴에 맞게 입력하면
 				if( phonePattern.test(this.value) ){
