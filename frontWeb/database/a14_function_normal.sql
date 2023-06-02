@@ -184,10 +184,52 @@ SELECT ename, deptno, sal,
 		ELSE sal*1.2
 	END 보너스
 FROM emp;	
-
-
-
-
+/*
+# sign(n)
+1. 비교시 주로 활용(범위설정)
+   1) n < 0 : -1리턴
+   2) n =0 : 0리턴
+   3) n > 1 : 1리턴
+ * */
+SELECT sign(-5),
+       sign(0),
+       sign(7)
+   FROM dual; 
+-- 급여가 3000이상인 경우와 그렇지 않은 경우
+SELECT sal, sign(sal - 3000) div
+FROM emp;
+-- decode 함수와 함께 혼합해서 원하는 데이터를 처리한다.
+-- ex) decode와 sign을 활용해서 2000이상인 경우와
+--     그렇지 않은 경우을 구분해서 2000미만인 경우 보너스대상자
+--     보너스대상자아님을 표시해보세요.
+SELECT ename, sal,
+decode(sign(sal-2000),-1,'보너스대상자',
+                      '보너스대상자아님') "대상구분"
+FROM emp;	
+/*
+# extract
+1. 날짜에서 숫자형으로 연도, 월, 일을 추출할 때 활용한다.
+2. 형식
+	extract(옵션 from 날짜형데이터)
+ * */
+SELECT 
+	extract(YEAR FROM sysdate) "오늘연도",
+	extract(MONTH FROM sysdate) "오늘월",
+	extract(DAY FROM sysdate) "오늘일"
+FROM dual;
+SELECT *
+FROM EMPLOYEES;
+--  EX) employees의 hire_date를 이용해서 숫자형으로
+--      년도, 월, 일을 뽑아 내되, sign() decode()와
+--      혼합해서 2005년이후입사자 여부를 출력하세요. 
+SELECT FIRST_name , 
+	  extract(YEAR FROM hire_date) 입사년도,
+	  extract(month FROM hire_date) 입사월,
+	  extract(day FROM hire_date) 입사일,
+	  decode( sign(
+	  		    extract(YEAR FROM hire_date)-2005), 
+	  		    -1,'이전','이후') "2005년전후"
+FROM EMPLOYEES;  
 
 
 
