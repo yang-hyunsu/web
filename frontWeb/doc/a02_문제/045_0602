@@ -1,0 +1,250 @@
+아래에 주어진 주제에 대한 4지선다형 퀴즈 문제 10개를 만들었습니다. 각 문제의 정답은 마지막에 첨부되어 있습니다.
+
+1. 정규식에서 패턴을 작성할 때 사용하는 리터럴 표기법은 무엇인가요?
+    A. /pattern/
+    B. pattern/
+    C. /pattern
+    D. pattern
+
+2. 정규식에서 대소문자를 구분하지 않고 매칭하려면 어떤 표현식을 사용해야 하나요?
+    A. /pattern/g
+    B. /pattern/m
+    C. /pattern/i
+    D. /pattern/
+
+3. 문자 클래스에서 a부터 z까지의 알파벳 중 하나와 매칭하는 표현식은 무엇인가요?
+    A. [abc]
+    B. [a-z]
+    C. [^abc]
+    D. [^0-9]
+
+4. 정규식에서 숫자와 매칭되는 특수 문자는 무엇인가요?
+    A. \s
+    B. \w
+    C. \d
+    D. \b
+
+5. 정규식에서 1개 이상의 반복에 매칭하는 수량자는 무엇인가요?
+    A. *
+    B. +
+    C. ?
+    D. {n}
+
+6. 정규식에서 여러 패턴 중 하나와 매칭하는 연산자는 무엇인가요?
+    A. .
+    B. |
+    C. ()
+    D. ^
+
+7. 정규식에서 해당 문자로 시작하는 것을 표현하는 기호는 무엇인가요?
+    A. 문자$
+    B. ^문자
+    C. 문자^
+    D. $문자
+
+8. 자바스크립트에서 json 형식의 객체를 어떻게 선언하는지 선택하세요.
+    A. {속성=속성값,....}
+    B. {속성:속성값,....}
+    C. {속성;속성값,....}
+    D. {속성<속성값,....}
+
+9. 객체형 배열에 추가 할당하는 방법 중 올바르지 않은 것은 무엇인가요?
+    A. arr1[0] = {name:"홍길동",age:25}
+    B. arr2.push({name:"오렌지",price:2000})
+    C. arr1.add({name:"홍길동",age:25})
+    D. arr2[1] = {name:"바나나",price:4500}
+
+10. json 객체의 배열 데이터를 반복문을 통해 처리할 때 사용되는 메서드는 무엇인가요?
+    A. forEach()
+    B. for()
+    C. repeat()
+    D. loop()
+
+정답: 
+1 - A,
+2 - C,
+3 - B,
+4 - C,
+5 - B,
+6 - B,
+7 - B,
+8 - B,
+9 - C,
+10 - A
+
+네, 아래는 요청하신 주제에 대한 4지선다 문제 10문제입니다.
+
+1. 정규식 표현 방식에서 패턴을 작성하는 리터럴 표기법을 표현하는 방법은 무엇인가요?
+    1. ()
+    2. []
+    3. {}
+    4. //
+
+2. 다음 중 대소문자 구분 없이 정규식 패턴 매칭을 할 때 사용하는 표기법은 무엇인가요?
+    1. /pattern/
+    2. /pattern/i
+    3. /pattern/g
+    4. /pattern/m
+
+3. 문자 클래스에서 'a'부터 'z'까지의 알파벳 중 하나와 매칭시키는 표현 방식은 무엇인가요?
+    1. [abc]
+    2. [a-z]
+    3. [^abc]
+    4. [^0-9]
+
+4. 다음 중 숫자와 매칭시키는 특수문자는 무엇인가요?
+    1. \d
+    2. \w
+    3. \s
+    4. \b
+
+5. 수량자에서 1개 이상의 반복에 매칭하는 표현은 무엇인가요?
+    1. *
+    2. +
+    3. ?
+    4. {n}
+
+6. 다음 중 임의의 문자와 매칭시키는 표현은 무엇인가요?
+    1. .
+    2. |
+    3. ()
+    4. ^문자
+
+7. 다음 코드의 정규식 (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/)은 무엇을 검증하는 코드인가요?
+    1. 비밀번호 형식
+    2. 이메일 형식
+    3. 전화번호 형식
+    4. 주민등록번호 형식
+
+8. 자바스크립트에서 객체를 생성하는 함수형 객체를 생성하는 방식은 무엇인가요?
+    1. new Object()
+    2. {key:value}
+    3. function Object()
+    4. new function()
+
+9. 자바스크립트에서 json 객체 선언 형식으로 올바른 것은 무엇인가요?
+    1. var 객체명 = {속성:속성값,....}
+    2. var 객체명 = (속성:속성값,....)
+    3. var 객체명 = [속성:속성값,....]
+    4. var 객체명 = {속성;속성값,....}
+
+10. 배열형 json 객체에서 객체의 속성값을 호출하는 방식 중 올바른 것은 무엇인가요?
+    1. arr1[0].name
+    2. arr1.0.name
+    3. arr1{name}.
+    4. arr1{name:0}
+
+정답: 
+1. 4 
+2. 2 
+3. 2 
+4. 1 
+5. 2 
+6. 1 
+7. 2 
+8. 4 
+9. 1 
+10. 1
+
+아래에는 요청하신 3개의 실습 응용 문제를 작성하였습니다. 
+
+1. 문자열에서 소문자와 대문자가 섞여 있는 경우에 대하여 대소문자 구분 없이 특정 문자를 찾아내는 정규 표현식을 작성하세요.
+
+2. 객체의 배열을 만들고, 이 객체에는 사람들의 이름(name)과 나이(age)가 들어가야 합니다. 이후 해당 배열에서 forEach를 사용하여 나이가 25세 이상인 사람들의 이름을 출력하는 코드를 작성하세요.
+
+3. 주어진 이메일 주소가 올바른 형식인지 판단하는 자바스크립트 함수를 작성하세요. 이 함수는 정규식을 사용해야 하며, 이메일 주소가 올바른 형식이면 "이메일 형식이 맞습니다."를 출력하고, 그렇지 않으면 "이메일 형식이 맞지 않습니다."를 출력해야 합니다.
+
+답변:
+
+1. 
+```javascript
+var str = "AppleBananaCherry";
+var pattern = /apple/i;
+console.log(pattern.test(str)); // true
+```
+
+2. 
+```javascript
+var people = [
+  {name: "홍길동", age: 24},
+  {name: "이몽룡", age: 26},
+  {name: "성춘향", age: 23},
+  {name: "박무방", age: 27}
+];
+
+people.forEach((person) => {
+  if(person.age >= 25){
+    console.log(person.name);
+  }
+});
+// 출력: 이몽룡
+// 출력: 박무방
+```
+
+3. 
+```javascript
+function validateEmail(email) {
+  var pattern = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/;
+  if (pattern.test(email)) {
+    console.log("이메일 형식이 맞습니다.");
+  } else {
+    console.log("이메일 형식이 맞지 않습니다.");
+  }
+}
+
+validateEmail("example@gmail.com"); // "이메일 형식이 맞습니다."
+validateEmail("example"); // "이메일 형식이 맞지 않습니다."
+```
+아래에는 기본적인 정규식에 관한 3개의 실습 문제를 제공합니다.
+
+## 실습 문제 1:
+
+다음 문장에서 소문자와 대문자를 구별하지 않고 'openai'가 있는지를 검색하는 정규식을 작성하세요.
+
+"OpenAI is an artificial intelligence research lab made up of the for-profit OpenAI LP and its parent company, the non-profit OpenAI Inc. OpenAI's mission is to ensure that artificial general intelligence benefits all of humanity."
+
+## 실습 문제 2:
+
+다음 문자열에서 전화번호 패턴(000-0000-0000 형식)을 찾아내는 정규식을 작성하세요.
+
+"My number is 010-1234-5678. Please do not hesitate to call me!"
+
+## 실습 문제 3:
+
+아래의 JSON 객체 배열에서 이름(name)과 나이(age)를 추출하여, 이를 문장으로 만드는 코드를 작성하세요.
+
+```javascript
+var arr = [
+    {name:"홍길동", age:25},
+    {name:"김철수", age:30},
+    {name:"박영희", age:28}
+]
+```
+- 문장 예시: "홍길동의 나이는 25살입니다."
+
+## 답:
+
+```javascript
+// 실습 문제 1 답:
+var str = "OpenAI is an artificial intelligence research lab made up of the for-profit OpenAI LP and its parent company, the non-profit OpenAI Inc. OpenAI's mission is to ensure that artificial general intelligence benefits all of humanity.";
+var pattern = /openai/gi;
+console.log(pattern.test(str)); // true
+
+// 실습 문제 2 답:
+var str = "My number is 010-1234-5678. Please do not hesitate to call me!";
+var pattern = /\d{3}-\d{4}-\d{4}/g;
+console.log(str.match(pattern)); // ["010-1234-5678"]
+
+// 실습 문제 3 답:
+var arr = [
+    {name:"홍길동", age:25},
+    {name:"김철수", age:30},
+    {name:"박영희", age:28}
+]
+arr.forEach((person)=>{
+    console.log(person.name + "의 나이는 " + person.age + "살입니다.");
+});
+```
+위의 코드는 각각의 문제에 대한 해결책을 제공합니다. 단, 실제 코드를 실행하려면 적절한 실행 환경이 필요합니다.
+
+
