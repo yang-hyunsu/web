@@ -32,6 +32,9 @@
             // 중앙으로(눌렀다가 떼었을 때)
             // this : window 전체 화면 대상으로 이벤트가
             // 발생했을 때..
+            // this : window (BOM) Broser Object Model
+            // body에 있는 각각의 태그를 객체 : (DOM) Document Object Model
+            
             this.onkeyup=function(){
                 h2Obj.innerText = "키코드값:"+event.keyCode
                 // 화면에서 색상을 초기화 처리
