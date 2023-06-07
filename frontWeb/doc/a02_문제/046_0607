@@ -154,7 +154,6 @@ SELECT ename,
        END as salary_level 
 FROM emp;
 ```
-네, 아래에 해당 함수를 활용한 연습 문제를 만들어보겠습니다.
 
 문제 1:
 사원들의 보너스를 계산하려 합니다. 보너스는 comm 값에 10%를 더한 값입니다. 만약 comm이 null인 경우에는 sal의 20%로 보너스를 설정하고, 이 보너스의 합산 금액을 출력하시오.
@@ -206,8 +205,6 @@ SELECT ename, hire
 
 date, DECODE(SIGN(EXTRACT(YEAR FROM hiredate) - 2023), 1, 'Y', 'N') as "After 2023" FROM emp;
 ```
-네, EMP 테이블을 기반으로 여러 함수를 사용한 SQL 연습문제를 만들어 드리겠습니다. 데이터베이스 스키마가 표준 EMP 테이블과 다른 경우에는 아래 문제가 정확하게 작동하지 않을 수 있으니 주의해 주세요. EMP 테이블은 일반적으로 EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO 등의 필드를 가지고 있습니다.
-
 1. nvl 함수
     - 문제: EMP 테이블에서 각 사원의 이름, 월급, 커미션을 조회하고, 커미션이 NULL인 경우 0을 출력하시오.
     - 정답: 
