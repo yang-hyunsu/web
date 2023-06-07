@@ -1,48 +1,13 @@
 /*
-# 그룹함수란?
-1. 테이블의 전체 행을 하나 이상의 컬럼을 기준으로 그룹화하여
-그룹별로 결과를 출력하는 함수, 그룹함수는 통계적인 결과를 출력
-하는데 자주 사용한다.
-2. 기본 형식
-	select 기준컬럼, 그룹함수(컬럼)
-	from 테이블명
-	where
-	group by 그룹컬럼
-	having 그룹함수를 적용한 결과를 조건 처리
-3. 그룹함수의 종류
-	1) count() : null을 제회한 데이터의 건수, 행의 건수
-	2) max() : null을 제외한 모든 행의 최대값
-	3) min() : null을 제외한 모든 행의 최소값
-	4) sum() : null을 제외한 모든 행의 합
-	5) avg() : null을 제외한 모든 행의 평균값
-	6) stddev() : null을 제외한 모든 행의 표준편차
-	7) variance() : null을 제외한 모든 행의 분산값
- * */
-SELECT comm
-FROM emp;
-SELECT count(comm)
-FROM emp;
--- emp테이블에서 comm의 전체 컬럼의 null을 제외한 데이터 건수
-SELECT max(comm), min(comm), avg(comm)
-FROM emp;
-
-SELECT deptno, sal
-FROM emp
-ORDER BY deptno, sal;
--- 부서별로, sal를 가진 데이터 건수가 얼마일까? 
--- 부서별로, sal를 가진 데이터 최대값 얼마일까? 
--- 부서별로, sal를 가진 데이터 최소값 얼마일까? 
--- 부서별로, sal를 가진 데이터 평균 얼마일까? 
-SELECT deptno, count(sal) "건수", max(sal) "최대",
-       min(sal) "최소"
-FROM emp
-GROUP BY deptno
-ORDER BY deptno;
--- select 그룹할컬럼, 함수(통계처리할데이터)
--- from 테이블
--- group by 그룹할컬럼
--- 주의 : 그룹할컬럼은 select 하나만 지정하면, group by 하나만 지정.
---       통계할 함수는 여러개를 선언해서 확인하는 것은 상관 없음.
-
-
-
+# 조인
+1. 하나의 sql명령문에 의해 여러 테이블에 저장된 데이터를 한번에
+	조회할 수 있는 기능을 말한다.
+2. 관계형 데이터베이스 분야의 표준으로 자리 잡고 있다.
+3. 두개 이상의 테이블을 결합한다는 의미이다.
+4. 단계별 학습 내용
+	1) 기본 조인 구문 형식 이해 및 활용
+	2) 여러가지 조인 구문 형식 활용
+	3) subquery, inline view을 통한 조인 구문 처리
+		그룹함수 처리 후, 조인 처리 등
+	4) 여러가지 복합 형식의 조인 구문 처리
+**/
