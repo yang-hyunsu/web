@@ -100,15 +100,16 @@
               FROM emp WHERE deptno = e.deptno);
              
    SELECT e.ename, e.dname, e.sal
-   FROM (SELECT ename, dname, e.deptno, sal 
-         FROM emp e, dept d
+   FROM (
+         SELECT ename, dname, e.deptno, sal 
+           FROM emp e, dept d
          WHERE e.deptno = d.deptno
-         ) e, (
-      SELECT e.deptno, min(sal) sal
-      FROM emp e, dept d
-      WHERE e.deptno = d.deptno
-      GROUP BY e.deptno
-   ) d
+        ) e, 
+       (
+        SELECT deptno, min(sal) sal
+        FROM emp e
+        GROUP BY e.deptno
+      ) d
    where e.deptno = d.deptno
    AND e.sal = d.sal; 
              
