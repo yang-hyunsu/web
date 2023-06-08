@@ -1,0 +1,115 @@
+--1. Group 함수 연습 예제:
+--   1.1 직업별로 평균 급여를 계산하시오.
+--   1.2 각 부서별로 가장 높은 급여를 받는 사람을 찾으시오.
+--
+--2. Subquery 연습 예제:
+--   2.1 급여가 평균 급여보다 많이 받는 사원들의 이름과 급여를 찾으시오.
+--   2.2 Smith의 급여보다 많은 급여를 받는 사원들의 이름과 급여를 찾으시오.
+--
+--3. Outer Join 연습 예제:
+--   3.1 사원들의 이름과 부서 이름을 가져오시오. (부서에 할당되지 않은 사원도 포함)
+--   3.2 각 부서별로 최대 급여를 받는 사원의 이름을 가져오시오. (부서에 할당되지 않은 사원도 포함)
+--
+--4. Group 함수와 Subquery를 조합한 연습 예제:
+--   4.1 각 직업별로 최대 급여를 받는 사원의 이름을 가져오시오.
+--   4.2 각 부서별로 최소 급여를 받는 사원의 이름을 가져오시오.
+--   
+--   
+--1. Group 함수 연습 예제:
+--   1.1 직업별로 평균 급여를 계산하시오.
+--   ```
+   SELECT job, round(AVG(sal),1) sal
+   FROM emp
+   GROUP BY job;
+--   ```
+--
+--   1.2 각 부서별로 가장 높은 급여를 받는 사람을 찾으시오.
+--   ```
+   SELECT *
+   FROM emp e,
+   (SELECT deptno, MAX(sal) sal
+     FROM emp
+     GROUP BY deptno) me
+   WHERE e.deptno = me.deptno
+     and e.sal = me.sal;
+--   ```
+--
+--2. Subquery 연습 예제:
+--   2.1 급여가 평균 급여보다 많이 받는 사원들의 이름과 급여를 찾으시오.
+--   ```
+    SELECT AVG(sal) FROM emp;
+   SELECT ename, sal
+   FROM emp
+   WHERE sal > (SELECT AVG(sal) FROM emp);
+--   ```
+--
+--   2.2 Smith의 급여보다 많은 급여를 받는 사원들의 이름과 급여를 찾으시오.
+--   ```
+   SELECT sal FROM emp WHERE ename='SMITH';
+   SELECT ename, sal
+   FROM emp
+   WHERE sal > (SELECT sal FROM emp WHERE ename='SMITH');
+--   ```
+--
+--3. Outer Join 연습 예제:
+--   3.1 사원들의 이름과 부서 이름을 가져오시오. (부서에 할당되지 않은 사원도 포함)
+--   ```
+--  outer join null이 나올 수 있는 테이블과 컬럼에 (+)를 처리
+   SELECT e.ename, d.dname
+   FROM emp e, dept d
+   where e.deptno(+) = d.deptno;
+--   ```
+--
+--   3.2 각 부서별로 최대 급여를 받는 사원의 이름을 가져오시오. 
+--     (부서에 할당되지 않은 사원도 포함)
+--     사원 1000 홍길동 null/50...
+--         null뿐만아니라 부서정보에 없은 사원의 부서번호도 포함..
+--     부서 10,20,30,40  
+--   ```
+   SELECT e.ename, d.dname
+   FROM emp e, dept d
+   where e.deptno(+) = d.deptno
+   and sal = (SELECT MAX(sal) 
+              FROM emp WHERE deptno = e.deptno);
+--   ```
+--
+--4. Group 함수와 Subquery를 조합한 연습 예제:
+--   4.1 각 직업별로 최대 급여를 받는 사원의 이름을 가져오시오.
+--   ```
+   SELECT e.ename, e.job
+   FROM emp e
+   WHERE sal = (SELECT MAX(sal) 
+                FROM emp 
+               WHERE job = e.job);  
+   SELECT e.ename, e.job
+   FROM emp e,
+   (SELECT job, max(sal) sal
+    FROM emp 
+    GROUP BY job
+   ) me
+   WHERE e.job = me.job
+   AND e.sal = me.sal; 
+--   ```
+--
+--   4.2 각 부서별로 최소 급여를 받는 사원의 이름을 가져오시오.
+--   ```
+   SELECT e.ename, d.dname
+   FROM emp e , dept d
+   where e.deptno = d.deptno
+   and sal = (SELECT MIN(sal)
+              FROM emp WHERE deptno = e.deptno);
+             
+   SELECT e.ename, e.dname, e.sal
+   FROM (SELECT ename, dname, e.deptno, sal 
+         FROM emp e, dept d
+         WHERE e.deptno = d.deptno
+         ) e, (
+      SELECT e.deptno, min(sal) sal
+      FROM emp e, dept d
+      WHERE e.deptno = d.deptno
+      GROUP BY e.deptno
+   ) d
+   where e.deptno = d.deptno
+   AND e.sal = d.sal; 
+             
+--   ```
