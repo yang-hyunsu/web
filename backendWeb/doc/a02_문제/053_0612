@@ -1,0 +1,106 @@
+아래의 예제를 참고하여 풀어볼 수 있습니다.
+
+1. 실습예제1) 
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>홀짝 체크 게임</title>
+</head>
+<body>
+<h2>홀짝 체크 게임</h2> 
+<table width="50%" border>
+<%
+    for(int i=1;i<=10;i++){ 
+%>
+    <tr>
+        <td>숫자 : <%=i%></td>
+        <td><a href="?num=<%=i%>">정답 확인</a></td>
+    </tr>
+<%
+    }
+%>
+</table>
+
+<%
+    String numStr = request.getParameter("num");
+    if(numStr != null) {
+        int num = Integer.parseInt(numStr);
+        String result = (Math.random() > 0.5) ? "정답" : "오답";
+        out.println("<h3>당신이 선택한 숫자는 " + num + "이며, 결과는 " + result + "입니다.</h3>");
+    }
+%>
+</body>
+</html>
+```
+2. 실습예제2)
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>3/6/9 게임</title>
+</head>
+<body>
+<h2>3/6/9 게임</h2> 
+<table width="50%" border>
+<%
+    for(int i=1;i<=4;i++){ 
+%>
+    <tr>
+        <%for(int j=1;j<=4;j++){
+            int num = 4 * (i-1) + j;
+            String displayNum = (num % 3 == 0) ? "짝" : String.valueOf(num);
+        %>
+            <td><%=displayNum%></td>
+        <%}%>
+    </tr>
+<%
+    }
+%>
+</table>
+</body>
+</html>
+```
+3. 실습예제3)
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>도서 대출 정보</title>
+</head>
+<body>
+<h2>도서 대출 정보</h2> 
+<table width="50%" border>
+<tr>
+    <th>도서 번호</th>
+    <th>도서 제목</th>
+    <th>대출자</th>
+</tr>
+<%
+    ArrayList<BookVO> bookList = getBookList(); // 대출 도서 목록을 가져오는 함수를 가정합니다.
+    for(BookVO book : bookList){ 
+%>
+    <tr>
+        <td><%=book.getBookNumber()%></td>
+        <td><%=book.getBookTitle()%></td>
+        <td><%=book.getBorrower()%></td>
+    </tr>
+<%
+    }
+%>
+</table>
+</body>
+</html>
+```
+이 예제에서는 `BookVO` 클래스가 존재하며 `getBookNumber()`, `getBookTitle()`, `getBorrower()` 메서드
+
+가 존재하는 것으로 가정하였습니다. 또한, `getBookList()`는 `BookVO` 객체의 `ArrayList`를 반환하는 함수를 가정하였습니다. 이 함수는 실제로 DB에서 데이터를 가져오는 로직을 포함해야 할 수 있습니다. 이는 실제 상황에 따라 다르기 때문에, 위의 코드는 이러한 가정들을 기반으로 한 예시일 뿐입니다. 실제 구현 시에는 이를 고려해야 합니다.
