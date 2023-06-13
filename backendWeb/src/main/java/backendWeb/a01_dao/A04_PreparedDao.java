@@ -14,6 +14,7 @@ import backendWeb.z01_vo.Employee;
 import backendWeb.z01_vo.Job;
 import backendWeb.z01_vo.JobHistory;
 import backendWeb.z01_vo.Location;
+import backendWeb.z01_vo.Manager;
 
 
 
@@ -301,6 +302,37 @@ public class A04_PreparedDao {
 	        DB.close(rs, pstmt, con);
 	    }
 	    return emp;
+	}
+
+	public List<Manager> getManager() {
+	    List<Manager> elist = new ArrayList<Manager>();
+	    String sql = "SELECT empno, ename, dname\r\n"
+	    		+ "	FROM emp e, dept d\r\n"
+	    		+ "	WHERE e.deptno = d.deptno\r\n"
+	    		+ "	AND empno in (\r\n"
+	    		+ "	   SELECT DISTINCT mgr FROM emp\r\n"
+	    		+ "	) ";
+	    System.out.println("# DB 접속 #");
+	    try {
+	        con = DB.con();
+	        pstmt = con.prepareStatement(sql); 
+	        rs = pstmt.executeQuery();
+	        while (rs.next()) {
+	        	// empno, ename, dname
+	            elist.add(new Manager(
+	                    rs.getInt("empno"),
+	                    rs.getString("ename"),
+	                    rs.getString("dname")
+	            ));
+	        }
+	    } catch (SQLException e) {
+	        System.out.println("DB 관련 오류: " + e.getMessage());
+	    } catch (Exception e) {
+	        System.out.println("일반 오류: " + e.getMessage());
+	    } finally {
+	        DB.close(rs, pstmt, con);
+	    }
+	    return elist;
 	}
 
 	public static void main(String[] args) {

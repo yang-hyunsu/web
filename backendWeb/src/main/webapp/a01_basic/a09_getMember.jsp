@@ -28,10 +28,35 @@
 	checkbox
 	radio 
 
+# 관리자 정보를 select에 가져와서 검색할 때
+관리자:[select    ]  검색/상세/등록/수정화면
+1. 관리자 combox 처리 화면 UI만들기
+   관리자:[전체선택] 
+         홍길동(부서명) ==> 1000
+         김길동(부서명) ==> 1002
+         신길동(부서명) ==> 1003
+2. sql 작성
+	SELECT empno, ename, dname
+	FROM emp e, dept d
+	WHERE e.deptno = d.deptno
+	AND empno in (
+	   SELECT DISTINCT mgr FROM emp
+	)
+3. VO를 작성 관리자번호, 부서명,관리자명
+	backendWeb.z01_vo.Manager
 
-	
-
+4. Dao 메서드 추가
+	public List<Manager> getManager()
+5. jsp
+	import vo/dao
+    객체 생성
+    화면에 forEach문 처리..	
  --%>
+ 	<h2>관리자 콤보</h2>
+ 	관리자명:<select name="mgr">
+ 				<option value='0'>선택하세요!!</option>
+ 				<option value='1000'>홍길동(인사)</option>
+ 		   </select>
 
 </body>
 </html>
