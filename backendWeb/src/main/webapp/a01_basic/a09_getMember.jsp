@@ -2,8 +2,14 @@
     pageEncoding="UTF-8"
     import="backendWeb.z01_vo.Member"
     import="backendWeb.a01_dao.A05_MemberDao"
+    import="backendWeb.z01_vo.Manager"
+    import="backendWeb.a01_dao.A04_PreparedDao"
+    import="java.util.List"
     %>
 <%
+	A04_PreparedDao dao2 = new A04_PreparedDao();
+	List<Manager> mlist = dao2.getManager();
+
 	A05_MemberDao dao = new A05_MemberDao();
  
 	Member m = dao.login("himan", "7777");
@@ -44,8 +50,9 @@
 	)
 3. VO를 작성 관리자번호, 부서명,관리자명
 	backendWeb.z01_vo.Manager
-
+    backendWeb.a01_dao.A04_PreparedDao
 4. Dao 메서드 추가
+    backendWeb.a01_dao.A04_PreparedDao
 	public List<Manager> getManager()
 5. jsp
 	import vo/dao
@@ -53,9 +60,13 @@
     화면에 forEach문 처리..	
  --%>
  	<h2>관리자 콤보</h2>
- 	관리자명:<select name="mgr">
+ 	관리자명:<select name="mgr" onchange="alert(this.value)">
  				<option value='0'>선택하세요!!</option>
- 				<option value='1000'>홍길동(인사)</option>
+ 				<%for(Manager mgr:mlist){ %>
+ 				
+ 				<option value='<%=mgr.getEmpno()%>'>
+ 					<%=mgr.getEname()%>(<%=mgr.getDname() %>)</option>
+ 				<%}%>
  		   </select>
 
 </body>

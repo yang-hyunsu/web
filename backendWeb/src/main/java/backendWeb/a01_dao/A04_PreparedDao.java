@@ -19,7 +19,7 @@ import backendWeb.z01_vo.Manager;
 
 
 // ctrl+shift+o
-// frontWeb.A04_PreparedDao
+// backendWeb.a01_dao.A04_PreparedDao
 public class A04_PreparedDao {
     private Connection con;
     private PreparedStatement pstmt;
@@ -311,7 +311,7 @@ public class A04_PreparedDao {
 	    		+ "	WHERE e.deptno = d.deptno\r\n"
 	    		+ "	AND empno in (\r\n"
 	    		+ "	   SELECT DISTINCT mgr FROM emp\r\n"
-	    		+ "	) ";
+	    		+ "	) order by ename ";
 	    System.out.println("# DB 접속 #");
 	    try {
 	        con = DB.con();
