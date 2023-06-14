@@ -1,5 +1,5 @@
 package backendWeb.z01_vo;
-
+// backendWeb.z01_vo.Job
 public class Job {
 	private String job_id;
 	private String job_title;

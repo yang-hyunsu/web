@@ -41,6 +41,12 @@ html 중간중간에 추가해서 최종적으로 html+java를 만들어서 clie
 		출력할 때, 사용하는 expression 형식 처리.. --%>
 	<h2>나이:<%=age %></h2>
 	<h2>사는곳:<%=loc %></h2>
+	<%
+	out.write("<h3>출력 내용</h3>");
+	out.newLine();
+	out.write("<h3>출력 내용</h3>");
+	
+	%>
 
 </body>
 </html>

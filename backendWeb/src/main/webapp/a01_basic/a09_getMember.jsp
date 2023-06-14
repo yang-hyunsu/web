@@ -54,6 +54,9 @@
 4. Dao 메서드 추가
     backendWeb.a01_dao.A04_PreparedDao
 	public List<Manager> getManager()
+	데이터의 형태에 따라 단일 컬럼으로 
+	나올 경우
+	public List<String> getList()	
 5. jsp
 	import vo/dao
     객체 생성
@@ -62,8 +65,7 @@
  	<h2>관리자 콤보</h2>
  	관리자명:<select name="mgr" onchange="alert(this.value)">
  				<option value='0'>선택하세요!!</option>
- 				<%for(Manager mgr:mlist){ %>
- 				
+ 				<%for(Manager mgr:mlist){ %> 				
  				<option value='<%=mgr.getEmpno()%>'>
  					<%=mgr.getEname()%>(<%=mgr.getDname() %>)</option>
  				<%}%>

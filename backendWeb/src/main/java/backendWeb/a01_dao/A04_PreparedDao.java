@@ -335,6 +335,35 @@ public class A04_PreparedDao {
 	    return elist;
 	}
 
+	public List<Job> getJobs() {
+	    List<Job> elist = new ArrayList<Job>();
+	    String sql = "	SELECT * \r\n"
+	    		+ "	FROM jobs\r\n"
+	    		+ "	ORDER BY job_title ";
+	    System.out.println("# DB 접속 #");
+	    try {
+	        con = DB.con();
+	        pstmt = con.prepareStatement(sql); 
+	        rs = pstmt.executeQuery();
+	        //job_id, job_title, min_salary, max_salary
+	        while (rs.next()) {
+	        	elist.add(new Job(
+	        			rs.getString("job_id"),
+	        			rs.getString("job_title"),
+	        			rs.getInt("min_salary"),
+	        			rs.getInt("max_salary")
+	            ));
+	        }
+	    } catch (SQLException e) {
+	        System.out.println("DB 관련 오류: " + e.getMessage());
+	    } catch (Exception e) {
+	        System.out.println("일반 오류: " + e.getMessage());
+	    } finally {
+	        DB.close(rs, pstmt, con);
+	    }
+	    return elist;
+	}
+
 	public static void main(String[] args) {
         A04_PreparedDao dao = new A04_PreparedDao();
         dao.deleteLocation(1000);

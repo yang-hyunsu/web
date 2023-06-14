@@ -1,3 +1,4 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.Out"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -36,7 +37,7 @@ jsp 주석은 서버단에서 처리되기에 브라우저를 통해
     //     변수로 물건명 가격, 메서드로 물건명(가격) 형태로 리턴하는
     //     내용을 선언하여, 하단에서 h3로 변수와 메서드를 호출해보세요
     
-
+	
 %> 
 <h2>jsp의 스크립트</h2>
 <h2>선언된 변수 호출:<%=pname %></h2>

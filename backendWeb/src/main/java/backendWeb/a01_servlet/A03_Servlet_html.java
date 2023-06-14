@@ -35,6 +35,7 @@ public class A03_Servlet_html extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		// 3. Stream으로 출력 처리하는 객체..
 		PrintWriter out = response.getWriter();
+		out.write("안녕하세요!!");
 		for(int cnt=1;cnt<=10;cnt++) {
 			out.print("<h2>"+cnt+"번째 안녕하세요!! ^^</h2>");
 		}

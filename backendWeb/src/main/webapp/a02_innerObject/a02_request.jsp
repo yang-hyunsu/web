@@ -35,8 +35,15 @@
 3. form요소객체와 query string과의 관계
 4. form있는 속성
    요소객체의 속성을 통한 데이터 처리
-5. 단일 데이터 전송과 다중 데이터 전송
-6. form요소객체, dao와 연동하여
+5. 다양한 query string 처리 예시
+	1) front단(js)
+		location.href="a01.jsp?id="+idVal+"&pwd="+passVal
+		<a href="a02.jsp?id=himan&pwd=7777">특정페이지 호출</a>
+	2) back단(jsp)
+		조건문에서 처리
+		reponse.sendRedirect("a02.jsp?pname=사과&price=3000");			    
+6. 단일 데이터 전송과 다중 데이터 전송
+7. form요소객체, dao와 연동하여
 	1) 조회
 	2) 등록
 	3) 수정
@@ -54,7 +61,7 @@ a03_req.jsp?name=마길동&kor=70&eng=80&math=90
 
 String korS = request.getParameter("kor");
 String engS = request.getParameter("eng");
-
+// int  kor =Integer.parseInt(korS);
 int kor = 0;
 if(korS!=null){
 	kor =Integer.parseInt(korS);

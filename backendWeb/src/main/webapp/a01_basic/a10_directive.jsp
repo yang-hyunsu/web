@@ -8,7 +8,8 @@
 </head>
 <body>
 <%-- jsp include 지시자로 페이지 지정 --%>
-<%@ include file="a11_subPage.jsp" %>    
+<%@ include file="a11_subPage.jsp" %>
+   
 <h2>현재 페이지의 메인 내용</h2>
 <h2>선언된 변수를 사용:<%=name %></h2>
 <%-- ex) a12_main.jsp 아래 내용을 include지시자에 의해 호출
@@ -40,11 +41,19 @@
 	 	java코드로 사용하는 script의 확장으로 보다 효과적으로 
 	 	화면구성을 하게 처리할 수 있는 확장형 taglib을 선언하여 
 	 	사용할 수 있다.
+	 	ex) <tab01 pattern="t01"/>
 	 3) include : 다른 jsp 파일을 현재페이지에 포함할 때 사용한다
 	 	file 속성에 포함할 파일의 경로를 지정한다.
 	 	페이지 안에 공통적인 변수나 html에 사용할 공통화면을 활용하고
 	 	자 할 때 사용한다.
-	 	
+3. 주요 팁
+	1) 반드시 java 코드의 경우 포함된 페이지의 변수는 상단에서
+		하단으로 컴파일 처리와 실행 처리되기에, 위치 선언을 명확하게
+		하여야 한다.(소스내 코드로 생각)
+	2) css, js의 선언 규칙도 하나의 소스로 생각해서 그대로 적용된다.
+		- window.onload=function(){}
+		- inline style 등에 대한 적용 등..
+		 	
 	 	
 	 	
 
