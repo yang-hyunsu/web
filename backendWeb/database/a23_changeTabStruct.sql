@@ -2,6 +2,7 @@ CREATE TABLE emp13
 AS SELECT * FROM emp;
 SELECT * FROM emp13;
 ALTER TABLE emp13
+
 ADD dname varchar2(50);
 ALTER TABLE emp13
 RENAME COLUMN ename  TO empenme;
