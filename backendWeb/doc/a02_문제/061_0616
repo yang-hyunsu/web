@@ -263,8 +263,7 @@
     	request.getParameter("key");
     	예외) 서버단에서 보내게 할때(클라이언트단에 가서 다시 서버단 호출)
     	response.sendRedirect("@@@jsp?key=val");	
-    	
-15:10~    
+
     
     
     
