@@ -47,10 +47,23 @@
 	3. boolean형 받기.
 	
 	# 요청 데이터로 객체 처리
+	1. 요청값을 객체의 속성으로 지정해서,
+		요청값을 받아서 객체로 생성해서 처리한다.
+	2. 객체로 만들면 효과적으로 데이터를 처리할 수 있는 형태가 된다.
+		- dao 메서드 호출
+		- 화면단에 getXX로 호출..
+		- 외부 패키지에 매개 객체로 전달.
 	
 3. form요소객체와 query string과의 관계
+	?key=val&key1=val1
+	
+	name="key" value="val"
+	name="key1" value="val1"
 4. form있는 속성
    요소객체의 속성을 통한 데이터 처리
+   - action
+   - method : get/post
+   
 5. 다양한 query string 처리 예시
 	1) front단(js)
 		location.href="a01.jsp?id="+idVal+"&pwd="+passVal
@@ -58,7 +71,26 @@
 	2) back단(jsp)
 		조건문에서 처리
 		reponse.sendRedirect("a02.jsp?pname=사과&price=3000");			    
-6. 단일 데이터 전송과 다중 데이터 전송
+6. 단일 데이터 전송과 다중 데이터 전송(
+	String arry = request.getParameterValue("");
+	1) 순수 query string으로 처리
+	2) form 요소객체
+		
+		<input type="text" name="req01"
+		<input type="text" name="req01"
+		<input type="text" name="req01"
+		
+		<input type="checkbox" name="ck01" checked가 된 다중
+		<input type="checkbox" name="ck01"
+		<input type="checkbox" name="ck01"
+		<input type="checkbox" name="ck01"
+		
+		<select name="req2" multiple> ctrl로 선택한 다중
+			<option>사과<option>
+			<option>바나나<option>
+			<option>딸기<option>
+			<option>오렌지<option>
+
 7. form요소객체, dao와 연동하여
 	1) 조회
 	2) 등록
@@ -69,7 +101,7 @@
 
 # query string에 의해 데이터 받기..
 a02_request.jsp?name=홍길동&age=25&loc=서울강남
-query strinng으로 age, loc로 나이와 사는 곳의 데이터 입력하고,
+query string으로 age, loc로 나이와 사는 곳의 데이터 입력하고,
 화면에 나이와 사는 곳의 정보를 출력..
 hint) 페이지?key=value&key2=value2&key3=value3
 
