@@ -5,12 +5,16 @@
 2. 기본 형식
 	1) 생성
 	create sequence 시퀀스명
-		increment by 증가단위
+		increment by 증감단위
 		start with 시작번호
 		minvalue 최소값 
 		maxvalue 최대값
 		cycle|nocycle 최소값/최대값이를 때 반복여부 설정
 		cache n|nocache 속도 개선을 위한 메모리 캐시 시퀀스 갯수
+		
+	create sequence 시퀀스명;
+		default로 시작번호1, 1씩 증가 처리되는 시퀀스가 만들어
+		진다. 주의) 버젼에 따라 실행되지 않을 수 있다.
 	2) 사용
 		시퀀스명.nextval : 하나씩 증가하면서 데이터가져오기
 		시퀀스명.currval : 현재 번호를 가져온다.

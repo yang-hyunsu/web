@@ -20,25 +20,36 @@
 	2) unique key : 테이블의 모든 행에서 고유한 값을 갖는 열 또는
 		열 조합을 지정해야 한다. ex) 학번, 주민번호, 사원번호를
 		중복되지 않아야 한다.
-		ps) null은 입력이 가능하고, 여러가지 null은 중복이 가능..
+		ps) null은 입력이 가능하고, null은 중복이 가능..
+			무조건 primary key을 통해서 not null + 구분자로
+			처리하는 것이 아니라 구분을 하되 데이터가 확정되지 않은
+			경우는 null로 할당하게 할 때, 사용된다. 
 	3) primary key : 해당 컬럼 값은 받드시 존재하며 유일해야 한다.
 		not null과 unique가 결합된 형태
 		주로 테이블에서 식별해야할 컬럼 즉, key를 설정할 때, 사용된다.
 		ex) emp 테이블의 empno, dept테이블의 deptno
 	4) check : 해당 컬럼에 저장 가능한 데이터 범위나 조건을 지정처리
 		ex) student테이블의 학년은 1,2,3,4만 데이터로 넣을 수 있다.
+		임시적으로 inline으로 subquery를 통해 데이터의 입력 범위를
+		설정도 가능하다..
 
 	5) foreign key : 한 열과 참조된 테이블의 열간의 외래 키 관계를
 		설정하고 시행
 		ex) 사원 테이블의 부서번호는 반드시 부서테이블에 있는 부서번호
 			이어야 한다.
+		주의) 연관테이블에 식별자와 비식별로 처리할 때, 사용된다.
+			
 5. 설정 형식
 	1) 컬럼명 데이터타입 constraints 제약조건명 제약조건
 		제약조건명 : 테이블명_컬럼명_제약조건종류
 	2) primary key 지정
 	
 	ex) create table student(
-	       stuno number constraint student_stunno_pk primary key
+	       stuno number constraint student_stunno_pk primary key,
+	       name varchar2 not null, -- 제약명을 자동으로 설정
+	       grade number(1),
+	       constraint student_grade_ck check (grade in (1,2,3,4))
+	       -- 테이블 생성 마지막 라인에서 제약조건 선언 형태.
 	    );
 		제약조건 이름 : 테이블명_컬럼명_제약조건종류
 			제약조건 종류 : pk, uq, nn, fk

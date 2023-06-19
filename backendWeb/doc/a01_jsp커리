@@ -17,6 +17,45 @@
    - request, response, session, application 등의 내장 객체 활용
    - 내장 객체를 통한 데이터 전달 및 공유 방법
    - 내장 객체의 스코프와 라이프사이클 이해
+   # requst를 통한 요청값 처리
+   1. url로 요청처리 연습
+      - 문자열
+      - 숫자형처리 int num=0; 
+                if(reqStr!=null) num = Integer.parseInt(reqStr)
+      - 다중의요청값(동일한요청키를 여러개의 값설정)
+        배열처리
+      - 요청값을 객체로 할당.
+      - js에 처리방식
+        location.href=""
+   2. form객체를 활용해서 요청값처리
+      - get방식
+        단일 name, value
+        다중 name 동일한 내용 value ==> 다중의요청값(동일한요청키를 여러개의 값설정)
+        	type=text : 모두 다 배열로 전송
+        	type=checkbox : check된 것만 배열로 전송
+            select multiple
+      - post방식
+      
+      - 페이지 단위로 전송
+      	페이지1 ==> 페이지2
+      	페이지1 loop back으로 현재 페이지1을 호출하는 경우.(주의)
+      		초기페이지/호출된 페이지에 대한 내용을 구분하기 위하여
+      		조건문 처리를 하여야 한다.
+    3. 요청값과 js의 처리(front vs back)
+    	1) 페이지1 
+    		form이나 js에 의해 요청값 전달
+    	2) 페이지2
+    		String name = request.getParameter("name");
+    		js
+    		var name = "<%=name%>"
+    		if(name=='himan'){
+    			alert(name+"님 등록 성공")
+    		}else{
+    			alert("등록 실패했습니다")
+    		}
+	4. 요청값 VO객체 만들기
+	5. 요청값 처리된 내용 DB연동 처리
+   
 
 5. 데이터베이스 연동
    - JDBC를 활용한 데이터베이스 연결 및 쿼리 처리
