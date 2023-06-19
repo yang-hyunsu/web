@@ -1,5 +1,5 @@
 package backendWeb.z01_vo;
-
+// backendWeb.z01_vo.Dept
 public class Dept {
 	private int deptno;
 	private String dname;

@@ -1,5 +1,5 @@
 package backendWeb.z01_vo;
-
+// backendWeb.z01_vo.Emp
 import java.util.Date;
 
 public class Emp {
@@ -31,7 +31,8 @@ public class Emp {
 	Emp(7369, "오길동(upt)", "대리", "2023/06/01",5000.0)
 	*/
 	
-	public Emp(int empno, String ename, String job, String hiredateS, Double sal) {
+	public Emp(int empno, String ename, String job,
+			String hiredateS, Double sal) {
 		this.empno = empno;
 		this.ename = ename;
 		this.job = job;
