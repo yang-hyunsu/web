@@ -26,10 +26,10 @@
 	 --%>
 
     <div class="container mt-3">
-    	<h2>사원정보 등록</h2>
-    	<form action="" method="post">
+    	<h2>사원정보 조회</h2>
+    	<form method="post">
          	<div class="mb-3 mt-3">
-            <label for="empno">사원번호:</label>
+            <label for="job">직책:</label>
             <input type="number" class="form-control" 
       	     id="empno" placeholder="사원번호 입력" name="empno">
          	</div>

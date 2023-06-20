@@ -27,14 +27,14 @@
      	</form>
 		<table class="table table-striped table-hover">
 			<thead class="table-success">
-		      	<tr>
+		      	<tr  class="text-center">
 				    <th>Firstname</th>
 				    <th>Lastname</th>
 				    <th>Email</th>
 		      	</tr>
 		    </thead>
 		    <tbody>
-			   	<tr>
+			   	<tr  class="text-center">
 			        <td>John</td>
 			        <td>Doe</td>
 			        <td>john@example.com</td>
