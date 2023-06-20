@@ -1,5 +1,5 @@
 package backendWeb.z01_vo;
-// backWeb2.z01_vo.Member
+// backendWeb.z01_vo.Member
 import java.util.Date;
 
 public class Member {
@@ -13,7 +13,8 @@ public class Member {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
+	// backWeb2.z01_vo.Member
+	// Member(String id, String pass, String name, String auth, int point) 
 	public Member(String id, String pass, String name, String auth, int point) {
 		this.id = id;
 		this.pass = pass;
