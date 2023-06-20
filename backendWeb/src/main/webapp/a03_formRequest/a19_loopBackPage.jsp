@@ -24,21 +24,50 @@
 		
 	
 	 --%>
-
+	<%
+	
+	String ename = request.getParameter("ename");
+	String job = request.getParameter("job");
+	// ename, job이 입력이 없는 초기화면에도 에러 없이 처리할 수 있게
+	// 처리..
+	// 초기 화면에 대한 처리
+	if(ename==null) ename="";
+	if(job==null) job="";
+	
+	// 숫자형 데이터는 default로 0으로 설정해서 초기화 하도록 한다.
+	/*
+	int num01 = 0;
+	if(num01Str!=null) num01 = Integer.parseInt(num01Str);
+	
+	ex) a20_buyInfo.jsp
+        구매물품
+		물건명:[  ]
+		가격:[  ]
+		갯수:[  ] [구매]
+		==> 아래에 테이블에
+		물건명  가격  갯수  총액
+		@@     @@   @@   @@
+	
+	*/
+	
+	%> 
+	 
+	<%-- 화면에 검색한 입력값을 다시 다음 페이지에서 출력 필요
+		value="<%=ename%>"을 처리하여야 한다. --%>
     <div class="container mt-3">
     	<h2>사원정보 조회</h2>
     	<form method="post">
          	<div class="mb-3 mt-3">
             <label for="job">직책:</label>
-            <input type="number" class="form-control" 
-      	     id="empno" placeholder="사원번호 입력" name="empno">
+            <input type="text" class="form-control" 
+      	     id="job" placeholder="직책 입력" value="<%=job%>" name="job">
          	</div>
          	<div class="mb-3 mt-3">
             <label for="ename">사원명:</label>
             <input type="text" class="form-control" 
-      	     id="ename" placeholder="사원명 입력" name="ename">
+      	     id="ename" placeholder="사원명 입력" value="<%=ename%>" name="ename">
          	</div>
-         	<button type="submit" class="btn btn-primary">등록</button>
+         	<button type="submit" class="btn btn-primary">조회</button>
      	</form>
 		<table class="table table-striped table-hover">
 			<thead class="table-success">
