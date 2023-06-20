@@ -23,10 +23,10 @@
       - 숫자형처리 int num=0; 
                 if(reqStr!=null) num = Integer.parseInt(reqStr)
       - 다중의요청값(동일한요청키를 여러개의 값설정)
-        배열처리
+        	배열처리
       - 요청값을 객체로 할당.
-      - js에 처리방식
-        location.href=""
+      - front단 처리방식
+          location.href=""
    2. form객체를 활용해서 요청값처리
       - get방식
         단일 name, value

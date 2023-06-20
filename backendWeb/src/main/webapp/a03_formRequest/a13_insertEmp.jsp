@@ -28,12 +28,18 @@
 		      </tr>
 		    </thead>
 		    <%
+		    // <input type="number" name="empno"/>
+		  
 		    String empnoS = request.getParameter("empno");
 		    int empno = 0;
 		    if(empnoS!=null) empno = Integer.parseInt(empnoS);
 		    
+		    
+		    // 숫자형과 문자열 초기값 설정 
+		    // if숫자형 !=null, if문자열 ==null 구분 주의
 		    String ename = request.getParameter("ename");
 		    if(ename==null) ename="";
+		    
 		    String job = request.getParameter("job");
 		    if(job==null) job="";
 		    String mgrS = request.getParameter("mgr");
@@ -42,6 +48,8 @@
 		    String hiredateS = request.getParameter("hiredateS");
 		    if(hiredateS==null) hiredateS="";	
 		    String salS = request.getParameter("sal");
+		    
+		    // 실수형 데이터 처리..
 		    double sal = 0;
 		    if(salS!=null) sal = Double.parseDouble(salS);
 		    String commS = request.getParameter("comm");
@@ -52,6 +60,9 @@
 		    if(deptnoS!=null) deptno = Integer.parseInt(deptnoS);
 		    // 숫자(정수형/실수형)
 		    // 문자열
+		    // VO객체에 만들어서 처리하면, 후에
+		    // DB연동이나 필요에 따라 처리를 효과적을 할 수 있다.
+		    // 1. 생성자에 type에 맞는 순서 확인.
 		    Emp e = new Emp(empno, ename, job, mgr, 
 		    			hiredateS, sal, comm, deptno);
 		    // dao.insertXXXXX(e)
