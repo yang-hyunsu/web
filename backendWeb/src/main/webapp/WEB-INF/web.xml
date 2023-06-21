@@ -49,4 +49,14 @@
     <servlet-name>servlet04</servlet-name>
     <url-pattern>/servlet04</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SalgradeDataServlet</display-name>
+    <servlet-name>SalgradeDataServlet</servlet-name>
+    <servlet-class>backendWeb.a01_servlet.A05_Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SalgradeDataServlet</servlet-name>
+    <url-pattern>/SalgradeDataServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

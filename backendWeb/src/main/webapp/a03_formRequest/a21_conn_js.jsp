@@ -10,7 +10,7 @@
     <title>Insert title here</title>
 </head>
 <%--
-# font단과 backend 연결처리.
+# font단과 backend단 연결처리.
 1. 프로그램이 처리되는 흐름
 	1) 요청(요청값) url로 프런트 ==> 서브단에 특정 자원(jsp) 요청값 
 		받아서 ==> java+html 코드 처리해서 html만들어서 ==>
@@ -25,7 +25,9 @@
 		3. 서버에서는 해당 jsp페이에서 요청값을 받아서 처리
 		4. html로 클라이언에 전달.
 		5. js가 있으면 이벤트에서 만들어진 데이터를 처리.
-		
+	2) 특히, 화면에 DOM객체를 호출하여 이벤트 핸들러 처리하거나,
+		호출할 때는 반드시, window.onload=function(){} 안에
+		처리하거나, 가장 하단에서 script 선언으로 하여야 한다. 	
 		
 		
 	2) 위 흐름을 감안하여 jsp를 구현한다.
@@ -102,5 +104,8 @@
 		 	</tbody>
 		</table>      	
     </div>
+   
+    
+    
 </body>
 </html>

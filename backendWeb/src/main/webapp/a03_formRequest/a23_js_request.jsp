@@ -14,8 +14,7 @@
     1. id/pass 입력 ==> 서버단에서 인증 확인(java) ==> 
     	인증되면 로그인 성공/특정 main이동 (프런트단 전달)
     	미인증시 로그인 실패/로그인 다시 처리..(프런트단 전달)
-    
-     --%>
+    --%>
     <%
     String id = request.getParameter("id");
     if(id==null) id="";
@@ -34,6 +33,7 @@
     }
     %>
     <script type="text/javascript">
+    	// 로그인 성공 여부를 js로 표현...
     	var isValid = "<%=isValid%>"
     	if(isValid=='Y'){
     		alert("로그인 성공\n메인페이지 이동")
