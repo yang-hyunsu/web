@@ -25,7 +25,7 @@
     	<form action="" method="post">
          	<div class="mb-3 mt-3">
             <label for="empno">사원번호:</label>
-            <input type="number" class="form-control" id="empno" placeholder="사원번호 입력" required name="empno">
+            <input type="number" class="form-control" id="empno" placeholder="사원번호 입력" oninvalid="this.setCustomValidity('사원번호를 숫자로 입력하세요')" required name="empno">
          	</div>
          	<div class="mb-3 mt-3">
             <label for="ename">사원명:</label>
