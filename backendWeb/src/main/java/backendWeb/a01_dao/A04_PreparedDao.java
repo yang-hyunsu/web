@@ -15,10 +15,11 @@ import backendWeb.z01_vo.Job;
 import backendWeb.z01_vo.JobHistory;
 import backendWeb.z01_vo.Location;
 import backendWeb.z01_vo.Manager;
-
+import java.util.Date;
 
 
 // ctrl+shift+o
+// backendWeb.z01_vo.Emp
 // backendWeb.a01_dao.A04_PreparedDao
 public class A04_PreparedDao {
     private Connection con;
@@ -33,6 +34,7 @@ public class A04_PreparedDao {
         System.out.println(sch.get("name"));
         System.out.println(sch.get("minSal"));
         System.out.println(sch.get("maxSal"));
+        
         try {
             con = DB.con();
             pstmt = con.prepareStatement(sql); 
@@ -352,6 +354,37 @@ public class A04_PreparedDao {
 	        			rs.getString("job_title"),
 	        			rs.getInt("min_salary"),
 	        			rs.getInt("max_salary")
+	            ));
+	        }
+	    } catch (SQLException e) {
+	        System.out.println("DB 관련 오류: " + e.getMessage());
+	    } catch (Exception e) {
+	        System.out.println("일반 오류: " + e.getMessage());
+	    } finally {
+	        DB.close(rs, pstmt, con);
+	    }
+	    return elist;
+	}
+
+	public List<Emp> getEmpList() {
+	    List<Emp> elist = new ArrayList<>();
+	    String sql = "SELECT * FROM emp02 order by empno";
+	    
+	    try {
+	        con = DB.con();
+	        pstmt = con.prepareStatement(sql); 
+	        rs = pstmt.executeQuery();
+	
+	        while (rs.next()) {
+	            elist.add(new Emp(
+	                    rs.getInt("empno"),
+	                    rs.getString("ename"),
+	                    rs.getString("job"),
+	                    rs.getInt("mgr"),
+	                    rs.getDate("hiredate"),
+	                    rs.getDouble("sal"),
+	                    rs.getDouble("comm"),
+	                    rs.getInt("deptno")
 	            ));
 	        }
 	    } catch (SQLException e) {
