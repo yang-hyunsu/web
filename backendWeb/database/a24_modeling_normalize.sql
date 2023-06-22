@@ -235,6 +235,20 @@ ex) 아래테이블을 정규화과정을 처리하ㅔ
 고객이름 (CustomerName)
 주소 (Address)
 제품번호 (ProductID, FK)
+==> 완전 함수 종속성을 처리하여
+주문(Order)
+--------------------
+주문번호 (OrderID, PK)
+고객번호 (CustomerID FK)
+제품번호 (ProductID, FK)
+
+고객정보(Customer)
+------------------------
+고객번호 (CustomerID)
+고객이름 (CustomerName)
+주소 (Address)
+
+
 
 제품 (Product)
 ----------------------------
@@ -243,7 +257,6 @@ ex) 아래테이블을 정규화과정을 처리하ㅔ
 
 ==========================
 [테이블: 학생_성적]
-
 학생_코드 (기본 키)
 학생_이름
 과목_코드
@@ -260,6 +273,19 @@ ex) 아래테이블을 정규화과정을 처리하ㅔ
 학점 (Credits)
 수강년도 (Year)
 학기 (Semester)
+==> ex) 제2정규화를 처리하여 분리된 데이터로 만드세요..
+모든 컬럼들이 기본키에 완전함수 종속성을 가지게 처리..
+"수강과목" (CourseEnrollment)
+학번 (StudentID, 기본키)    
+과목코드 (CourseCode, 기본키)  두개복함키로(식별관계로 처리)
+수강년도 (Year)
+학기 (Semester)
+
+과목 (Course)
+과목코드 (CourseCode, 기본키)
+과목명 (CourseName)
+담당교수 (Professor)
+학점 (Credits)
 
 ==============================
 주문(Order)
@@ -270,6 +296,55 @@ ex) 아래테이블을 정규화과정을 처리하ㅔ
 상품 이름(ProductName)
 주문 수량(Quantity)
 주문 일자(OrderDate)	
+
+ex) 제2정규화 처리
+고객정보(Customers)
+고객 번호(CustomerID)
+고객 이름(CustomerName)
+
+상품정보( Products)
+상품 번호(ProductID)
+상품 이름(ProductName)
+
+주문정보(Order)
+주문 번호(OrderID)
+고객 번호(CustomerID)
+상품 번호(ProductID)
+주문 수량(Quantity)
+주문 일자(OrderDate)
+
+
+주문상세(OrderDetail)
+----------------
+주문ID (OrderID)
+상품ID (ProductID)
+수량 (Quantity)
+가격 (Price)
+상품명 (ProductName)
+배송지 (DeliveryAddress)
+
+ex) 제2정규화 처리하세요
+상품(Product)
+---------------
+상품ID (ProductID)
+상품명 (ProductName)
+가격 (Price)
+
+주문상세(OrderDetail)
+주문ID (OrderID)
+상품ID (ProductID)
+수량 (Quantity)
+배송지 (DeliveryAddress)
+
+
+
+
+
+
+
+
+
+
 ===========================
 예시 테이블: "대여정보" (RentalInfo)
 
@@ -282,7 +357,9 @@ ex) 아래테이블을 정규화과정을 처리하ㅔ
 반납지점 (ReturnLocation)
 대여요금 (RentalFee)	
 	
- * 
+
+
+
  * */
 
 
