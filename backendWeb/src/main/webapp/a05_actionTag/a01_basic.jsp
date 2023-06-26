@@ -37,7 +37,8 @@
 	3) 객체를 액션태그로 useBean을 사용하면, session scope
 		범위를 설정하고 보다 효율적을 객체를 생성, 요청값 전달 등의
 		여러 기능으로 사용할 수 있다.
-		<jsp:useBean id="" scope="">
+		<jsp:useBean id="" scope="session">
+		
 			
 # jsp:include 액션태그
 1. 다른 jsp 페이지의 실행 결과를 현재 위치에 삽입

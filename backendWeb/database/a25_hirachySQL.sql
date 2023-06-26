@@ -37,7 +37,22 @@
 	106		기계공학과     102	
 	
 	ex) part01 테이블을 위 구조와 데이터 만들고,
-	계층적 sql으로 level로 출력하세요.		
+	계층적 sql으로 level로 출력하세요.	
+	ex) 코드성 테이블 구조 (select, checkbox, radio)
+	Code 테이블
+	no	title refno odr
+	100	과일들  0		0
+	101 사과    100  1
+	102 바나나   100  2
+	103 딸기    100   3
+	104 오렌지   100   4
+	
+	
+	sequence code_seq
+		start with 100
+		
+			
+					
 
 5. 계층적 질의문의 기본 형식
 	1) select 명령문에서 start with와 connect by절 이용
