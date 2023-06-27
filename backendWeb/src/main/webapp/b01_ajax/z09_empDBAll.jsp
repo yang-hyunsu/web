@@ -3,7 +3,9 @@
 	import="backendWeb.a01_dao.A04_PreparedDao"%>
 <%
 A04_PreparedDao dao = new A04_PreparedDao();
-for (Emp e : dao.getEmpList()) {
+String ename = request.getParameter("ename");if(ename==null) ename="";
+String job = request.getParameter("job");if(job==null) job="";
+for (Emp e : dao.getEmpList(ename,job)) {
 %>
 <tr class="text-center">
 	<td><%=e.getEmpno()%></td>

@@ -15,12 +15,16 @@
 		xhr.send()
 		return xhr.responseText;
 	}    
+	function key13(){
+		if(event.keyCode==13) // 입력하다가 enter입력시만 검색
+			callEmpList()
+	}
     function callEmpList(){
-    	//alert( getSyn("z09_empDBAll.jsp") )
-    	//console.log(getSyn("z09_empDBAll.jsp"))
-    	// html태그이므로 json변환없이 바로 입력 처리.
+    	var ename = document.querySelector("#ename").value;
+    	var job = document.querySelector("#job").value;
     	document.querySelector("#empList").innerHTML
-    		=getSyn("z09_empDBAll.jsp")
+    		=getSyn("z09_empDBAll.jsp?ename="+ename
+    					+"&job="+job)
     	
     	
     }
@@ -55,19 +59,18 @@
 <body>
     <div class="container mt-3">
     	<h2>사원정보 등록</h2>
-    	<form action="" method="post">
-         	<div class="mb-3 mt-3">
-            <label for="empno">사원번호:</label>
-            <input type="number" class="form-control" 
-      	     id="empno" placeholder="사원번호 입력" name="empno">
+			<div class="mb-3 mt-3">  
+	            <label for="ename">사원명:</label>
+	            <input type="text" class="form-control" 
+	      	     id="ename" onkeyup="key13()" placeholder="사원명 입력" name="ename">
          	</div>
          	<div class="mb-3 mt-3">
-            <label for="ename">사원명:</label>
-            <input type="text" class="form-control" 
-      	     id="ename" placeholder="사원명 입력" name="ename">
+	            <label for="job">직책명:</label>
+	            <input type="text"  onkeyup="key13()"  class="form-control" 
+	      	     id="job" placeholder="직책명 입력" name="job">
          	</div>
+         	       	
          	<button type="button" onclick="callEmpList()" class="btn btn-primary">전체데이터가져오기</button>
-     	</form>
 		<table class="table table-striped table-hover">
 			<thead class="table-success">
 		      	<tr  class="text-center">
