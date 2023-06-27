@@ -37,7 +37,7 @@
 	for 구문 처리
 	tr td
 	화면 확인 tr/td로 되어 있기에 데이터 확인
-3. a09_DBAjax.jsp
+3. a10_DBAjax.jsp
 	1) 이벤트 핸들러 함수 선언
 		기본 ajax처리 함수 복사 및 선언 : function getSyn(page){}
 		callAjax()

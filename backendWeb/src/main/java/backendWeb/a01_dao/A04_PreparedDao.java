@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gson.Gson;
+
 import backendWeb.z01_vo.Department;
 import backendWeb.z01_vo.Emp;
 import backendWeb.z01_vo.Employee;
@@ -15,7 +17,6 @@ import backendWeb.z01_vo.Job;
 import backendWeb.z01_vo.JobHistory;
 import backendWeb.z01_vo.Location;
 import backendWeb.z01_vo.Manager;
-import java.util.Date;
 
 
 // ctrl+shift+o
@@ -472,6 +473,8 @@ public class A04_PreparedDao {
 //            System.out.print(e.getEmail() + "\t");
 //            System.out.print(e.getSalary() + "\t");
 //            System.out.print(e.getDepartment_id() + "\n");
+        
 //        }
+        Gson g;
     }
 }
