@@ -29,16 +29,74 @@ function callAjx(){
 	var page="z06_reqJson.jsp?empno="+empnoVal
 			+"&ename="+enameVal
 	var empObj = JSON.parse( getSyn(page) )
-	var tdArr = document.querySelectorAll("tbody td")
+	var tdArr = document.querySelectorAll("#empBody td")
 	tdArr[0].innerText = empObj.empno
 	tdArr[1].innerText = empObj.ename
 	tdArr[2].innerText = empObj.sal
 	tdArr[3].innerText = empObj.deptno
 	
 }
+// ex) 물건명 가격 갯수를 입력 후, 클릭시, z07_reqJson.jsp
+// 에 요청정보를 넣고, 총계속성 "tot":${param.price*param.cnt}
+// 처리해서 테이블 #prodBody하위 td에 출력하세요.
+//   (물건명, 가격, 갯수, 총계) 
+function callBuy(){
+	var nameVal = document.querySelector("#name").value
+	var priceVal = document.querySelector("#price").value
+	var cntVal = document.querySelector("#cnt").value
+	var page = "z07_reqJson.jsp?name="+nameVal
+			+"&price="+priceVal+"&cnt="+cntVal
+	var prodObj = JSON.parse(getSyn(page))
+	var tdArr = document.querySelectorAll("#prodBody td")
+	tdArr[0].innerText = prodObj.name
+	tdArr[1].innerText = prodObj.price
+	tdArr[2].innerText = prodObj.cnt
+	tdArr[3].innerText = prodObj.tot
+	
+}
 </script> 
 <body>
     <div class="container mt-3">
+    	<h2>물건 구매</h2>
+    	<form action="" method="post">
+         	<div class="mb-3 mt-3">
+            <label for="name">물건명:</label>
+            <input type="text" class="form-control" 
+      	     id="name" placeholder="물건명 입력" name="name">
+         	</div>    	
+         	<div class="mb-3 mt-3">
+            <label for="price">가격:</label>
+            <input type="number" class="form-control" 
+      	     id="price" placeholder="가격 입력" name="price">
+         	</div>
+         	<div class="mb-3 mt-3">
+            <label for="cnt">갯수:</label>
+            <input type="number" class="form-control" 
+      	     id="cnt" placeholder="갯수 입력" name="cnt">
+         	</div>
+         	<button type="button" onclick="callBuy()" class="btn btn-primary">등록</button>
+     	</form>
+		<table  class="table table-striped table-hover">
+			<thead class="table-success">
+		      	<tr  class="text-center">
+				    <th>물건명</th>
+				    <th>가격</th>
+				    <th>갯수</th>
+				    <th>총계</th>
+		      	</tr>
+		    </thead>
+		    <tbody id="prodBody">
+			   	<tr  class="text-center">
+			        <td>John</td>
+			        <td>Doe</td>
+			        <td>john@example.com</td>
+			        <td>john@example.com</td>
+			   	</tr>
+		 	</tbody>
+		</table> 
+		    
+    
+    
     	<h2>사원정보 등록</h2>
     	<form action="" method="post">
          	<div class="mb-3 mt-3">
@@ -53,7 +111,7 @@ function callAjx(){
          	</div>
          	<button type="button" onclick="callAjx()" class="btn btn-primary">등록</button>
      	</form>
-		<table class="table table-striped table-hover">
+		<table  class="table table-striped table-hover">
 			<thead class="table-success">
 		      	<tr  class="text-center">
 				    <th>사원번호</th>
@@ -62,7 +120,7 @@ function callAjx(){
 				    <th>부서번호</th>
 		      	</tr>
 		    </thead>
-		    <tbody>
+		    <tbody id="empBody">
 			   	<tr  class="text-center">
 			        <td>John</td>
 			        <td>Doe</td>
