@@ -49,8 +49,10 @@
 	session.setAttribute("jh", new Job_history(1000, 
 			"2023-06-26", "2023-06-289", "사원", 1001));
 	%>
+	
     <div class="container mt-3">
     	<h2>el 활용</h2>
+    	<a href='a03_session.jsp'>세션 확인하러 가기</a>
     	<h3>아이디:${jh.employee_id}</h3>
     	<h3>시작일:${jh.start_dateS}</h3>
     	<h3>종료일:${jh.end_dateS}</h3>
