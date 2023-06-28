@@ -59,4 +59,14 @@
     <servlet-name>SalgradeDataServlet</servlet-name>
     <url-pattern>/SalgradeDataServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>codeIns.do</display-name>
+    <servlet-name>codeIns.do</servlet-name>
+    <servlet-class>backendWeb.a01_servlet.A06_CodeInsert</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>codeIns.do</servlet-name>
+    <url-pattern>/codeIns.do</url-pattern>
+  </servlet-mapping>
 </web-app>

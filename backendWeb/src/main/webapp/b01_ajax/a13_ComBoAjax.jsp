@@ -182,7 +182,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-success"
-						>Save</button>
+						onclick="ajaxSave()">Save</button>
 					<button type="button" class="btn btn-danger"
 						data-bs-dismiss="modal">Close</button>
 						
@@ -191,6 +191,37 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+		function ajaxSave(){
+			// 입력 val
+			var title=document.querySelector(".modal-body #title").value
+			var val=document.querySelector(".modal-body #val").value
+			var refno=document.querySelector(".modal-body #refno").value
+			var ordno=document.querySelector(".modal-body #ordno").value
+			var qStr = "title="+title+"&refno="+refno
+					+"&ordno="+ordno+"&val="+val
+			alert(qStr)		
+			// ajax 처리..
+			var xhr = new XMLHttpRequest()
+			xhr.open("post","/backendWeb/codeIns.do",true)
+			xhr.setRequestHeader("Content-Type",
+					"application/x-www-form-urlencoded")
+			xhr.send(qStr)
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState==4&&xhr.status==200){
+					var result = xhr.responseText
+					if(result=="Y"){
+						alert("등록성공")
+					}else{
+						alert("등록실패")
+					}
+				}
+			}
+			
+			
+		}
+	
+	</script>
 
 </body>
 </html>
