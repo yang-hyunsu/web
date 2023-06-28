@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <title>Insert title here</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<title>Insert title here</title>
 </head>
 <%--
     code(키, 값, 상위키,정렬순위)
@@ -47,6 +50,30 @@
     	- 검색 DOM
     	- ajax 처리
     	- 화면 리스트 처리..
+    	
+# 코드 등록 처리 ajax
+1. back단(servlet 이용)
+	1) Dao(등록 처리-메서드 추가)
+		sql (insert 문) 
+			INSERT INTO code VALUES (code_seq.nextval, '과일','val',0,1);
+			INSERT INTO code VALUES (code_seq.nextval, ?,?,?,?)
+			
+		dao insert메서드 추가.
+	2) 요청값 받기
+	3) 등록 결과 리턴 문자열  
+2. front단
+	1) 등록 버튼 : 클릭
+	2) 등록 pop창 로딩(bootstrap 모달창)
+		등록 항목 text
+		제목:[  ]
+		값 : [  ]
+		상위번호: [  ]
+		정렬순서:[  ]
+		[등록]
+	3) 이벤트 핸들러
+		ajax로 등록 controller 호출 처리
+  	
+    	
  --%>
 <script type="text/javascript">
 	function schCode13(){
@@ -81,31 +108,88 @@
 	}
 </script>
 <body>
-    <div class="container mt-3">
-    	<h2>Combox list</h2>
-         	<div class="mb-3 mt-3">
-            <label for="title">제목:</label>
-            <input type="text" class="form-control" 
-      	     id="title" onkeyup="schCode13()" placeholder="타이틀 입력" name="title">
-         	</div>
-         	<button onclick="schCode()" type="button" class="btn btn-primary">조회</button>
+	<div class="container mt-3">
+		<h2>Combox list</h2>
+		<div class="mb-3 mt-3">
+			<label for="title">제목:</label> <input type="text"
+				class="form-control" id="title" onkeyup="schCode13()"
+				placeholder="타이틀 입력" name="title">
+		</div>
+		<button type="button" class="btn btn-success" data-bs-toggle="modal"
+			data-bs-target="#myModal">코드등록</button>
+
+		<button onclick="schCode()" type="button" class="btn btn-primary">조회</button>
 		<table class="table table-striped table-hover">
 			<thead class="table-success">
-		      	<tr  class="text-center">
-				    <th>번호</th>
-				    <th>제목</th>
-				    <th>상위번호</th>
-				    <th>정렬</th>
-		      	</tr>
-		    </thead>
-		    <tbody>
-			   	<tr  class="text-center">
-			        <td>John</td>
-			        <td>Doe</td>
-			        <td>john@example.com</td>
-			   	</tr>
-		 	</tbody>
-		</table>      	
-    </div>
+				<tr class="text-center">
+					<th>번호</th>
+					<th>제목</th>
+					<th>상위번호</th>
+					<th>정렬</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="text-center">
+					<td>John</td>
+					<td>Doe</td>
+					<td>john@example.com</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<!-- The Modal -->
+	<div class="modal" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">코드 등록</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				</div>
+
+				<!-- Modal body 
+				
+				-- 제목, 값, 상위번호, 정렬 
+-- title, val, refno, ordno 
+				-->
+				<div class="modal-body">
+					<div class="mb-3 mt-3">
+						<label for="title">제목:</label> 
+						<input type="text"
+							class="form-control" id="title"
+						placeholder="타이틀 입력" name="title">
+					</div>
+					<div class="mb-3 mt-3">
+						<label for="val">값:</label> 
+						<input type="text"
+							class="form-control" id="val"
+						placeholder="값 입력" name="val">
+					</div>
+					<div class="mb-3 mt-3">
+						<label for="number">상위번호:</label> 
+						<input type="text"
+							class="form-control" id="refno"
+						placeholder="상위번호 입력" name="refno">
+					</div>
+					<div class="mb-3 mt-3">
+						<label for="ordno">정렬순서:</label> 
+						<input type="number"
+							class="form-control" id="ordno"
+						placeholder="정렬순서 입력" name="ordno">
+					</div>										
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success"
+						>Save</button>
+					<button type="button" class="btn btn-danger"
+						data-bs-dismiss="modal">Close</button>
+						
+				</div>
+
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>
