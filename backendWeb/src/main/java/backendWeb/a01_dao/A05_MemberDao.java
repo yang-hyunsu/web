@@ -183,6 +183,42 @@ public class A05_MemberDao {
 		}
 		return memlist;
 	}
+	// // Product 테이블(물건명,가격,갯수) ==> 
+	// 로그인 처리 메서드 정의
+	public Member checkMem(String id) {
+		Member mem = null;
+		String sql = "SELECT * FROM member02\r\n"
+				+ "WHERE id=?";
+		//1. 연결(기본예외/자원해제)
+		try {
+			con = DB.con();
+			// 2. 대화(sql 전달 후, 매개변수로 전달)
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			// 3. 결과
+			rs = pstmt.executeQuery();
+			// 4. (ResultSet ==> VO) ? 단일/여러개 if/while
+			// Member(String id, String pass, String name, int point, String auth, Date regdate)
+			if(rs.next()) {
+				mem = new Member(
+					rs.getString("id"),
+					rs.getString("pass"),
+					rs.getString("name"),
+					rs.getInt("point"),
+					rs.getString("auth"),
+					rs.getDate("regdate")
+				);
+			}
+			// 
+		} catch (SQLException e) {
+			System.out.println("DB:"+e.getMessage());
+		}catch(Exception e) {
+			System.out.println("기타:"+e.getMessage());
+		}finally {
+			DB.close(rs, pstmt, con);
+		}
+		return mem;
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		// higirl,8888,'홍리나',2000,'관리자',
