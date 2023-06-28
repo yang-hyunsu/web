@@ -490,6 +490,42 @@ public class A04_PreparedDao {
 	    return elist;
 	}
 
+	// void, int나 다른 유형을 하느냐?
+	// 외부이 이 메서드를 호출해서 등록/수정/삭제된 갯수를 알고자 할때.
+	// return int
+	// 등록/수정/삭제로 끝날 경우에는 void
+	
+	/*
+	INSERT INTO code VALUES (code_seq.nextval, '아이티사업',1006,4,40);
+			INSERT INTO code VALUES (code_seq.nextval, ?,?,?,?)
+	 * */
+	
+	public void insertCode(Code ins) {
+	    String sql = "INSERT INTO code VALUES"
+	    		+ " (code_seq.nextval, ?,?,?,?)";
+	    try {
+	        con = DB.con();
+	        con.setAutoCommit(false);
+	        pstmt = con.prepareStatement(sql);
+	        pstmt.setString(1, ins.getTitle());
+	        pstmt.setInt(2, ins.getRefno());
+	        pstmt.setInt(3, ins.getOrdno());
+	        pstmt.setString(4, ins.getVal());
+	        int result = pstmt.executeUpdate();
+	        if (result == 1) {
+	            con.commit();
+	            System.out.println("등록 성공");
+	        }
+	    } catch (SQLException e) {
+	        System.out.println("DB 오류: " + e.getMessage());
+	        DB.rollback(con);
+	    } catch (Exception e) {
+	        System.out.println("일반 오류: " + e.getMessage());
+	    } finally {
+	        DB.close(rs, pstmt, con);
+	    }
+	}
+
 	public static void main(String[] args) {
         A04_PreparedDao dao = new A04_PreparedDao();
         dao.deleteLocation(1000);
