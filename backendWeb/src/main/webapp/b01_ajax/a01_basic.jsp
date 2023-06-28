@@ -53,7 +53,7 @@
 		을 이벤트로 처리한다.
 	
 		xhr.onreadyStatechange=function(){
-			xhr.readyState : 서버와 토인을 단계별로 코드값을 가져온다.
+			xhr.readyState : 서버와 통신을 단계별로 코드값을 가져온다.
 				0: 객체를 만든다
 				1,2: 서버에서 데이터를 받을 준디
 				3:서버에서 데이터를 일부 받음
