@@ -31,7 +31,22 @@
 		- 수정/삭제 처리..
 	6) Combox Box 활용
 		
-		   
+# 진행 순서
+0. 파일
+	프런트(a13_ComBoAjax.jsp)
+1. backend(z13_comboList.jsp)
+	요청값 : title
+	import 처리(dao,Gson,Code)
+	Gson으로 json 데이터 로딩	
+-------------------------------------		   
+2. frontend(a13_ComBoAjax.jsp)    
+    1) 화면구성
+    2) 이벤트 처리
+    3) 이벤트 핸들러 처리
+    	- 검색 DOM
+    	- ajax 처리
+    	- 화면 리스트 처리..
+    
     
     
 
