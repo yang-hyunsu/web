@@ -73,6 +73,17 @@
 
  --%>
 <script type="text/javascript">
+	/// enter key 입력시 검색
+	function schEmp13(){
+		var enameOb = document.querySelector("#ename")
+		var jobOb = document.querySelector("#job")
+		enameOb.value = enameOb.value.toUpperCase()
+		jobOb.value = jobOb.value.toUpperCase()		
+		
+		if(event.keyCode==13){
+			schEmp();
+		}
+	}
 	function schEmp(){
 		var enameVal = document.querySelector("#ename").value
 		var jobVal = document.querySelector("#job").value
@@ -112,19 +123,19 @@
 <body>
     <div class="container mt-3">
     	<h2>사원정보 조회</h2>
-    	<form action="" method="post">
+    	
          	<div class="mb-3 mt-3">
             <label for="ename">사원명:</label>
-            <input   onkeyup="schEmp()"  type="text" class="form-control" 
+            <input   onkeyup="schEmp13()"  type="text" class="form-control" 
       	     id="ename" placeholder="사원명 입력" name="ename">
          	</div>
          	<div class="mb-3 mt-3">
             <label for="job">직책명:</label>
-            <input  onkeyup="schEmp()"  type="text" class="form-control" 
+            <input  onkeyup="schEmp13()"  type="text" class="form-control" 
       	     id="job" placeholder="직책명 입력" name="job">
          	</div>
          	<button onclick="schEmp()" type="button" class="btn btn-primary">조회</button>
-     	</form>
+     	
 		<table class="table table-striped table-hover">
 			<thead class="table-success">
 		      	<tr  class="text-center">
