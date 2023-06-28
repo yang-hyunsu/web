@@ -10,6 +10,7 @@ import java.util.Map;
 
 import com.google.gson.Gson;
 
+import backendWeb.z01_vo.Code;
 import backendWeb.z01_vo.Department;
 import backendWeb.z01_vo.Emp;
 import backendWeb.z01_vo.Employee;
@@ -420,6 +421,35 @@ public class A04_PreparedDao {
 	                    rs.getDouble("sal"),
 	                    rs.getDouble("comm"),
 	                    rs.getInt("deptno")
+	            ));
+	        }
+	    } catch (SQLException e) {
+	        System.out.println("DB 관련 오류: " + e.getMessage());
+	    } catch (Exception e) {
+	        System.out.println("일반 오류: " + e.getMessage());
+	    } finally {
+	        DB.close(rs, pstmt, con);
+	    }
+	    return elist;
+	}
+
+	public List<Code> getCodeList(String title) {
+	    List<Code> elist = new ArrayList<Code>();
+	    String sql = "SELECT NO, title, refno, ordno \r\n"
+	    		+ "FROM code\r\n"
+	    		+ "WHERE title LIKE ?\r\n"
+	    		+ "ORDER BY refno, ordno ";
+	    try {
+	        con = DB.con();
+	        pstmt = con.prepareStatement(sql);
+	        pstmt.setString(1, '%'+title+"%");
+	        rs = pstmt.executeQuery();
+	        while (rs.next()) {
+	            elist.add(new Code(
+	                    rs.getInt("no"),
+	                    rs.getString("title"),
+	                    rs.getInt("refno"),
+	                    rs.getInt("ordno")
 	            ));
 	        }
 	    } catch (SQLException e) {

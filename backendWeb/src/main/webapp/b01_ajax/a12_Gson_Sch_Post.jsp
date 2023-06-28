@@ -78,8 +78,7 @@
 		var enameOb = document.querySelector("#ename")
 		var jobOb = document.querySelector("#job")
 		enameOb.value = enameOb.value.toUpperCase()
-		jobOb.value = jobOb.value.toUpperCase()		
-		
+		jobOb.value = jobOb.value.toUpperCase()			
 		if(event.keyCode==13){
 			schEmp();
 		}
