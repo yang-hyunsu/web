@@ -71,16 +71,44 @@
 
  --%>
 
+<script type="text/javascript">
 
+	function checkMember(){
+		var idObj = document.querySelector("#id");
+		// ajax확인 전, 공백, 크기에 대한 check 후에 ajax 처리.
+		//alert("아이디 유효성 check:"+idVal)
+		var page = "z11_memberCheck.jsp?id="+idObj.value
+		//asyGet(page)
+		var xhr = new XMLHttpRequest()
+		xhr.open("get",page,true)
+		xhr.send()
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4&&xhr.status==200){
+				var memObj = JSON.parse( xhr.responseText )
+				console.log(memObj)
+				if(memObj.id==""){
+					alert(idObj.value+"은 사용 가능한 아이디입니다.")
+				}else{
+					alert(memObj.id+" 이미 등록되어 있습니다.\n다른 아이디 입력하세요")
+					idObj.value=""
+					idObj.focus()
+				}
+			}
+		}
+		
+	}
+</script>
 <body>
     <div class="container mt-3">
-    	<h2>사원정보 등록</h2>
+    	<h2>회원정보 등록</h2>
     	<form action="" method="post">
          	<div class="mb-3 mt-3">
-            <label for="empno">사원번호:</label>
-            <input type="number" class="form-control" 
-      	     id="empno" placeholder="사원번호 입력" name="empno">
+            <label for="id">회원아이디:</label>
+            <input type="text" class="form-control" 
+      	     id="id" placeholder="회원아이디 입력" name="id">
          	</div>
+         	<button onclick="checkMember()" type="button" class="btn btn-success">
+         		아이디 유효성check</button>
          	<div class="mb-3 mt-3">
             <label for="ename">사원명:</label>
             <input type="text" class="form-control" 
