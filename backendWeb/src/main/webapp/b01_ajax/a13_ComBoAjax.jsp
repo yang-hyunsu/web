@@ -41,39 +41,61 @@
 -------------------------------------		   
 2. frontend(a13_ComBoAjax.jsp)    
     1) 화면구성
+    	제목 [   ] [검색]
     2) 이벤트 처리
     3) 이벤트 핸들러 처리
     	- 검색 DOM
     	- ajax 처리
     	- 화면 리스트 처리..
-    
-    
-    
-
  --%>
-
+<script type="text/javascript">
+	function schCode13(){
+		if(event.keyCode==13){
+			schCode();
+		}
+	}
+	function schCode(){
+		var titleOb = document.querySelector("#title")
+		var xhr = new XMLHttpRequest()
+		xhr.open("post","z13_comboList.jsp",true)
+		xhr.setRequestHeader("Content-Type",
+				"application/x-www-form-urlencoded")
+		xhr.send("title="+titleOb.value)
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4&&xhr.status==200){
+				var codeList = JSON.parse(xhr.responseText)
+				var show=""
+				codeList.forEach(function(code){
+					show+="<tr class='text-center'>"
+					show+="<td>"+code.no+"</td>"
+					show+="<td>"+code.title+"</td>"
+					show+="<td>"+code.refno+"</td>"
+					show+="<td>"+code.ordno+"</td>"
+					show+="</tr>"
+				})
+				var tBody = document.querySelector("tbody")
+				tBody.innerHTML = show;
+			}
+		}
+		
+	}
+</script>
 <body>
     <div class="container mt-3">
-    	<h2>사원정보 등록</h2>
-    	<form action="" method="post">
+    	<h2>Combox list</h2>
          	<div class="mb-3 mt-3">
-            <label for="empno">사원번호:</label>
-            <input type="number" class="form-control" 
-      	     id="empno" placeholder="사원번호 입력" name="empno">
-         	</div>
-         	<div class="mb-3 mt-3">
-            <label for="ename">사원명:</label>
+            <label for="title">제목:</label>
             <input type="text" class="form-control" 
-      	     id="ename" placeholder="사원명 입력" name="ename">
+      	     id="title" onkeyup="schCode13()" placeholder="타이틀 입력" name="title">
          	</div>
-         	<button type="submit" class="btn btn-primary">등록</button>
-     	</form>
+         	<button onclick="schCode()" type="button" class="btn btn-primary">조회</button>
 		<table class="table table-striped table-hover">
 			<thead class="table-success">
 		      	<tr  class="text-center">
-				    <th>Firstname</th>
-				    <th>Lastname</th>
-				    <th>Email</th>
+				    <th>번호</th>
+				    <th>제목</th>
+				    <th>상위번호</th>
+				    <th>정렬</th>
 		      	</tr>
 		    </thead>
 		    <tbody>

@@ -435,7 +435,7 @@ public class A04_PreparedDao {
 
 	public List<Code> getCodeList(String title) {
 	    List<Code> elist = new ArrayList<Code>();
-	    String sql = "SELECT NO, title, refno, ordno \r\n"
+	    String sql = "SELECT NO, title, val, refno, ordno \r\n"
 	    		+ "FROM code\r\n"
 	    		+ "WHERE title LIKE ?\r\n"
 	    		+ "ORDER BY refno, ordno ";
@@ -448,8 +448,36 @@ public class A04_PreparedDao {
 	            elist.add(new Code(
 	                    rs.getInt("no"),
 	                    rs.getString("title"),
+	                    rs.getString("val"),
 	                    rs.getInt("refno"),
 	                    rs.getInt("ordno")
+	            ));
+	        }
+	    } catch (SQLException e) {
+	        System.out.println("DB 관련 오류: " + e.getMessage());
+	    } catch (Exception e) {
+	        System.out.println("일반 오류: " + e.getMessage());
+	    } finally {
+	        DB.close(rs, pstmt, con);
+	    }
+	    return elist;
+	}
+
+	public List<Code> getCombo(int refno) {
+	    List<Code> elist = new ArrayList<Code>();
+	    String sql = "SELECT title, val\r\n"
+	    		+ "FROM code\r\n"
+	    		+ "WHERE refno = ?\r\n"
+	    		+ "ORDER BY ordno ";
+	    try {
+	        con = DB.con();
+	        pstmt = con.prepareStatement(sql);
+	        pstmt.setInt(1, refno);
+	        rs = pstmt.executeQuery();
+	        while (rs.next()) {
+	            elist.add(new Code(
+	                    rs.getString("title"),
+	                    rs.getString("val")
 	            ));
 	        }
 	    } catch (SQLException e) {
