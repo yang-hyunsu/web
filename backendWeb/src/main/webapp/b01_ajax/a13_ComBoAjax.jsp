@@ -80,7 +80,46 @@
 	- 계속 여부 확인
 		- 계속시 등록 처리할 수 있게 하고
 		- 취소시 창이 닫게 처리.
-		  	
+# 상세화면 로딩 및 수정/삭제
+1. 화면처리
+	1) 모달창(수정/삭제 버튼) 추가
+	2) 클릭 row단위로 클릭
+
+	3) 화면 로딩(모달창)
+		-input hidden으로 process 처리.
+		  단일데이터가져오기/등록/수정/삭제 ==> 같은 servlet에서 처리.
+		- 단일데이터 ajax로 가져오기.
+	4) 수정 클릭시, 수정할 요청값을 query string 만들기
+	5) 수정 프로세스 ajax로 처리.
+		주의 기존 등록 process와 구분할 수 있도록
+	6) 수정 후 처리 내용 
+		- 수정 성공/계속 수정하시겠습니까?
+	7) 단일데이터 ajax로 가져와서 로딩 처리
+2. backend처리
+	1) sql 작성
+		- 단일 데이터 조회 
+			select * from code where no = ?
+		- 수정 처리 
+			update code
+				set title = ?,
+				    val = ?,
+				    refno = ?,
+				    ordno = ?
+				where no = ?
+		- 삭제 처리
+			delete from code
+				where no = ?
+	2) dao 메서드 추가
+		public Code getCode(int no);
+		public void insertCode(Code upt);
+		public void deleteCode(int no);
+	3) Servlet(MVC 패턴의 Controller 연습)
+		String proc = request.getParameter("proc");
+		// 단일데이터 로딩, 등록, 수정, 삭제
+		 			
+		// Dao생성
+		// 조건에 따라서 메서드 처리
+		// 결과값 처리	Gson활용.
     	
  --%>
 <script type="text/javascript">
@@ -102,7 +141,7 @@
 				var codeList = JSON.parse(xhr.responseText)
 				var show=""
 				codeList.forEach(function(code){
-					show+="<tr class='text-center "+(code.refno==0?'table-info':'')+"'>"
+					show+="<tr ondblclick='detail("+code.no+")' class='text-center "+(code.refno==0?'table-info':'')+"'>"
 					show+="<td>"+code.no+"</td>"
 					show+="<td>"+code.title+"</td>"
 					show+="<td>"+(code.val==undefined?'':code.val)+"</td>"
@@ -115,6 +154,16 @@
 			}
 		}
 		
+	}
+	function detail(no){
+		document.querySelector("#detailModal").click()
+		document.querySelector(".modal-title").innerText
+			="코드상세[코드번호:"+no+"]"
+		// ajax로 상세 데이터를 가져와서 화면에 데이터 넣기
+	}
+	function insModal(){
+		document.querySelector(".modal-title").innerText
+		="코드등록"
 	}
 </script>
 <body>
@@ -131,8 +180,13 @@
 
 				
 		</div>
-		<button type="button" class="btn btn-success" data-bs-toggle="modal"
+		<div  id="detailModal" data-bs-toggle="modal"
+			data-bs-target="#myModal"></div>		
+		<button type="button" onclick="insModal()" 
+			 class="btn btn-success" data-bs-toggle="modal"
 			data-bs-target="#myModal">코드등록</button>
+
+
 
 		<button onclick="schCode()" type="button" class="btn btn-primary">조회</button>
 		<table class="table table-striped table-hover">
@@ -202,7 +256,11 @@
 				</form>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-success"
-						onclick="ajaxSave()">Save</button>
+						onclick="ajaxSave()">등록</button>
+					<button type="button" class="btn btn-primary"
+						onclick="ajaxUpdate()">수정</button>
+					<button type="button" class="btn btn-warning"
+						onclick="ajaxDelete()">삭제</button>
 					<button type="button" class="btn btn-danger"
 						data-bs-dismiss="modal">Close</button>
 						
@@ -264,7 +322,6 @@
 			계층형 sql로 계층별로 리스트되게 처리.
 			sql 처리
 			dao 변경
-			----------------
 			요청값 상위코드 전달.(Servlet에서)
 			
 		
