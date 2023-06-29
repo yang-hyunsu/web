@@ -69,4 +69,14 @@
     <servlet-name>codeIns.do</servlet-name>
     <url-pattern>/codeIns.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>upload</display-name>
+    <servlet-name>upload</servlet-name>
+    <servlet-class>backendWeb.a01_servlet.UploadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>upload</servlet-name>
+    <url-pattern>/upload</url-pattern>
+  </servlet-mapping>
 </web-app>
