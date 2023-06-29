@@ -91,17 +91,18 @@
 	}
 	function schCode(){
 		var titleOb = document.querySelector("#title")
+		var refnoOb = document.querySelector("#refno")
 		var xhr = new XMLHttpRequest()
 		xhr.open("post","z13_comboList.jsp",true)
 		xhr.setRequestHeader("Content-Type",
 				"application/x-www-form-urlencoded")
-		xhr.send("title="+titleOb.value)
+		xhr.send("title="+titleOb.value+"&refno="+refnoOb.value)
 		xhr.onreadystatechange=function(){
 			if(xhr.readyState==4&&xhr.status==200){
 				var codeList = JSON.parse(xhr.responseText)
 				var show=""
 				codeList.forEach(function(code){
-					show+="<tr class='text-center'>"
+					show+="<tr class='text-center "+(code.refno==0?'table-info':'')+"'>"
 					show+="<td>"+code.no+"</td>"
 					show+="<td>"+code.title+"</td>"
 					show+="<td>"+(code.val==undefined?'':code.val)+"</td>"
@@ -123,6 +124,12 @@
 			<label for="title">제목:</label> <input type="text"
 				class="form-control" id="title" onkeyup="schCode13()"
 				placeholder="타이틀 입력" name="title">
+			<label for="">상위코드:</label> 
+				<input type="text" value="0"
+				class="form-control" id="refno" onkeyup="schCode13()"
+				placeholder="상위코드 입력" name="refno">
+
+				
 		</div>
 		<button type="button" class="btn btn-success" data-bs-toggle="modal"
 			data-bs-target="#myModal">코드등록</button>
@@ -249,10 +256,16 @@
 			- 계속 여부 확인
 				- 계속시 등록 처리할 수 있게 하고
 				- 취소시 창이 닫게 처리.
-		2. 리스트데이터 
-			- 제목:[   ]
-		    - 상위코드:[  ]
-			계층형 sql로 계층별로 리스되게 처리.
+		2. 리스트데이터
+			화면구현
+				- 제목:[   ]
+			    - 상위코드:[  ]
+			js로 요청값 처리	
+			계층형 sql로 계층별로 리스트되게 처리.
+			sql 처리
+			dao 변경
+			----------------
+			요청값 상위코드 전달.(Servlet에서)
 			
 		
 		*/

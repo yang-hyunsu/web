@@ -433,16 +433,20 @@ public class A04_PreparedDao {
 	    return elist;
 	}
 
-	public List<Code> getCodeList(String title) {
+	public List<Code> getCodeList(String title, int refno) {
 	    List<Code> elist = new ArrayList<Code>();
-	    String sql = "SELECT NO, title, val, refno, ordno \r\n"
+	    String sql = "SELECT *\r\n"
 	    		+ "FROM code\r\n"
 	    		+ "WHERE title LIKE ?\r\n"
-	    		+ "ORDER BY refno, ordno ";
+	    		+ "START WITH refno = ?\r\n"
+	    		+ "CONNECT BY PRIOR NO =refno ";
+	    	
 	    try {
+	    	
 	        con = DB.con();
 	        pstmt = con.prepareStatement(sql);
 	        pstmt.setString(1, '%'+title+"%");
+	        pstmt.setInt(2, refno);
 	        rs = pstmt.executeQuery();
 	        while (rs.next()) {
 	            elist.add(new Code(
