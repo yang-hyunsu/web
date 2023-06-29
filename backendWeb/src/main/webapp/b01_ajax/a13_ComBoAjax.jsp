@@ -156,7 +156,8 @@
 				<!-- Modal Header -->
 				<div class="modal-header">
 					<h4 class="modal-title">코드 등록</h4>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+					<button type="button" id="modalClsBtn" class="btn-close" data-bs-dismiss="modal"></button>
+					
 				</div>
 
 				<!-- Modal body 
@@ -227,7 +228,8 @@
 						schCode()
 						document.querySelector("#regFrm").reset()
 						if(!confirm("계속등록하시겠습니까?")){
-							
+							// 창닫기 처리
+							document.querySelector("#modalClsBtn").click()
 						}
 					}else{
 						alert("등록실패")
@@ -247,7 +249,11 @@
 			- 계속 여부 확인
 				- 계속시 등록 처리할 수 있게 하고
 				- 취소시 창이 닫게 처리.
-		  			
+		2. 리스트데이터 
+			- 제목:[   ]
+		    - 상위코드:[  ]
+			계층형 sql로 계층별로 리스되게 처리.
+			
 		
 		*/
 		
