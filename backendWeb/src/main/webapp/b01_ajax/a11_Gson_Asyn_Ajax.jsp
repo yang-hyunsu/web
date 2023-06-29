@@ -51,6 +51,8 @@
 	1) 화면 구현 
 		id:[   ] [등록여부확인]==>클릭시 이벤트 핸들러
 	2) 이벤트핸들러 함수
+		// 비동기통신시는 onreadystatechange 기능메서드 활용이
+		// 어렵다. 단, setTimeout()활용하면 가능하다.
 		function asynAjx(page){
 			xhr.open("get",page,true)
 			xhr.onreadystatechange=function(){
@@ -61,12 +63,20 @@
 		}
 		function checkMember(){
 			var idVal = document.querySelector("#id")
-			var memObj = JSON.parse(asynAjx(page+"?id="+idVal))
-			if(memObj.id != ""){
-				alert(memObj.id+"는 등록된 아이디입니다")
-			}else{
-				alert(idVal+"는 등록가능합니다.")
-			}
+			var xhr = new XMLHttpRequest();
+			xhr.open("get",page,true)
+			xhr.onreadystatechange=function(){
+				if(xhr.status==200&&xhr.readyState==4){
+					var memObj = JSON.parse(xhr.responseText)
+					if(memObj.id != ""){
+						alert(memObj.id+"는 등록된 아이디입니다")
+					}else{
+						alert(idVal+"는 등록가능합니다.")
+					}				
+				}
+			}			
+			
+
 		}		   	  	 			
 
  --%>

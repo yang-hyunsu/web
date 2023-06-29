@@ -72,7 +72,15 @@
 		[등록]
 	3) 이벤트 핸들러
 		ajax로 등록 controller 호출 처리
-  	
+# 등록후, 처리 프로세스
+1. 등록완료
+	- 등록 성공
+	- 화면에 있는 데이터를 재조회 처리
+	- 입력데이터 초기화 
+	- 계속 여부 확인
+		- 계속시 등록 처리할 수 있게 하고
+		- 취소시 창이 닫게 처리.
+		  	
     	
  --%>
 <script type="text/javascript">
@@ -96,6 +104,7 @@
 					show+="<tr class='text-center'>"
 					show+="<td>"+code.no+"</td>"
 					show+="<td>"+code.title+"</td>"
+					show+="<td>"+(code.val==undefined?'':code.val)+"</td>"
 					show+="<td>"+code.refno+"</td>"
 					show+="<td>"+code.ordno+"</td>"
 					show+="</tr>"
@@ -124,6 +133,7 @@
 				<tr class="text-center">
 					<th>번호</th>
 					<th>제목</th>
+					<th>값</th>
 					<th>상위번호</th>
 					<th>정렬</th>
 				</tr>
@@ -154,6 +164,7 @@
 				-- 제목, 값, 상위번호, 정렬 
 -- title, val, refno, ordno 
 				-->
+				<form id="regFrm">
 				<div class="modal-body">
 					<div class="mb-3 mt-3">
 						<label for="title">제목:</label> 
@@ -180,6 +191,7 @@
 						placeholder="정렬순서 입력" name="ordno">
 					</div>										
 				</div>
+				</form>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-success"
 						onclick="ajaxSave()">Save</button>
@@ -200,7 +212,7 @@
 			var ordno=document.querySelector(".modal-body #ordno").value
 			var qStr = "title="+title+"&refno="+refno
 					+"&ordno="+ordno+"&val="+val
-			alert(qStr)		
+			//alert(qStr)		
 			// ajax 처리..
 			var xhr = new XMLHttpRequest()
 			xhr.open("post","/backendWeb/codeIns.do",true)
@@ -212,6 +224,11 @@
 					var result = xhr.responseText
 					if(result=="Y"){
 						alert("등록성공")
+						schCode()
+						document.querySelector("#regFrm").reset()
+						if(!confirm("계속등록하시겠습니까?")){
+							
+						}
 					}else{
 						alert("등록실패")
 					}
@@ -220,7 +237,20 @@
 			
 			
 		}
-	
+		// 초기에 수행 처리..(화면에 검색된 상태에서 처리)
+		schCode();
+		/*
+		1. 등록완료
+			- 등록 성공
+			- 화면에 있는 데이터를 재조회 처리
+			- 입력데이터 초기화 
+			- 계속 여부 확인
+				- 계속시 등록 처리할 수 있게 하고
+				- 취소시 창이 닫게 처리.
+		  			
+		
+		*/
+		
 	</script>
 
 </body>

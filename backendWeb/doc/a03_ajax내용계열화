@@ -11,12 +11,12 @@
 			client <====> server		
 	5) 서버 : 요청값 전송 db 연동 데이터 가져오기
 		- 화면가져오기
-		- json데이터로 가져오기
+		- json데이터로 가져오기(Gson)
 4. 비동기처리
 	1) 비동기와 동기처리할 때 구분
 	2) 서버에 요청값 전송 DB연동 데이터 가져오기
 5. post방식으로 데이터 처리하기
-
+----------------------------------
 6. jquery ajax사용하기
 7. vue axios 데이터 처리하기..
 
@@ -79,8 +79,17 @@
 			<td><%=e.getJob()%></td>
 			...
 	4) json데이터만들기.
-	    Gson : 객체 ==> json문자열로 변환..	
+	    Gson : 객체 ==> json문자열로 변환..
+	    		<%=만들어진 json데이터 출력%>	
 		jstl : <c:forEach var="emp" items="${empList}">
+					[
+						{"empno":${emp.empno},
+						 "ename":"${emp.ename}",
+						 ...
+						}					
+					]
+		servlet처리(controller) 
+			==> spring에서 controller			
 				
 				
   
