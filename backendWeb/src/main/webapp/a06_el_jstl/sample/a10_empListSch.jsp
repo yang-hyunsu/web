@@ -28,20 +28,18 @@
 <body>
     <div class="container mt-3">
     	<h2></h2>
-    	<form method="post">
-          	<div class="mb-3 mt-3">
-            <label for="ename">사원명:</label>
-            <input type="text" class="form-control" 
-      	     id="ename" placeholder="사원명 입력" value="${param.ename}" name="ename">
-         	</div>   	
-         	<div class="mb-3 mt-3">
-            <label for="job">직책명:</label>
-            <input type="text" class="form-control" 
-      	     id="job" placeholder="직책명 입력"  value="${param.job}"  name="job">
-         	</div>
-
-         	<button type="submit" class="btn btn-primary">조회</button>
-     	</form>
+	  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	  		<div class="container-fluid">    	
+	    	<form method="post"  class="d-flex align-items-center" >
+	            <input type="text" class="form-control me-2" 
+	      	     id="ename" placeholder="사원명 입력" value="${param.ename}" name="ename"  aria-label="Search">
+	            <input type="text" class="form-control me-2" 
+	      	     id="job" placeholder="직책명 입력"  value="${param.job}"  name="job"  aria-label="Search">
+	         	<button type="submit" class="btn btn-primary" style="width:200px;">조회</button>
+	     	</form>
+	 	    </div>
+	 	</nav>	    	
+     	
 		<table class="table table-striped table-hover">
 			<thead class="table-success">
 		      	<tr  class="text-center">
@@ -69,7 +67,8 @@
 			   	</tr>
 			   	</c:forEach>
 		 	</tbody>
-		</table>      	
+		</table>  
+	    	
     </div>
 </body>
 </html>
