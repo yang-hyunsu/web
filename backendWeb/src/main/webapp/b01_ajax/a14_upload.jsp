@@ -50,7 +50,8 @@
 				name="content">
 		</div>
 		<div class="mb-3 mt-3">
-			<label for="fileInput">파일업로드:</label> <input type="file"
+			<label for="fileInput">파일업로드:</label> 
+				<input type="file"
 				class="form-control" id="fileInput" placeholder="기타내용 입력" multiple>
 		</div>
 		<button type="button" onclick="uploadFile()" class="btn btn-primary">파일업로드</button>
