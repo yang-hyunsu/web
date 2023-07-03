@@ -36,6 +36,11 @@ public class UploadServlet extends HttpServlet {
 			System.out.println("## 파일 업로드 #");
 	      	String uploadPath = "C:\\Users\\user\\git\\web19\\backendWeb\\src\\main\\webapp\\z01_upload"; // 파일 저장 경로 설정
 
+	      	String writer = request.getParameter("writer");
+	      	String content = request.getParameter("content");
+	      	System.out.println("작성자:"+writer);
+	      	System.out.println("내용:"+content);
+	      	
 	        File uploadDir = new File(uploadPath);
 	        if (!uploadDir.exists()) {
 	            uploadDir.mkdir();
@@ -47,10 +52,8 @@ public class UploadServlet extends HttpServlet {
 	                part.write(uploadPath + File.separator + fileName);
 	            }
 	        }
-
 	        response.getWriter().println("File uploaded successfully.");
 	    }
-
 	    // Part에서 파일 이름을 추출하기 위한 메서드
 	    private String getSubmittedFileName(Part part) {
 	        String contentDisposition = part.getHeader("content-disposition");
