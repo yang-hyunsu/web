@@ -29,12 +29,38 @@ pageContext.request.contextPath
     	// window.onload와 동일한 메서드
     	$(document).ready( function(){
     		$("h2").text("jquery 로딩 성공")
+    		// 모든 2가 클릭이 되면 
+    		$("h2").click(function(){
+    			// $(this) : 클릭한 html의 레이블이 클릭되었습니다.
+    			// 출력..
+    			$(this).text("클릭되었습니다.");
+    			$("h3").text("모든 h3 글자변경!!!")
+    		})
+    		// ex) p를 5개 만들고 클릭해보세요 출력..
+    		//     클릭시, touch me?? 클릭한 것만.
+    				
+    				
     	});
     </script>      
 </head>
 <body>
     <div class="container mt-3">
+        
     	<h2>사원정보 등록</h2>
+    	<h2>사원정보 등록</h2>
+    	<h2>사원정보 등록</h2>
+    	<h2>사원정보 등록</h2>
+    	<h2>사원정보 등록</h2>
+    	<h2>사원정보 등록</h2>
+    	<h2>사원정보 등록</h2>
+    	<h2>사원정보 등록</h2>
+    	<h2>사원정보 등록</h2>
+    	<h3>기본경로:${path}</h3>
+    	<h3>기본경로:${path}</h3>
+    	<h3>기본경로:${path}</h3>
+    	<h3>기본경로:${path}</h3>
+    	<h3>기본경로:${path}</h3>
+    	<h3>기본경로:${path}</h3>
     	<h3>기본경로:${path}</h3>
     	<%--  /backendWeb/ : webapp 경로와 동일 절대경로 --%>
     	<img src="/backendWeb/z01_upload/img01.png" 
