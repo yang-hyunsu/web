@@ -38,13 +38,52 @@ pageContext.request.contextPath
     		})
     		// ex) p를 5개 만들고 클릭해보세요 출력..
     		//     클릭시, touch me?? 클릭한 것만.
+    		$("p").click(function(){
+    			$(this).text("touch me??")
+    		})		
+    		/*
+    		# 레이블 변경
+    		1. innerText ==> 
+    				$("선택자").text("변경할데이터")
+    				$("선택자").text()
+    		2. innerHTML
+    				$("선택자").html("<h2>안녕</h2>")
+    				$("선택자").html()
+    		3. value
+    				$("[name=name]").val("할당")
+    				$("[name=name]").val()
+    		4. 기본 속성 
+    			1) align="center" img="a01_img.jpg"
+    				$("선택자").attr("align","center")
+    				$("선택자").attr("img","a01_img.jpg")
+    		5. style속성
+    			1) style="background:red;color:blue;"
+    				$("선택자").css("background","red")
+    				$("선택자").css("color","blue")
+    				$("선택자").css({
+    					background:"red",
+    					color:"blue"
+    				})
     				
+    		
+    		
+    		
+    		
+    		*/
+    		
+    		
     				
     	});
     </script>      
 </head>
 <body>
     <div class="container mt-3">
+    	<p>클릭해보세요</p>
+    	<p>클릭해보세요</p>
+    	<p>클릭해보세요</p>
+    	<p>클릭해보세요</p>
+    	<p>클릭해보세요</p>
+    	<p>클릭해보세요</p>
         
     	<h2>사원정보 등록</h2>
     	<h2>사원정보 등록</h2>

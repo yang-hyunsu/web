@@ -14,12 +14,12 @@
 	6) 특정파일 실행.
 # 수업 소스 문제 발생/서버 에러..(git폴드 아님 본인 코딩 소스)
 0. 최신 git update/git의 위치 확인
-	C:\Users\user\git\web19\backendWeb
+	C:\Users\user\git\web@@@\backendWeb
 1. 프로젝트 단위로 삭제
 	workspace에서도 삭제된지 확인..
 2. project explorer에서 오른쪽 마우스 클릭 import ==> import	
 	==> General  ==> exists project into workspace
-	==> C:\Users\user\git\web19\backendWeb 찾아가서
+	==> C:\Users\user\git\web@@@\backendWeb 찾아가서
 	프로젝트 선택..
 	==> 하위 check 옵션에 copy project into worksapce로
 	프로젝트 단위로 소스를 가져온다.
