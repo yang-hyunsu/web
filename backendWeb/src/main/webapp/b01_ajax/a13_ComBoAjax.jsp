@@ -111,7 +111,7 @@
 				where no = ?
 	2) dao 메서드 추가
 		public Code getCode(int no);
-		public void insertCode(Code upt);
+		public void updateCode(Code upt);
 		public void deleteCode(int no);
 	3) Servlet(MVC 패턴의 Controller 연습)
 		String proc = request.getParameter("proc");
@@ -120,8 +120,30 @@
 		// Dao생성
 		// 조건에 따라서 메서드 처리
 		// 결과값 처리	Gson활용.
-    	
+		
+# 상세 데이터 ajax가져오기..
+1. 내용
+	해당 list 내용 중에 특정 데이터 row단위로 클릭시,
+	상세 데이터를 ajax로 가져와서 form 화면에 출력한다.
+2. 처리순서
+	1) 클릭시, 해당 데이터를 요청값을 만들어 ajax 처리한다.(핸들러함수 선언)
+	2) 단일 데이터 가져오는 dao 생성
+	3) 단일 데이터 가져와서 json데이터 return하는 servlet 생성
+	4) ajax 요청 처리로 servlet 호출, ajax 처리..
+	
+		
+	    	
  --%>
+    <script src = "https://code.jquery.com/jquery-3.7.0.js" type="text/javascript"></script>
+    
+    <script type="text/javascript">
+    
+    	$(document).ready( function(){
+    		
+    		
+    	});
+    </script>   
+ 
 <script type="text/javascript">
 	function schCode13(){
 		if(event.keyCode==13){
@@ -160,10 +182,20 @@
 		document.querySelector(".modal-title").innerText
 			="코드상세[코드번호:"+no+"]"
 		// ajax로 상세 데이터를 가져와서 화면에 데이터 넣기
+		$("#regBtn").hide()
+		$("#uptBtn").show()
+		$("#delBtn").show()
+		
+		
+		
+		
 	}
 	function insModal(){
 		document.querySelector(".modal-title").innerText
 		="코드등록"
+		$("#regBtn").show()
+		$("#uptBtn").hide()
+		$("#delBtn").hide()
 	}
 </script>
 <body>
@@ -253,13 +285,14 @@
 						placeholder="정렬순서 입력" name="ordno">
 					</div>										
 				</div>
-				</form>
+				</form>  
+
 				<div class="modal-footer">
-					<button type="button" class="btn btn-success"
+					<button id="regBtn" type="button" class="btn btn-success"
 						onclick="ajaxSave()">등록</button>
-					<button type="button" class="btn btn-primary"
+					<button id="uptBtn"  type="button" class="btn btn-primary"
 						onclick="ajaxUpdate()">수정</button>
-					<button type="button" class="btn btn-warning"
+					<button id="delBtn"  type="button" class="btn btn-warning"
 						onclick="ajaxDelete()">삭제</button>
 					<button type="button" class="btn btn-danger"
 						data-bs-dismiss="modal">Close</button>

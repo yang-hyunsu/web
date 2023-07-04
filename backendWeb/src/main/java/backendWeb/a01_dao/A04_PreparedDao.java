@@ -529,6 +529,102 @@ public class A04_PreparedDao {
 	        DB.close(rs, pstmt, con);
 	    }
 	}
+/*
+SELECT * 
+FROM code
+WHERE NO = ?
+UPDATE code
+    SET title = ?,
+        refno = ?,
+        ordno = ?,
+        val = ?
+   WHERE NO = ?
+delete
+FROM code
+WHERE NO = ?
+ * */
+	public Code getCode(int no) {
+	    Code c = null;
+	    String sql = " SELECT * \r\n"
+	    		+ "FROM code\r\n"
+	    		+ "WHERE NO = ?";
+	    try {
+	        con = DB.con();
+	        pstmt = con.prepareStatement(sql);
+	        pstmt.setInt(1, no);
+	        rs = pstmt.executeQuery();
+	        if (rs.next()) {
+	            c = new Code(
+	                    rs.getInt("no"),
+	                    rs.getString("title"),
+	                    rs.getString("val"),
+	                    rs.getInt("refno"),
+	                    rs.getInt("ordno")
+	            );
+	        }
+	    } catch (SQLException e) {
+	        System.out.println("DB 관련 오류: " + e.getMessage());
+	    } catch (Exception e) {
+	        System.out.println("일반 오류: " + e.getMessage());
+	    } finally {
+	        DB.close(rs, pstmt, con);
+	    }
+	    return c;
+	}
+
+	public void updateCode(Code upt) {
+	    String sql = "UPDATE code\r\n"
+	    		+ "    SET title = ?,\r\n"
+	    		+ "        refno = ?,\r\n"
+	    		+ "        ordno = ?,\r\n"
+	    		+ "        val = ?\r\n"
+	    		+ "   WHERE NO = ?";
+	    try {
+	        con = DB.con();
+	        con.setAutoCommit(false);
+	        pstmt = con.prepareStatement(sql);
+	        pstmt.setString(1, upt.getTitle());
+	        pstmt.setInt(2, upt.getRefno());
+	        pstmt.setInt(3, upt.getOrdno());
+	        pstmt.setString(4, upt.getVal());
+	        pstmt.setInt(5, upt.getNo());
+	        int result = pstmt.executeUpdate();
+	        if (result == 1) {
+	            con.commit();
+	            System.out.println("수정 성공");
+	        }
+	    } catch (SQLException e) {
+	        System.out.println("DB 오류: " + e.getMessage());
+	        DB.rollback(con);
+	    } catch (Exception e) {
+	        System.out.println("일반 오류: " + e.getMessage());
+	    } finally {
+	        DB.close(rs, pstmt, con);
+	    }
+	}
+	public void deleteCode(int no) {
+	    String sql = "delete\r\n"
+	    		+ "FROM code\r\n"
+	    		+ "WHERE NO = ?";
+	    try {
+	        con = DB.con();
+	        con.setAutoCommit(false);
+	        pstmt = con.prepareStatement(sql);
+	        pstmt.setInt(1, no);
+	        int result = pstmt.executeUpdate();
+	        if (result == 1) {
+	            con.commit();
+	            System.out.println("삭제 성공");
+	        }
+	    } catch (SQLException e) {
+	        System.out.println("DB 오류: " + e.getMessage());
+	        DB.rollback(con);
+	    } catch (Exception e) {
+	        System.out.println("일반 오류: " + e.getMessage());
+	    } finally {
+	        DB.close(rs, pstmt, con);
+	    }
+	}
 
 	public static void main(String[] args) {
         A04_PreparedDao dao = new A04_PreparedDao();
