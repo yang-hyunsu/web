@@ -34,7 +34,8 @@
 		<table class="table table-striped table-hover">
 		    <tbody>
 			   	<tr  class="text-center">
-			   		<c:forEach var="cnt" begin="1" end="10">
+			   		<c:forEach var="cnt"
+			   		 begin="1" end="10">
 			        <td>${cnt}</td>
 			        </c:forEach>
 			   	</tr>
@@ -55,6 +56,8 @@
 				new String[]{"red","orange","yellow",
 						"green","blue","navy","purple"});		
 		%>
+		<c:set var="rainbow2" 
+			value="['red','orange','yellow','green','blue']"/>
  		<table class="table table-striped table-hover">
 		    <tbody>
 			   	<tr  class="text-center">

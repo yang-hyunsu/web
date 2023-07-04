@@ -19,7 +19,7 @@
     	// window.onload와 동일한 메서드
     	$(document).ready( function(){
     		
-    		$("h2").text("jquery 로딩 성공")
+    		$("h2").text("회원 등록")
     	});
     </script>      
     
@@ -28,29 +28,35 @@
 <body>
     <div class="container mt-3">
     	<h2>사원정보 등록</h2>
+    	<%--ex) 회원정보(회원아이디,패스워드,이름,권한,포인트)fmf
+    	요청값을 처리하는 form을 만들고 useBean으로 등록하여 출력되게
+    	하세요.. --%>
+    	
 	  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	  		<div class="container-fluid">    	
 	    	<form method="post"  class="d-flex align-items-center" >
 	            <input type="text" class="form-control me-2" 
-	      	     id="deptno" placeholder="부서번호 입력"  name="deptno"  aria-label="Search">
-	            <input type="text" class="form-control me-2" 
-	      	     id="dname" placeholder="부서명 입력"  name="dname"  aria-label="Search">
-	            <input type="text" class="form-control me-2" 
-	      	     id="loc" placeholder="부서위치 입력"  name="loc"  aria-label="Search">
-	         	<button type="submit" class="btn btn-primary" style="width:200px;">등록</button>
+	      	     id="id" placeholder="아이디 입력" name="id"  aria-label="Search">
+	      	    <input type="text" class="form-control me-2" 
+	      	     id="pass" placeholder="패스워드 입력" name="pass"  aria-label="Search">
+	      	    <input type="text" class="form-control me-2" 
+	      	     id="name" placeholder="이름 입력" name="name"  aria-label="Search">
+	      	    <input type="text" class="form-control me-2" 
+	      	     id="auth" placeholder="권한 입력" name="auth"  aria-label="Search">
+	      	    <input type="text" class="form-control me-2" 
+	      	     id="point" placeholder="포인트 입력" name="point"  aria-label="Search">
+	         	<button type="submit" class="btn btn-primary" 
+	         		style="width:200px;">등록</button>
 	     	</form>
 	 	    </div>
 	 	</nav>
-	 	<%-- deptno=10&dname=인사&loc=서울 
-	 	
-	 		 setDeptno(int deptno)
-	 		 setDname(String name)
-	 		 setLoc(String loc)
-	 	--%>
-	 	<jsp:useBean id="dept" class="backendWeb.z01_vo.Dept"/>
-	 	<jsp:setProperty property="*" name="dept"/>
-	 	
-	 	<%-- 요청값을 자동할당.--%>
+	 	<jsp:useBean id="mem" class="backendWeb.z01_vo.Member"/>
+	 	<jsp:setProperty property="*" name="mem"/>
+	 	<jsp:useBean id="list" class="java.util.ArrayList"
+	 	    scope="session"/>
+	 	<c:if test="${not empty mem.id}">
+	 		${list.add(mem)}
+	 	</c:if>
 		<table class="table table-striped table-hover">
 			<thead class="table-success">
 		      	<tr  class="text-center">
@@ -59,12 +65,14 @@
 				    <th>Email</th>
 		      	</tr>
 		    </thead>
-		    <tbody><%-- 11:10~ --%>
+		    <tbody>
+		    	<c:forEach var="m" items="${list}">
 			   	<tr  class="text-center">
-			        <td>${dept.deptno}</td>
-			        <td>${dept.dname}</td>
-			        <td>${dept.loc}</td>
+			        <td>${m.id }</td>
+			        <td>${m.name }</td>
+			        <td>${m.auth }</td>
 			   	</tr>
+			   	</c:forEach>
 		 	</tbody>
 		</table>      	
     </div>

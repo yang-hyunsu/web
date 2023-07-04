@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>    
+<fmt:requestEncoding value="utf-8"/>
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,26 +27,28 @@
 </head>
 <body>
     <div class="container mt-3">
-    	<h3>물건명:${pname}</h3>
-    	<h3>가격:${price}</h3>
-    	<h3>갯수:${cnt}</h3>
-    	<h3>총계:${tot2}</h3>    
-    
-    
     	<h2>사원정보 등록</h2>
-    	<form action="" method="post">
-         	<div class="mb-3 mt-3">
-            <label for="empno">사원번호:</label>
-            <input type="number" class="form-control" 
-      	     id="empno" placeholder="사원번호 입력" name="empno">
-         	</div>
-         	<div class="mb-3 mt-3">
-            <label for="ename">사원명:</label>
-            <input type="text" class="form-control" 
-      	     id="ename" placeholder="사원명 입력" name="ename">
-         	</div>
-         	<button type="submit" class="btn btn-primary">등록</button>
-     	</form>
+    	<%--
+    	ex) useBean을 이용하여 사원정보 등록 조회
+    	 --%>
+	  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	  		<div class="container-fluid">    	
+	    	<form method="post"  class="d-flex align-items-center" >
+	            <input type="text" class="form-control me-2" 
+	      	     id="title" placeholder="직책명 입력" value="${param.title}" name="title"  aria-label="Search">
+	            <input type="text" class="form-control me-2" 
+	      	     id="min_sal1" placeholder="최소급여 시작"  
+	      	     value="${empty param.min_sal1? 0: param.min_sal1}"  name="min_sal1"  aria-label="Search">
+	      	    ~
+	            <input type="text" class="form-control me-2" 
+	      	     id="min_sal2" placeholder="최소급여 마지막" 
+	      	      value="${empty param.min_sal2? 9999999: param.min_sal2}"  name="min_sal2"  aria-label="Search">
+	      	     
+	      	     
+	         	<button type="submit" class="btn btn-primary" style="width:200px;">조회</button>
+	     	</form>
+	 	    </div>
+	 	</nav>
 		<table class="table table-striped table-hover">
 			<thead class="table-success">
 		      	<tr  class="text-center">

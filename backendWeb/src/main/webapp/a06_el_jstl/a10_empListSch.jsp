@@ -53,9 +53,16 @@
 				    <th>부서번호</th>
 		      	</tr>
 		    </thead>
-		    <tbody>
+		    <%--
+		    # controller에서 요청범위로 설정된 데이터를
+		    반복문에 의해서 처리한다.
+		    request.setAttribute("empList", 
+		    	dao.getEmpList(ename,job));
+		     --%>
 		    	<c:forEach var="emp" items="${empList}">
 			   	<tr  class="text-center">
+			   		<%-- emp.getEmpno() 접근해서 호출하는 것이다.
+			   			el는 property개념으로 데이터를 가져온다. --%>
 			        <td>${emp.empno}</td>
 			        <td>${emp.ename}</td>
 			        <td>${emp.job}</td>

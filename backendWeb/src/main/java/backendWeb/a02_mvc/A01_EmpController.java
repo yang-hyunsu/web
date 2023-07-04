@@ -47,7 +47,7 @@ public class A01_EmpController extends HttpServlet {
 				dao.getEmpList(ename, job));
 		
 		// 3. view단(jsp)호출
-		String page = "a10_empListSch.jsp";
+		String page = "a06_el_jstl\\a10_empListSch.jsp";
 		RequestDispatcher rd = 
 				request.getRequestDispatcher(page);
 		rd.forward(request, response);

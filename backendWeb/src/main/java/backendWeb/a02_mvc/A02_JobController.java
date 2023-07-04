@@ -50,7 +50,7 @@ public class A02_JobController extends HttpServlet {
 		request.setAttribute("jobList", dao.getJob(sch));
 		
 		// 3. 화면view 호출.
-		String page = "a11_jobListSch.jsp";
+		String page = "a06_el_jstl\\a11_jobListSch.jsp";
 		RequestDispatcher rd = request.getRequestDispatcher(page);
 		rd.forward(request, response);
 		

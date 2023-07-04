@@ -22,13 +22,6 @@ request.setAttribute("p01", new Person("홍길동",25,"서울"));
 	3) 데이터 변경 처리..	
 		<c:set target="person" property="age" value="30"/>
 		${person.age}
-		
-		
-		
-		
-	
-	
-	
 2. 하지만, script를 통해서 객체를 선언하고 property를 통해 데이터를
 	할당하여 처리하는 방법도 사용된다.
 	
