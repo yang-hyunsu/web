@@ -19,7 +19,7 @@
     	// window.onload와 동일한 메서드
     	$(document).ready( function(){
     		
-    		$("h2").text("jquery 로딩 성공")
+    		$("h2").text("사원정보 등록/조회")
     	});
     </script>      
     
@@ -34,21 +34,43 @@
 	  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	  		<div class="container-fluid">    	
 	    	<form method="post"  class="d-flex align-items-center" >
+	            <input type="number" class="form-control me-2" 
+	      	     id="empno" placeholder="사원번호" 
+	      	      name="empno"  aria-label="Search">
 	            <input type="text" class="form-control me-2" 
-	      	     id="title" placeholder="직책명 입력" value="${param.title}" name="title"  aria-label="Search">
+	      	     id="ename" placeholder="사원명" 
+	      	      name="ename"  aria-label="Search">
 	            <input type="text" class="form-control me-2" 
-	      	     id="min_sal1" placeholder="최소급여 시작"  
-	      	     value="${empty param.min_sal1? 0: param.min_sal1}"  name="min_sal1"  aria-label="Search">
-	      	    ~
-	            <input type="text" class="form-control me-2" 
-	      	     id="min_sal2" placeholder="최소급여 마지막" 
-	      	      value="${empty param.min_sal2? 9999999: param.min_sal2}"  name="min_sal2"  aria-label="Search">
-	      	     
-	      	     
-	         	<button type="submit" class="btn btn-primary" style="width:200px;">조회</button>
+	      	     id="job" placeholder="직책명" 
+	      	      name="job"  aria-label="Search">
+	            <input type="number" class="form-control me-2" 
+	      	     id="mgr" placeholder="관리자번호" 
+	      	      name="mgr"  aria-label="Search">	      	      
+	            <input type="date" class="form-control me-2" 
+	      	     id="hiredateS" placeholder="입사일" 
+	      	      name="hiredateS"  aria-label="Search">
+	            <input type="number" class="form-control me-2" 
+	      	     id="sal" placeholder="급여" 
+	      	      name="sal"  aria-label="Search">
+	            <input type="number" class="form-control me-2" 
+	      	     id="comm" placeholder="보너스" 
+	      	      name="comm"  aria-label="Search">
+	            <input type="number" class="form-control me-2" 
+	      	     id="deptno" placeholder="부서번호" 
+	      	      name="deptno"  aria-label="Search">
+	      	      	      	      
+	         	<button type="submit" class="btn btn-primary" style="width:200px;">등록</button>
 	     	</form>
 	 	    </div>
 	 	</nav>
+	 	<jsp:useBean id="ins" class="backendWeb.z01_vo.Emp"/>
+	 	<jsp:setProperty property="*" name="ins"/>
+	 	<jsp:useBean id="dao" class="backendWeb.a01_dao.A04_PreparedDao"/>
+	 	<c:if test="${not empty ins.ename}">
+	 		${dao.insertEmp(ins)}
+	 	</c:if>
+	 	
+	 	
 		<table class="table table-striped table-hover">
 			<thead class="table-success">
 		      	<tr  class="text-center">
@@ -58,6 +80,7 @@
 		      	</tr>
 		    </thead>
 		    <tbody>
+		    	
 			   	<tr  class="text-center">
 			        <td>John</td>
 			        <td>Doe</td>

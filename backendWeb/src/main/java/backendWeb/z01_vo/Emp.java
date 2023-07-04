@@ -1,7 +1,7 @@
 package backendWeb.z01_vo;
 // backendWeb.z01_vo.Emp
 import java.util.Date;
-
+// backendWeb.z01_vo.Emp
 public class Emp {
 	private int empno;
 	private String ename;
