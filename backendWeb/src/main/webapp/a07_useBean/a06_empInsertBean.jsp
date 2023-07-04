@@ -74,18 +74,22 @@
 		<table class="table table-striped table-hover">
 			<thead class="table-success">
 		      	<tr  class="text-center">
-				    <th>Firstname</th>
-				    <th>Lastname</th>
-				    <th>Email</th>
+				    <th>사원번호</th>
+				    <th>사원명</th>
+				    <th>급여</th>
+				    <th>입사일</th>
 		      	</tr>
 		    </thead>
 		    <tbody>
-		    	
+		    	<c:forEach var="emp" items="${dao.getEmpList()}">
 			   	<tr  class="text-center">
-			        <td>John</td>
-			        <td>Doe</td>
-			        <td>john@example.com</td>
+			        <td>${emp.empno}</td>
+			        <td>${emp.ename}</td>
+			        <td><fmt:formatNumber value="${emp.sal}"/></td>
+			        <td><fmt:formatDate value="${emp.hiredate}"/>
+			        </td>
 			   	</tr>
+			   	</c:forEach>
 		 	</tbody>
 		</table>      	
     </div>
