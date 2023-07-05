@@ -33,7 +33,7 @@
     			// buyProduct.do?pname=사과
     			$.ajax({
     				url:"${path}/buyProduct.do",
-    				data:"pname="+pnameVal, // controller에 요청값을 전송
+    				data:$("#frm").serialize(), // controller에 요청값을 전송
     				type:"post",
     				dataType:"text",
     				success:function(data){
@@ -55,9 +55,15 @@
     	<h2>구매 물건 정보 로딩</h2>
 	  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	  		<div class="container-fluid">    	
-	    	<form method="post"  class="d-flex align-items-center" >
+	    	<form id="frm" method="post"  class="d-flex align-items-center" >
+	    	
+	    
 	            <input type="text" class="form-control me-2" 
 	      	     id="pname" placeholder="물건명 입력"  name="pname"  aria-label="Search">
+	            <input type="text" class="form-control me-2" 
+	      	     id="price" placeholder="가격 입력"  name="price"  aria-label="Search">
+	            <input type="text" class="form-control me-2" 
+	      	     id="cnt" placeholder="갯수 입력"  name="cnt"  aria-label="Search">
 	         	<button type="button" id="regBtn"
 	         	 class="btn btn-primary" style="width:200px;">물건명 로딩</button>
 	     	</form>
