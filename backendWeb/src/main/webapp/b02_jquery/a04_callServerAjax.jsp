@@ -28,7 +28,7 @@
     			//  $("#frm").serialize() : 
     		 	//  form하위에 name/value 기준으로 자동으로
     		 	//  query string을 생성해준다.
-    			//lert( $("#frm").serialize() )
+    			//alert( $("#frm").serialize() )
     			$.ajax({
     				url:"${path}/prodCalcu.do",
     				type:"post",

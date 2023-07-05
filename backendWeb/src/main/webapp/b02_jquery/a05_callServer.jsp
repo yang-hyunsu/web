@@ -27,6 +27,9 @@
     		// 요청값
     		$("#regBtn").click(function(){
     			var pnameVal = $("#pname").val()
+    			// ex) 물건명 가격 개수 입력 클릭사.
+    			//     전달되는 구매물품은 @@ 이고, 총비용은 @@원입니다.
+    			//     출력..
     			// buyProduct.do?pname=사과
     			$.ajax({
     				url:"${path}/buyProduct.do",
