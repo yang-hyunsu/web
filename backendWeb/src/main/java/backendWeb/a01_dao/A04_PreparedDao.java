@@ -668,6 +668,36 @@ WHERE NO = ?
 		    return c;
 		}
 
+	public Job getJobs(String job_id) {
+		    Job job = new Job("","",0,0);
+		    String sql = "	SELECT * \r\n"
+		    		+ "FROM jobs\r\n"
+		    		+ "WHERE JOB_ID = ? ";
+		    System.out.println("# DB 접속 #");
+		    try {
+		        con = DB.con();
+		        pstmt = con.prepareStatement(sql); 
+		        pstmt.setString(1, job_id);; 
+		        rs = pstmt.executeQuery();
+		        //job_id, job_title, min_salary, max_salary
+		        if (rs.next()) {
+		        	job = new Job(
+		        			rs.getString("job_id"),
+		        			rs.getString("job_title"),
+		        			rs.getInt("min_salary"),
+		        			rs.getInt("max_salary")
+		            );
+		        }
+		    } catch (SQLException e) {
+		        System.out.println("DB 관련 오류: " + e.getMessage());
+		    } catch (Exception e) {
+		        System.out.println("일반 오류: " + e.getMessage());
+		    } finally {
+		        DB.close(rs, pstmt, con);
+		    }
+		    return job;
+		}
+
 	public static void main(String[] args) {
         A04_PreparedDao dao = new A04_PreparedDao();
         dao.deleteLocation(1000);
