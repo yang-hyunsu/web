@@ -21,9 +21,14 @@
     	// window.onload와 동일한 메서드
     	$(document).ready( function(){
     		
-    		$("h2").click(function(){
+    		// ex) 가격을 입력해서 서버에 전송해서
+    		//     출력내용을 가격 @@@을 처리하게 하세요.
+    		//     price
+    		$("#regBtn").click(function(){
     			$.ajax({
     				url:"${path}/prodCalcu.do",
+    				type:"post",
+    				data:"price="+$("#price").val(),
     				dataType:"text",
     				success:function(data){
     					alert(data)
@@ -42,17 +47,8 @@
 	  		<div class="container-fluid">    	
 	    	<form method="post"  class="d-flex align-items-center" >
 	            <input type="text" class="form-control me-2" 
-	      	     id="title" placeholder="직책명 입력" value="${param.title}" name="title"  aria-label="Search">
-	            <input type="text" class="form-control me-2" 
-	      	     id="min_sal1" placeholder="최소급여 시작"  
-	      	     value="${empty param.min_sal1? 0: param.min_sal1}"  name="min_sal1"  aria-label="Search">
-	      	    ~
-	            <input type="text" class="form-control me-2" 
-	      	     id="min_sal2" placeholder="최소급여 마지막" 
-	      	      value="${empty param.min_sal2? 9999999: param.min_sal2}"  name="min_sal2"  aria-label="Search">
-	      	     
-	      	     
-	         	<button type="submit" class="btn btn-primary" style="width:200px;">조회</button>
+	      	     id="price" placeholder="가격 입력"  name="price"  aria-label="Search">
+	         	<button id="regBtn" type="button" class="btn btn-primary" style="width:200px;">가격전송</button>
 	     	</form>
 	 	    </div>
 	 	</nav>
