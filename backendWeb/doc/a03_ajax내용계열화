@@ -90,6 +90,78 @@
 					]
 		servlet처리(controller) 
 			==> spring에서 controller			
+
+# jquery Ajax처리 연습
+0. 요구사항 내용 확인
+
+1. 에러 발생시 대응 방법
+
+2. server단 처리 
+	1) 요청값 처리
+	2) dao 데이터 처리
+	3) json 데이터 변경
+	
+3. client단 처리
+	1) 화면 ui 
+	2) 이벤트 및 이벤트 핸들러
+	3) ajax 코드 및 속성 확인
+	
+# 연습예제1 : 물건구매(daoX)
+ 	요청값 처리
+	0. 요구사항 내용 확인
+		화면에 물건명과 가격과 갯수를 입력해서 click 서버로 요청값 전달.
+		총계값을 ajax로 받아서 출력..
+		
+	1. 에러 발생시 대응 방법
+		1) 프로세스 흐름을 System.out.println("#1")
+		2) 프로세스 흐름을 console.log("#1")
+		흐름대로 각 단계별로 흘러가지 않는 이유를 생각해본다.
+		3) 프로세스 흐름을 console.log(변수)
+		
+	2. server단 처리 
+		1) 요청값 처리
+			물건명 가격 갯수 받기
+		2) dao 데이터 처리
+		3) json 데이터 변경
+			총계로 return 받기..
+		
+	3. client단 처리
+		1) 화면 ui 
+			물건명 가격 갯수 입력 클릭
+		2) 이벤트 및 이벤트 핸들러
+			click
+		3) ajax 코드 및 속성 확인
+			$.ajax({
+				url:서버의주소
+				data:요청(물건명가격갯수
+				type:post/get
+				dataType:json/text/html
+				success:function(data){}
+				error:function(){}
+			}) 	
+ 	
+ 	
+ 	
+# 연습예제2 : 숫자카운트(daoX)
+	json데이터 처리 	
+# 연습예제3 : (dao)
+	dao처리
+	 	
+		
+	
+	
+	
+	
+
+
+
+
+
+
+
+
+
+
 				
 				
   
