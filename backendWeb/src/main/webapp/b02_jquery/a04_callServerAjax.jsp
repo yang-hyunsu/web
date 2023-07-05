@@ -25,10 +25,14 @@
     		//     출력내용을 가격 @@@을 처리하게 하세요.
     		//     price
     		$("#regBtn").click(function(){
+    			//  $("#frm").serialize() : 
+    		 	//  form하위에 name/value 기준으로 자동으로
+    		 	//  query string을 생성해준다.
+    			//lert( $("#frm").serialize() )
     			$.ajax({
     				url:"${path}/prodCalcu.do",
     				type:"post",
-    				data:"price="+$("#price").val(),
+    				data: $("#frm").serialize(),
     				dataType:"text",
     				success:function(data){
     					alert(data)
@@ -36,6 +40,7 @@
     			})
     		})
     	});
+    	// 15:05~
     </script>      
     
     
@@ -45,9 +50,12 @@
     	<h2>서버를 호출</h2>
 	  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	  		<div class="container-fluid">    	
-	    	<form method="post"  class="d-flex align-items-center" >
+	    	<form id="frm" method="post"  class="d-flex align-items-center" >
 	            <input type="text" class="form-control me-2" 
 	      	     id="price" placeholder="가격 입력"  name="price"  aria-label="Search">
+	      	    <input type="text" class="form-control me-2" 
+	      	     id="cnt" placeholder="갯수 입력"  name="cnt"  aria-label="Search">
+	      	     
 	         	<button id="regBtn" type="button" class="btn btn-primary" style="width:200px;">가격전송</button>
 	     	</form>
 	 	    </div>

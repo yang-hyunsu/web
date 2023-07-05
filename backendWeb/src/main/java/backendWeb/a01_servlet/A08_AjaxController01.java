@@ -33,13 +33,17 @@ public class A08_AjaxController01 extends HttpServlet {
 		//             요청값이 없으면 "없네요"라고 출력.
 		// 1. 요청값
 		String price = request.getParameter("price");
-		if(price==null) price="0";
+		String cnt = request.getParameter("cnt");
+		if(price==null || price.equals("")) price="0";
+		if(cnt==null || cnt.equals("")) cnt="0";
+		int tot = Integer.parseInt(price)
+				*Integer.parseInt(cnt);
 		// 2. 모델데이터
 		// 3. 화면호출(jsp/json출력)
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/plain;utf-8");
-		response.getWriter().print("안녕하세요!! 데이터 출력 가격:"
-				+price);
+		response.getWriter().print("합산은:"
+				+tot);
 	}
 
 }
