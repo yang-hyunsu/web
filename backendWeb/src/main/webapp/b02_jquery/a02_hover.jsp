@@ -20,6 +20,9 @@
     	$(document).ready( function(){
     		
     		$("h2").text("jquery 로딩 성공")
+    		// $("선택자").hover(함수1,함수2)
+    		//   마우스커서를 위치시켰을 때, 함수1 처리
+    		//   마우스커서를 벗어났을 때, 함수2 처리
     		$("#p1").hover(function(){
     			    //alert("You entered p1!");
     			    $(this).css("background","yellow");

@@ -26,12 +26,16 @@
 # jquery ajax 처리
 1. $.ajax({속성:속성값,속성:속성값,... 속성:function(){}})
 2. 기본 속성
-	1) url : 호출하는 backend단 주소
+	1) url : 호출하는 backend단 주소/
 	2) type : "get/post"
 	3) data : 요청 query string
-			  json형식
-			  $("form").serialize() : form하위 내용을 key=value
-	  	로 변환하여 처리
+			  json 객체 형식
+			  $("form").serialize() : 
+			  	form하위 내용을 name과 value값 기준으로
+			  	쿼리 스트링을 만들어 준다. key=value&key=value
+		로 변환하여 처리
+		var enameVal = $("[name=ename]").val()
+		var qstr="ename="+enameVal+...
 	4) dataType :서버에서 받는 데이터유형
 		문자열(text,xml)을 받지만, 
 		"json" 객체로 변환 해준다. JSON.parse()를 처리하지 않아도 된다.
@@ -39,9 +43,7 @@
 		성공시 받는 데이터 함수			  	
 	6) error:function(err){}
 	    실패시 받는 데이터 함수..
-	    
-	    16:05~			  	
-			  
+
  --%>    
 </head>
 <body>

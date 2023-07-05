@@ -38,14 +38,77 @@
 	class : 패키지 이름을 포함한 자바빈 클래스의 완전한 이름
 	scope : 자바빈 객체가 저장될 영역을 지정 page, request,
 		session, application
+	ex)	
+	<jsp:useBean id="p01" class="vo.Person" scope="session"/>
+	
+	Person p01 = new Person();
+	session.setAttribute("p01", p01);	
+		
+		
 3. 자바빈 객체의 프로퍼티 값 설정
 	<jsp:setProperty name="id" property="이름" value="값"
 		name : 자바빈 객체의 이름
 		property : 값을 설정할 프로퍼티
 		value : 프로퍼티의 값
+	ex)
+	<jsp:setProperty name="p01" property="name" 
+		value="홍길동"/>
+	${p01.setName("홍길동")}
+	p01.setName("홍길동")
+		
 	<jsp:setProperty name="id" property="이름" param="파라미터이름"
 		param : 프로퍼티의 값으로 사용할 라파미터 이름
+		
+		
 	<jsp:getProperty name="자바빈" property="프로퍼티"/>
+	ex)
+	<jsp:setProperty name="p01" property="name"/>
+	${p01.name}
+	p01.getName()
+
+4. 요청값 처리 기능 
+	페이지?name=홍길동&age77=25
+	
+	<jsp:setProperty name="p01" property="name"/>
+	<jsp:setProperty name="p01" property="age"/>
+	
+	요청값과 저정하는 메서드이름이 다른 때, 요청값이름으로 property를
+	연동할 때, param을 활용한다.
+	<jsp:setProperty name="p01" property="age" 
+		param="age77"/>
+	==> 요청값이 querystring으로 있을 때, 저장된다.
+	p01.setName("홍길동");
+	p01.setAge(25)
+	p01.setAge("25")
+	단) VO(bean 클래스가)
+	public void setName(int num01){ (X)
+	public void setName(String name){ (O)
+	
+	public void setAge(int age){ (O)
+	public void setAge(String str){ (O)
+	# 최강기능
+	<jsp:setProperty name="p01" property="*"/>
+	querystring이 property와 동일한 이름과 할당가능한 type으로
+	선언되어 있으면 자동을 모두다 할당하겠습니다.
+	?name=홍길동&age=25&loc=서울
+	setName(String name){}
+	setAge(int age){}
+	setLoc(String loc){}
+	
+	?name=홍길동&age=이십오세&loc=서울
+	setName(String name){}
+	setAge(int age){}
+	setLoc(String loc){}	
+
+	?name=홍길동&age=25&loc=서울
+	setName(String name){}
+	setAge(String age){}
+	setLoc(String loc){}
+	
+	
+	
+	
+	
 --%>
 <!DOCTYPE html>
 <html>
