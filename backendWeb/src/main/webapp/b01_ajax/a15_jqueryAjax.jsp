@@ -42,13 +42,15 @@
     				console.log(empList)
     				var html='';
     				empList.forEach(function(emp){
-    					cosole.log(emp)
+    					console.log(emp)
+        				html+='<tr  class="text-center">'
+            			html+='<td>'+emp.ename+'</td>'
+            			html+='<td>'+emp.job+'</td>'
+            			html+='<td>'+emp.sal+'</td>'
+        			    html+='</tr>'    					
+    					
     				})
-    				html+='<tr  class="text-center">'
-    				html+='<td>John</td>'
-    				html+='<td>Doe</td>'
-    				html+='<td>john@example.com</td>'
-			        html='</tr>'
+
     				
     				$("#show").html(html)
     			},
