@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 
 import backendWeb.z01_vo.Code;
 import backendWeb.z01_vo.Department;
+import backendWeb.z01_vo.Dept;
 import backendWeb.z01_vo.Emp;
 import backendWeb.z01_vo.Employee;
 import backendWeb.z01_vo.Job;
@@ -625,6 +626,47 @@ WHERE NO = ?
 	        DB.close(rs, pstmt, con);
 	    }
 	}
+
+	/*
+	SELECT * 
+	FROM code
+	WHERE NO = ?
+	UPDATE code
+	    SET title = ?,
+	        refno = ?,
+	        ordno = ?,
+	        val = ?
+	   WHERE NO = ?
+	delete
+	FROM code
+	WHERE NO = ?
+	 * */
+		public Dept getDept(int no) {
+		    Dept c = new Dept(0,"","");
+		    String sql = " SELECT * \r\n"
+		    		+ "FROM dept\r\n"
+		    		+ "WHERE deptno = ?";
+		    try {
+		        con = DB.con();
+		        pstmt = con.prepareStatement(sql);
+		        pstmt.setInt(1, no);
+		        rs = pstmt.executeQuery();
+		        if (rs.next()) {
+		            c = new Dept(
+		                    rs.getInt("deptno"),
+		                    rs.getString("dname"),
+		                    rs.getString("loc")
+		            );
+		        }
+		    } catch (SQLException e) {
+		        System.out.println("DB 관련 오류: " + e.getMessage());
+		    } catch (Exception e) {
+		        System.out.println("일반 오류: " + e.getMessage());
+		    } finally {
+		        DB.close(rs, pstmt, con);
+		    }
+		    return c;
+		}
 
 	public static void main(String[] args) {
         A04_PreparedDao dao = new A04_PreparedDao();
