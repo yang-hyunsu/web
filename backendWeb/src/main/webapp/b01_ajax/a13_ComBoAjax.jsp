@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>    
+<c:set var="path" 
+	value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -181,12 +185,38 @@
 		document.querySelector("#detailModal").click()
 		document.querySelector(".modal-title").innerText
 			="코드상세[코드번호:"+no+"]"
-		// ajax로 상세 데이터를 가져와서 화면에 데이터 넣기
+		
 		$("#regBtn").hide()
 		$("#uptBtn").show()
 		$("#delBtn").show()
+		// ajax로 상세 데이터를 가져와서 화면에 데이터 넣기
+		// /backendWeb/codeDetail.do?no=1005
+		// path : 상단에 선언된 project명을 통한 경로 지정.
 		
-		
+		// ex)
+    	// /backendWeb/empList.do?div=y
+    	// jquery로 사원정보를 리스트 출력하세요.	
+		$.ajax({
+			url:"${path}/codeDetail.do",
+			type:"post",
+			data:"no="+no,
+			dataType:"json",
+			success:function(data){
+				console.log(data)
+				//alert(data);
+				// title val refno ordno
+				$("#regFrm #title").val(data.title)
+				$("#regFrm #val").val(data.val)
+				$("#regFrm #refno").val(data.refno)
+				$("#regFrm #ordno").val(data.ordno)
+				
+				
+			},
+			error:function(err){
+				console.log(err)
+			}
+			
+		})
 		
 		
 	}
@@ -277,7 +307,7 @@
 						<input type="text"
 							class="form-control" id="refno"
 						placeholder="상위번호 입력" name="refno">
-					</div>
+					</div>  
 					<div class="mb-3 mt-3">
 						<label for="ordno">정렬순서:</label> 
 						<input type="number"
