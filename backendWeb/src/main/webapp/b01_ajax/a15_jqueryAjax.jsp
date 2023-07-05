@@ -43,10 +43,16 @@
     				var html='';
     				empList.forEach(function(emp){
     					console.log(emp)
+    					console.log(typeof(emp.hiredate))
         				html+='<tr  class="text-center">'
+            			html+='<td>'+emp.empno+'</td>'
             			html+='<td>'+emp.ename+'</td>'
             			html+='<td>'+emp.job+'</td>'
+            			html+='<td>'+emp.mgr+'</td>'
+            			html+='<td>'+emp.hiredate+'</td>'
             			html+='<td>'+emp.sal+'</td>'
+            			html+='<td>'+emp.comm+'</td>'
+            			html+='<td>'+emp.deptno+'</td>'
         			    html+='</tr>'    					
     					
     				})
@@ -81,9 +87,14 @@
 		<table class="table table-striped table-hover">
 			<thead class="table-success">
 		      	<tr  class="text-center">
-				    <th>Firstname</th>
-				    <th>Lastname</th>
-				    <th>Email</th>
+				    <th>사원번호</th>
+				    <th>사원명</th>
+				    <th>직책명</th>
+				    <th>관리자번호</th>
+				    <th>입사일</th>
+				    <th>급여</th>
+				    <th>보너스</th>
+				    <th>부서번호</th>
 		      	</tr>
 		    </thead>
 		    <tbody id="show">
