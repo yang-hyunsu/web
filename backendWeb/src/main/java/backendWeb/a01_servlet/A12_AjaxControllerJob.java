@@ -27,6 +27,7 @@ public class A12_AjaxControllerJob extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		// List까지 처리하고 
 	}
 
 }
