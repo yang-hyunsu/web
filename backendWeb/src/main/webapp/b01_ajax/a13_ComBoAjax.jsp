@@ -195,7 +195,8 @@
 		
 		// ex)
     	// /backendWeb/empList.do?div=y
-    	// jquery로 사원정보를 리스트 출력하세요.	
+    	// jquery로 사원정보를 리스트 출력하세요.
+    	// a15_jqueryAjax.jsp에 적용
 		$.ajax({
 			url:"${path}/codeDetail.do",
 			type:"post",

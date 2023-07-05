@@ -3,7 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>    
 <fmt:requestEncoding value="utf-8"/>
- 
+<c:set var="path" 
+	value="${pageContext.request.contextPath}"/> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,31 +24,55 @@
     		$("#sch").click(function(){
     			// ex)
     			// /backendWeb/empList.do?div=y
-    			// jquery로 사원정보를 리스트 출력하세요.		
+    			// jquery로 사원정보를 리스트 출력하세요.
+    			search();
     		})
     	});
+    	function search(){
+    		var qstr="ename="+$("#ename").val()+
+    			"&job="+$("#job").val()
+    		
+    		$.ajax({
+    			url:"${path}/empList.do?div=y",
+    			type:"post",
+    			data:qstr,
+    			dataType:"json",
+    			success:function(data){
+    				var empList = data
+    				console.log(empList)
+    				var html='';
+    				empList.forEach(function(emp){
+    					cosole.log(emp)
+    				})
+    				html+='<tr  class="text-center">'
+    				html+='<td>John</td>'
+    				html+='<td>Doe</td>'
+    				html+='<td>john@example.com</td>'
+			        html='</tr>'
+    				
+    				$("#show").html(html)
+    			},
+    			error:function(err){
+    				console.log(err)
+    			}
+    		})
+    	}
+    	
     </script>      
     
     
 </head>
 <body>
     <div class="container mt-3">
-    	<h2>사원정보 등록</h2>
+    	<h2>사원정보 조회</h2>
 	  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	  		<div class="container-fluid">    	
 	    	<form method="post"  class="d-flex align-items-center" >
 	            <input type="text" class="form-control me-2" 
-	      	     id="title" placeholder="직책명 입력" value="${param.title}" name="title"  aria-label="Search">
+	      	     id="ename" placeholder="이름 입력" name="ename"  aria-label="Search">
 	            <input type="text" class="form-control me-2" 
-	      	     id="min_sal1" placeholder="최소급여 시작"  
-	      	     value="${empty param.min_sal1? 0: param.min_sal1}"  name="min_sal1"  aria-label="Search">
-	      	    ~
-	            <input type="text" class="form-control me-2" 
-	      	     id="min_sal2" placeholder="최소급여 마지막" 
-	      	      value="${empty param.min_sal2? 9999999: param.min_sal2}"  name="min_sal2"  aria-label="Search">
-	      	     
-	      	     
-	         	<button type="button" id="sch" class="btn btn-primary" style="width:200px;">조회</button>
+	      	     id="job" placeholder="직책명 입력"  name="job"  aria-label="Search">
+	      	    <button type="button" id="sch" class="btn btn-primary" style="width:200px;">조회</button>
 	     	</form>
 	 	    </div>
 	 	</nav>
@@ -59,12 +84,8 @@
 				    <th>Email</th>
 		      	</tr>
 		    </thead>
-		    <tbody>
-			   	<tr  class="text-center">
-			        <td>John</td>
-			        <td>Doe</td>
-			        <td>john@example.com</td>
-			   	</tr>
+		    <tbody id="show">
+			   	
 		 	</tbody>
 		</table>      	
     </div>
