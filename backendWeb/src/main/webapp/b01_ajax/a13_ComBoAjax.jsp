@@ -163,10 +163,33 @@
 
     	$(document).ready( function(){
     		// title title refno ordno val no
+    		// /backendWeb/codeupdate.do?title=사과(수정)&val=10&refno=1001&ordno=1&no=1002
     		$("#uptBtn").click(function(){
     			if(confirm("수정하시겠습니까?")){
-    				alert($("#modalFrm").serialize())
+    				//alert($("#modalFrm").serialize())
     				// ajax 처리 
+    				$.ajax({
+    					url:"${path}/codeupdate.do",
+    					type:"post",
+    					data:$("#modalFrm").serialize(),
+    					dataType:"json",
+    					success:function(code){
+    						alert("수정성공")
+							console.log(code)
+							//alert(data);
+							// title val refno ordno
+							$("#modalFrm #title").val(code.title)
+							$("#modalFrm #val").val(code.val)
+							$("#modalFrm #refno").val(code.refno)
+							$("#modalFrm #ordno").val(code.ordno)    						
+							$("#modalFrm #no").val(code.no)
+							schCode(); // 전체화면 재검색
+    					},
+    					error:function(err){
+    						console.log("#에러발생#")
+    						console.log(err)
+    					}
+    				})		
     			}
     		})
     		
@@ -235,6 +258,7 @@
 				$("#modalFrm #val").val(data.val)
 				$("#modalFrm #refno").val(data.refno)
 				$("#modalFrm #ordno").val(data.ordno)
+				$("#modalFrm #no").val(data.no)
 				
 				
 			},
@@ -318,6 +342,7 @@
 -- title, val, refno, ordno 
 				-->
 				<form id="modalFrm">
+					<input type="hidden" id="no" name="no" />
 				<div class="modal-body">
 					<div class="mb-3 mt-3">
 						<label for="title">제목:</label> 
@@ -350,9 +375,9 @@
 					<button id="regBtn" type="button" class="btn btn-success"
 						onclick="ajaxSave()">등록</button>
 					<button id="uptBtn"  type="button" class="btn btn-primary"
-						onclick="ajaxUpdate()">수정</button>
+						>수정</button>
 					<button id="delBtn"  type="button" class="btn btn-warning"
-						onclick="ajaxDelete()">삭제</button>
+						>삭제</button>
 					<button type="button" class="btn btn-danger"
 						data-bs-dismiss="modal">Close</button>
 						

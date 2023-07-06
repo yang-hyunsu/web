@@ -32,10 +32,12 @@ public class A06_CodeUpdate extends HttpServlet {
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		// TODO Auto-generated method stub
 		// 1. 요청값  title refno ordno val no
 		String title = request.getParameter("title"); 
 		if(title==null) title="";
+		System.out.println("title:"+title);
 		String refnoS = request.getParameter("refno");
 		int refno = 0;
 		if(refnoS!=null&&!refnoS.equals("")) 
@@ -47,11 +49,13 @@ public class A06_CodeUpdate extends HttpServlet {
 		String val = request.getParameter("val"); 
 		if(val==null) val="";
 		String noS = request.getParameter("no"); 
+		System.out.println("수정할 번호:"+noS);
 		int no = 0;
 		if(noS!=null&&!noS.equals("")) 
 			no = Integer.parseInt(noS);
 		// key에 대한 요청값이 있을 때 처리..
 		Code code = new Code(0,"","",0,0);
+		
 		if(no!=0) {
 			
 			//Code(int no, String title, String val, int refno, int ordno)
