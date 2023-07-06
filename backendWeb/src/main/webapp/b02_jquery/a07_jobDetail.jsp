@@ -20,8 +20,24 @@
     <script type="text/javascript">
     	// window.onload와 동일한 메서드
     	$(document).ready( function(){
+    		// /backendWeb/job.do?job_id=AC	
+    		$("#job_id").on('keyup',function(){
+    			if(event.keyCode==13){
+    				$.ajax({
+    					url:"${path}/job.do",
+    					type:"post",
+    					data:"job_id="+$(this).val(),
+    					dataType:"json",
+    					success:function(jlist){
+    						console.log(jlist)
+    					},
+    					error:function(err){
+    						console.log(err)
+    					}
+    				})
+    			}
+    		})
     		
-    		$("h2").text("jquery 로딩 성공")
     	});
     </script>      
     
@@ -29,23 +45,13 @@
 </head>
 <body>
     <div class="container mt-3">
-    	<h2>사원정보 등록</h2>
+    	<h2>직책정보</h2>
 	  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	  		<div class="container-fluid">    	
-	    	<form method="post"  class="d-flex align-items-center" >
-	            <input type="text" class="form-control me-2" 
-	      	     id="title" placeholder="직책명 입력" value="${param.title}" name="title"  aria-label="Search">
-	            <input type="text" class="form-control me-2" 
-	      	     id="min_sal1" placeholder="최소급여 시작"  
-	      	     value="${empty param.min_sal1? 0: param.min_sal1}"  name="min_sal1"  aria-label="Search">
-	      	    ~
-	            <input type="text" class="form-control me-2" 
-	      	     id="min_sal2" placeholder="최소급여 마지막" 
-	      	      value="${empty param.min_sal2? 9999999: param.min_sal2}"  name="min_sal2"  aria-label="Search">
-	      	     
-	      	     
-	         	<button type="submit" class="btn btn-primary" style="width:200px;">조회</button>
-	     	</form>
+	    	    <input type="text" class="form-control me-2" 
+	      	     id="job_id" placeholder="직책아이디 입력" aria-label="Search">
+	           
+	     	
 	 	    </div>
 	 	</nav>
 		<table class="table table-striped table-hover">
