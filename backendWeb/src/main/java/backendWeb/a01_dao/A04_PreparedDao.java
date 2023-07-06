@@ -668,24 +668,25 @@ WHERE NO = ?
 		    return c;
 		}
 
-	public Job getJobs(String job_id) {
-		    Job job = new Job("","",0,0);
+	public List<Job> getJobs(String job_id) {
+
+			List<Job> jlist = new ArrayList<Job>(); 
 		    String sql = "	SELECT * \r\n"
 		    		+ "FROM jobs\r\n"
-		    		+ "WHERE JOB_ID = ? ";
+		    		+ "WHERE JOB_ID like ? ";
 		    System.out.println("# DB 접속 #");
 		    try {
 		        con = DB.con();
 		        pstmt = con.prepareStatement(sql); 
-		        pstmt.setString(1, job_id);; 
+		        pstmt.setString(1, '%'+job_id+'%');; 
 		        rs = pstmt.executeQuery();
 		        //job_id, job_title, min_salary, max_salary
-		        if (rs.next()) {
-		        	job = new Job(
+		        while (rs.next()) {
+		        	jlist.add(new Job(
 		        			rs.getString("job_id"),
 		        			rs.getString("job_title"),
 		        			rs.getInt("min_salary"),
-		        			rs.getInt("max_salary")
+		        			rs.getInt("max_salary"));
 		            );
 		        }
 		    } catch (SQLException e) {
@@ -695,7 +696,7 @@ WHERE NO = ?
 		    } finally {
 		        DB.close(rs, pstmt, con);
 		    }
-		    return job;
+		    return jlist;
 		}
 
 	public static void main(String[] args) {
