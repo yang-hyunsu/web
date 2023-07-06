@@ -149,9 +149,23 @@
 	2) success:function(code){} 로 수정 후,
 		alert('수정성공')
 		다시, 데이터 로딩 처리.
-		
-	
-
+# 삭제처리
+1. 상세화면에서 삭제버튼 클릭 이벤트핸들러로 로딩
+2. codeDel.do 컨트롤러
+	요청값 no
+	삭제 DAO 처리.
+	삭제되었을 때, "Y"
+3. ajax로 처리
+   요청값 "no="$("#no").val()
+   창닫고 검색	
+   success:function(data){
+   	   if(data=='Y'){
+   	   		삭제성공
+   	   }
+   	   // 창닫기 강제 이벤트 수행..
+   	   
+   	   schCode() 화면재검색
+   }
 			
 		
 	    	
