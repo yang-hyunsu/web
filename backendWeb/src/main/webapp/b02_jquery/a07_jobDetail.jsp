@@ -30,6 +30,16 @@
     					dataType:"json",
     					success:function(jlist){
     						console.log(jlist)
+    						var add = ""
+    						jlist.forEach(function(job){
+    							add += "<tr  class='text-center'>"
+    							add += "<td>"+job.job_id+"</td>"
+    							add += "<td>"+job.job_title+"</td>"
+    							add += "<td>"+job.min_salary+"</td>"
+    							add += "<td>"+job.max_salary+"</td>"
+    							add += "</tr>"
+    						})
+    						$("#show").html(add)
     					},
     					error:function(err){
     						console.log(err)
@@ -57,15 +67,17 @@
 		<table class="table table-striped table-hover">
 			<thead class="table-success">
 		      	<tr  class="text-center">
-				    <th>Firstname</th>
-				    <th>Lastname</th>
-				    <th>Email</th>
+				    <th>직책아이디</th>
+				    <th>직책명</th>
+				    <th>최소급여</th>
+				    <th>최대급여</th>
 		      	</tr>
 		    </thead>
-		    <tbody>
+		    <tbody id="show">
 			   	<tr  class="text-center">
 			        <td>John</td>
 			        <td>Doe</td>
+			        <td>john@example.com</td>
 			        <td>john@example.com</td>
 			   	</tr>
 		 	</tbody>
