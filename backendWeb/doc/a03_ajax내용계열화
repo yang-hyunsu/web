@@ -147,7 +147,31 @@
 # 연습예제3 : (dao)
 	dao처리
 	 	
-		
+# ajax 처리 순서
+1. 요구사항 확인
+	1) 화면 구현
+	2) 데이터 처리(요청값, 나올 객체)
+2. 화면구현
+	1) html/css 화면 form 구현
+	2) js 이벤트 핸들러(click, keyup)
+3. servlet 구현(backend)
+	1) dao
+		sql
+		vo
+		메서드선언
+	2) controller(servlet)
+		요청처리
+		dao를 통해서 가져오는 객체 정의
+		Gson으로 객체 ==> json데이터로 전환
+		response.getWriter().print(json문자열 리턴)
+4. 화면구현
+	1) 이벤트 핸들러 안에..
+		$.ajax({
+		})
+		를 통해 url, success:function(data){} 속성 설정으로
+		데이터를 가져서
+	2) 특정한 DOM객체에 HTML을 만들어서 할당 처리
+		$("객체").html(만든html코드)						
 	
 	
 	

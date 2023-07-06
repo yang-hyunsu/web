@@ -43,10 +43,6 @@ public class A09_AjaxController extends HttpServlet {
 		int cnt = 0;
 		if(cntS!=null&&!cntS.equals(""))
 			cnt = Integer.parseInt(cntS);
-			
-
-		
-		
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/plain;utf-8");
 		/* 요청값을 객체로 만들어서 전송*/

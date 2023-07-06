@@ -43,6 +43,7 @@ public class A11_AjaxControllerDept extends HttpServlet {
 		A04_PreparedDao dao = new A04_PreparedDao();
 		Dept d = dao.getDept(deptno);
 		
+		
 		// 3. json 뷰호출
 		Gson g = new Gson();
 		response.setCharacterEncoding("utf-8");
