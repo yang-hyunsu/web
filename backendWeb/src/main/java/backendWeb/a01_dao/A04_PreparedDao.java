@@ -686,8 +686,9 @@ WHERE NO = ?
 		        			rs.getString("job_id"),
 		        			rs.getString("job_title"),
 		        			rs.getInt("min_salary"),
-		        			rs.getInt("max_salary"));
-		            );
+		        			rs.getInt("max_salary")
+		        			)
+		        	);
 		        }
 		    } catch (SQLException e) {
 		        System.out.println("DB 관련 오류: " + e.getMessage());
