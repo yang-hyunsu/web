@@ -580,6 +580,7 @@ WHERE NO = ?
 	    		+ "        ordno = ?,\r\n"
 	    		+ "        val = ?\r\n"
 	    		+ "   WHERE NO = ?";
+	    // title title refno ordno val NO
 	    try {
 	        con = DB.con();
 	        con.setAutoCommit(false);

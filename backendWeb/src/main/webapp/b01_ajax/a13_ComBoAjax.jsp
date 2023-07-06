@@ -134,16 +134,41 @@
 	2) 단일 데이터 가져오는 dao 생성
 	3) 단일 데이터 가져와서 json데이터 return하는 servlet 생성
 	4) ajax 요청 처리로 servlet 호출, ajax 처리..
+
+# 수정 처리
+1. 상세화면에서 데이터를 확인하고, 변경데이터를 입력하고,
+	수정버튼 클릭시 수정된다.
+2. 수정에 필요한 데이터를 받아서 수정되는 dao 처리	
+3. 수정 요청값을 받아서 수정되는 Servlet controller
+	1) 요청값처리
+	2) 수정 처리되는 메서드호출
+	3) 수정 후 상세 검색되는 메서드호출
+	4) json데이터 출력
+4. 수정버튼클릭
+	1) 화면단에 수정데이터 입력 후, 버튼클릭시 ajax 호출
+	2) success:function(code){} 로 수정 후,
+		alert('수정성공')
+		다시, 데이터 로딩 처리.
+		
 	
+
+			
 		
 	    	
  --%>
     <script src = "https://code.jquery.com/jquery-3.7.0.js" type="text/javascript"></script>
     
     <script type="text/javascript">
-    
+    // ?title=사과(수정)&val=10&refno=1001&ordno=1&no=1002
+
     	$(document).ready( function(){
-    		
+    		// title title refno ordno val no
+    		$("#uptBtn").click(function(){
+    			if(confirm("수정하시겠습니까?")){
+    				alert($("#modalFrm").serialize())
+    				// ajax 처리 
+    			}
+    		})
     		
     	});
     </script>   
@@ -206,10 +231,10 @@
 				console.log(data)
 				//alert(data);
 				// title val refno ordno
-				$("#regFrm #title").val(data.title)
-				$("#regFrm #val").val(data.val)
-				$("#regFrm #refno").val(data.refno)
-				$("#regFrm #ordno").val(data.ordno)
+				$("#modalFrm #title").val(data.title)
+				$("#modalFrm #val").val(data.val)
+				$("#modalFrm #refno").val(data.refno)
+				$("#modalFrm #ordno").val(data.ordno)
 				
 				
 			},
@@ -224,9 +249,12 @@
 	function insModal(){
 		document.querySelector(".modal-title").innerText
 		="코드등록"
+		
 		$("#regBtn").show()
 		$("#uptBtn").hide()
 		$("#delBtn").hide()
+		$("#modalFrm")[0].reset()
+		// 상세화면에서 등록화면을 클릭시, form데이터 초기화 처리.
 	}
 </script>
 <body>
@@ -289,7 +317,7 @@
 				-- 제목, 값, 상위번호, 정렬 
 -- title, val, refno, ordno 
 				-->
-				<form id="regFrm">
+				<form id="modalFrm">
 				<div class="modal-body">
 					<div class="mb-3 mt-3">
 						<label for="title">제목:</label> 
@@ -355,7 +383,7 @@
 					if(result=="Y"){
 						alert("등록성공")
 						schCode()
-						document.querySelector("#regFrm").reset()
+						document.querySelector("#modalFrm").reset()
 						if(!confirm("계속등록하시겠습니까?")){
 							// 창닫기 처리
 							document.querySelector("#modalClsBtn").click()
