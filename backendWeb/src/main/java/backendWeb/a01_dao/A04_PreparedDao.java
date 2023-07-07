@@ -25,6 +25,7 @@ import backendWeb.z01_vo.Manager;
 // backendWeb.z01_vo.Emp
 // backendWeb.a01_dao.A04_PreparedDao
 public class A04_PreparedDao {
+	
     private Connection con;
     private PreparedStatement pstmt;
     private ResultSet rs;
@@ -604,7 +605,8 @@ WHERE NO = ?
 	        DB.close(rs, pstmt, con);
 	    }
 	}
-	public void deleteCode(int no) {
+	public int deleteCode(int no) {
+		int ret = 0;
 	    String sql = "delete\r\n"
 	    		+ "FROM code\r\n"
 	    		+ "WHERE NO = ?";
@@ -613,8 +615,8 @@ WHERE NO = ?
 	        con.setAutoCommit(false);
 	        pstmt = con.prepareStatement(sql);
 	        pstmt.setInt(1, no);
-	        int result = pstmt.executeUpdate();
-	        if (result == 1) {
+	        ret = pstmt.executeUpdate();
+	        if (ret >= 1) {
 	            con.commit();
 	            System.out.println("삭제 성공");
 	        }
@@ -626,6 +628,7 @@ WHERE NO = ?
 	    } finally {
 	        DB.close(rs, pstmt, con);
 	    }
+	    return ret;
 	}
 
 	/*

@@ -176,6 +176,34 @@
     // ?title=사과(수정)&val=10&refno=1001&ordno=1&no=1002
 
     	$(document).ready( function(){
+    		
+    		$("#delBtn").click(function(){
+    			if(confirm("삭제하시겠습니까?")){
+    				//alert("삭제할 no:"+$("#modalFrm #no").val())
+    				$.ajax({
+    					url:"${path}/codeDel.do",
+    					type:"post",
+    					data:"no="+$("#modalFrm #no").val(),
+    					dataType:"text",
+    					success:function(isYN){
+    						if(isYN=='Y'){
+    							alert("삭제성공")	
+    						}else{
+    							alert("삭제할 no가 없습니다")
+    						}
+							schCode(); // 전체화면 재검색
+							$("#clsBtn").click()
+    					},
+    					error:function(err){
+    						console.log("#에러발생#")
+    						console.log(err)
+    					}
+    				})	  				
+    				
+    				
+    			}
+    			
+    		})
     		// title title refno ordno val no
     		// /backendWeb/codeupdate.do?title=사과(수정)&val=10&refno=1001&ordno=1&no=1002
     		$("#uptBtn").click(function(){
@@ -392,7 +420,7 @@
 						>수정</button>
 					<button id="delBtn"  type="button" class="btn btn-warning"
 						>삭제</button>
-					<button type="button" class="btn btn-danger"
+					<button type="button" id="clsBtn" class="btn btn-danger"
 						data-bs-dismiss="modal">Close</button>
 						
 				</div>

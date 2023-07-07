@@ -1,11 +1,16 @@
 package backendWeb.a01_servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+
+import backendWeb.a01_dao.A04_PreparedDao;
 
 /**
  * Servlet implementation class A06_CodeDelete
@@ -27,6 +32,19 @@ public class A06_CodeDelete extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		// 1. 요청값
+		String noS = request.getParameter("no");
+		int no = 0;
+		if(noS!=null && !noS.equals(""))
+			no = Integer.parseInt(noS);
+		// 2. DB 처리..
+		A04_PreparedDao dao = new A04_PreparedDao();
+		
+		// 3. 화면단 삭제여부(Y/N)
+		response.getWriter().print(
+				dao.deleteCode(no)>0?"Y":"N");
+		
+		
 	}
 
 }
