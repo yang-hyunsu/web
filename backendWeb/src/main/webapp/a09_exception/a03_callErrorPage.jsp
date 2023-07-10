@@ -28,7 +28,7 @@
     	// window.onload와 동일한 메서드
     	$(document).ready( function(){
     		
-    		$("h2").text("에러가 발생할 가망서 있는 페이지")
+    		$("h2").text("에러가 발생할 가망성 있는 페이지")
     	});
     </script>      
     
