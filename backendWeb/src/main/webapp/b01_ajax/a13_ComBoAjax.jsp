@@ -17,6 +17,47 @@
 <title>Insert title here</title>
 </head>
 <%--
+# 컴보박스 리스트 처리를 위한 관리
+1. 목적
+	컴보박스 리스트를 데이터베이스와 연동된
+	내용을 처리하기 위한 관리 화면 구성
+2. 주요기능
+	1) 계층형 리스트 화면(조회) 
+		- b01_ajax\a13_ComBoAjax.jsp(화면)
+		- b01_ajax\z13_comboList.jsp(json데이터 처리)
+	2) 등록 처리 - 다이얼로그박스
+		- A06_CodeInsert.java(등록처리 controller)
+	3) 상세화면(form창) - 다이얼로그박스
+		- 수정
+			A06_CodeUpdate.java(수정처리 controller)		
+		- 삭제
+			A06_CodeDelete.java(삭제처리 controller)
+3. 기능 처리를 위한 핵심 모듈
+	1) ajax 처리
+	    ex)
+    	$.ajax({
+    		url:"${path}/codeDel.do", 
+    			요청 controller/json데이터 호출 주소
+    		type:"post",
+    		data:"no="+$("#modalFrm #no").val(),
+    			요청값 전달
+    		dataType:"json", 
+    			결과값의 데이터 유헝
+    		success:function(data){
+    			결과 처리
+    2) 각 기능 버튼별 이벤트 처리
+			$("#delBtn").click(function(){	
+			버튼요소객체 및 이벤트 핸들러 함수
+	3) 다이얼로그 박스(모달창) 로딩 처리
+		- 기능버튼		
+		<button type="button" 
+			data-bs-toggle="modal"
+			data-bs-target="#myModal">코드등록</button>
+		- 다이얼로그 박스(모달창)	
+		<div class="modal" id="myModal">
+			<div class="modal-dialog">
+
+
     code(키, 값, 상위키,정렬순위)
     1000  과일   0
     1001  사과   1000 1
