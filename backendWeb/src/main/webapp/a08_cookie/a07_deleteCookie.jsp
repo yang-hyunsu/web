@@ -1,15 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    import = "java.net.URLDecoder"
-    %>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>    
 <c:set var="path" 
 	value="${pageContext.request.contextPath}"/>
 <fmt:requestEncoding value="utf-8"/>
-<%
-
-%> 
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,35 +21,36 @@
     	// window.onload와 동일한 메서드
     	$(document).ready( function(){
     		
-    		//$("h2").text("jquery 로딩 성공")
+    		$("h2").text("jquery 로딩 성공")
     	});
     </script>      
     
     
 </head>
 <body>
-    <div class="container mt-3">
-    	<h2>쿠키 정보</h2>
+<%--
+# 쿠키의 삭제
+1. 서버단에서 직접적으로 삭제가 불가능하기에,
+	해당 쿠키의 age(생존 시간)을 설정을 0으로
+	하여, 클라이언트에 전달하여, 설정한다.
+2. 핵심 코드
+	Cookie c = new Cookie("키","값") : 삭제할 키가 있는 쿠키
+	c.setMaxAge(0); // 생존 주기를 0으로 설정
+	response.addCookie(c); // response를 통해 클라이언트에 전달.
+ --%>
 <%
-// 10:05~
-// request.getCookies()  : 요청객체를 통해서 쿠키값을 서버에 보내서
-// 서버프로그램인 jsp을 통해서 확인
+	Cookie c1 = new Cookie("c01","");
+	c1.setMaxAge(0);
+	response.addCookie(c1);
+	// 삭제 후 페이지 이동
+	response.sendRedirect("a02_showCookie.jsp");
+// ex) a08_ins_upt_delCookie.jsp
+//     쿠키값을 확인하고, 등록, 수정, 삭제 처리 후, 확인하는 
+//     jsp를 구현하세요
 
-//  import = "java.net.URLDecoder"
-Cookie[] cookies = request.getCookies();
-for(Cookie c:cookies){
-	// default값을 삭제..
-	if(!c.getName().equals("JSESSIONID")){
-		out.print("<h2>"+
-			URLDecoder.decode(c.getName(),"utf-8")
-		+":"+c.getValue()+"</h2>");
-	}
-}
-
-
-%>    	
-    	
-    	
+%>
+    <div class="container mt-3">
+    	<h2>사원정보 등록</h2>
 	  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	  		<div class="container-fluid">    	
 	    	<form method="post"  class="d-flex align-items-center" >
