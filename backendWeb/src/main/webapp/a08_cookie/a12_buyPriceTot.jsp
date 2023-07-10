@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"
-    import="java.net.URLEncoder"
-    %>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>    
 <c:set var="path" 
@@ -23,52 +21,58 @@
     	// window.onload와 동일한 메서드
     	$(document).ready( function(){
     		
-    		$("h2").text("jquery 로딩 성공")
+    		//$("h2").text("jquery 로딩 성공")
     	});
     </script>      
-    <%
-    // 한글 key 인코딩 처리..
-    response.addCookie(new Cookie(
-    					URLEncoder.encode("부서","utf-8"),
-    					"인사"));
-    response.sendRedirect("a11_showEncoding.jsp");
-    %>
+    
     
 </head>
 <body>
+<%
+// ex) 구매물품의 가격을 클라이언트(브라우저)에 쿠키값을 누적시키는 처리
+
+%>
     <div class="container mt-3">
-    	<h2>사원정보 등록</h2>
+    	<h2>구매 가격 등록(쿠키 누적)</h2>
 	  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	  		<div class="container-fluid">    	
 	    	<form method="post"  class="d-flex align-items-center" >
-	            <input type="text" class="form-control me-2" 
-	      	     id="title" placeholder="직책명 입력" value="${param.title}" name="title"  aria-label="Search">
-	            <input type="text" class="form-control me-2" 
-	      	     id="min_sal1" placeholder="최소급여 시작"  
-	      	     value="${empty param.min_sal1? 0: param.min_sal1}"  name="min_sal1"  aria-label="Search">
-	      	    ~
-	            <input type="text" class="form-control me-2" 
-	      	     id="min_sal2" placeholder="최소급여 마지막" 
-	      	      value="${empty param.min_sal2? 9999999: param.min_sal2}"  name="min_sal2"  aria-label="Search">
-	      	     
-	      	     
-	         	<button type="submit" class="btn btn-primary" style="width:200px;">조회</button>
+	            <input type="number" class="form-control me-2" 
+	      	     id="price" 
+	      	     placeholder="구매가격 입력" 
+	      	     name="price"  aria-label="Search">
+	         	<button type="submit" class="btn btn-primary" style="width:200px;">
+	         		구매</button>
 	     	</form>
 	 	    </div>
 	 	</nav>
+	 	<%
+	 		String priceS = request.getParameter("price");
+	 	    int price = 0;
+	 	    if(priceS!=null&&!priceS.equals(""))
+	 	    	price = Integer.parseInt(priceS);
+	 	    Cookie cks[] = request.getCookies();
+	 	    int ckPrice = 0;
+	 	    for(Cookie ck:cks){
+	 	    	if(ck.getName().equals("price")){
+	 	    		ckPrice = Integer.parseInt(
+	 	    				ck.getValue());
+	 	    	}
+	 	    }
+	 	    int tot = price + ckPrice;
+	 	    response.addCookie(new Cookie("price",""+tot));
+	 	%>
 		<table class="table table-striped table-hover">
 			<thead class="table-success">
 		      	<tr  class="text-center">
-				    <th>Firstname</th>
-				    <th>Lastname</th>
-				    <th>Email</th>
+				    <th>이전 등록 가격</th>
+				    <th>현재 총 가격</th>
 		      	</tr>
 		    </thead>
 		    <tbody>
 			   	<tr  class="text-center">
-			        <td>John</td>
-			        <td>Doe</td>
-			        <td>john@example.com</td>
+			        <td><%=price %></td>
+			        <td><%=tot%></td>
 			   	</tr>
 		 	</tbody>
 		</table>      	
