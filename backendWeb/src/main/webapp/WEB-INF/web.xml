@@ -5,7 +5,10 @@
   	<error-code>404</error-code>
   	<location>/a09_exception/z02_404Error.jsp</location>
   </error-page>
-
+  <error-page>
+  	<exception-type>java.lang.Exception</exception-type>
+  	<location>/a09_exception/z01_error.jsp</location>
+  </error-page>
 
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

@@ -55,6 +55,15 @@
 	기본 에러페이지 만들기
 	아래 형식에 따른 web.xml 선언..
 1. class단위 예외 처리
+	자바에서 처리되는 대부분 클래스 단위 예외에 대한 설정 부분이다.
+	1) 하위 클래스/사용자정의 예외 선언
+		<error-page>
+			<exception-type>java.lang.XXXException</exception-type>
+			<location>경로지정</location>	
+	2) 최상위 클래스 선언
+		<error-page>
+			<exception-type>java.lang.Exception</exception-type>
+			<location>경로지정</location>
 
 2. http 코드 에러로 설정..	
 	1) 응답코드를 아래와 같이 설정
