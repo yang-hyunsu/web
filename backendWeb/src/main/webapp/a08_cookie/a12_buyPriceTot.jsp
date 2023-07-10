@@ -51,6 +51,8 @@
 	 	    int price = 0;
 	 	    if(priceS!=null&&!priceS.equals(""))
 	 	    	price = Integer.parseInt(priceS);
+	 	    
+	 	    // 쿠키값이 있으면 가져오고, 없으면 0
 	 	    Cookie cks[] = request.getCookies();
 	 	    int ckPrice = 0;
 	 	    for(Cookie ck:cks){
@@ -60,7 +62,14 @@
 	 	    	}
 	 	    }
 	 	    int tot = price + ckPrice;
+	 	    // 누적된 쿠키값을 client에 저장..
 	 	    response.addCookie(new Cookie("price",""+tot));
+	 	    
+	 	    
+	 	// ex) 구매한 물건을 누적해서 출력하게 하세요..
+		//     구매 물건명 :[   ]
+		//     구매한 물품리스트 : @@@ @@@ @@ (쿠키값)
+		//     a13_buyList.jsp
 	 	%>
 		<table class="table table-striped table-hover">
 			<thead class="table-success">

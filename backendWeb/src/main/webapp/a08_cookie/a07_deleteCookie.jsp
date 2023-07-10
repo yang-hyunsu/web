@@ -39,7 +39,7 @@
 	response.addCookie(c); // response를 통해 클라이언트에 전달.
  --%>
 <%
-	Cookie c1 = new Cookie("c01","");
+	Cookie c1 = new Cookie("pname","");
 	c1.setMaxAge(0);
 	response.addCookie(c1);
 	// 삭제 후 페이지 이동
