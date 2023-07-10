@@ -1,14 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    errorPage="a02_errorPage.jsp"
+    errorPage="z01_error.jsp"
     %>
-    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
-	String s=null;
-	out.print(s.toString());
-%>
+	Integer.parseInt("");
+%>    
 <c:set var="path" 
 	value="${pageContext.request.contextPath}"/>
 <fmt:requestEncoding value="utf-8"/>
@@ -28,17 +26,12 @@
     	// window.onload와 동일한 메서드
     	$(document).ready( function(){
     		
-    		$("h2").text("에러가 발생할 가망성 있는 페이지")
+    		$("h2").text("jquery 로딩 성공")
     	});
     </script>      
     
     
 </head>
-<%
-// a04_main.jsp : 기본 페이지(에러발생가능성 있는 페이지)
-// z01_error.jsp : 에러 처리하는 페이지
-
-%>
 <body>
     <div class="container mt-3">
     	<h2>사원정보 등록</h2>
