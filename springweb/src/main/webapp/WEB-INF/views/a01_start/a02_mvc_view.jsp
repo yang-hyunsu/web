@@ -32,8 +32,10 @@
     	<h2>연산처리</h2>
 
 	  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-	  		<div class="container-fluid">    	
-	    	<form method="post"  class="d-flex align-items-center" >
+	  		<div class="container-fluid">  
+	  		<%-- action이 없으면 이 jsp를 호출한 controller을 호출한다.
+	  			default --%>  	
+	    	<form method="post"   class="d-flex align-items-center" >
 	            <input type="text" class="form-control me-2" 
 	      	     id="num01" placeholder="첫번째 숫자 입력" 
 	      	     	value="${calculator.num01}" 
@@ -46,6 +48,8 @@
 	      	    	<option value=" / "> / </option>
 	      	    </select> 	
 	      	    <script type="text/javascript">
+	      	    	//[X] document.querySelector("[name=cal]").value="${calculator.cal}";
+	      	    
 	      	    	$("[name=cal]").val("${calculator.cal}")
 	      	    </script>
 	            <input type="text" class="form-control me-2" 
