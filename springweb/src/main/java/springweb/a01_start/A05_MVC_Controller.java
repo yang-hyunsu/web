@@ -74,7 +74,7 @@ public class A05_MVC_Controller {
 		
 		return "WEB-INF\\views\\a01_start\\a06_empList.jsp";
 	}
-	// deptList88.do
+	// /deptList88.do
 	// a07_deptList.jsp
 	
 	

@@ -756,13 +756,13 @@ WHERE NO = ?
 			List<Dept> dlist = new ArrayList<Dept>();
 		    String sql = " SELECT * \r\n"
 		    		+ "FROM dept\r\n"
-		    		+ "WHERE dname = ?\r\n "
-		    		+ "AND loc = ?";
+		    		+ "WHERE dname like ?\r\n "
+		    		+ "AND loc like ?";
 		    try {
 		        con = DB.con();
 		        pstmt = con.prepareStatement(sql);
-		        pstmt.setString(1, sch.getDname());
-		        pstmt.setString(2, sch.getLoc());
+		        pstmt.setString(1, "%"+sch.getDname()+"%");
+		        pstmt.setString(2, "%"+sch.getLoc()+"%");
 		        rs = pstmt.executeQuery();
 		        while (rs.next()) {
 		        	dlist.add(new Dept(
