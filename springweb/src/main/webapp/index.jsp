@@ -21,7 +21,7 @@
     	// window.onload와 동일한 메서드
     	$(document).ready( function(){
     		
-    		$("h2").text("jquery 로딩 성공")
+    		$("h2").text("스프링 초기 페이지")
     	});
     </script>      
     

@@ -21,7 +21,7 @@
     	// window.onload와 동일한 메서드
     	$(document).ready( function(){
     		
-    		$("h2").text("스프링 시작")
+    		$("h2").text("jquery 로딩 성공")
     	});
     </script>      
     
@@ -30,7 +30,7 @@
 <body>
     <div class="container mt-3">
     	<h2>사원정보 등록</h2>
-    	<h3>${msg}</h3>
+    	<h3>${greet}</h3>
 	  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	  		<div class="container-fluid">    	
 	    	<form method="post"  class="d-flex align-items-center" >
