@@ -2,9 +2,9 @@ package springweb.a01_start;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 // springweb.a01_start.A05_MVC_Controller
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import backendWeb.z01_vo.Calculator;
 @Controller
@@ -24,6 +24,22 @@ public class A05_MVC_Controller {
 		
 		return "WEB-INF\\views\\a01_start\\a02_mvc_view.jsp";
 	}
-
-	//WEB-INF\views\a01_start\a02_mvc_view.jsp
+	// /mvc02.do?name=
+	@RequestMapping("mvc02.do")
+	public String mvc02(@RequestParam("name") String name,
+			Model d) {
+		d.addAttribute("names", name+"@");
+		return "WEB-INF\\views\\a01_start\\a03_mvc_view.jsp";
+	}
+	// /mvc03.do
+	// 클릭시, +1 입력한 나이보다 증가하게 처리.
+	// defaultValue : 요청값이 없을 시 default로 요청값을 설정
+	@RequestMapping("mvc03.do")
+	public String mvc03(@RequestParam(value="age", 
+							defaultValue = "0") int age,
+						 Model d) {
+		d.addAttribute("ages", age+1);
+		return "WEB-INF\\views\\a01_start\\a04_mvc_view.jsp";
+	}
+	
 }
