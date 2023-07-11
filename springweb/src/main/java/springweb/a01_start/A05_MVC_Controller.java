@@ -6,7 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import backendWeb.a01_dao.A04_PreparedDao;
 import backendWeb.z01_vo.Calculator;
+import backendWeb.z01_vo.Emp;
 @Controller
 public class A05_MVC_Controller {
 	// /mvc01.do
@@ -59,7 +61,21 @@ public class A05_MVC_Controller {
 		d.addAttribute("result", result);
 		return "WEB-INF\\views\\a01_start\\a05_login.jsp";
 	}
-	
+	// 사원명/직책명을 사원정보 조회 처리..
+	@RequestMapping("empList88.do")
+	public String empList88(Emp sch, Model d) {
+		
+		A04_PreparedDao dao = new A04_PreparedDao();
+		if(sch.getEname()==null) sch.setEname("");
+		if(sch.getJob()==null) sch.setJob("");
+		d.addAttribute("empList", dao.getEmpList(sch));
+		
+		
+		
+		return "WEB-INF\\views\\a01_start\\a06_empList.jsp";
+	}
+	// deptList88.do
+	// a07_deptList.jsp
 	
 	
 	

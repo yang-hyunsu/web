@@ -704,6 +704,83 @@ WHERE NO = ?
 		    return jlist;
 		}
 
+	public List<Emp> getEmpList(Emp sch) {
+	    List<Emp> elist = new ArrayList<>();
+	    String sql = "SELECT * FROM emp02 where ename like ? and job like ? order by empno ";
+	    
+	    try {
+	        con = DB.con();
+	        pstmt = con.prepareStatement(sql);
+	        pstmt.setString(1, '%'+sch.getEname()+"%");
+	        pstmt.setString(2, '%'+sch.getJob()+"%");
+	        rs = pstmt.executeQuery();
+	        
+	
+	        while (rs.next()) {
+	            elist.add(new Emp(
+	                    rs.getInt("empno"),
+	                    rs.getString("ename"),
+	                    rs.getString("job"),
+	                    rs.getInt("mgr"),
+	                    rs.getDate("hiredate"),
+	                    rs.getDouble("sal"),
+	                    rs.getDouble("comm"),
+	                    rs.getInt("deptno")
+	            ));
+	        }
+	    } catch (SQLException e) {
+	        System.out.println("DB 관련 오류: " + e.getMessage());
+	    } catch (Exception e) {
+	        System.out.println("일반 오류: " + e.getMessage());
+	    } finally {
+	        DB.close(rs, pstmt, con);
+	    }
+	    return elist;
+	}
+
+	/*
+	SELECT * 
+	FROM code
+	WHERE NO = ?
+	UPDATE code
+	    SET title = ?,
+	        refno = ?,
+	        ordno = ?,
+	        val = ?
+	   WHERE NO = ?
+	delete
+	FROM code
+	WHERE NO = ?
+	 * */
+		public List<Dept> getDeptList(Dept sch) {
+			List<Dept> dlist = new ArrayList<Dept>();
+		    String sql = " SELECT * \r\n"
+		    		+ "FROM dept\r\n"
+		    		+ "WHERE dname = ?\r\n "
+		    		+ "AND loc = ?";
+		    try {
+		        con = DB.con();
+		        pstmt = con.prepareStatement(sql);
+		        pstmt.setString(1, sch.getDname());
+		        pstmt.setString(2, sch.getLoc());
+		        rs = pstmt.executeQuery();
+		        if (rs.next()) {
+		        	dlist.add(new Dept(
+		                    rs.getInt("deptno"),
+		                    rs.getString("dname"),
+		                    rs.getString("loc"))
+		            );
+		        }
+		    } catch (SQLException e) {
+		        System.out.println("DB 관련 오류: " + e.getMessage());
+		    } catch (Exception e) {
+		        System.out.println("일반 오류: " + e.getMessage());
+		    } finally {
+		        DB.close(rs, pstmt, con);
+		    }
+		    return dlist;
+		}
+
 	public static void main(String[] args) {
         A04_PreparedDao dao = new A04_PreparedDao();
         dao.deleteLocation(1000);
