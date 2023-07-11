@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import backendWeb.a01_dao.A04_PreparedDao;
 import backendWeb.z01_vo.Calculator;
+import backendWeb.z01_vo.Dept;
 import backendWeb.z01_vo.Emp;
 @Controller
 public class A05_MVC_Controller {
@@ -69,13 +70,21 @@ public class A05_MVC_Controller {
 		if(sch.getEname()==null) sch.setEname("");
 		if(sch.getJob()==null) sch.setJob("");
 		d.addAttribute("empList", dao.getEmpList(sch));
-		
-		
-		
 		return "WEB-INF\\views\\a01_start\\a06_empList.jsp";
 	}
 	// /deptList88.do
 	// a07_deptList.jsp
+	@RequestMapping("deptList88.do")
+	public String deptList88(Dept sch, Model d) {
+		if(sch.getDname()==null)sch.setDname("");
+		if(sch.getLoc()==null)sch.setLoc("");
+		
+		A04_PreparedDao dao = new A04_PreparedDao();
+		d.addAttribute("dlist", dao.getDeptList(sch));
+		return "WEB-INF\\views\\a01_start\\a07_deptList.jsp";
+	}
+	
+	
 	
 	
 	
