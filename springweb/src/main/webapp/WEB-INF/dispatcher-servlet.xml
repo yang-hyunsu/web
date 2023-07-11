@@ -35,6 +35,7 @@
 	<bean class="springweb.a01_start.A02_CallController"/>      
 	<bean class="springweb.a01_start.A03_CallMVC"/>      
 	<bean class="springweb.a01_start.A04_ModelView"/>      
+	<bean class="springweb.a01_start.A05_MVC_Controller"/>      
       
 </beans>   
 
