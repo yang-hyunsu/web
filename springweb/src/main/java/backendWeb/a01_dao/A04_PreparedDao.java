@@ -764,7 +764,7 @@ WHERE NO = ?
 		        pstmt.setString(1, sch.getDname());
 		        pstmt.setString(2, sch.getLoc());
 		        rs = pstmt.executeQuery();
-		        if (rs.next()) {
+		        while (rs.next()) {
 		        	dlist.add(new Dept(
 		                    rs.getInt("deptno"),
 		                    rs.getString("dname"),
