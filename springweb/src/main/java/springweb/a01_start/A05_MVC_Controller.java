@@ -41,5 +41,29 @@ public class A05_MVC_Controller {
 		d.addAttribute("ages", age+1);
 		return "WEB-INF\\views\\a01_start\\a04_mvc_view.jsp";
 	}
+	// 2개의 매개변수값을 화면 출력 처리..
+	@RequestMapping("mvc04.do")
+	public String mvc04(@RequestParam(value="id", 
+	                     defaultValue = "") String id,
+						@RequestParam(value="pass", 
+						 defaultValue = "") String pass,
+						Model d) {
+		String result ="로그인하세요";
+		if(!id.equals("")) {
+			if(id.equals("himan")&&pass.equals("7777")) {
+				result="로그인 성공";
+			}else {
+				result="로그인 실패";
+			}
+		}
+		d.addAttribute("result", result);
+		return "WEB-INF\\views\\a01_start\\a05_login.jsp";
+	}
+	
+	
+	
+	
+	
+	
 	
 }
