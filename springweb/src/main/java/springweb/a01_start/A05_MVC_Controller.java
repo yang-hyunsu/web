@@ -72,6 +72,7 @@ public class A05_MVC_Controller {
 		d.addAttribute("empList", dao.getEmpList(sch));
 		return "WEB-INF\\views\\a01_start\\a06_empList.jsp";
 	}
+	
 	// /deptList88.do
 	// a07_deptList.jsp
 	@RequestMapping("deptList88.do")
