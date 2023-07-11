@@ -21,13 +21,38 @@ public class A01_StartController {
 	public String start2() {
 		return "WEB-INF\\views\\a02_start.jsp";
 	}	
-	/// ex) A02_CallController.java ==> 
-	//           주의) container(xml) 등록,
-	//                @Controller 클래스 상단 선언
-	//      기능 메서드 추가하고
-	//      http://localhost:7080/springweb/callCtrl1.do
-	//      모델데이터 greet : "hello spring"
-	//      a02_callView.jsp를 호출해서 모델 데이터 출력
-	//      
+	// 단일 요청키
+	// req01.do?name=홍길동&age=25
+	@RequestMapping("req01.do")
+	public String req01(@RequestParam("name") String name,
+			            @RequestParam("age") int age
+			           ) {
+		System.out.println("받은 요청값:"+name);
+		System.out.println("받은 요청값:"+age);
+		return ""; // webapp 하위에 index.jsp 호출
+	}
+	// req02.do?pname=사과&price=3000&cnt=5
+	// 로그로  물건명:@@ 가격:@@ 갯수 :@@ 출력되게 하세요.
+	@RequestMapping("req02.do")
+	public String req02(@RequestParam("pname") String pname,
+                        @RequestParam("price") int price,
+                        @RequestParam("cnt") int cnt
+	                   ) {
+		System.out.println("물건명:"+pname);
+		System.out.println("가격:"+price);
+		System.out.println("갯수:"+cnt);
+		return ""; 
+	}
+	// req03.do?names=홍길동&names=김길동&names=신길동
+	@RequestMapping("req03.do")
+	public String req02(
+			           	@RequestParam("names") 
+			           		String[] names 
+	                   ) {
+		System.out.println("이름1:"+names[0]);
+		System.out.println("이름2:"+names[1]);
+		System.out.println("이름3:"+names[2]);
+		return ""; 
+	}	
 	
 }
