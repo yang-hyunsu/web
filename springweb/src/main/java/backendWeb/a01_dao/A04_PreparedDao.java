@@ -781,6 +781,61 @@ WHERE NO = ?
 		    return dlist;
 		}
 
+	public Emp getEmp(int empno) {
+		    Emp emp = null;
+		    String sql = "SELECT * FROM emp02 "
+		    		+ "where empno=? ";
+		    try {
+		        con = DB.con();
+		        pstmt = con.prepareStatement(sql);
+		        pstmt.setInt(1, empno);
+		        rs = pstmt.executeQuery();
+		        if(rs.next()) {
+		        	emp=new Emp(
+		                    rs.getInt("empno"),
+		                    rs.getString("ename"),
+		                    rs.getString("job"),
+		                    rs.getInt("mgr"),
+		                    rs.getDate("hiredate"),
+		                    rs.getDouble("sal"),
+		                    rs.getDouble("comm"),
+		                    rs.getInt("deptno")
+		            );
+		        }
+		    } catch (SQLException e) {
+		        System.out.println("DB 관련 오류: " + e.getMessage());
+		    } catch (Exception e) {
+		        System.out.println("일반 오류: " + e.getMessage());
+		    } finally {
+		        DB.close(rs, pstmt, con);
+		    }
+		    return emp;
+		}
+
+	public int deleteEmp(int empno) {
+	    int isDelete = 0;
+	    String sql = "DELETE FROM emp02 WHERE empno=?";
+	    try {
+	        con = DB.con();
+	        con.setAutoCommit(false);
+	        pstmt = con.prepareStatement(sql);
+	        pstmt.setInt(1, empno);
+	        isDelete = pstmt.executeUpdate();
+	        if (isDelete == 1) {
+	            con.commit();
+	            System.out.println("삭제 성공");
+	        }
+	    } catch (SQLException e) {
+	        System.out.println("DB 오류: " + e.getMessage());
+	        DB.rollback(con);
+	    } catch (Exception e) {
+	        System.out.println("일반 오류: " + e.getMessage());
+	    } finally {
+	        DB.close(rs, pstmt, con);
+	    }
+	    return isDelete;
+	}
+
 	public static void main(String[] args) {
         A04_PreparedDao dao = new A04_PreparedDao();
         dao.deleteLocation(1000);

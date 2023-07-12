@@ -42,6 +42,9 @@ public class A05_MVC_Controller {
 							defaultValue = "0") int age,
 						 Model d) {
 		d.addAttribute("ages", age+1);
+		// 
+		// <input name="age" value="${ages}"/>
+		// 
 		return "WEB-INF\\views\\a01_start\\a04_mvc_view.jsp";
 	}
 	// 2개의 매개변수값을 화면 출력 처리..
@@ -51,6 +54,13 @@ public class A05_MVC_Controller {
 						@RequestParam(value="pass", 
 						 defaultValue = "") String pass,
 						Model d) {
+		/*
+		${result}
+		
+		name="id"  value="" 입력값
+		name="pass"   value="" 입력값
+		
+		 * */
 		String result ="로그인하세요";
 		if(!id.equals("")) {
 			if(id.equals("himan")&&pass.equals("7777")) {
@@ -65,7 +75,12 @@ public class A05_MVC_Controller {
 	// 사원명/직책명을 사원정보 조회 처리..
 	@RequestMapping("empList88.do")
 	public String empList88(Emp sch, Model d) {
-		
+		/* view
+		name="ename"  value="${param.ename}"
+		name="job"    value="${emp.job}"
+		<c:for var="emp" items="${empList}"
+			${emp.empno} ${emp.ename} ${emp.job}.. 
+		 * */
 		A04_PreparedDao dao = new A04_PreparedDao();
 		if(sch.getEname()==null) sch.setEname("");
 		if(sch.getJob()==null) sch.setJob("");
@@ -84,12 +99,4 @@ public class A05_MVC_Controller {
 		d.addAttribute("dlist", dao.getDeptList(sch));
 		return "WEB-INF\\views\\a01_start\\a07_deptList.jsp";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 }
