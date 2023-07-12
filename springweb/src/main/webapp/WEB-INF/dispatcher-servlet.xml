@@ -36,6 +36,7 @@
 	<bean class="springweb.a01_start.A03_CallMVC"/>      
 	<bean class="springweb.a01_start.A04_ModelView"/>      
 	<bean class="springweb.a01_start.A05_MVC_Controller"/>      
+	<bean class="springweb.a02_emp.A01_EmpController"/>      
       
 </beans>   
 
