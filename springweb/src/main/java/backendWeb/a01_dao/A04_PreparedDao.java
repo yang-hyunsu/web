@@ -197,7 +197,11 @@ public class A04_PreparedDao {
     }
 
     public void updateEmp(Emp upt) {
-        String sql = "UPDATE EMP02 SET ENAME = ?, job = ?, sal = ?, hiredate = to_date(?,'YYYY/MM/DD') WHERE empno = ?";
+        String sql = "UPDATE EMP02 "
+        		+ "   SET ENAME = ?, job = ?, sal = ?, "
+        		+ "       hiredate = to_date(?,'YYYY/MM/DD'),"
+        		+ "       deptno = ? "
+        		+ "   WHERE empno = ?";
         try {
             con = DB.con();
             con.setAutoCommit(false);
@@ -206,7 +210,8 @@ public class A04_PreparedDao {
             pstmt.setString(2, upt.getJob());
             pstmt.setDouble(3, upt.getSal());
             pstmt.setString(4, upt.getHiredateS());
-            pstmt.setInt(5, upt.getEmpno());
+            pstmt.setInt(5, upt.getDeptno());
+            pstmt.setInt(6, upt.getEmpno());
             int result = pstmt.executeUpdate();
             if (result == 1) {
                 con.commit();

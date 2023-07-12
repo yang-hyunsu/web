@@ -22,6 +22,19 @@
     	$(document).ready( function(){
     		
     		//$("h2").text("jquery 로딩 성공")
+    		var proc = "${proc}"
+    		if(proc=="upt"){
+    			if(confirm("수정완료\n조회화면으로 이동하시겠습니까?")){
+    				location.href="${path}/empList.do"
+    			}
+    		}
+    		if(proc=="del"){
+    			alert("삭제완료\n조회화면으로 이동하겠습니다.")
+    			location.href="${path}/empList.do"
+    			
+    		}  		
+    		
+    		
     	});
     </script>      
     

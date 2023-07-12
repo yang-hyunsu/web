@@ -60,10 +60,16 @@ public class A01_EmpController {
 	//    if(confirm("등록성공\n조회화면이동하시겠습니까?"))
 	//         location.href="${path}/empList.do"
 	
-	
+	// submit로 form name="empno" value="수정|기존"
+	// submit로 form name="ename" value="수정|기존"
+	//  ..
+	// ?empno=101&ename=이영자&job=대리
+	// setEmpno(int empno)...
 	@RequestMapping("empUpdate.do")
 	public String empUpdate(Emp upt, Model d) {
 		dao.updateEmp(upt);
+		// 수정 이후에 DB 다시 가져온다.
+		d.addAttribute("emp", dao.getEmp(upt.getEmpno()));
 		d.addAttribute("proc", "upt"); // 수정 처리 process
 		return "WEB-INF\\views\\a02_emp\\a02_emp_datail.jsp";
 	}
