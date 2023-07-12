@@ -72,7 +72,15 @@
 		    <input type="number" class="form-control" id="deptno" placeholder="Enter deptno" name="deptno">
 		  </div>
 		  <button type="submit" class="btn btn-success">등록</button>
+		  <button type="button"
+		  	 id="goMain"		 
+		  	 class="btn btn-info">메인화면</button>
 		</form>
+		   <script type="text/javascript">
+		   	$("#goMain").click(function(){
+		   		location.href="${path}/empList.do"
+		   	})
+		   </script>
     </div>
 </body>
 </html>

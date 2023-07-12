@@ -65,7 +65,7 @@
 		    </thead>
 		    <tbody>
 		    	<c:forEach var="emp" items="${empList}">
-			   	<tr  class="text-center">
+			   	<tr ondblclick="goPage(${emp.empno})" class="text-center">
 			        <td>${emp.empno}</td>
 			        <td>${emp.ename}</td>
 			        <td>${emp.job}</td>
@@ -75,6 +75,11 @@
 			   	</c:forEach>
 		 	</tbody>
 		</table>      	
+		<script type="text/javascript">
+			function goPage(empno){
+				location.href="${path}/empDetail.do?empno="+empno
+			}
+		</script>
     </div>
 </body>
 </html>
