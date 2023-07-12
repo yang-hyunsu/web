@@ -46,8 +46,37 @@
 		핸드폰 객체를 할당.
 		기능 메서드로 호출..
 	 -->
-		 
-	       
+	<!-- 
+	3. 실제 코드 설정
+		1) 포함될 객체 생성
+		HandPhone p01 = new HandPhone("갤럭시s22","삼성");
+		HandPhone p02 = new HandPhone("아이폰14","apple");
+		HandPhone p03 = new HandPhone("아이폰13","apple");
+		2) 포함할 객체 생성
+		HPUser u01 = new HPUser("홍길동");
+		u01.usingMyPhone(); // 할당이 안될때 사용 메서드
+		u01.setHandPhone(p01); // 이 객체 안에 할당되어 처리가능..
+		u01.usingMyPhone(); // 할당이 될 때, 사용 메서드.
+	 -->
+	<bean id="p01" class="a01_diexp.z01_vo.HandPhone">
+		<constructor-arg value="갤럭시s22"/>
+		<constructor-arg value="삼성"/>
+	</bean>		 
+	<bean id="p02" class="a01_diexp.z01_vo.HandPhone">
+		<constructor-arg value="아이폰14"/>
+		<constructor-arg value="apple"/>
+	</bean>	
+	<bean id="p03" class="a01_diexp.z01_vo.HandPhone">
+		<constructor-arg value="아이폰13"/>
+		<constructor-arg value="apple"/>
+	</bean>		
+	<!-- 
+	u01.setHandPhone(p01);
+	 -->
+	<bean id="u01" class="a01_diexp.z01_vo.HPUser">
+		<constructor-arg value="홍길동"/>
+		<property name="handPhone" ref="p01"/>
+	</bean>	       
 </beans>   
 
 
