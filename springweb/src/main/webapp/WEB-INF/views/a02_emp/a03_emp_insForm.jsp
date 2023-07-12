@@ -35,19 +35,38 @@
     	<h2>사원정보 등록</h2>
 		<form method="post">
 		  <div class="mb-3 mt-3">
-		    <label for="email" class="form-label">Email:</label>
-		    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+		    <label for="empno" class="form-label">empno:</label>
+		    <input type="number" class="form-control" id="empno" placeholder="Enter empno" name="empno">
 		  </div>
-		  <div class="mb-3">
-		    <label for="pwd" class="form-label">Password:</label>
-		    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+		  <div class="mb-3 mt-3">
+		    <label for="ename" class="form-label">ename:</label>
+		    <input type="text" class="form-control" id="ename" placeholder="Enter ename" name="ename">
 		  </div>
-		  <div class="form-check mb-3">
-		    <label class="form-check-label">
-		      <input class="form-check-input" type="checkbox" name="remember"> Remember me
-		    </label>
+		  <div class="mb-3 mt-3">
+		    <label for="job" class="form-label">job:</label>
+		    <input type="text" class="form-control" id="job" placeholder="Enter job" name="job">
 		  </div>
-		  <button type="submit" class="btn btn-primary">Submit</button>
+		  <div class="mb-3 mt-3">
+		    <label for="mgr" class="form-label">mgr:</label>
+		    <input type="number" class="form-control" id="mgr" placeholder="Enter mgr" name="mgr">
+		  </div>
+		  <div class="mb-3 mt-3">
+		    <label for="hiredateS" class="form-label">hiredate:</label>
+		    <input type="date" class="form-control" id="hiredateS" placeholder="Enter hiredate" name="hiredateS">
+		  </div>
+		  <div class="mb-3 mt-3">
+		    <label for="sal" class="form-label">sal:</label>
+		    <input type="number" class="form-control" id="sal" placeholder="Enter sal" name="sal">
+		  </div>
+		  <div class="mb-3 mt-3">
+		    <label for="comm" class="form-label">comm:</label>
+		    <input type="number" class="form-control" id="comm" placeholder="Enter comm" name="comm">
+		  </div>
+		  <div class="mb-3 mt-3">
+		    <label for="deptno" class="form-label">deptno:</label>
+		    <input type="number" class="form-control" id="deptno" placeholder="Enter deptno" name="deptno">
+		  </div>
+		  <button type="submit" class="btn btn-success">등록</button>
 		</form>
     </div>
 </body>
