@@ -14,8 +14,7 @@ public class A01_EmpController {
 	public A01_EmpController(){
 		dao = new A04_PreparedDao();
 	}
-	// ename=홍길동&job=사원  ==> form
-	// <c:forEach var="emp" items="${empList}"/>
+	//검색 form ==> empList.do?ename=홍길동&job=사원  
 	@RequestMapping("empList.do")
 	public String empList(Emp sch, Model d) {
 		if(sch.getEname()==null) sch.setEname("");
@@ -23,21 +22,45 @@ public class A01_EmpController {
 		d.addAttribute("empList", dao.getEmpList(sch));
 		return "WEB-INF\\views\\a02_emp\\a01_empList.jsp";
 	}
+	// view
+	// ename=홍길동&job=사원  ==> form
+	// <c:forEach var="emp" items="${empList}"/>
+	//     <tr ondblick="goPage(${emp.empno})">
+	//     function goPage(empno)
+	//         location.href="${path}/empDetail.do?empno="+empno
+	
 	@RequestMapping("empDetail.do")
 	public String empDetail(@RequestParam("empno") int empno,
 							Model d) {
 		d.addAttribute("emp", dao.getEmp(empno));
 		return "WEB-INF\\views\\a02_emp\\a02_emp_datail.jsp";
 	}
-	// empno=@@&ename=@@&job=@@&mgr=@@....
+	/* view(jsp)
+	 *  name="empno" value="${emp.empno}"
+	 *  name="ename" value="${emp.ename}"
+	 *  name="job" value="${emp.job}"
+	 * */
+	
+	
+	// name="empno" value="111"
+	// name="ename" value="김영희"
+	// empno=111&ename=김영희&job=@@&mgr=@@....
+	// setEmpno(int empno)   setEname(String ename)....
 	@RequestMapping("empInsert.do")
 	public String empInsert(Emp ins, Model d) {
+		// 요청값이 있을 type 맞고, property
 		if(ins.getEmpno()!=0) {
 			dao.insertEmp(ins);
 			d.addAttribute("proc", "ins");//등록 처리 process 
 		}
 		return "WEB-INF\\views\\a02_emp\\a03_emp_insForm.jsp";
 	}	
+	// var proc = "${proc}"
+	// if(proc=="ins")
+	//    if(confirm("등록성공\n조회화면이동하시겠습니까?"))
+	//         location.href="${path}/empList.do"
+	
+	
 	@RequestMapping("empUpdate.do")
 	public String empUpdate(Emp upt, Model d) {
 		dao.updateEmp(upt);
