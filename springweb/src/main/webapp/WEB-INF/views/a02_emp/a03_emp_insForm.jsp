@@ -23,7 +23,12 @@
     <script type="text/javascript">
     	// window.onload와 동일한 메서드
     	$(document).ready( function(){
-    		
+    		var proc= "${proc}"
+    		if(proc=="ins"){
+    			if(confirm("등록 성공\n조회화면 이동하시겠습니까?")){
+    				location.href="${path}/empList.do";
+    			}
+    		}
     		//$("h2").text("jquery 로딩 성공")
     	});
     </script>      
