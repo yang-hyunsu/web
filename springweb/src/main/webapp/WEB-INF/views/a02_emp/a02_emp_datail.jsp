@@ -92,8 +92,10 @@
 		   		$("form").submit()
 		   	})
 		 	$("#delBtn").click(function(){
-		 		$("form").attr("action","${path}/empDelete.do")
-		 		$("form").submit()
+		 		if( confirm("삭제 하시겠습니까?") ){
+		 			$("form").attr("action","${path}/empDelete.do")
+		 			$("form").submit()
+		 		}
 		   	})
 		   	
 		   	
