@@ -17,6 +17,8 @@ public class DIExp12 {
 		HPUser u01 = ctx.getBean("u01", HPUser.class);
 		System.out.println("컨테이너의 객체호출:"+u01);
 		u01.usingMyPhone();
+		// ex) Car 차종 배기량 최고속도
+		//     CarDriver 자동차기사  이름  Car객체..
 		
 		
 		ctx.close();
