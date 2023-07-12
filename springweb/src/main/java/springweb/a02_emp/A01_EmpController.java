@@ -29,6 +29,7 @@ public class A01_EmpController {
 		d.addAttribute("emp", dao.getEmp(empno));
 		return "WEB-INF\\views\\a02_emp\\a02_emp_datail.jsp";
 	}
+	// empno=@@&ename=@@&job=@@&mgr=@@....
 	@RequestMapping("empInsert.do")
 	public String empInsert(Emp ins, Model d) {
 		if(ins.getEmpno()!=0) {

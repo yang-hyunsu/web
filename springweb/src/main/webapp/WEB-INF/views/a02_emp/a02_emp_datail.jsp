@@ -29,41 +29,44 @@
 </head>
 <body>
     <div class="container mt-3">
-    	<h2>사원정보 등록</h2>
-	  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-	  		<div class="container-fluid">    	
-	    	<form method="post"  class="d-flex align-items-center" >
-	            <input type="text" class="form-control me-2" 
-	      	     id="title" placeholder="직책명 입력" value="${param.title}" name="title"  aria-label="Search">
-	            <input type="text" class="form-control me-2" 
-	      	     id="min_sal1" placeholder="최소급여 시작"  
-	      	     value="${empty param.min_sal1? 0: param.min_sal1}"  name="min_sal1"  aria-label="Search">
-	      	    ~
-	            <input type="text" class="form-control me-2" 
-	      	     id="min_sal2" placeholder="최소급여 마지막" 
-	      	      value="${empty param.min_sal2? 9999999: param.min_sal2}"  name="min_sal2"  aria-label="Search">
-	      	     
-	      	     
-	         	<button type="submit" class="btn btn-primary" style="width:200px;">조회</button>
-	     	</form>
-	 	    </div>
-	 	</nav>
-		<table class="table table-striped table-hover">
-			<thead class="table-success">
-		      	<tr  class="text-center">
-				    <th>Firstname</th>
-				    <th>Lastname</th>
-				    <th>Email</th>
-		      	</tr>
-		    </thead>
-		    <tbody>
-			   	<tr  class="text-center">
-			        <td>John</td>
-			        <td>Doe</td>
-			        <td>john@example.com</td>
-			   	</tr>
-		 	</tbody>
-		</table>      	
+    	<h2>사원정보 상세</h2>
+		<form method="post">
+		  <div class="mb-3 mt-3">
+		    <label for="empno" class="form-label">empno:</label>
+		    <input type="number" value="${emp.empno}" class="form-control" id="empno" placeholder="Enter empno" name="empno">
+		  </div>
+		  <div class="mb-3 mt-3">
+		    <label for="ename" class="form-label">ename:</label>
+		    <input type="text" value="${emp.ename}"  class="form-control" id="ename" placeholder="Enter ename" name="ename">
+		  </div>
+		  <div class="mb-3 mt-3">
+		    <label for="job" class="form-label">job:</label>
+		    <input type="text" value="${emp.job}"   class="form-control" id="job" placeholder="Enter job" name="job">
+		  </div>
+		  <div class="mb-3 mt-3">
+		    <label for="mgr" class="form-label">mgr:</label>
+		    <input type="number" value="${emp.mgr}"  class="form-control" id="mgr" placeholder="Enter mgr" name="mgr">
+		  </div>
+		  <div class="mb-3 mt-3">
+		    <label for="hiredateS" class="form-label">hiredate:</label>
+		    <input type="text" value="${emp.hiredate}"  class="form-control" id="hiredateS" placeholder="Enter hiredate" name="hiredateS">
+		   
+		  </div>
+		  <div class="mb-3 mt-3">
+		    <label for="sal" class="form-label">sal:</label>
+		    <input type="number" value="${emp.sal}"   class="form-control" id="sal" placeholder="Enter sal" name="sal">
+		  </div>
+		  <div class="mb-3 mt-3">
+		    <label for="comm" class="form-label">comm:</label>
+		    <input type="number" value="${emp.comm}"   class="form-control" id="comm" placeholder="Enter comm" name="comm">
+		  </div>
+		  <div class="mb-3 mt-3">
+		    <label for="deptno" class="form-label">deptno:</label>
+		    <input type="number" value="${emp.deptno}"  class="form-control" id="deptno" placeholder="Enter deptno" name="deptno">
+		  </div>
+		  <button type="submit" class="btn btn-success">등록</button>
+		</form>
+	
     </div>
 </body>
 </html>
