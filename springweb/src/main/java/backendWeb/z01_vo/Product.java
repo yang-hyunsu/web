@@ -1,5 +1,5 @@
 package backendWeb.z01_vo;
-// backWeb2.z01_vo.Product
+// backendWeb.z01_vo.Product
 
 
 public class Product {

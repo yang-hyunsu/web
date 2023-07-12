@@ -1,5 +1,5 @@
 package backendWeb.z01_vo;
-
+// backendWeb.z01_vo.Music
 public class Music {
 	private String mname;
 	private String singer;
