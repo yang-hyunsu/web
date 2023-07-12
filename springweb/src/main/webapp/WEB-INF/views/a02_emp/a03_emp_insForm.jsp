@@ -12,6 +12,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+    	.btn{width:200px;}
+    </style>    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <title>Insert title here</title>
    
@@ -30,40 +33,22 @@
 <body>
     <div class="container mt-3">
     	<h2>사원정보 등록</h2>
-	  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-	  		<div class="container-fluid">    	
-	    	<form method="post"  class="d-flex align-items-center" >
-	            <input type="text" class="form-control me-2" 
-	      	     id="title" placeholder="직책명 입력" value="${param.title}" name="title"  aria-label="Search">
-	            <input type="text" class="form-control me-2" 
-	      	     id="min_sal1" placeholder="최소급여 시작"  
-	      	     value="${empty param.min_sal1? 0: param.min_sal1}"  name="min_sal1"  aria-label="Search">
-	      	    ~
-	            <input type="text" class="form-control me-2" 
-	      	     id="min_sal2" placeholder="최소급여 마지막" 
-	      	      value="${empty param.min_sal2? 9999999: param.min_sal2}"  name="min_sal2"  aria-label="Search">
-	      	     
-	      	     
-	         	<button type="submit" class="btn btn-primary" style="width:200px;">조회</button>
-	     	</form>
-	 	    </div>
-	 	</nav>
-		<table class="table table-striped table-hover">
-			<thead class="table-success">
-		      	<tr  class="text-center">
-				    <th>Firstname</th>
-				    <th>Lastname</th>
-				    <th>Email</th>
-		      	</tr>
-		    </thead>
-		    <tbody>
-			   	<tr  class="text-center">
-			        <td>John</td>
-			        <td>Doe</td>
-			        <td>john@example.com</td>
-			   	</tr>
-		 	</tbody>
-		</table>      	
+		<form method="post">
+		  <div class="mb-3 mt-3">
+		    <label for="email" class="form-label">Email:</label>
+		    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+		  </div>
+		  <div class="mb-3">
+		    <label for="pwd" class="form-label">Password:</label>
+		    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+		  </div>
+		  <div class="form-check mb-3">
+		    <label class="form-check-label">
+		      <input class="form-check-input" type="checkbox" name="remember"> Remember me
+		    </label>
+		  </div>
+		  <button type="submit" class="btn btn-primary">Submit</button>
+		</form>
     </div>
 </body>
 </html>
