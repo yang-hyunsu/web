@@ -85,7 +85,7 @@
 		<constructor-arg value="12000"/>
 		<constructor-arg value="4"/>
 	</bean> 
-	<bean class="a01_diexp.z01_vo.Mart">
+	<bean id="m01" class="a01_diexp.z01_vo.Mart">
 		<constructor-arg value="행복마트"/>
 		<property name="plist">
 			<list>

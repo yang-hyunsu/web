@@ -22,7 +22,7 @@ public class Mart {
 				System.out.print(prod.getName()+"\t");
 				System.out.print(prod.getPrice()+"\t");
 				System.out.print(prod.getCnt()+"\n");
-				tot = prod.getPrice()*prod.getCnt();
+				tot += prod.getPrice()*prod.getCnt();
 			}
 			System.out.println("총비용:"+tot);
 		}else {

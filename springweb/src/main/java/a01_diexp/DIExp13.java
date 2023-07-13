@@ -3,6 +3,8 @@ package a01_diexp;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
+import a01_diexp.z01_vo.Mart;
+
 public class DIExp13 {
 
 	public static void main(String[] args) {
@@ -14,6 +16,11 @@ public class DIExp13 {
 		// DL(Dependency Lookup) 객체를 찾는 처리
 		Object obj = ctx.getBean("obj", Object.class);
 		System.out.println("컨테이너의 객체호출:"+obj);
+		Mart m01 = ctx.getBean("m01", Mart.class);
+		m01.buyList();
+		
+		
+		
 		ctx.close();
 		System.out.println("종료");
 	}
