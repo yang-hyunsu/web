@@ -76,7 +76,25 @@
 	<bean id="u01" class="a01_diexp.z01_vo.HPUser">
 		<constructor-arg value="홍길동"/>
 		<property name="handPhone" ref="p01"/>
-	</bean>	       
+	</bean>	  
+	<!-- 
+	//a01_diexp.z01_vo.Car CarDriver
+	
+	 -->
+	<bean id="car" class="a01_diexp.z01_vo.Car">
+		<constructor-arg value="그랜저"/>
+		<constructor-arg value="3000"/>
+		<constructor-arg value="230"/>
+	</bean>
+	<bean id="cd01" class="a01_diexp.z01_vo.CarDriver">
+		<constructor-arg value="홍길동"/>
+		<property name="car" ref="car"/>
+	</bean>
+	<bean id="cd02" class="a01_diexp.z01_vo.CarDriver">
+		<constructor-arg value="홍길동"/>
+	</bean>
+		
+	     
 </beans>   
 
 
