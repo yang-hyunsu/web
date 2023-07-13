@@ -1,5 +1,5 @@
 package a01_diexp.z01_vo;
-
+// a01_diexp.z01_vo.Member
 public class Member {
 	private String id;
 	private String pass;

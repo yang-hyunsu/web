@@ -96,6 +96,41 @@
 		</property>
 	
 	</bean> 
+	<bean id="mem01" class="a01_diexp.z01_vo.Member">
+		<constructor-arg value="himan"/>
+		<constructor-arg value="7777"/>
+		<constructor-arg value="홍길동"/>
+		<constructor-arg value="관리자"/>
+		<constructor-arg value="10000"/>
+	</bean>
+	<bean id="mem02" class="a01_diexp.z01_vo.Member">
+		<constructor-arg value="higirl"/>
+		<constructor-arg value="8888"/>
+		<constructor-arg value="홍리나"/>
+		<constructor-arg value="관리자"/>
+		<constructor-arg value="12000"/>
+	</bean>
+	<bean id="mem03" class="a01_diexp.z01_vo.Member">
+		<constructor-arg value="goodMan"/>
+		<constructor-arg value="7777"/>
+		<constructor-arg value="김철수"/>
+		<constructor-arg value="일반사용자"/>
+		<constructor-arg value="7000"/>
+	</bean>
+	<bean id="small" class="a01_diexp.z01_vo.ShoppingMall">
+		<constructor-arg value="컴퓨터부품쇼핑몰"/>
+		<property name="mlist">
+			<list>
+				<ref bean="mem01"/>
+				<ref bean="mem02"/>
+				<ref bean="mem03"/>
+			</list>
+		</property>
+	</bean>
+
+	
+	
+	
  
 	
 	      
