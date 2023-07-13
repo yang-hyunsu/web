@@ -74,8 +74,36 @@
 				<value>보험관리</value>
 			</set>
 		</property>
+		<property name="addInfo">
+			<props>
+				<prop key="사과">3000</prop>			
+				<prop key="바나나">4000</prop>			
+				<prop key="오렌지">4500</prop>			
+				<prop key="사과">3500</prop>			
+				<prop key="바나나">4500</prop>			
+			
+			</props>
+		</property>
+		
+		
 	</bean>	 
-	      
+	<bean id="gm" class="a01_diexp.z01_vo.Gamer">
+		<property name="pocket">
+			<set>
+				<value>빨강색구슬</value>
+				<value>빨강색구슬</value>
+				<value>파랑색구슬</value>
+				<value>파랑색구슬</value>
+				<value>파랑색구슬</value>
+				<value>파랑색구슬</value>
+				<value>노랑색구슬</value>
+				<value>노랑색구슬</value>
+				<value>빨강색구슬</value>
+				<value>빨강색구슬</value>
+			</set>
+		
+		</property>
+	</bean>
 </beans>   
 
 

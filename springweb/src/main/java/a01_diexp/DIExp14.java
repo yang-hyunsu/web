@@ -3,6 +3,7 @@ package a01_diexp;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
+import a01_diexp.z01_vo.Gamer;
 import a01_diexp.z01_vo.Sensor;
 
 public class DIExp14 {
@@ -21,8 +22,26 @@ public class DIExp14 {
 		for(String str:sensor01.getAgent()) {
 			System.out.println(str);
 		}
-		// 
+		System.out.println(sensor01.getAddInfo());
 		
+		
+		
+		// 1.클래스선언
+		// class Gamer
+		//    private Set<String> bead;
+		//    public void setPocket(Set<String> bead)
+		//    public Set<String> getPocket()
+		///   private Properties beadCnt;  
+		//        구슬의 종류와 가지고 갯수 설정..
+		///       set/get 선언 xml에서 처리...
+		
+		// ---------------------------
+		// 2.xml선언 및 호출..
+		// xml에서 구슬을 저장하고,
+		// main()에서 getPocket()를 통해 저장된 구슬을 확인하셍.
+		Gamer gm = ctx.getBean("gm", Gamer.class);
+		gm.showMyPocket();
+				
 		ctx.close();
 		System.out.println("종료");
 	}
