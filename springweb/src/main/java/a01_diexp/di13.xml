@@ -70,6 +70,33 @@
 				<ref bean="pro03">
 						
  -->	
+	<bean id="prod01" class="a01_diexp.z01_vo.Product">
+		<constructor-arg value="사과"/>
+		<constructor-arg value="3000"/>
+		<constructor-arg value="2"/>
+	</bean> 
+	<bean id="prod02" class="a01_diexp.z01_vo.Product">
+		<constructor-arg value="바나나"/>
+		<constructor-arg value="4000"/>
+		<constructor-arg value="3"/>
+	</bean> 
+	<bean id="prod03" class="a01_diexp.z01_vo.Product">
+		<constructor-arg value="딸기"/>
+		<constructor-arg value="12000"/>
+		<constructor-arg value="4"/>
+	</bean> 
+	<bean class="a01_diexp.z01_vo.Mart">
+		<constructor-arg value="행복마트"/>
+		<property name="plist">
+			<list>
+				<ref bean="prod01"/>
+				<ref bean="prod02"/>
+				<ref bean="prod03"/>
+			</list>
+		</property>
+	
+	</bean> 
+ 
 	
 	      
 </beans>   

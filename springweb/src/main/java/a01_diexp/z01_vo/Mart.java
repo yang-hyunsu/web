@@ -2,7 +2,7 @@ package a01_diexp.z01_vo;
 
 import java.util.ArrayList;
 import java.util.List;
-
+// a01_diexp.z01_vo.Mart
 public class Mart {
 	private String mname;
 	private List<Product> plist;
