@@ -43,6 +43,10 @@ public class DIExp14 {
 		gm.showMyPocket();
 				
 		System.out.println(gm.getBeadCnt());
+		// 프로퍼티스객체.stringPropertyNames() :
+		//     해당 프로퍼티의key들을 가져온다.
+		// 프로퍼티스객체.getProperty(key) 
+		//     키의 값을 가져온다.
 		for(String key:gm.getBeadCnt().stringPropertyNames()) {
 			String value = gm.getBeadCnt().getProperty(key);
 			System.out.println(key+":"+value);
