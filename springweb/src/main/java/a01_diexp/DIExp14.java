@@ -4,6 +4,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 import a01_diexp.z01_vo.Gamer;
+import a01_diexp.z01_vo.Monitor;
 import a01_diexp.z01_vo.Sensor;
 
 public class DIExp14 {
@@ -51,6 +52,10 @@ public class DIExp14 {
 			String value = gm.getBeadCnt().getProperty(key);
 			System.out.println(key+":"+value);
 		}
+		Monitor monitor = ctx.getBean("monitor",Monitor.class);
+		System.out.println(monitor.getConfig());
+		
+		
 		ctx.close();
 		System.out.println("종료");
 	}
