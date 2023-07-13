@@ -56,7 +56,25 @@
 2. xml 컨테이너에 의해 위 선언방식으로 할당.
 3. main()에서 메모리 할당 내용 확인..			
 	
+// a01_diexp.z01_vo.Sensor
+// setAgent(Set<String> agent)
+// setAddInfo(Properties addInfo)	
 	 -->
+	<bean id="sensor01" class="a01_diexp.z01_vo.Sensor">
+		<property name="agent">
+			<set>
+				<value>주식매매</value>
+				<value>주식매매</value>
+				<value>자산관리</value>
+				<value>주식매매</value>
+				<value>자산관리</value>
+				<value>주식매매</value>
+				<value>보험관리</value>
+				<value>보험관리</value>
+				<value>보험관리</value>
+			</set>
+		</property>
+	</bean>	 
 	      
 </beans>   
 
