@@ -130,6 +130,16 @@
 			</map>
 		</property>
 	</bean>
+	<bean id="student" class="a01_diexp.z01_vo.Student">
+		<property name="records">
+			<map>
+				<entry key="국어"><value>80</value></entry>
+				<entry key="영어"><value>90</value></entry>
+				<entry key="영어"><value>95</value></entry>
+				<entry key="수학"><value>85</value></entry>
+			</map>
+		</property>
+	</bean>
 </beans>   
 
 

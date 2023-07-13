@@ -6,6 +6,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 import a01_diexp.z01_vo.Gamer;
 import a01_diexp.z01_vo.Monitor;
 import a01_diexp.z01_vo.Sensor;
+import a01_diexp.z01_vo.Student;
 
 public class DIExp14 {
 
@@ -59,6 +60,8 @@ public class DIExp14 {
 			private Map<String, Integer> records
 			로 set/get메서드 선언해서 호출하세요.
 		 * */
+		Student student = ctx.getBean("student", Student.class);
+		System.out.println(student.getRecords());
 		
 		ctx.close();
 		System.out.println("종료");
