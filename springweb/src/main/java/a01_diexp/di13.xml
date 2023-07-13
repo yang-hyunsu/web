@@ -57,6 +57,18 @@
 					물건명 가격 갯수 출력...
 				}
 			}
+3. 위 내용을 xml 컨테이너에 의해 표현하기
+	0) 포함될 객체
+		<bean id="pro01"
+		<bean id="pro02"
+		<bean id="pro03"
+	1) set Property 설정 부분..
+		<property name="productList>
+			<list>
+				<ref bean="pro01">
+				<ref bean="pro02">
+				<ref bean="pro03">
+						
  -->	
 	
 	      
