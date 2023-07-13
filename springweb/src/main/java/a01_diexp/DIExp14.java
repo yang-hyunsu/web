@@ -32,7 +32,7 @@ public class DIExp14 {
 		//    public void setPocket(Set<String> bead)
 		//    public Set<String> getPocket()
 		///   private Properties beadCnt;  
-		//        구슬의 종류와 가지고 갯수 설정..
+		//        구슬의 종류와 갯수 설정..
 		///       set/get 선언 xml에서 처리...
 		
 		// ---------------------------
@@ -42,6 +42,11 @@ public class DIExp14 {
 		Gamer gm = ctx.getBean("gm", Gamer.class);
 		gm.showMyPocket();
 				
+		System.out.println(gm.getBeadCnt());
+		for(String key:gm.getBeadCnt().stringPropertyNames()) {
+			String value = gm.getBeadCnt().getProperty(key);
+			System.out.println(key+":"+value);
+		}
 		ctx.close();
 		System.out.println("종료");
 	}

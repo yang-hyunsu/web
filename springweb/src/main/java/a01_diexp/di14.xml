@@ -103,6 +103,18 @@
 			</set>
 		
 		</property>
+		<property name="beadCnt">
+			<props>
+				<prop key="빨강색구슬">3</prop>
+				<prop key="빨강색구슬">4</prop>
+				<prop key="파랑색구슬">5</prop>
+				<prop key="파랑색구슬">7</prop>
+				<prop key="파랑색구슬">8</prop>
+				<prop key="노랑색구슬">5</prop>
+				<prop key="노랑색구슬">10</prop>
+				<prop key="노랑색구슬">7</prop>
+			</props>
+		</property>
 	</bean>
 </beans>   
 

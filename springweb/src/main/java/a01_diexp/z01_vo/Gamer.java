@@ -1,9 +1,11 @@
 package a01_diexp.z01_vo;
 
+import java.util.Properties;
 import java.util.Set;
 // a01_diexp.z01_vo.Gamer
 public class Gamer {
 	private Set<String> bead;
+	private Properties beadCnt;  
 
 	public Set<String> getPocket() {
 		return bead;
@@ -21,5 +23,18 @@ public class Gamer {
 			System.out.println("구슬이 없네요.");
 		}
 	}
+	public Set<String> getBead() {
+		return bead;
+	}
+	public void setBead(Set<String> bead) {
+		this.bead = bead;
+	}
+	public Properties getBeadCnt() {
+		return beadCnt;
+	}
+	public void setBeadCnt(Properties beadCnt) {
+		this.beadCnt = beadCnt;
+	}
+	
 	
 }
