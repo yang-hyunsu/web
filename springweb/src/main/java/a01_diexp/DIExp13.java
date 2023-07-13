@@ -4,6 +4,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 import a01_diexp.z01_vo.Mart;
+import a01_diexp.z01_vo.ShoppingMall;
 
 public class DIExp13 {
 
@@ -28,10 +29,11 @@ public class DIExp13 {
 		2단계 ShoppingMall 클래스 구성
 		
 		3단계 xml 컨테이너 선언
-		--------------------
+		
 		4단계 main() 호출 처리
 		 * */
-		
+		ShoppingMall sm = ctx.getBean("small",ShoppingMall.class);
+		sm.showMemberList();
 		
 		ctx.close();
 		System.out.println("종료");
