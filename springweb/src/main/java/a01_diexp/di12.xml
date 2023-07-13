@@ -91,7 +91,7 @@
 		<property name="car" ref="car"/>
 	</bean>
 	<bean id="cd02" class="a01_diexp.z01_vo.CarDriver">
-		<constructor-arg value="홍길동"/>
+		<constructor-arg value="신길동"/>
 	</bean>
 		
 	     

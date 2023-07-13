@@ -3,6 +3,7 @@ package a01_diexp;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
+import a01_diexp.z01_vo.CarDriver;
 import a01_diexp.z01_vo.HPUser;
 
 public class DIExp12 {
@@ -19,7 +20,10 @@ public class DIExp12 {
 		u01.usingMyPhone();
 		// ex) Car 차종 배기량 최고속도
 		//     CarDriver 자동차기사  이름  Car객체..
-		
+		CarDriver cd01 = ctx.getBean("cd01", CarDriver.class);
+		CarDriver cd02 = ctx.getBean("cd02", CarDriver.class);
+		cd01.driving();
+		cd02.driving();
 		
 		ctx.close();
 		System.out.println("종료");
