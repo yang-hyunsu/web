@@ -54,7 +54,11 @@ public class DIExp14 {
 		}
 		Monitor monitor = ctx.getBean("monitor",Monitor.class);
 		System.out.println(monitor.getConfig());
-		
+		/*
+		Student 클래스 선언  
+			private Map<String, Integer> records
+			로 set/get메서드 선언해서 호출하세요.
+		 * */
 		
 		ctx.close();
 		System.out.println("종료");
