@@ -116,6 +116,20 @@
 			</props>
 		</property>
 	</bean>
+	<bean id="monitor"  class="a01_diexp.z01_vo.Monitor">
+		<!-- setConfig(Map<String, Integer> config) -->
+		<property name="config">
+			<map>
+				<entry key="간격" value="1000"/>
+				<entry key="시간(m)">
+					<value>2000</value>
+				</entry>		
+				<entry key="범위(h)">
+					<value>25</value>
+				</entry>	
+			</map>
+		</property>
+	</bean>
 </beans>   
 
 
