@@ -5,6 +5,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 
 import backendWeb.z01_vo.Calculator;
 import backendWeb.z01_vo.Dept;
+import backendWeb.z01_vo.Music;
 import backendWeb.z01_vo.Person;
 import backendWeb.z01_vo.Product;
 
@@ -41,7 +42,14 @@ public class DIExp15 {
 		System.out.print(cal02.getCal());
 		System.out.print(cal02.getNum02());
 		System.out.println("="+cal02.getTot());
-		// ex) 
+		Music m01 = ctx.getBean("m01", Music.class);
+		Music m02 = ctx.getBean("m02", Music.class);
+		Music m03 = ctx.getBean("m03", Music.class);
+		System.out.println(m01.getMname());
+		System.out.println(m02.getMname());
+		System.out.println(m03.getMname());
+
+		
 		
 		
 		ctx.close();

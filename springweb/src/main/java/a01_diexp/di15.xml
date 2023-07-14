@@ -69,16 +69,28 @@
 	 />
 	 <!-- 
 	 Dept d01 = new Dept();
-	 d01.setDeptno(50)
-	 
-	 
+	 d01.setDeptno(50) 
 	 Calculator(int num01, int num02, String cal, int tot)
 	  -->
 	<bean id="cal01" class="backendWeb.z01_vo.Calculator"
 		c:num01="10" c:num02="20" c:cal="*" c:tot="200" />
 	<bean id="cal02" class="backendWeb.z01_vo.Calculator"
 		c:_0="10" c:_1="5" c:_2="+" c:_3="15" />
-			
+<!-- 
+		// ex) Music  m01, m02, m03
+		//         프로퍼터  생성자1  생성자2 방식으로
+		//      xml 선언 후, 호출..
+		Music(String mname, String singer, int pubyear)
+ -->	
+ 	<bean id="m01" class="backendWeb.z01_vo.Music" 
+ 		p:mname="Super Shy" p:singer="NewJeans" p:pubyear="2023" />
+ 	<bean id="m02" class="backendWeb.z01_vo.Music" 
+ 		c:mname="퀀카" c:singer="여자아이들" c:pubyear="2023" />
+  	<bean id="m03" class="backendWeb.z01_vo.Music" 
+ 		c:_0="I AM" c:_1="IVE" c:_2="2022" />
+ 		
+  		
+ 				
 		
 		 		 
 	
