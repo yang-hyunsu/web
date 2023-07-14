@@ -30,7 +30,10 @@ public class A06_ReqModelController {
 	}
 	// ex1) get  form2.do
 	//      post form2.do
-	///  화면 : a09_form.jsp    
+	///  화면 : a09_form.jsp
+	//         좋아하는 연예인 이름:[  ][등록]
+	/////      모델데이터 : (@@@는 좋아하는 연예인이네요) 모델데이터
+	
 	
 	
 	
