@@ -49,13 +49,23 @@
 	 -->
 	<bean id="p01" class="backendWeb.z01_vo.Person"
 		p:name="홍길동" p:age="25" p:loc="서울" />
-	<!-- 
-	Product(String name, int price, int cnt)
-	 -->	
 	<bean id="prod1" class="backendWeb.z01_vo.Product"
 		c:name="사과" c:price="3000" c:cnt="2" />
 	<bean id="prod2" class="backendWeb.z01_vo.Product"
 		c:_0="바나나" c:_1="4000" c:_2="5" />
+	<!-- 
+		Person p01 = ctx.getBean("p01", Person.class);
+		Product prod1 = ctx.getBean("prod1", Product.class);
+		Product prod2 = ctx.getBean("prod2", Product.class);
+		System.out.println(p01.getName());
+		System.out.println(prod1.getName());
+		System.out.println(prod2.getName());	
+	ex) Dept : 프로퍼티로 선언
+	    Calculator : 생성자(1,2)로 선언해서 호출
+	    해서 출력하세요..
+	 -->	
+		
+		
 		 		 
 	
 	      
