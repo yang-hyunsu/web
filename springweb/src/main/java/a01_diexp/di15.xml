@@ -64,7 +64,21 @@
 	    Calculator : 생성자(1,2)로 선언해서 호출
 	    해서 출력하세요..
 	 -->	
-		
+	 <bean id="d01" class="backendWeb.z01_vo.Dept"
+	 	p:deptno="50" p:dname="인사" p:loc="광주"	
+	 />
+	 <!-- 
+	 Dept d01 = new Dept();
+	 d01.setDeptno(50)
+	 
+	 
+	 Calculator(int num01, int num02, String cal, int tot)
+	  -->
+	<bean id="cal01" class="backendWeb.z01_vo.Calculator"
+		c:num01="10" c:num02="20" c:cal="*" c:tot="200" />
+	<bean id="cal02" class="backendWeb.z01_vo.Calculator"
+		c:_0="10" c:_1="5" c:_2="+" c:_3="15" />
+			
 		
 		 		 
 	
