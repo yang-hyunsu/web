@@ -26,11 +26,13 @@ public class A06_ReqModelController {
 		System.out.println("호출2");
 		System.out.println("요청값 title:"+title);
 		d.addAttribute("m01", title+", 모델데이터^^");
-		
-		
 		return "WEB-INF\\views\\a01_start\\a08_req_model_form.jsp";
 	}
-	///RequestMapping :둘다 처리를 해준다.
+	// ex1) get  form2.do
+	//      post form2.do
+	///  화면 : a09_form.jsp    
+	
+	
 	
 	
 	

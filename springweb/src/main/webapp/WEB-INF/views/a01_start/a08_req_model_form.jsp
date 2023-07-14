@@ -48,15 +48,11 @@
 			<thead class="table-success">
 		      	<tr  class="text-center">
 				    <th>Firstname</th>
-				    <th>Lastname</th>
-				    <th>Email</th>
-		      	</tr>
+			    </tr>
 		    </thead>
 		    <tbody>
 			   	<tr  class="text-center">
-			        <td>John</td>
-			        <td>Doe</td>
-			        <td>john@example.com</td>
+			        <td>${m01}</td>
 			   	</tr>
 		 	</tbody>
 		</table>      	
