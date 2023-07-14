@@ -1,9 +1,10 @@
 package springweb.a01_start;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 // springweb.a01_start.A06_ReqModelController
 // xml에 등록부터..
@@ -15,15 +16,22 @@ public class A06_ReqModelController {
 	@GetMapping("form01.do")
 	public String showInfo() {
 		System.out.println("호출1");
-		return "";
+		return "WEB-INF\\views\\a01_start\\a08_req_model_form.jsp";
 	}
 	// Post방식으로 호출 하는한 형태..
 	// form에 명식적으로 속성 method="post"
 	@PostMapping("form01.do")
-	public String showInfo2() {
+	public String showInfo2(@RequestParam("title") String title,
+			                Model d) {
 		System.out.println("호출2");
-		return "";
+		System.out.println("요청값 title:"+title);
+		d.addAttribute("m01", title+", 모델데이터^^");
+		
+		
+		return "WEB-INF\\views\\a01_start\\a08_req_model_form.jsp";
 	}
+	///RequestMapping :둘다 처리를 해준다.
+	
 	
 	
 }
