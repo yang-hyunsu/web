@@ -36,6 +36,11 @@
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
 	</context:component-scan>	
+	
+	<bean class="backendWeb.a01_dao.A04_PreparedDao"/>
+	<!-- 
+	A04_PreparedDao dao = new A04_PreparedDao();
+	 -->
 		      
 </beans>   
 
