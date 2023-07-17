@@ -4,6 +4,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 import a01_diexp.z05_mvc.A01_Controller;
+import a01_diexp.z05_mvc.A02_Service;
 import a01_diexp.z05_mvc.Web_Controller;
 import backendWeb.z01_vo.Dept;
 
@@ -28,6 +29,10 @@ public class DIExp21 {
 				ctx.getBean("a01_Controller", 
 						A01_Controller.class);
 		System.out.println(a01_Controller.callCtrl());
+		A02_Service a02_service = 
+				ctx.getBean("a02_Service", A02_Service.class);
+		a02_service.callService();
+		
 		ctx.close();
 		System.out.println("종료");
 	}
