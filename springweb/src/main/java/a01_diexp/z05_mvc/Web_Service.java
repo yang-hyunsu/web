@@ -12,7 +12,13 @@ public class Web_Service {
 	public Web_Service() {
 		dao = new Web_Dao();
 	}
+	// service는 조건문 반복문에 의해
+	// 요청값에 대한 filtering 처리나
+	// 모델데이터에 대한 변경 로직을 처리한다.
 	public List<Dept> deptList(Dept sch){
+		if(sch.getDname()==null)sch.setDname("");
+		if(sch.getLoc()==null)sch.setLoc("");
+		
 		return dao.deptList(sch);
 	}
 }

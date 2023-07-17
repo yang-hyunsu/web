@@ -1,0 +1,31 @@
+package a01_diexp;
+
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
+
+import a01_diexp.z05_mvc.Web_Controller;
+import backendWeb.z01_vo.Dept;
+
+public class DIExp21 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// 컨테이너 경로
+		String path="a01_diexp\\di21.xml";
+		AbstractApplicationContext ctx = 
+				new GenericXmlApplicationContext(path);
+		// DL(Dependency Lookup) 객체를 찾는 처리
+		Web_Controller obj = ctx.getBean("web_Controller", Web_Controller.class);
+		System.out.println("컨테이너의 객체호출:"+obj);
+		
+		for(Dept d:obj.getDeptList(new Dept())) {
+			System.out.print(d.getDeptno()+"\t");
+			System.out.print(d.getDname()+"\t");
+			System.out.print(d.getLoc()+"\n");
+		}
+		
+		ctx.close();
+		System.out.println("종료");
+	}
+
+}
