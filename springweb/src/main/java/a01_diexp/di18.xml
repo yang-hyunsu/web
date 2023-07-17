@@ -41,6 +41,16 @@
 		Service, Repository 클래스만 객체로 메모리 로딩 처리.
 	4. 특정 패키지 특정 소스 코드로 autowiring	
 	 -->
+	 <!-- 
+	 a01_diexp.z02_vo
+	 폴드(패키지에) 있고 @Component라고 선언되어 있으면
+	 객체로 메모리 로딩 처리
+	 호출이름은 default로 클래스명을 첫문자를 소문자처리
+	 class Person ==> person 
+	  -->
+	<context:component-scan
+		 base-package="a01_diexp.z02_vo"/>	  
+	 
 	      
 </beans>   
 
