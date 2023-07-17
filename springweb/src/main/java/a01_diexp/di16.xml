@@ -51,8 +51,8 @@
 	2) 자동연관옵션
 		- byName
 		- byType
-		- constructor
-		- autodect
+		- constructor : 생성자의 type을 할당해서 처리
+		- autodect : type이 있는지 여부를 할당해서 처리
 // a01_diexp.z01_vo.HPUser
 // a01_diexp.z01_vo.HandPhone
 	HandPhone(String number, String company)
