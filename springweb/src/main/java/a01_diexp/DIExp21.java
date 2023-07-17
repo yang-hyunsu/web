@@ -3,6 +3,7 @@ package a01_diexp;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
+import a01_diexp.z05_mvc.A01_Controller;
 import a01_diexp.z05_mvc.Web_Controller;
 import backendWeb.z01_vo.Dept;
 
@@ -23,7 +24,10 @@ public class DIExp21 {
 			System.out.print(d.getDname()+"\t");
 			System.out.print(d.getLoc()+"\n");
 		}
-		
+		A01_Controller a01_Controller = 
+				ctx.getBean("a01_Controller", 
+						A01_Controller.class);
+		System.out.println(a01_Controller.callCtrl());
 		ctx.close();
 		System.out.println("종료");
 	}
