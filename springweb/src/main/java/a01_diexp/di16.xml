@@ -74,8 +74,37 @@
 	ex) Car, CarDriver를 선언하여 호출해보세요
 	autowiring옵션.
 	 -->	
-	<bean id="car01" class="a01_diexp.z01_vo.Car" c:_0="그랜저" c:_1="3500"  c:_2="230" />	
-	<bean id="carRacer01"  class="a01_diexp.z01_vo.CarDriver" c:_0="홍길동" autowire="byType"  />	
+	<bean id="car01" class="a01_diexp.z01_vo.Car"
+		 c:_0="그랜저" c:_1="3500"  c:_2="230" />
+	<bean id="car02" class="a01_diexp.z01_vo.Car"
+		 c:_0="아반테" c:_1="1800"  c:_2="180" />
+	<bean id="car03" class="a01_diexp.z01_vo.Car"
+		 c:_0="제규어" c:_1="3500"  c:_2="280" />
+		 	
+	<bean id="carRacer01"  
+		class="a01_diexp.z01_vo.CarDriver" 
+		c:_0="홍길동" autowire="byName"  />	
+	<!-- 
+	# byName옵션
+	1. 자동할당 byName 옵션은 byType에 의해 여러 객체가 들어올 수 있다면
+	2. type이 같고, 메서드의 property를 check하는 특정한 객체가
+		자동할당되게 하는 옵션을 말한다.
+	3. 예시
+		1) CarDriver클래스에서 
+			public void setCar(Car c){}	
+			public void setCar02(Car c){}
+		2) byType을 하면 두개의 메서드가 다 호출되기에 구분할 수 없지만
+		3) byName을 하면 위 두개의 메서드 중에서
+			id가 car02인 내용을 type을 check하여 할당하게 
+			처리하는 것을 말한다.
+			즉, car02의 setproperty인 setCar02를 찾아서
+			type인 Car인것을 찾아서 해당 기능 메서드를 호출하여 
+			처리한다.
+	4. 위와 같이 여러개의 같은 type을 메서드명인 property로 구분하여
+		할당하는 형태를 byName에 의한 설정이라고 할 수 있다. 	
+	
+	 -->	
+		
 	 	
 	      
 </beans>   

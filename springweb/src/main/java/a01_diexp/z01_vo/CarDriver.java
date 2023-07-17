@@ -34,5 +34,8 @@ public class CarDriver {
 	public void setCar(Car car) {
 		this.car = car;
 	}
+	public void setCar02(Car car) {
+		this.car = car;
+	}	
 	
 }
