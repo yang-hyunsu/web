@@ -1,5 +1,7 @@
 package a01_diexp.z01_vo;
 // a01_diexp.z01_vo.HPUser
+// a01_diexp.z01_vo.HandPhone
+
 public class HPUser {
 	private String name;
 	private HandPhone handPhone;

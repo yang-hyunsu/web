@@ -117,6 +117,17 @@
 		<constructor-arg value="일반사용자"/>
 		<constructor-arg value="7000"/>
 	</bean>
+	<!-- 
+	Member mem01 = new Member(....);
+	Member mem02 = new Member(....);
+	Member mem03 = new Member(....);
+	List<Member> list = new ArrayList<Member();
+	list.add(mem01);
+	list.add(mem02);
+	list.add(mem03);
+	ShoppingMall sm = new ShoppingMall("컴퓨터부품쇼핑몰");
+	sm.setMlist(list);
+	 -->
 	<bean id="small" class="a01_diexp.z01_vo.ShoppingMall">
 		<constructor-arg value="컴퓨터부품쇼핑몰"/>
 		<property name="mlist">

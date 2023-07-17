@@ -18,7 +18,7 @@ public class A06_ReqModelController {
 		System.out.println("호출1");
 		return "WEB-INF\\views\\a01_start\\a08_req_model_form.jsp";
 	}
-	// Post방식으로 호출 하는한 형태..
+	// Post방식으로 호출 하는 한 형태..
 	// form에 명식적으로 속성 method="post"
 	@PostMapping("form01.do")
 	public String showInfo2(@RequestParam("title") String title,
