@@ -47,8 +47,6 @@
 		c:_0="010-7777-9999" c:_1="LG전자"/>
 	<bean id="hp03" class="a01_diexp.z01_vo.HandPhone"
 		c:_0="010-5555-8888" c:_1="애플"/>
-
-		 		
 	<bean id="us01" class="a01_diexp.z01_vo.HPUser"
 		p:name="홍길동" autowire="byName"/> 	 
 	       
