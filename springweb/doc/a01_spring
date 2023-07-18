@@ -165,7 +165,18 @@ ex) A03_CallMVC.java
 4. 백앤드핵신(service, controller)		
 	1) service 만들기
 		- Autowired로 Dao 객체를 호출하기
+			@Autowired
+			private A04_PreparedDao dao;
+		
 		- 데이터를 Dao안에 해당 메서드 형태로 메서드 선언
+			Dao 기능메서드 복사해서, 그 내용 안에서
+			처리
+			
+			public List<Dept> getDeptList(Dept sch) {
+			// 비지니스 로직 처리..
+			if(sch.getDname()==null) sch.setDname("");
+			if(sch.getLoc()==null) sch.setLoc("");
+			return dao.getDeptList(sch);
 	2) controller 만들기
 		- Autowired 서비스단 객체 선언
 	
