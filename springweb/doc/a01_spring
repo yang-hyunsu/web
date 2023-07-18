@@ -179,10 +179,20 @@ ex) A03_CallMVC.java
 			return dao.getDeptList(sch);
 	2) controller 만들기
 		- Autowired 서비스단 객체 선언
-	
-		요청값 : 검색데이터와
+		url 선언
+		요청값 : 검색데이터 ==> VO @RequestParam 활용
 		모델데이터	: Service단에서 호출
 		호출할 jsp 페이지 설정
+		
+		요청메서드 선언
+		1. url 패턴 ex) @RequestMapping("deptList01.do")
+			http://localhost:7080/springweb/deptList01.do
+		2. 요청값 ==> ename=@@&loc=@@@ ==> Dept(setEname,setLoc)
+		3. 모델데이터 ==> view단 넘길데이터
+		   model.addAttribute("모델명", service.XXXX());
+	    4. 뷰단 처리
+	    	return "":jsp 경로 위치 복사.		
+		
 	3) form 화면에 name값 value값 확인
 	   테이블 화면 확인
 	   <c:for문 items="${모델명}">

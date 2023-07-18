@@ -55,11 +55,13 @@
 		      	</tr>
 		    </thead>
 		    <tbody>
+		    	<c:forEach var="d" items="${deptList }">
 			   	<tr class="text-center">
-			        <td>John</td>
-			        <td>Doe</td>
-			        <td>john@example.com</td>
+			        <td>${d.deptno}</td>
+			        <td>${d.dname}</td>
+			        <td>${d.loc}</td>
 			   	</tr>
+			   	</c:forEach>
 		 	</tbody>
 		</table>      	
     </div>
