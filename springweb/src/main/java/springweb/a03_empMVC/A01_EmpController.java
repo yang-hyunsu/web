@@ -15,10 +15,10 @@ public class A01_EmpController {
 	@Autowired
 	private A02_EmpService service;
 	
-	private A04_PreparedDao dao;
-	public A01_EmpController(){
-		dao = new A04_PreparedDao();
-	}
+//	private A04_PreparedDao dao;
+//	public A01_EmpController(){
+//		dao = new A04_PreparedDao();
+//	}
 	//검색 form ==> empList.do?ename=홍길동&job=사원
 	// http://localhost:7080/springweb/empList01.do
 	@RequestMapping("empList01.do")
@@ -26,7 +26,7 @@ public class A01_EmpController {
 		
 		d.addAttribute("empList", service.getEmpList(sch));
 		
-		return "WEB-INF\\views\\a02_emp\\a01_empList.jsp";
+		return "WEB-INF\\views\\a03_emp\\a01_empList.jsp";
 	}
 	// view
 	// ename=홍길동&job=사원  ==> form
@@ -38,8 +38,8 @@ public class A01_EmpController {
 	@RequestMapping("empDetail01.do")
 	public String empDetail(@RequestParam("empno") int empno,
 							Model d) {
-		d.addAttribute("emp", dao.getEmp(empno));
-		return "WEB-INF\\views\\a02_emp\\a02_emp_datail.jsp";
+		d.addAttribute("emp", service.getEmp(empno));
+		return "WEB-INF\\views\\a03_emp\\a02_emp_datail.jsp";
 	}
 	/* view(jsp)
 	 *  name="empno" value="${emp.empno}"
@@ -56,10 +56,10 @@ public class A01_EmpController {
 	public String empInsert(Emp ins, Model d) {
 		// 요청값이 있을 type 맞고, property
 		if(ins.getEmpno()!=0) {
-			dao.insertEmp(ins);
+			service.insertEmp(ins);
 			d.addAttribute("proc", "ins");//등록 처리 process 
 		}
-		return "WEB-INF\\views\\a02_emp\\a03_emp_insForm.jsp";
+		return "WEB-INF\\views\\a03_emp\\a03_emp_insForm.jsp";
 	}	
 	// var proc = "${proc}"
 	// if(proc=="ins")
@@ -73,18 +73,18 @@ public class A01_EmpController {
 	// setEmpno(int empno)...
 	@RequestMapping("empUpdate01.do")
 	public String empUpdate(Emp upt, Model d) {
-		dao.updateEmp(upt);
+		service.updateEmp(upt);
 		// 수정 이후에 DB 다시 가져온다.
-		d.addAttribute("emp", dao.getEmp(upt.getEmpno()));
+		d.addAttribute("emp", service.getEmp(upt.getEmpno()));
 		d.addAttribute("proc", "upt"); // 수정 처리 process
-		return "WEB-INF\\views\\a02_emp\\a02_emp_datail.jsp";
+		return "WEB-INF\\views\\a03_emp\\a02_emp_datail.jsp";
 	}
 	@RequestMapping("empDelete01.do")
 	public String empDelete(@RequestParam("empno") int empno, 
 							Model d) {
-		dao.deleteEmp(empno);
+		service.deleteEmp(empno);
 		d.addAttribute("proc", "del"); // 삭제 처리 process
-		return "WEB-INF\\views\\a02_emp\\a02_emp_datail.jsp";
+		return "WEB-INF\\views\\a03_emp\\a02_emp_datail.jsp";
 	}	
 	
 }

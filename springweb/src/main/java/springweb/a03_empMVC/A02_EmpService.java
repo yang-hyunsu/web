@@ -20,5 +20,20 @@ public class A02_EmpService {
 		
 		return dao.getEmpList(sch);
 	}
+	public Emp getEmp(int empno) {
+		return dao.getEmp(empno);
+	}
+	public void insertEmp(Emp ins) {
+		dao.insertEmp(ins);
+	}
+	public void updateEmp(Emp upt) {
+		dao.updateEmp(upt);
+	}
+	public int deleteEmp(int empno) {
+		return dao.deleteEmp(empno);
+	}
+	// controller  dao ==> service로 변경..
+	// controller 안에  A04_PreparedDao 객체 생성부분 삭제 처리.
+	
 	
 }
