@@ -52,12 +52,14 @@
 		      	</tr>
 		    </thead>
 		    <tbody>
+		    	<c:forEach var = "job" items="${jobList }">
 			   	<tr  class="text-center">
-			        <td>John</td>
-			        <td>John</td>
-			        <td>Doe</td>
-			        <td>john@example.com</td>
+			        <td>${job.job_id} }</td>
+			        <td>${job.job_title}</td>
+			        <td>${job.min_salary}</td>
+			        <td>${job.max_salary}</td>
 			   	</tr>
+			   	</c:forEach>
 		 	</tbody>
 		</table>      	
     </div>
