@@ -23,7 +23,7 @@
     <script type="text/javascript">
     	$(document).ready( function(){
  	    	$("#regBtn").click(function(){
- 	    		location.href="${path}/empInsert.do"
+ 	    		location.href="${path}/empInsert01.do"
  	    	})
     	});
     </script>      
@@ -77,7 +77,7 @@
 		</table>      	
 		<script type="text/javascript">
 			function goPage(empno){
-				location.href="${path}/empDetail.do?empno="+empno
+				location.href="${path}/empDetail01.do?empno="+empno
 			}
 		</script>
     </div>

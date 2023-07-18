@@ -25,12 +25,12 @@
     		var proc = "${proc}"
     		if(proc=="upt"){
     			if(confirm("수정완료\n조회화면으로 이동하시겠습니까?")){
-    				location.href="${path}/empList.do"
+    				location.href="${path}/empList01.do"
     			}
     		}
     		if(proc=="del"){
     			alert("삭제완료\n조회화면으로 이동하겠습니다.")
-    			location.href="${path}/empList.do"
+    			location.href="${path}/empList01.do"
     			
     		}  		
     		
@@ -85,15 +85,15 @@
 		</form>
 		<script type="text/javascript">
 		 	$("#goMain").click(function(){
-		   		location.href="${path}/empList.do"
+		   		location.href="${path}/empList01.do"
 		   	})
 		 	$("#uptBtn").click(function(){
-		   		$("form").attr("action","${path}/empUpdate.do")
+		   		$("form").attr("action","${path}/empUpdate01.do")
 		   		$("form").submit()
 		   	})
 		 	$("#delBtn").click(function(){
 		 		if( confirm("삭제 하시겠습니까?") ){
-		 			$("form").attr("action","${path}/empDelete.do")
+		 			$("form").attr("action","${path}/empDelete01.do")
 		 			$("form").submit()
 		 		}
 		   	})

@@ -26,7 +26,7 @@
     		var proc= "${proc}"
     		if(proc=="ins"){
     			if(confirm("등록 성공\n조회화면 이동하시겠습니까?")){
-    				location.href="${path}/empList.do";
+    				location.href="${path}/empList01.do";
     			}
     		}
     		//$("h2").text("jquery 로딩 성공")
@@ -78,7 +78,7 @@
 		</form>
 		   <script type="text/javascript">
 		   	$("#goMain").click(function(){
-		   		location.href="${path}/empList.do"
+		   		location.href="${path}/empList01.do"
 		   	})
 		   </script>
     </div>
