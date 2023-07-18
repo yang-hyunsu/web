@@ -54,7 +54,7 @@
 		    <tbody>
 		    	<c:forEach var = "job" items="${jobList }">
 			   	<tr  class="text-center">
-			        <td>${job.job_id} }</td>
+			        <td>${job.job_id}</td>
 			        <td>${job.job_title}</td>
 			        <td>${job.min_salary}</td>
 			        <td>${job.max_salary}</td>
