@@ -56,4 +56,16 @@
 5 mapper.xml 선언 및 처리.
 
 
+  리턴데이터
+  ==> Mapper.xml ==> A01_MemberDao상속받은 실제객체가 만들어진다.
+  연동 규칙을 설정
+    mapper.xml     interface
+  1. namespce      springweb.a05_mvcexp.a03_dao.A01_MemberDao
+  2. id            메서드명 memberList
+  3. parameterType Member:공통mybatis에서 지정이름
+  4. resutType     List<Member>
+  5. sql
+  	  getXXX호출.   ==> 실제 객체 메서드가 만들어져서 사용가능하다.
+  
+
 					
