@@ -18,6 +18,8 @@
   	<url-pattern>*.do</url-pattern>
   </servlet-mapping>
   <!--
+  empList01.do
+  
   	  http://....../@@@.do 
   	  일반 servlet과 호출을 구분하기 위해서 마지막에 .do라고 해야지
   	  스프링에서 사용되는 컨테이너를 처리하겠다는 표시..

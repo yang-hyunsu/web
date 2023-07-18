@@ -17,71 +17,51 @@
     </style>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <title>Insert title here</title>
-   	
+   
     <script src = "https://code.jquery.com/jquery-3.7.0.js" type="text/javascript"></script>
     
     <script type="text/javascript">
+    	// window.onload와 동일한 메서드
     	$(document).ready( function(){
- 	    	$("#regBtn").click(function(){
- 	    		location.href="${path}/empInsert01.do"
- 	    	})
+    		
+    		//$("h2").text("jquery 로딩 성공")
     	});
     </script>      
+    
+    
 </head>
 <body>
     <div class="container mt-3">
-    	<h2>사원정보 조회</h2>
+    	<h2>부서정보조회</h2>
 	  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	  		<div class="container-fluid">    	
 	    	<form method="post"  class="d-flex align-items-center" >
 	            <input type="text" class="form-control me-2" 
-	      	     id="ename" placeholder="사원명 입력" value="${emp.ename}" name="ename" aria-label="Search">
+	      	     id="dname" placeholder="부서명 입력" 
+	      	     value="${param.dname}" name="dname"  aria-label="Search">
 	            <input type="text" class="form-control me-2" 
-	      	     id="job" placeholder="직책명 입력" value="${emp.job}" name="job"  aria-label="Search">
-
-	      	    <%--
-	      	    <style type="text/css">
-			    	.btn{width:200px;}
-			    </style>
-	      	     --%> 
-	         	<button type="submit" class="btn btn-primary" >조회</button>
-	         	<button id="regBtn" type="button" 
-	         		class="btn btn-success" >등록</button>
+	      	     id="loc" placeholder="부서위치 입력" 
+	      	     value="${param.loc}" name="loc"  aria-label="Search">
+	         	<button type="submit" class="btn btn-primary" style="width:200px;">조회</button>
 	     	</form>
 	 	    </div>
-	 	    <script type="text/javascript">
-
-	 	    </script>
 	 	</nav>
 		<table class="table table-striped table-hover">
 			<thead class="table-success">
 		      	<tr  class="text-center">
-				    <th>사원번호</th>
-				    <th>사원명</th>
-				    <th>직책명</th>
-				    <th>급여</th>
 				    <th>부서번호</th>
+				    <th>부서명</th>
+				    <th>부서위치</th>
 		      	</tr>
 		    </thead>
 		    <tbody>
-		    	<!-- controller에서 모델명으로 넘겨준 데이터
-		    	 -->
-		    	<c:forEach var="emp" items="${empList}">
-			   	<tr ondblclick="goPage(${emp.empno})" class="text-center">
-			        <td>${emp.empno}</td>
-			        <td>${emp.ename}</td>
-			        <td>${emp.job}</td>
-			        <td>${emp.sal}</td>
-			        <td>${emp.deptno}</td>
+			   	<tr class="text-center">
+			        <td>John</td>
+			        <td>Doe</td>
+			        <td>john@example.com</td>
 			   	</tr>
-			   	</c:forEach>
 		 	</tbody>
 		</table>      	
-		<script type="text/javascript">
-			function goPage(empno){
-				location.href="${path}/empDetail01.do?empno="+empno
-			}
-		</script>
     </div>
 </body>
 </html>

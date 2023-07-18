@@ -24,6 +24,8 @@ public class A01_EmpController {
 	@RequestMapping("empList01.do")
 	public String empList(Emp sch, Model d) {
 		
+		// 서비스에서 받은 Dao에서 가져온 ArrayList 데이터
+		// empList이름으로 뷰단에 넘겨주는 model명을 설정..
 		d.addAttribute("empList", service.getEmpList(sch));
 		
 		return "WEB-INF\\views\\a03_emp\\a01_empList.jsp";

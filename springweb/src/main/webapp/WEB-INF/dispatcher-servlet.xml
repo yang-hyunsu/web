@@ -31,7 +31,13 @@
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx.xsd   
       ">
-      
+    <!-- 
+    @Controller/@Service/@Repository 클래스 ==> 객체
+    A04_PreparedDao ==> 클래스
+    컨테이너(메모리 수영장)
+    empList01.do 위 객체들의 메서드 중에 찾기 시작.
+    
+     -->  
 	<context:component-scan base-package="springweb">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>

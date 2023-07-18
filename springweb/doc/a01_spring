@@ -136,7 +136,46 @@ ex) A03_CallMVC.java
 	2) 설정을 하여 처리할 수 있는가?
 위 내용 중 이해가 많이 필요한 부분.
 	
-	    
+# DB 연결 웹 개발 처리 프로세스
+1. 요구사항정의
+	부서정보를 부서명과 부서위치로 키워드 검색하고, 조회 리스트 데이터를 출력하세요
+2. DB 처리
+	1) 사용할 Dao 클래스 컨테이너에 등록 여부 확인
+		sql을 통해서 사용할 Dao 처리 클래스 등록 여부 확인
+	2) 등록되었으면 sql 작성
+	3) sql을 통해 입력값이 무엇인지 리턴할 출력데이터가 무엇인지
+		확인하여, 이를 처리해줄 VO를 처리한다.
+		입력값 : 부서명, 부서위치
+		출력값 : 부서번호, 부서명, 부서위치 List형 출력(테이블 리스트)
+	4) Dao에 처리할 기능 메서드 선언 및 sql 처리 
+		public List<Dept> detpList(Dept sch){
+			.. db 처리할 부분
+		}
+3. 화면단(jsp)			
+	1) 출력한 형식의 화면단 구현 (JSP, CSS등)
+		검색할 FORM
+			value="${param.dname}" name="dname" 
+		리스트할 테이블 구성
+		     <tr  class="text-center">
+			    <th>부서번호</th>
+			    <th>부서명</th>
+			    <th>부서위치</th>
+		     </tr>			
+		
+4. 백앤드핵신(service, controller)		
+	1) service 만들기
+		- Autowired로 Dao 객체를 호출하기
+		- 데이터를 Dao안에 해당 메서드 형태로 메서드 선언
+	2) controller 만들기
+		- Autowired 서비스단 객체 선언
+	
+		요청값 : 검색데이터와
+		모델데이터	: Service단에서 호출
+		호출할 jsp 페이지 설정
+	3) form 화면에 name값 value값 확인
+	   테이블 화면 확인
+	   <c:for문 items="${모델명}">
+	   		처리 				    
     
 	
 	
