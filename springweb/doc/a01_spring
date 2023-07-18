@@ -13,7 +13,8 @@
 	2) RequestMapping 안에 url 패턴은 서버에 동일하게 있으면 안된다.
 	3) 동일한 url mapping형식
 		to {[/deptList88.do]}: There is already 'springweb.a01_start.A05_MVC_Controller#0'
-
+    4) 다른 패키지에 동일한 이름의 클래스 만든경우 에러 발생 org.springframework.beans.factory.BeanDefinitionStoreException: Unexpected exception parsing XML document from ServletContext resource [/WEB-INF/dispatcher-servlet.xml]; nested exception is org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'a01_StartController' for bean class [springweb.a02_emp.A01_StartController] conflicts with existing, non-compatible bean definition of same name and class [springweb.a01_start.A01_StartController]
+    	@Controller("다른이름")
 4. 스프링 DI에 대한 이해
 	1) 스프링 프레임워크 흐름 구조
 	2) 제어역전(IoC, Inversion of Control)

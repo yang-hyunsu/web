@@ -31,15 +31,13 @@
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx.xsd   
       ">
-	<bean class="springweb.a01_start.A01_StartController"/>      
-	<bean class="springweb.a01_start.A02_CallController"/>      
-	<bean class="springweb.a01_start.A03_CallMVC"/>      
-	<bean class="springweb.a01_start.A04_ModelView"/>      
-	<bean class="springweb.a01_start.A05_MVC_Controller"/>      
-	<bean class="springweb.a02_emp.A01_EmpController"/>      
-	<bean class="springweb.a01_start.A06_ReqModelController"/>      
-	<bean class="springweb.a02_emp.A01_StartController"/>      
-      
+	<context:component-scan base-package="springweb">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+			
+			
+	</context:component-scan>	 
 </beans>   
 
 

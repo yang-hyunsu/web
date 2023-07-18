@@ -10,7 +10,7 @@ import backendWeb.z01_vo.Product;
 import backendWeb.z01_vo.Team;
 
 // springweb.a01_start.A01_StartController
-@Controller
+@Controller("startCtrl")
 public class A01_StartController {
 	// http://localhost:7080/springweb/start.do?name
 	@RequestMapping("/start.do")
