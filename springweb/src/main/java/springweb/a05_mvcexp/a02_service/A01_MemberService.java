@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import springweb.a05_mvcexp.a03_dao.A01_MemberDao;
 import springweb.a05_mvcexp.z01_vo.Dept;
+import springweb.a05_mvcexp.z01_vo.Location;
 import springweb.a05_mvcexp.z01_vo.Member;
 import springweb.a05_mvcexp.z01_vo.Student;
 
@@ -30,9 +31,12 @@ public class A01_MemberService {
 		System.out.println("연습06:"+dao.exp06("CLARK"));
 		System.out.println("연습07:"+dao.exp07(7844));
 		System.out.println("연습08 입력:");
+		
 		// 11,'인사','서울'
-		dao.exp08Ins(new Dept(12,"재무","대전"));
-		System.out.println("연습09 입력");
-		dao.exp09insStu(new Student(5,"이천수",90,90,80));
+		//dao.exp08Ins(new Dept(12,"재무","대전"));
+		System.out.println("연습09");
+		// (int location_id, String street_address, String postal_code, String city, String state_province,String country_id)
+		dao.exp10InsLoc(new Location(1001,"인천 계양" , "55555", "인천", "대한민국", "KR"));
+	
 	}
 }

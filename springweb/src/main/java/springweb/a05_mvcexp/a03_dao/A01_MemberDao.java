@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import springweb.a05_mvcexp.z01_vo.Dept;
+import springweb.a05_mvcexp.z01_vo.Location;
 import springweb.a05_mvcexp.z01_vo.Member;
 import springweb.a05_mvcexp.z01_vo.Student;
 // springweb.a05_mvcexp.a03_dao.A01_MemberDao
@@ -19,9 +20,17 @@ public interface A01_MemberDao {
 	// INSERT INTO dept01 values(11,'인사','서울')
 	public void exp08Ins(Dept ins);
 	public void exp09insStu(Student ins);
+	public void exp10InsLoc(Location ins);
 	
 }
 /*
+
+	private int sno;
+	private String name;
+	private int kor;
+	private int eng;
+	private int math;
+
 ==> Dao 를 만들려면?
   sql
   매개변수

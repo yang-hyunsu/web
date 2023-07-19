@@ -74,5 +74,10 @@ public interface A01_MemberDao {
 	<insert id="exp09insStu" parameterType="student">
 		INSERT INTO STUDENT02 values(#{sno},#{name},#{kor},#{eng},#{math})	
 	</insert>
-	 
+	<insert id="exp10InsLoc" parameterType="location">
+		INSERT INTO locations10
+		values(#{location_id},#{street_address},
+				#{postal_code},#{city},
+				#{state_province},#{country_id})
+	</insert> 
 </mapper>	
