@@ -65,6 +65,8 @@
 	2. mybatis 공통 xml 연동 처리
 	3. mybatis를 통해 만들어질 실제 객체가 바라보는 
 		dao interface 위치 설정
+		1) 여러 패키지에 있는 dao를 호출할려면 아래와 같이 설정한다.
+			value = "패키지1명;패키지2명"
 	 -->
 	<bean id="sqlSessionFactory" 
 		class="org.mybatis.spring.SqlSessionFactoryBean">

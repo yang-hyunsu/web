@@ -9,27 +9,31 @@
 		인터페이스를 통해서 다양한 실제 객체 생성 활용
 	2) mybatis framwork에 의해 처리 구조에 대한 이해.
 		- 컨테이너 등록	
-			접속
+			접속(dbcp) ex) DB.java, 
 			mybatis 공통 설정 파일
 		- mybatis 공통 설정파일 
 			사용 vo : 간편하게 활용
+			  패키지명.패키지명...클래스명 ==> alias명 지정
+			  ==> 각 mapper.xml에서 사용하기 위하여
 			단위 데이터 처리 mapper.xml, 호출
+			  사용할 mapper를 선언..
 		- mapper.xml
 			실제 sql 처리
 				
 			리턴할 내용 선언 처리
 		- 인터페이스 선언
 	3) dao 인터페이스와 mapper.xml의 설정에 대한 이해
-		- 네임스페이스
-		- id
-		- parameterType
-		- resultType
+		- 네임스페이스 : 패키지명.인터페이스명
+		- id  : 메서드명
+		- parameterType : 메서드의 매개변수유형
+		- resultType : 리턴타입의 유형
 	4) 실제 개발 순서 및 처리 
 		- sql 작성
 		- vo 작성
 		- dao 인터페이스 작성
 		- 공통 mybatis 등록 : alias, mappper.xml 선언
 		- mapper.xml 선언 및 처리.
+		- service단에 dao 메서드 호출해서 확인
 
 연결 풀[1] 또는 커넥션 풀(connection pool)은 소프트웨어 공학에서
 데이터베이스로의 추가 요청이 필요할 때 연결을 재사용할 수 있도록 

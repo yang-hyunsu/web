@@ -17,7 +17,8 @@ public class A01_MemberController {
 	@RequestMapping("memberList.do")
 	public String memberList(Member sch, Model d) {
 		System.out.println("#데이터 크기#");
-		System.out.println(service.memberList(sch).size());
+		System.out.println(
+				service.memberList(sch).size());
 		
 		return "";
 	}
