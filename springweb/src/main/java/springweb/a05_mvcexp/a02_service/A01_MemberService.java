@@ -18,4 +18,7 @@ public class A01_MemberService {
 		if(sch.getName()==null) sch.setName("");
 		return dao.memberList(sch);
 	}
+	public void daoexp() {
+		System.out.println("#Dao연습#");
+	}
 }
