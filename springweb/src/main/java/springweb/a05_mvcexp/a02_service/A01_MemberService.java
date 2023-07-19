@@ -50,7 +50,16 @@ public class A01_MemberService {
 		for(Emp e:dao.exp12EmpList(sch)){
 			System.out.print(e.getEname()+"\t");
 			System.out.print(e.getJob()+"\n");
-		}		
+		}	
+		System.out.println("연습13 emp 조회");
+		Map<String,String> sch2 = new HashMap<String, String>();
+		sch2.put("job01","CLERK");
+		sch2.put("job02","MANAGER");
+		for(Emp e:dao.exp13EmpList(sch2)){
+			System.out.print(e.getEname()+"\t");
+			System.out.println(e.getJob()+"\n");
+		}	
+		
 	
 	}
 }

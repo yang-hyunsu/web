@@ -93,5 +93,11 @@ public interface A01_MemberDao {
 		from emp
 		where ename like '%'||#{ename_sch}||'%'
 		and job like '%'||#{job_sch}||'%'	
+	</select>	
+	<select id="exp13EmpList" resultType="emp"
+			parameterType="map">
+		SELECT *
+		FROM emp
+		WHERE job IN (#{job01},#{job02})	
 	</select>	 
 </mapper>	

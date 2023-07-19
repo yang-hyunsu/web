@@ -25,6 +25,7 @@ public interface A01_MemberDao {
 	public void exp10InsLoc(Location ins);
 	public List<Emp> exp11EmpList(Emp sch);
 	public List<Emp> exp12EmpList(Map sch);
+	public List<Emp> exp13EmpList(Map sch);	
 }
 /*
 

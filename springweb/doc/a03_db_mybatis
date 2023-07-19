@@ -306,6 +306,7 @@ and job like '%'||''||'%'
 2. vo/mybatis
 3. interface
 	public List<Emp> exp12EmpList(Map sch);
+	public List<Emp> exp13EmpList(Map sch);
 4. mapper
 	<select id="exp12EmpList" resultType="emp"
 			parameterType="map">
@@ -313,6 +314,12 @@ and job like '%'||''||'%'
 		from emp
 		where ename like '%'||#{ename_sch}||'%'
 		and job like '%'||#{job_sch}||'%'	
+	</select>
+	<select id="exp13EmpList" resultType="emp"
+			parameterType="map">
+		SELECT *
+		FROM emp
+		WHERE job IN (#{job01},#{job02})	
 	</select>
 5. service
 	Map<String,String> sch = new HashMap<String,String>();
@@ -322,7 +329,18 @@ and job like '%'||''||'%'
 		System.out.println(e.getEname()+"\t");
 		System.out.println(e.getJob()+"\n");
 	}
-	// 16:05~
+	Map<String,String sch2 = new HashMap<String, String>();
+	sch2.put("job01","CLERK");
+	sch2.put("job02","MANAGER");
+	for(Emp e:dao.exp13EmpList(sch2)){
+		System.out.println(e.getEname()+"\t");
+		System.out.println(e.getJob()+"\n");
+	}	
+
+dao ==> mapper ==> service 처리 하세요.
+SELECT *
+FROM emp
+WHERE job IN (#{job01},#{job02})
 
 			
 			
