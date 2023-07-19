@@ -58,8 +58,9 @@ public class A01_MemberService {
 		for(Emp e:dao.exp13EmpList(sch2)){
 			System.out.print(e.getEname()+"\t");
 			System.out.println(e.getJob()+"\n");
-		}	
-		
+		}
+		System.out.println("연습14 dept01입력");
+		dao.exp14DeptInsert(22,"교육","부산");
 	
 	}
 }

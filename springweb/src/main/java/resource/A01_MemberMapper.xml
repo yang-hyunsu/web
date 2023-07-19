@@ -99,5 +99,9 @@ public interface A01_MemberDao {
 		SELECT *
 		FROM emp
 		WHERE job IN (#{job01},#{job02})	
-	</select>	 
+	</select>
+	<insert id="exp14DeptInsert">
+		INSERT INTO dept01 values(#{no},#{dpartnm},
+		                          #{location})	
+	</insert>		 
 </mapper>	

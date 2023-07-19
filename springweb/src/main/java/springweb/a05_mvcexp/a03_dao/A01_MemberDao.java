@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
+
 import springweb.a05_mvcexp.z01_vo.Dept;
 import springweb.a05_mvcexp.z01_vo.Emp;
 import springweb.a05_mvcexp.z01_vo.Location;
@@ -26,6 +28,9 @@ public interface A01_MemberDao {
 	public List<Emp> exp11EmpList(Emp sch);
 	public List<Emp> exp12EmpList(Map sch);
 	public List<Emp> exp13EmpList(Map sch);	
+	public void exp14DeptInsert(@Param("no") int deptno,
+			@Param("dpartnm") String dname,
+			@Param("location") String loc);	
 }
 /*
 

@@ -341,6 +341,23 @@ dao ==> mapper ==> service 처리 하세요.
 SELECT *
 FROM emp
 WHERE job IN (#{job01},#{job02})
+# vo처리없이 2~3데이터 매개변수 처리하기(@Param()활용)
+1. sql
+-- INSERT INTO dept01 values(#{no},#{dpartnm},#{location})
+2. 인터페이스 확인
+	public void exp14DeptInsert(@Param("no") int deptno,
+						@Param("dpartnm") String dname,
+						@Param("location") String loc);
+3. mapper
+	주의) 매개변수로 mybatis에서 지원하는 @Param("no") 형식으로
+	처리하기에 parameterType을 선언하지 않는다.
+	<insert id="exp14DeptInsert">
+		INSERT INTO dept01 values(#{no},#{dpartnm},
+		                          #{location})	
+	</insert>
+4. service 처리.
+	dao.exp14DeptInsert(22,"교육","부산");
+	
 
 			
 			
