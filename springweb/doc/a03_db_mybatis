@@ -132,6 +132,32 @@
 		
 	1) 매개변수
 		단일
+			SELECT job
+			FROM emp
+			WHERE ename='SMITH'		
+			
+			public String exp04(String ename);
+			
+			<select id="exp04" parameterType="string"
+					           resultType="string">
+				SELECT job
+				FROM emp
+				WHERE ename=#{ename}						           
+			</select>
+			
+			service
+				System.out.println("연습04:"+dao.exp04("SMITH"));
+			SELECT sal
+			FROM emp
+			WHERE empno = 7844;
+			SELECT mgr
+			FROM job
+			WHERE ename = 'CLARK';
+			SELECT hiredate
+			FROM emp
+			WHERE empno = 7844;
+				
+		
 		다중
 		Map형식
 		객체유형

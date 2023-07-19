@@ -40,5 +40,10 @@ public interface A01_MemberDao {
 		FROM emp
 		WHERE empno = 7521		
 	</select>		
-	 
+	<select id="exp04" parameterType="string"
+					   resultType="string">
+		SELECT job
+		FROM emp
+		WHERE ename=#{ename}						           
+	</select>	 
 </mapper>	
