@@ -1,5 +1,6 @@
 package springweb.a05_mvcexp.a03_dao;
 
+import java.util.Date;
 import java.util.List;
 
 import springweb.a05_mvcexp.z01_vo.Member;
@@ -9,7 +10,11 @@ public interface A01_MemberDao {
 	public String exp01();
 	public String daoexp2();
 	public int daoexp3();
-	public String exp04(String ename);	
+	public String exp04(String ename);
+	public double exp05(int empno);
+	public int exp06(String ename);
+	public Date exp07(int empno);
+	
 }
 /*
 ==> Dao 를 만들려면?

@@ -24,5 +24,8 @@ public class A01_MemberService {
 		System.out.println("두번째연습:"+dao.daoexp2());
 		System.out.println("세번째연습:"+dao.daoexp3());
 		System.out.println("연습04:"+dao.exp04("KING"));
+		System.out.println("연습05:"+dao.exp05(7844));
+		System.out.println("연습06:"+dao.exp06("CLARK"));
+		System.out.println("연습07:"+dao.exp07(7844));
 	}
 }

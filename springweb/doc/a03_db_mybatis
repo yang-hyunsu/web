@@ -147,12 +147,22 @@
 			
 			service
 				System.out.println("연습04:"+dao.exp04("SMITH"));
+				
 			SELECT sal
 			FROM emp
 			WHERE empno = 7844;
+			
+			public double exp05(int empno);
+			public int exp06(String ename);
+			public Date exp07(int empno);
+			
+			
 			SELECT mgr
 			FROM job
 			WHERE ename = 'CLARK';
+			
+			
+			
 			SELECT hiredate
 			FROM emp
 			WHERE empno = 7844;
