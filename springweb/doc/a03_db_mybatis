@@ -70,6 +70,70 @@
   4. resutType     List<Member>
   5. sql
   	  getXXX호출.   ==> 실제 객체 메서드가 만들어져서 사용가능하다.
-  
+# mybatis Dao 처리 연습
+0. 규칙과 처리순서
+	1) 규칙
+	mapper.xml   	dao 인터페이스
+	----------------------------
+	namespace		패키지명.인터페이스명
+	id				메서드명
+	parameterType	메서드의 매개변수유형
+	resultType		메서드의 리턴유형
+	resultMap		sql의 결과과 VO의 property가 다를 때
+	2) 처리 순서
+		sql 작성
+		vo작성
+		인터페이스/메서드 추가
+		mapper.xml 처리
+		service단 호출 확인
+1. 기본호출 연습
+	0) 기본 
+		매개변수 X
+		리턴유형 문자열
+		
+		select ename
+		FROM emp
+		WHERE empno = 7369
+		
+		인터페이스(A01_MemberDao)
+		public String exp01();
+		
+		mapper(A01_MemberMapper.xml)
+		<!-- java.lang.String ==> string -->
+		<select id="exp01" resultType="string" >
+			select ename
+			FROM emp
+			WHERE empno = 7369			
+		</select>
+		
+		service(A01_MemberService.java)
+		public void daoexp() { 메서드 하위에 삽입
+			System.out.println("첫번째연습:"+dao.exp01());
+		
+				
 
+		
+	1) 매개변수
+		단일
+		다중
+		Map형식
+		객체유형
+	2) 리턴유형
+		기본유형
+		객체유형
+		다중객체유형
+		컬럼명과 객체가 다른 유형
+2. 추가 인터페이스/Mapper 생성시 처리시
+3. 추가 dao 패키지 처리시	
+	
+		
+	  
+
+			
+			
+			
+			
+			
+			
+			
 					

@@ -20,5 +20,6 @@ public class A01_MemberService {
 	}
 	public void daoexp() {
 		System.out.println("#Dao연습#");
+		System.out.println("첫번째연습:"+dao.exp01());
 	}
 }

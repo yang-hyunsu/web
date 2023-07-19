@@ -25,4 +25,9 @@ public interface A01_MemberDao {
 	===> 인터페이스를 상속한 실제객체가 mybatis에 의해
 	만들어 진다.
 	 -->
+	<select id="exp01" resultType="string" >
+		select ename
+		FROM emp
+		WHERE empno = 7369			
+	</select>	  
 </mapper>	
