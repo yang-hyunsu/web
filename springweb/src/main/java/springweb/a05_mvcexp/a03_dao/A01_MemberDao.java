@@ -7,6 +7,8 @@ import springweb.a05_mvcexp.z01_vo.Member;
 public interface A01_MemberDao {
 	public List<Member> memberList(Member sch);
 	public String exp01();
+	public String daoexp2();
+	public int daoexp3();		
 }
 /*
 ==> Dao 를 만들려면?

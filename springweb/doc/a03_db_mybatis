@@ -110,6 +110,23 @@
 		public void daoexp() { 메서드 하위에 삽입
 			System.out.println("첫번째연습:"+dao.exp01());
 		
+		ex) 아래 내용을 추가 메서드 2개를 만들어서 처리하세요. 
+
+		public void daoexp2();
+		public void daoexp3();		
+		<select id="daoexp2">
+		SELECT job
+		FROM emp
+		WHERE empno = 7369		
+		</select>
+		<select id="daoexp3">
+		SELECT deptno
+		FROM emp
+		WHERE empno = 7521		
+		</select>		
+
+
+		
 				
 
 		

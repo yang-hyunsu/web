@@ -29,5 +29,16 @@ public interface A01_MemberDao {
 		select ename
 		FROM emp
 		WHERE empno = 7369			
-	</select>	  
+	</select>	 
+	<select id="daoexp2" resultType="string">
+		SELECT job
+		FROM emp
+		WHERE empno = 7369		
+	</select>
+	<select id="daoexp3" resultType="int">
+		SELECT deptno
+		FROM emp
+		WHERE empno = 7521		
+	</select>		
+	 
 </mapper>	
