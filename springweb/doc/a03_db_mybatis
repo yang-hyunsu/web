@@ -82,7 +82,7 @@
 	resultMap		sql의 결과과 VO의 property가 다를 때
 	2) 처리 순서
 		sql 작성
-		vo작성
+		vo작성// 공통 mybatis.xml에 alias 추가
 		인터페이스/메서드 추가
 		mapper.xml 처리
 		service단 호출 확인
@@ -166,11 +166,13 @@
 			SELECT hiredate
 			FROM emp
 			WHERE empno = 7844;
-				
-		
 		다중
-		Map형식
-		객체유형
+			객체
+			INSERT INTO dept01 values(11,'인사','서울')
+			vo ==> dept VO 필요
+			
+		    Map형식
+			@Param("mapper이름") 타입 유형
 	2) 리턴유형
 		기본유형
 		객체유형

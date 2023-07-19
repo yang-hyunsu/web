@@ -3,6 +3,9 @@ package springweb.a05_mvcexp.a03_dao;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
+import backendWeb.z01_vo.Emp;
 import springweb.a05_mvcexp.z01_vo.Member;
 // springweb.a05_mvcexp.a03_dao.A01_MemberDao
 public interface A01_MemberDao {
@@ -14,7 +17,6 @@ public interface A01_MemberDao {
 	public double exp05(int empno);
 	public int exp06(String ename);
 	public Date exp07(int empno);
-	
 }
 /*
 ==> Dao 를 만들려면?
