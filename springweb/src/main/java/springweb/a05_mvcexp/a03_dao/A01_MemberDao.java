@@ -2,6 +2,7 @@ package springweb.a05_mvcexp.a03_dao;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import springweb.a05_mvcexp.z01_vo.Dept;
 import springweb.a05_mvcexp.z01_vo.Emp;
@@ -23,6 +24,7 @@ public interface A01_MemberDao {
 	public void exp09insStu(Student ins);
 	public void exp10InsLoc(Location ins);
 	public List<Emp> exp11EmpList(Emp sch);
+	public List<Emp> exp12EmpList(Map sch);
 }
 /*
 

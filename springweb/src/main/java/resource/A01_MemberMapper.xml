@@ -87,5 +87,11 @@ public interface A01_MemberDao {
 		WHERE ename LIKE '%'||#{ename}||'%'
 		AND sal BETWEEN #{minSal} AND #{maxSal}
 	</select>	
-	 
+	<select id="exp12EmpList" resultType="emp"
+			parameterType="map">
+		select *
+		from emp
+		where ename like '%'||#{ename_sch}||'%'
+		and job like '%'||#{job_sch}||'%'	
+	</select>	 
 </mapper>	

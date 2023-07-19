@@ -1,6 +1,8 @@
 package springweb.a05_mvcexp.a02_service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +42,14 @@ public class A01_MemberService {
 			System.out.print(emp.getEname()+"\t");
 			System.out.print(emp.getJob()+"\t");
 			System.out.print(emp.getSal()+"\n");
+		}		
+		System.out.println("연습12 emp 조회");
+		Map<String,String> sch = new HashMap<String,String>();
+		sch.put("ename_sch","A");
+		sch.put("job_sch","ER");
+		for(Emp e:dao.exp12EmpList(sch)){
+			System.out.print(e.getEname()+"\t");
+			System.out.print(e.getJob()+"\n");
 		}		
 	
 	}

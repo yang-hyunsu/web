@@ -293,6 +293,37 @@ private String country_id;
 		System.out.print(emp.getJob()+"\t");
 		System.out.print(emp.getSal()+"\t");
 	}
+# 2~3개 데이터 처리하는 map 형식 처리
+select *
+from emp
+where ename like '%'||''||'%'
+and job like '%'||''||'%'
+1. sql
+	select *
+	from emp
+	where ename like '%'||'A'||'%'
+	and job like '%'||'ER'||'%'
+2. vo/mybatis
+3. interface
+	public List<Emp> exp12EmpList(Map sch);
+4. mapper
+	<select id="exp12EmpList" resultType="emp"
+			parameterType="map">
+		select *
+		from emp
+		where ename like '%'||#{ename_sch}||'%'
+		and job like '%'||#{job_sch}||'%'	
+	</select>
+5. service
+	Map<String,String> sch = new HashMap<String,String>();
+	sch.put("ename_sch","A");
+	sch.put("job_sch","ER");
+	for(Emp e:dao.exp12EmpList(sch)){
+		System.out.println(e.getEname()+"\t");
+		System.out.println(e.getJob()+"\n");
+	}
+	// 16:05~
+
 			
 			
 			
