@@ -19,7 +19,7 @@ public class A01_MemberController {
 		System.out.println("#데이터 크기#");
 		System.out.println(
 				service.memberList(sch).size());
-		
-		return "";
+		d.addAttribute("memberList", service.memberList(sch));
+		return "WEB-INF\\views\\a05_mvcexp\\a02_memberList.jsp";
 	}
 }
