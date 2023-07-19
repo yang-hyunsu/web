@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import springweb.a05_mvcexp.a03_dao.A01_MemberDao;
+import springweb.a05_mvcexp.z01_vo.Dept;
 import springweb.a05_mvcexp.z01_vo.Member;
 
 @Service
@@ -27,5 +28,8 @@ public class A01_MemberService {
 		System.out.println("연습05:"+dao.exp05(7844));
 		System.out.println("연습06:"+dao.exp06("CLARK"));
 		System.out.println("연습07:"+dao.exp07(7844));
+		System.out.println("연습08 입력:");
+		// 11,'인사','서울'
+		dao.exp08Ins(new Dept(12,"재무","대전"));
 	}
 }
