@@ -68,8 +68,11 @@ public interface A01_MemberDao {
 	<insert id="exp08Ins" parameterType="dept">
 		INSERT INTO dept01 values(#{deptno},#{dname},#{loc})
 	</insert>
-	
-	
-	
+	<!-- 
+	public void exp09insStu(Student ins);	
+	 -->
+	<insert id="exp09insStu" parameterType="student">
+		INSERT INTO STUDENT02 values(#{sno},#{name},#{kor},#{eng},#{math})	
+	</insert>
 	 
 </mapper>	

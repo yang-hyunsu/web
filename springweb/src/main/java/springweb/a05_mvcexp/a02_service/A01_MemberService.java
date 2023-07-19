@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import springweb.a05_mvcexp.a03_dao.A01_MemberDao;
 import springweb.a05_mvcexp.z01_vo.Dept;
 import springweb.a05_mvcexp.z01_vo.Member;
+import springweb.a05_mvcexp.z01_vo.Student;
 
 @Service
 public class A01_MemberService {
@@ -31,5 +32,7 @@ public class A01_MemberService {
 		System.out.println("연습08 입력:");
 		// 11,'인사','서울'
 		dao.exp08Ins(new Dept(12,"재무","대전"));
+		System.out.println("연습09 입력");
+		dao.exp09insStu(new Student(5,"이천수",90,90,80));
 	}
 }

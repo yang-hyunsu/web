@@ -5,6 +5,7 @@ import java.util.List;
 
 import springweb.a05_mvcexp.z01_vo.Dept;
 import springweb.a05_mvcexp.z01_vo.Member;
+import springweb.a05_mvcexp.z01_vo.Student;
 // springweb.a05_mvcexp.a03_dao.A01_MemberDao
 public interface A01_MemberDao {
 	public List<Member> memberList(Member sch);
@@ -17,6 +18,7 @@ public interface A01_MemberDao {
 	public Date exp07(int empno);
 	// INSERT INTO dept01 values(11,'인사','서울')
 	public void exp08Ins(Dept ins);
+	public void exp09insStu(Student ins);
 	
 }
 /*
