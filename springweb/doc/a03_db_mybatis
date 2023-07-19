@@ -266,9 +266,33 @@ private String country_id;
 				#{state_province},#{country_id})
 	</insert>
 5. service단 호출 확인			
+# 조회 처리하는 sql			
+1.sql 작성
+	SELECT *
+	FROM emp
+	WHERE ename LIKE '%'||''||'%'
+	AND sal BETWEEN 1000 AND 3000
+2. vo작성
+	
+3. 공통 mybatis.xml에 alias 추가
+4. 인터페이스/메서드 추가
+	public List<Emp> exp11EmpList(Emp sch);
+	--public Emp exp12GetEmp(int empno);
 
-			
-			
+5. mapper.xml 처리
+	<select id="exp11EmpList" resultType="emp" 
+		parameterType="emp">
+		SELECT *
+		FROM emp
+		WHERE ename LIKE '%'||#{ename}||'%'
+		AND sal BETWEEN #{minSal} AND #{maxSal}
+	</select>
+6. service단 호출 확인			
+	for(Emp emp:dao.exp11EmpList(new Emp("",1000,3000))){
+		System.out.print(emp.getEname()+"\t");
+		System.out.print(emp.getJob()+"\t");
+		System.out.print(emp.getSal()+"\t");
+	}
 			
 			
 			

@@ -6,10 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import springweb.a05_mvcexp.a03_dao.A01_MemberDao;
-import springweb.a05_mvcexp.z01_vo.Dept;
-import springweb.a05_mvcexp.z01_vo.Location;
+import springweb.a05_mvcexp.z01_vo.Emp;
 import springweb.a05_mvcexp.z01_vo.Member;
-import springweb.a05_mvcexp.z01_vo.Student;
 
 @Service
 public class A01_MemberService {
@@ -36,7 +34,13 @@ public class A01_MemberService {
 		//dao.exp08Ins(new Dept(12,"재무","대전"));
 		System.out.println("연습09");
 		// (int location_id, String street_address, String postal_code, String city, String state_province,String country_id)
-		dao.exp10InsLoc(new Location(1001,"인천 계양" , "55555", "인천", "대한민국", "KR"));
+		//dao.exp10InsLoc(new Location(1001,"인천 계양" , "55555", "인천", "대한민국", "KR"));
+		System.out.println("연습11 emp 조회");
+		for(Emp emp:dao.exp11EmpList(new Emp("",1000,3000))){
+			System.out.print(emp.getEname()+"\t");
+			System.out.print(emp.getJob()+"\t");
+			System.out.print(emp.getSal()+"\n");
+		}		
 	
 	}
 }

@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import springweb.a05_mvcexp.z01_vo.Dept;
+import springweb.a05_mvcexp.z01_vo.Emp;
 import springweb.a05_mvcexp.z01_vo.Location;
 import springweb.a05_mvcexp.z01_vo.Member;
 import springweb.a05_mvcexp.z01_vo.Student;
@@ -21,7 +22,7 @@ public interface A01_MemberDao {
 	public void exp08Ins(Dept ins);
 	public void exp09insStu(Student ins);
 	public void exp10InsLoc(Location ins);
-	
+	public List<Emp> exp11EmpList(Emp sch);
 }
 /*
 

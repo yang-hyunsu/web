@@ -79,5 +79,13 @@ public interface A01_MemberDao {
 		values(#{location_id},#{street_address},
 				#{postal_code},#{city},
 				#{state_province},#{country_id})
-	</insert> 
+	</insert>
+	<select id="exp11EmpList" resultType="emp" 
+		parameterType="emp">
+		SELECT *
+		FROM emp
+		WHERE ename LIKE '%'||#{ename}||'%'
+		AND sal BETWEEN #{minSal} AND #{maxSal}
+	</select>	
+	 
 </mapper>	
