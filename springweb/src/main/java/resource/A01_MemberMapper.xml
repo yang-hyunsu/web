@@ -124,5 +124,13 @@ public interface A01_MemberDao {
 		       manager_id, department_id 
 		FROM EMPLOYEES
 		WHERE EMPLOYEE_ID =#{id}				
-	</select>				 
+	</select>	
+	<select id="exp18getJob" resultType="job">
+		SELECT job_id, job_title, min_salary, max_salary
+		FROM jobs
+		WHERE JOB_ID = #{id}
+	</select>
+	 
+				 
+				 
 </mapper>	

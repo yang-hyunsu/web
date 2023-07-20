@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 import springweb.a05_mvcexp.a03_dao.A01_MemberDao;
 import springweb.a05_mvcexp.z01_vo.Emp;
+import springweb.a05_mvcexp.z01_vo.EmpDept;
 import springweb.a05_mvcexp.z01_vo.Employee;
+import springweb.a05_mvcexp.z01_vo.Job;
 import springweb.a05_mvcexp.z01_vo.Member;
 import springweb.a05_mvcexp.z01_vo.Student;
 
@@ -79,7 +81,13 @@ public class A01_MemberService {
 		System.out.print(emp.getEmployee_id()+"\t");
 		System.out.print(emp.getFirst_name()+"\t");
 		System.out.print(emp.getEmail()+"\n");
-				
+		System.out.println("연습18 직책정보");		
+		Job job = dao.exp18getJob("AD_PRES");
+		System.out.println(job.getJob_id());
+		System.out.println(job.getJob_title());
+		System.out.println(job.getMin_salary());
+		System.out.println(job.getMax_salary());
+
 		
 	}
 	

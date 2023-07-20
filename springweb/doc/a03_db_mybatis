@@ -502,7 +502,31 @@ public List<Student> exp16studList(@Param("name") String name,
 				System.out.print(emp.getFirst_name()+"\t");
 				System.out.print(emp.getEmail()+"\n");
 			}
-		
+ex)
+SELECT *
+FROM jobs
+WHERE JOB_ID = 'AD_PRES';	
+class Job{
+	private String job_id;
+	private String job_title;
+	private int min_salary;
+	private int max_salary;
+	
+
+}	
+public Job getJob(@Param("id") String id);
+
+<select id="getJob" resultType="job">
+	SELECT job_id, job_title, min_salary, max_salary
+	FROM jobs
+	WHERE JOB_ID = #{id}
+</select>
+
+Job job = dao.getJob("AD_PRES");
+System.out.println(job.getJob_id());
+System.out.println(job.getJob_title());
+System.out.println(job.getMin_salary());
+System.out.println(job.getmax_salary());
 	
 	
 3. 단일배열데이터
