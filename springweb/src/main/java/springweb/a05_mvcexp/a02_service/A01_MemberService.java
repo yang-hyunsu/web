@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import springweb.a05_mvcexp.a03_dao.A01_MemberDao;
 import springweb.a05_mvcexp.z01_vo.Emp;
 import springweb.a05_mvcexp.z01_vo.Member;
+import springweb.a05_mvcexp.z01_vo.Student;
 
 @Service
 public class A01_MemberService {
@@ -66,6 +67,13 @@ public class A01_MemberService {
 			System.out.print(emp.getEname()+"\t");
 			System.out.print(emp.getHiredate()+"\n");
 		}	
+		System.out.println("연습16 학생 평균 점수 검색");
+		for(Student std:dao.exp16studList("길동",50,100)){
+			System.out.print(std.getName()+"\t");
+			System.out.print((std.getKor()+std.getEng()+
+					std.getMath())/3+"\n");
+		}			
+		
 	}
 	
 	

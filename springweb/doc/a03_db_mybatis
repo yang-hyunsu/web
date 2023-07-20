@@ -385,6 +385,36 @@ WHERE job IN (#{job01},#{job02})
 		System.out.print(emp.getHiredate()+"\n");
 	}		
 		
+ex)
+SELECT *
+FROM STUDENT02 
+WHERE name LIKE '%'||''||'%'
+AND (kor+eng+math)/3 between 50 AND 100;
+1. sql
+SELECT *
+FROM STUDENT02 
+WHERE name LIKE '%'||#{name}||'%'
+AND (kor+eng+math)/3 between #{stPt} AND #{edPt};
+
+2. vo(x)
+3. interface
+public List<Student> exp16studList(@Param("name") String name,
+							  @Param("stPt") int stPt,
+			                  @Param("edPt") int edPt);
+4. mapper
+<select id="exp16studList" resultType="student">
+	SELECT *
+	FROM STUDENT02 
+	WHERE name LIKE '%'||#{name}||'%'
+	AND (kor+eng+math)/3 between #{stPt} AND #{edPt}	
+</select>	
+5. service
+	for(Student std:dao.exp16studList("길동",50,100)){
+		System.out.print(std.getName()+"\t");
+		System.out.print((std.getKor()+std.getEng()
+				std.getMath())/3+"\n");
+	}		                  
+					
 
 
 	

@@ -110,5 +110,11 @@ public interface A01_MemberDao {
 		WHERE hiredate 
 		BETWEEN to_date(#{startDte},'YYYY-MM-DD') 
 		AND to_date(#{endDte},'YYYY-MM-DD')	
-	</select>		 
+	</select>	
+	<select id="exp16studList" resultType="student">
+		SELECT *
+		FROM STUDENT02 
+		WHERE name LIKE '%'||#{name}||'%'
+		AND (kor+eng+math)/3 between #{stPt} AND #{edPt}	
+	</select>			 
 </mapper>	

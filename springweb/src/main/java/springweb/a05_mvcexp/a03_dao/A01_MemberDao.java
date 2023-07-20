@@ -34,6 +34,9 @@ public interface A01_MemberDao {
 	public List<Emp> exp15EmpList(
 			@Param("startDte") String startDte,
 			@Param("endDte") String endDte);	
+	public List<Student> exp16studList(@Param("name") String name,
+			  @Param("stPt") int stPt,
+            @Param("edPt") int edPt);
 	
 }
 /*
