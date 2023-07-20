@@ -116,5 +116,13 @@ public interface A01_MemberDao {
 		FROM STUDENT02 
 		WHERE name LIKE '%'||#{name}||'%'
 		AND (kor+eng+math)/3 between #{stPt} AND #{edPt}	
-	</select>			 
+	</select>
+	<select id="exp17getEmpLoyee" resultType="employee">
+		SELECT employee_id, first_name, last_name,
+		       email, phone_number, hire_date,
+		       job_id, salary, commission_pct,
+		       manager_id, department_id 
+		FROM EMPLOYEES
+		WHERE EMPLOYEE_ID =#{id}				
+	</select>				 
 </mapper>	

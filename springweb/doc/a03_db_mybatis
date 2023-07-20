@@ -422,9 +422,89 @@ public List<Student> exp16studList(@Param("name") String name,
 1. 단일데이터 
 	결과값 기본 데이터 유형의 단일 데이터이거나 문자열인 경우를 말한다.
 	- 사원의 수를 검색
-	- 사원중에 급여과 최고인 급여
-	- 
+		select count(*)
+		from emp
+		where sal between 2000 and 3000
+		
+		public int getEmpCount(@Param("minSal") int minSal,
+							   @Param("maxSal") int minSal);
+		mapper.xml
+		<select id="getEmpCount" resultType="int">
+			select count(*)
+			from emp
+			where sal between #{minSal} and #{maxSal}							   
+		</select>
+	- 사원중에 특정 부서의 급여가 최고데이터
+	    sql
+			SELECT max(sal)
+			FROM emp
+			WHERE deptno = 10 			
+			SELECT max(sal)
+			FROM emp
+			WHERE deptno = #{deptno}		   
+	    인터페이스 선언
+	    	public double getDeptMaxSal(@Param("deptno")
+	    			int deptno);
+	    mapper선언
+	    	<select id="getDeptMaxSal" resultType="double">
+				SELECT max(sal)
+				FROM emp
+				WHERE deptno = #{deptno}	    	
+	    	</select>
 2. 단일객체처리
+	sql에서 여러 컬럼을 한 row로 처리되는 경우를 말한다.
+	보통 검색시는 key로 입력할 때, 주로 나타난다.
+	select * from emp where empno = 7800
+	이렇게 되면 여러열의 데이터를 담을 수 있는 객체 vo를 선언하고,
+	vo를 공통 mybatis에 선언한 후에 처리할 수 있다.
+	alias명 설정, mapper에서는 resultType="객체명"
+	일반적으로 컬럼명과 getProperty가 동일할 때, 사용한다.
+	1) 처리 순서
+		sql 작성
+			SELECT employee_id, first_name, last_name,
+			       email, phone_number, hire_date,
+			       job_id, salary, commission_pct,
+			       manager_id, department_id 
+			FROM EMPLOYEES
+			WHERE EMPLOYEE_ID =100
+		
+		
+		vo 작성
+		private int	employee_id;
+		private String first_name;
+		private String last_name;
+		private String email;
+		private String phone_number;
+		private Date hire_date;
+		private String job_id;
+		private double salary;
+		private double commission_pct;
+		private int manager_id;
+		private int department_id;
+		
+		
+		공통 mybatis vo등록
+		dao인터페이스 작성
+			public Employee exp17getEmpLoyee(
+							@Param("id") int employee_id); 
+		mapper 등록
+			<select id="exp17getEmpLoyee" resultType="employee">
+				SELECT employee_id, first_name, last_name,
+				       email, phone_number, hire_date,
+				       job_id, salary, commission_pct,
+				       manager_id, department_id 
+				FROM EMPLOYEES
+				WHERE EMPLOYEE_ID =#{id}				
+			</select>
+		service단 확인
+			for(Employee emp:dao.exp17getEmpLoyee(100)){
+				System.out.print(emp.getEmployee_id()+"\t");
+				System.out.print(emp.getFirst_name()+"\t");
+				System.out.print(emp.getEmail()+"\n");
+			}
+		
+	
+	
 3. 단일배열데이터
 4. 객체형배열데이터
 5. resultMap의 활용

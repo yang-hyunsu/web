@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import springweb.a05_mvcexp.a03_dao.A01_MemberDao;
 import springweb.a05_mvcexp.z01_vo.Emp;
+import springweb.a05_mvcexp.z01_vo.Employee;
 import springweb.a05_mvcexp.z01_vo.Member;
 import springweb.a05_mvcexp.z01_vo.Student;
 
@@ -72,7 +73,13 @@ public class A01_MemberService {
 			System.out.print(std.getName()+"\t");
 			System.out.print((std.getKor()+std.getEng()+
 					std.getMath())/3+"\n");
-		}			
+		}
+		System.out.println("연습17 사원정보");
+		Employee emp =dao.exp17getEmpLoyee(100);
+		System.out.print(emp.getEmployee_id()+"\t");
+		System.out.print(emp.getFirst_name()+"\t");
+		System.out.print(emp.getEmail()+"\n");
+				
 		
 	}
 	
