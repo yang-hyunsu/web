@@ -46,6 +46,8 @@ public interface A01_MemberDao {
 	public List<String> exp19getEnames(
 			@Param("minSal") int minSal,			
 			@Param("mxSal") int mxSal);	
+	public List<String> getCities(@Param("id") String id);
+	public List<Emp> getEmpResultExp();
 	
 }
 /*

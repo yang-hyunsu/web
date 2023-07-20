@@ -555,11 +555,83 @@ System.out.println(job.getmax_salary());
 	for(String name:dao.exp19getEnames(1000,3000){
 		System.out.println(name);
 	}
+	ex)
+	SELECT city
+	FROM locations
+	WHERE COUNTRY_ID ='US'	
+	
+	public List<String> getCities(@Param("id") String id);
+	
+	<select id="getCities" resultType="string">
+		SELECT city
+		FROM locations
+		WHERE COUNTRY_ID =#{id}		
+	</select>	
+	for(String city:dao.getCities("US")){
+		System.out.println(city);
+	}
+
+4. 객체형배열데이터
+	resultType으로 위에 있는 단일데이터와 List형
+	데이터를 처리할 수 있다.
+
+5. resultMap의 활용
+	1) 컬럼명하고 property 다른 경우 설정처리..
+	2) 사원정보/부서정보 join
+		select e.*, d.dname, d.loc
+		from emp e, dept d
+		where e.deptno = d.deptno;
+	3) class EmpDept{
+			private Emp emp;
+			private Dept dept;
+			//set/get메서드..
+	   }	
+	   class Dept2{
+	   	  private int deptno;
+	   	  private String dname;
+	   	  private String loc;
+	   	  private Emp emp;
+	   	  
+	   }	
+# resultMap을 활용한 처리
+1. sql column과 vo property가 다른 경우
+	1) xxxMapper.xml 
+		<resultMap의 선언
+			id = "사용할이름"
+			type = "vo객체
+			<result column="" property=""
+		
+SELECT empno NO, ename name,
+       sal salary
+FROM emp
+
+public List<Emp> getEmpResultExp();
+
+	<resultMap type="emp" id="rst01">
+		<id column="no" property="empno"/>
+		<result column="name" property="ename"/>
+		<result column="salary" property="sal"/>
+id는 sql 결과가 중복되더라도 첫번째 데이터를 출력처리하는 식별자
+	컬럼을 처리하는 것을 말한다.
+	참고) 중복되어라도 그대로 vo객체에 담을려면 id==> result로
+	처리한다.
+column="no" property="empno"
+	sql결과는 column으로 설정된 내용을 vo특정한 set property에
+	mapping시킬 때, 사용된다..
+	
+이렇게 해서 설정된 공통 resultMap의 id속성의 rst01은 각 select의
+속성 resultMap에 값으로 할당하여 공통으로 재활용할 수 있다.
+	
 		
 	
 
-4. 객체형배열데이터
-5. resultMap의 활용
+
+
+
+		
+
+
+
 
 # 기타 여러가지 형식의 dao인터페이스 형식 처리.
 

@@ -135,6 +135,22 @@ public interface A01_MemberDao {
 		FROM emp
 		WHERE sal BETWEEN #{minSal} AND #{mxSal}			
 	</select>	 
+	<select id="getCities" resultType="string">
+		SELECT city
+		FROM locations
+		WHERE COUNTRY_ID =#{id}		
+	</select>	
+	<resultMap type="emp" id="rst01">
+		<id column="no" property="empno"/>
+		<result column="name" property="ename"/>
+		<result column="salary" property="sal"/>
+	</resultMap>
+	<select id="getEmpResultExp" resultMap="rst01">
+		SELECT empno NO, ename name,
+		       sal salary
+		FROM emp02	
+		order by no
+	</select>
 				 
 				 
 </mapper>	

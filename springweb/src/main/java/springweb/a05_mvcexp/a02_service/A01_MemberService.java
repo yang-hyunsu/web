@@ -91,7 +91,16 @@ public class A01_MemberService {
 		for(String name:dao.exp19getEnames(1000,3000)){
 			System.out.println(name);
 		}
-		
+		System.out.println("연습20 도시 검색");
+		for(String city:dao.getCities("US")){
+			System.out.println(city);
+		}
+		System.out.println("연습21 resultMap 연습");
+		for(Emp e:dao.getEmpResultExp()) {
+			System.out.print(e.getEmpno()+"\t");
+			System.out.print(e.getEname()+"\t");
+			System.out.print(e.getSal()+"\n");
+		}
 	}
 	
 	
