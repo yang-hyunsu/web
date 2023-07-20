@@ -61,6 +61,12 @@ public class A01_MemberService {
 		}
 		System.out.println("연습14 dept01입력");
 		dao.exp14DeptInsert(22,"교육","부산");
-	
+		System.out.println("연습15 사원입사일로 검색");
+		for(Emp emp:dao.exp15EmpList("1981-01-01","1981-12-31")){
+			System.out.print(emp.getEname()+"\t");
+			System.out.print(emp.getHiredate()+"\n");
+		}	
 	}
+	
+	
 }

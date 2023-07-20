@@ -31,6 +31,10 @@ public interface A01_MemberDao {
 	public void exp14DeptInsert(@Param("no") int deptno,
 			@Param("dpartnm") String dname,
 			@Param("location") String loc);	
+	public List<Emp> exp15EmpList(
+			@Param("startDte") String startDte,
+			@Param("endDte") String endDte);	
+	
 }
 /*
 

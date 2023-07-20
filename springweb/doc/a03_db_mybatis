@@ -223,7 +223,8 @@
 	public void exp09insStu(Student ins);	
 5. mapper.xml 처리
 	등록된 student을 사용해서 입력과 리턴시 활용
-	<insert id="exp09insStu" parameterTyp="student">
+	<insert id="exp09insStu" 
+	    parameterTyp="student">
 		INSERT INTO STUDENT02 values(#{sno},
 		#{name},#{kor},#{eng},#{math})	
 	</insert>
@@ -358,7 +359,35 @@ WHERE job IN (#{job01},#{job02})
 4. service 처리.
 	dao.exp14DeptInsert(22,"교육","부산");
 	
+# @Param 활용 DB 처리
+1. sql 작성
+	SELECT *
+	FROM emp
+	WHERE hiredate 
+	BETWEEN to_date(#{startDte},'YYYY-MM-DD') 
+	AND to_date(#{endDte},'YYYY-MM-DD')
+2. vo/공통 등록(x)
+3. dao인터페이스
+	public List<Emp> exp15EmpList(
+		@Param("startDte") String startDte,
+		@Param("endDte") String endDte);
+4. mapper
+	<select id="exp15EmpList" resultType="emp">
+		SELECT *
+		FROM emp
+		WHERE hiredate 
+		BETWEEN to_date(#{startDte},'YYYY-MM-DD') 
+		AND to_date(#{endDte},'YYYY-MM-DD')	
+	</select>	
+5. service
+	for(Emp emp:dao.exp15EmpList("1981-01-01","1981-12-31")){
+		System.out.print(emp.getEname()+"\t");
+		System.out.print(emp.getHiredate()+"\n");
+	}		
+		
 
+
+	
 			
 			
 			

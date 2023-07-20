@@ -103,5 +103,12 @@ public interface A01_MemberDao {
 	<insert id="exp14DeptInsert">
 		INSERT INTO dept01 values(#{no},#{dpartnm},
 		                          #{location})	
-	</insert>		 
+	</insert>		
+	<select id="exp15EmpList" resultType="emp">
+		SELECT *
+		FROM emp
+		WHERE hiredate 
+		BETWEEN to_date(#{startDte},'YYYY-MM-DD') 
+		AND to_date(#{endDte},'YYYY-MM-DD')	
+	</select>		 
 </mapper>	

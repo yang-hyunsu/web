@@ -1,0 +1,190 @@
+1. Mybatis에서 mapper.xml과 DAO 인터페이스의 연동 규칙 중, mapper.xml의 'namespace'에 해당하는 것은 무엇인가?
+   1) 패키지명.인터페이스명
+   2) 메서드명
+   3) 메서드의 매개변수유형
+   4) 메서드의 리턴유형
+
+2. mybatis에서 DAO 처리 순서의 맞는 순서는?
+   1) 인터페이스/메서드 추가 → sql 작성 → vo 작성 → mapper.xml 처리 → service단 호출 확인
+   2) sql 작성 → vo 작성 → 인터페이스/메서드 추가 → mapper.xml 처리 → service단 호출 확인
+   3) sql 작성 → 인터페이스/메서드 추가 → vo 작성 → mapper.xml 처리 → service단 호출 확인
+   4) vo 작성 → sql 작성 → 인터페이스/메서드 추가 → service단 호출 확인 → mapper.xml 처리
+
+3. VO에서 컬럼이 있으면 컬럼명과 유형을 동일하게 하고 없으면 추가해서 VO에 속성과 property를 처리해야 한다. 이러한 설명에서 VO는 무엇의 약자인가?
+   1) Virtual Object
+   2) Value Object
+   3) Variable Object
+   4) Vector Object
+
+4. 인터페이스/메서드를 추가한 후에는 다음으로 어떤 처리를 해야 하는가?
+   1) VO 작성
+   2) mapper.xml 처리
+   3) service단 호출 확인
+   4) SQL 작성
+
+5. SELECT 문을 사용한 sql 작성 후, 해당 내용을 mybatis에서 활용하기 위해 공통 mybatis.xml에 추가해야 하는 것은 무엇인가?
+   1) alias
+   2) id
+   3) parameterType
+   4) resultType
+
+6. 추가된 VO는 공통 mybatis.xml에 어떤 것으로 등록 처리해야 하는가?
+   1) id
+   2) parameterType
+   3) resultType
+   4) alias
+
+7. mybatis의 mapper.xml에서 parameterType에 사용되는 것은 무엇인가?
+   1) SQL 문에서 사용하는 데이터 유형
+   2) DAO 인터페이스 메서드의 매개변수 유형
+   3) SQL 문에서 사용하는 테이블 이름
+   4) DAO 인터페이스 메서드의 리턴 유형
+
+8. mybatis에서 매개변수를 map 형식으로 전달하기 위해 사용하는 어노테이션은 무엇인가?
+   1) @Param
+   2) @Value
+   3) @Map
+   4) @Autowired
+
+9. VO에 추가된 속성을 처리하기 위해 필요한 메서드는 무엇인가?
+    1) toString()
+    2) equals()
+    3) get/setXXXX()
+    4) hashCode()
+
+
+10. mybatis에서 매개변수를 2개 이상 처리하고자 할 때 사용하는 자료형은 무엇인가?
+    1) List
+    2) Set
+    3) Map
+    4) Array
+##
+
+
+1. Mybatis에서 mapper.xml과 DAO 인터페이스의 연동 규칙 중, mapper.xml의 'namespace'에 해당하는 것은 무엇인가?
+   1) 패키지명.인터페이스명
+   2) 메서드명
+   3) 메서드의 매개변수유형
+   4) 메서드의 리턴유형
+
+1. Mybatis에서 mapper.xml과 DAO 인터페이스의 연동 규칙 중, mapper.xml의 'namespace'에 해당하는 것은 무엇인가?
+   정답: 1) 패키지명.인터페이스명
+   해설: MyBatis에서 mapper.xml의 'namespace'는 해당 Mapper XML 파일이 어떤 인터페이스와 연결될 것인지를 명시하는 부분으로, 패키지명과 인터페이스 이름을 합친 전체 경로를 나타냅니다.
+   1) 인터페이스 dao 추가 원칙
+   	- 한 화면업무단위로 추가한다. 
+   		ex) 사원정보 관리(리스트, 등록, 수정, 삭제)
+   	- dao에 mapping되는 xxxMapper.xml 추가.한다.	
+
+2. mybatis에서 DAO 처리 순서의 맞는 순서는?
+   1) 인터페이스/메서드 추가 → sql 작성 → vo 작성 → mapper.xml 처리 → service단 호출 확인
+   2) sql 작성 → vo 작성 → 인터페이스/메서드 추가 → mapper.xml 처리 → service단 호출 확인
+   3) sql 작성 → 인터페이스/메서드 추가 → vo 작성 → mapper.xml 처리 → service단 호출 확인
+   4) vo 작성 → sql 작성 → 인터페이스/메서드 추가 → service단 호출 확인 → mapper.xml 처리
+
+2. mybatis에서 DAO 처리 순서의 맞는 순서는?
+   정답: 2) sql 작성 → vo 작성 → 인터페이스/메서드 추가 → mapper.xml 처리 → service단 호출 확인
+   해설: MyBatis에서의 DAO 처리 순서는 대개 SQL 작성부터 시작하여, 필요한 VO를 작성하고, DAO 인터페이스 및 메서드를 추가하며, mapper.xml 파일을 처리하고, 마지막으로 service단에서 호출하는 순서로 진행됩니다.
+   vo는 테이블 기준보다 sql 작성으로 출력되는 결과물과 
+   입력값을 기준으로 작성한다.
+   
+
+
+3. VO에서 컬럼이 있으면 컬럼명과 유형을 동일하게 하고 없으면 추가해서 VO에 속성과 property를 처리해야 한다. 이러한 설명에서 VO는 무엇의 약자인가?
+   1) Virtual Object
+   2) Value Object
+   3) Variable Object
+   4) Vector Object
+
+3. VO에서 컬럼이 있으면 컬럼명과 유형을 동일하게 하고 없으면 추가해서 VO에 속성과 property를 처리해야 한다. 이러한 설명에서 VO는 무엇의 약자인가?
+   정답: 2) Value Object
+   해설: VO는 Value Object의 약자로, 데이터를 표현하는 객체를 의미합니다. 일반적으로 데이터베이스의 테이블 칼럼과 매칭되는 속성들을 가집니다.
+
+
+
+4. 인터페이스/메서드를 추가한 후에는 다음으로 어떤 처리를 해야 하는가?
+   1) VO 작성
+   2) mapper.xml 처리
+   3) service단 호출 확인
+   4) SQL 작성
+
+4. 인터페이스/메서드를 추가한 후에는 다음으로 어떤 처리를 해야 하는가?
+   정답: 2) mapper.xml 처리
+   해설: 인터페이스와 메서드를 추가한 후에는 해당 메서드와 연결될 SQL 쿼리를 작성하고 이를 mapper.xml 파일에 처리해야 합니다.
+
+
+
+5. SELECT 문을 사용한 sql 작성 후, 
+	해당 내용을 mybatis에서 활용하기 위해 공통 mybatis.xml에 
+	추가해야 하는 것은 무엇인가?
+   1) alias
+   2) id
+   3) parameterType
+   4) resultType
+
+5. SELECT 문을 사용한 sql 작성 후, 해당 내용을 mybatis에서 활용하기 위해 공통 mybatis.xml에 추가해야 하는 것은 무엇인가?
+   정답: 1) alias
+   공통 mybatis.xml에서는 사용할 vo의 alias와 XXXMapper.xml을
+   선언한다.
+
+
+
+6. 추가된 VO는 공통 mybatis.xml에 어떤 것으로 등록 처리해야 하는가?
+   1) id
+   2) parameterType
+   3) resultType
+   4) alias
+
+6. 추가된 VO는 공통 mybatis.xml에 어떤 것으로 등록 처리해야 하는가?
+   정답: 4) alias
+   해설: 추가된 VO는 mybatis.xml에 'alias'로 등록합니다. 이렇게 함으로써 VO의 풀 네임을 사용하는 대신에 alias를 통해 간단하게 VO를 참조할 수 있습니다.
+
+
+
+7. mybatis의 mapper.xml에서 parameterType에 사용되는 것은 무엇인가?
+   1) SQL 문에서 사용하는 데이터 유형
+   2) DAO 인터페이스 메서드의 매개변수 유형
+   3) SQL 문에서 사용하는 테이블 이름
+   4) DAO 인터페이스 메서드의 리턴 유형
+
+7. mybatis의 mapper.xml에서 parameterType에 사용되는 것은 무엇인가?
+   정답: 2) DAO 인터페이스 메서드의 매개변수 유형
+   해설: 'parameterType'은 해당 SQL 쿼리에 전달될 매개변수의 자료형을 지정합니다. 이는 DAO 인터페이스 메서드의 매개변수 유형과 동일해야 합니다.
+	단일데이터유형 : int, string
+	단일객체유형 : emp
+	다중의데이터전달 : map, 
+		@Param :의 경우는 parameterType이 생략하여야 한다.
+	
+
+8. mybatis에서 매개변수를 map 형식으로 전달하기 위해 사용하는 어노테이션은 무엇인가?
+   1) @Param
+   2) @Value
+   3) @Map
+   4) @Autowired
+
+8. mybatis에서 매개변수를 map 형식으로 전달하기 위해 사용하는 어노테이션은 무엇인가?
+   정답: 1) @Param
+   해설: MyBatis에서 여러 개의 매개변수를 전달하기 위해 Map 형식을 사용하고, 이때 각 매개변수를 식별하기 위해 @Param 어노테이션을 사용합니다.
+
+
+9. VO에 추가된 속성을 처리하기 위해 필요한 메서드는 무엇인가?
+    1) toString()
+    2) equals()
+    3) get/setXXXX()
+    4) hashCode()
+
+9. VO에 추가된 속성을 처리하기 위해 필요한 메서드는 무엇인가?
+   정답: 3) get/setXXXX()
+   해설: VO에서 속성을 처리하기 위해 getter와 setter 메서드가
+    필요합니다. 이 메서드들을 통해 속성의 값에 접근하고 수정할 수 있습니다.
+    property 개념 : el, mybatis활용, useBean
+
+10. mybatis에서 매개변수를 2개 이상 처리하고자 할 때 사용하는 자료형은 무엇인가?
+    1) List
+    2) Set
+    3) Map
+    4) Array
+    
+10. mybatis에서 매개변수를 2개 이상 처리하고자 할 때 사용하는 자료형은 무엇인가?
+    정답: 3) Map
+    해설: MyBatis에서 매개변수를 2개 이상 처리할 때 Map을 사용합니다. Map은 키와 값을 쌍으로 저장하므로 여러 개의 매개변수를 효과적으로 관리할 수 있습니다.    
+
