@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Param;
 
 import springweb.a05_mvcexp.z01_vo.Dept;
 import springweb.a05_mvcexp.z01_vo.Emp;
-import springweb.a05_mvcexp.z01_vo.EmpDept;
 import springweb.a05_mvcexp.z01_vo.Employee;
 import springweb.a05_mvcexp.z01_vo.Job;
 import springweb.a05_mvcexp.z01_vo.Location;
@@ -48,6 +47,7 @@ public interface A01_MemberDao {
 			@Param("mxSal") int mxSal);	
 	public List<String> getCities(@Param("id") String id);
 	public List<Emp> getEmpResultExp();
+	public List<Dept> getDeptResultExp();
 	
 }
 /*

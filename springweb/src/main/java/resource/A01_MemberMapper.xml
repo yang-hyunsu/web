@@ -151,6 +151,13 @@ public interface A01_MemberDao {
 		FROM emp02	
 		order by no
 	</select>
-				 
-				 
+	<resultMap type="dept" id="dRlt">
+		<id column="no" property="deptno"/>
+		<result column="name" property="dname"/>
+		<result column="location" property="loc"/>
+	</resultMap>
+	<select id="getDeptResultExp" resultMap="dRlt">
+		SELECT deptno NO, dname name, loc location
+		FROM dept01
+	</select>
 </mapper>	

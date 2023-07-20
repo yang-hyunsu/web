@@ -622,7 +622,9 @@ column="no" property="empno"
 이렇게 해서 설정된 공통 resultMap의 id속성의 rst01은 각 select의
 속성 resultMap에 값으로 할당하여 공통으로 재활용할 수 있다.
 	
-		
+ex) resultMap 처리 예제	
+SELECT deptno NO, dname name, loc location
+FROM dept01		
 	
 
 
