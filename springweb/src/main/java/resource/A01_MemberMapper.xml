@@ -130,7 +130,11 @@ public interface A01_MemberDao {
 		FROM jobs
 		WHERE JOB_ID = #{id}
 	</select>
-	 
+	<select id="exp19getEnames" resultType="string">
+		SELECT ename
+		FROM emp
+		WHERE sal BETWEEN #{minSal} AND #{mxSal}			
+	</select>	 
 				 
 				 
 </mapper>	

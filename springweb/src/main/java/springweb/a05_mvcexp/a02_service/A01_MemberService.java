@@ -87,7 +87,10 @@ public class A01_MemberService {
 		System.out.println(job.getJob_title());
 		System.out.println(job.getMin_salary());
 		System.out.println(job.getMax_salary());
-
+		System.out.println("연습19 사원명 리스트");		
+		for(String name:dao.exp19getEnames(1000,3000)){
+			System.out.println(name);
+		}
 		
 	}
 	

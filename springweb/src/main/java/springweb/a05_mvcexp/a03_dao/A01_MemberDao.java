@@ -43,7 +43,9 @@ public interface A01_MemberDao {
 	public Employee exp17getEmpLoyee(
 			@Param("id") int employee_id); 	
 	public Job exp18getJob(@Param("id") String id);
-	
+	public List<String> exp19getEnames(
+			@Param("minSal") int minSal,			
+			@Param("mxSal") int mxSal);	
 	
 }
 /*
