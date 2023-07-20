@@ -544,9 +544,9 @@ System.out.println(job.getmax_salary());
 	#dao
 	public List<String> exp19getEnames(
 			@Param("minSal") int minSal,			
-			@Param("mxSal") int mxSal)
+			@Param("mxSal") int mxSal);
 	#mapper
-	<select id="getEnames" resultType="string">
+	<select id="exp19getEnames" resultType="string">
 		SELECT ename
 		FROM emp
 		WHERE sal BETWEEN #{minSal} AND #{mxSal}			
