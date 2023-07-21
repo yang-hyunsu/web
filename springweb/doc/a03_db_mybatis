@@ -767,7 +767,7 @@ class EmpJob{
 	   empnos.add(7369);
 	   empnos.add(7499);
 	   empnos.add(7521);
-	   for(Emp emp:dao.getEmpByEmpnos(empnos){
+	   for(Emp emp:dao.getEmpByEmpnos(empnos)){
 	   	   System.out.print(emp.getEmpno()+"\t");
 	   	   System.out.print(emp.getEname()+"\t");
 	   	   System.out.print(emp.getJob()+"\n");
