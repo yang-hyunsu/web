@@ -105,6 +105,8 @@ public class A01_MemberService {
 		System.out.println("연습22 resultMap association 연습");
 		for(EmpDept ed:dao.getEmpDeptList("A", "SAL")) {
 
+			
+			
 			System.out.print(ed.getEmp().getEmpno()+"\t");
 			System.out.print(ed.getEmp().getEname()+"\t");
 			System.out.print(ed.getEmp().getSal()+"\t");

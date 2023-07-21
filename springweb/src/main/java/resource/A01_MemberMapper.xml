@@ -172,6 +172,7 @@ public interface A01_MemberDao {
 			<result column="ename" property="ename"/>
 			<result column="job" property="job"/>
 			<result column="mgr" property="mgr"/>
+			<result column="sal" property="sal"/>
 			<result column="hiredate" property="hiredate"/>
 			<result column="comm" property="comm"/>
 			<result column="deptno" property="deptno"/>
