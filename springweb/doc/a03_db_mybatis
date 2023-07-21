@@ -30,8 +30,8 @@
 	4) 실제 개발 순서 및 처리 
 		- sql 작성
 		- vo 작성
-		- dao 인터페이스 작성
 		- 공통 mybatis 등록 : alias, mappper.xml 선언
+		- dao 인터페이스 작성
 		- mapper.xml 선언 및 처리.
 		- service단에 dao 메서드 호출해서 확인
 
@@ -546,7 +546,8 @@ System.out.println(job.getmax_salary());
 			@Param("minSal") int minSal,			
 			@Param("mxSal") int mxSal);
 	#mapper
-	<select id="exp19getEnames" resultType="string">
+	<select id="exp19getEnames"
+		 resultType="string">
 		SELECT ename
 		FROM emp
 		WHERE sal BETWEEN #{minSal} AND #{mxSal}			
@@ -586,6 +587,10 @@ System.out.println(job.getmax_salary());
 			private Dept dept;
 			//set/get메서드..
 	   }	
+	   class DeptEmpList{
+	   	    private Dept dept;
+	   	    private List<Emp> emp;
+	   }
 	   class Dept2{
 	   	  private int deptno;
 	   	  private String dname;

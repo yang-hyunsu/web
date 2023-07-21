@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import springweb.a05_mvcexp.z01_vo.Dept;
 import springweb.a05_mvcexp.z01_vo.Emp;
@@ -49,6 +50,7 @@ public interface A01_MemberDao {
 	public List<Emp> getEmpResultExp();
 	public List<Dept> getDeptResultExp();
 	
+
 }
 /*
 

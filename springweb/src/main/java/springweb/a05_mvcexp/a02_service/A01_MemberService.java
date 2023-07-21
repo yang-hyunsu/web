@@ -101,6 +101,7 @@ public class A01_MemberService {
 			System.out.print(e.getEname()+"\t");
 			System.out.print(e.getSal()+"\n");
 		}
+		System.out.println("연습22 카운트:"+dao.getDeptnoCnt(10));
 	}
 	
 	
