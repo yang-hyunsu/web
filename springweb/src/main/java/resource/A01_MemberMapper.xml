@@ -233,7 +233,15 @@ List<Emp> getDynamicSQL(@Param("ename")
 			and ename like '%'||#{ename}||'%'
 		</if>
 	</select> 
-	
+	<select id="getEmpByEmpnos" resultType="emp">
+		SELECT *
+		FROM emp
+		WHERE empno IN	
+		<foreach collection="empnos" item="empno"
+			separator="," open="(" close=")">
+			#{empno}
+		</foreach>
+	</select>	
 	
 	 
 </mapper>	

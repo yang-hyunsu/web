@@ -91,10 +91,9 @@ public interface A01_MemberDao {
 	public void delEmp(@Param("empno") int empno);	
 	
 	
-	public List<Emp> getDynamicSQL(@Param("ename") 
-									String ename);
-	
-	
+	public List<Emp> getDynamicSQL(@Param("ename") String ename);
+	public List<Emp> getEmpByEmpnos(
+		    @Param("empnos") List<Integer> empnos);
 	
 }
 /*

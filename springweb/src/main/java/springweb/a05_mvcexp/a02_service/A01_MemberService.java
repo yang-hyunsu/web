@@ -1,21 +1,14 @@
 package springweb.a05_mvcexp.a02_service;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import springweb.a05_mvcexp.a03_dao.A01_MemberDao;
-import springweb.a05_mvcexp.z01_vo.Dept;
 import springweb.a05_mvcexp.z01_vo.Emp;
-import springweb.a05_mvcexp.z01_vo.EmpDept;
-import springweb.a05_mvcexp.z01_vo.EmpJob;
-import springweb.a05_mvcexp.z01_vo.Employee;
-import springweb.a05_mvcexp.z01_vo.Job;
 import springweb.a05_mvcexp.z01_vo.Member;
-import springweb.a05_mvcexp.z01_vo.Student;
 
 @Service
 public class A01_MemberService {
@@ -158,8 +151,15 @@ public class A01_MemberService {
 		for(Emp e:dao.getDynamicSQL("A")) {
 			System.out.println(e.getEname());
 		}
-		
+		System.out.println("연습29 동적 query 처리(foreach)");
+		List<Integer> empnos = new ArrayList<Integer>();
+		empnos.add(7369);
+		empnos.add(7499);
+		empnos.add(7521);
+		for(Emp emp:dao.getEmpByEmpnos(empnos)){
+		   System.out.print(emp.getEmpno()+"\t");
+		   System.out.print(emp.getEname()+"\t");
+		   System.out.print(emp.getJob()+"\n");
+		}		
 	}
-	
-	
 }

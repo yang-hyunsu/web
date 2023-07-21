@@ -733,8 +733,59 @@ class EmpJob{
 	</if>	
 	ename이 null값일 때는 전체 검색을 하고, 데이터가 있을 때는
 	해당 이름으로 키워드 검색하게 처리..
-
-
+# 반복문 처리 동적 쿼리
+1. 기본형식
+	<foreach collection="배열/리스트매개변수" 
+		item="단위데이터" separator=","  open="(" close=")">
+	</foreach>
+2. 배열이나 리스트형식을 데이터를 전달하고, 해당 데이터을
+	단위데이터를 반복형식으로 동적쿼리를 처리하는 것을 말한다.
+3. 속성
+	1) separator :반복형식의 구분자.
+	2) open : 시작 동적 쿼리 추가 내용
+	3) close : 종료 동적 쿼리 추가 내용
+4. 예제 처리
+	사원번호를 in 구문으로 검색하는 반복 쿼리 처리
+	SELECT *
+	FROM emp
+	WHERE empno IN (7369,7499,7521)	
+	1) dao
+	public List<Emp> getEmpByEmpnos(
+	    @Param("empnos") List<Integer> empnos);
+	2) mapper
+	<select id="getEmpByEmpnos" resultType="emp">
+		SELECT *
+		FROM emp
+		WHERE empno IN	
+		<foreach collection="empnos" item="empno"
+			separator="," open="(" close=")">
+			#{empno}
+		</foreach>
+	</select>
+	3) service
+	   List<Integer> empnos = new ArrayList<Integer>();
+	   empnos.add(7369);
+	   empnos.add(7499);
+	   empnos.add(7521);
+	   for(Emp emp:dao.getEmpByEmpnos(empnos){
+	   	   System.out.print(emp.getEmpno()+"\t");
+	   	   System.out.print(emp.getEname()+"\t");
+	   	   System.out.print(emp.getJob()+"\n");
+	   }	
+	
+	</select>
+	
+	
+	
+	
+	    
+	
+	
+	
+	
+	
+	
+	
 
 
 	
