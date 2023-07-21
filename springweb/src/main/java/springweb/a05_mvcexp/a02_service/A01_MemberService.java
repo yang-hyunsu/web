@@ -28,6 +28,7 @@ public class A01_MemberService {
 		return dao.memberList(sch);
 	}
 	public void daoexp() {
+		/*
 		System.out.println("#Dao연습#");
 		System.out.println("첫번째연습:"+dao.exp01());
 		System.out.println("두번째연습:"+dao.daoexp2());
@@ -37,6 +38,7 @@ public class A01_MemberService {
 		System.out.println("연습06:"+dao.exp06("CLARK"));
 		System.out.println("연습07:"+dao.exp07(7844));
 		System.out.println("연습08 입력:");
+		
 		
 		// 11,'인사','서울'
 		//dao.exp08Ins(new Dept(12,"재무","대전"));
@@ -132,20 +134,25 @@ public class A01_MemberService {
 		}	
 		System.out.println("연습24 부서의 사원수 :");
 		System.out.println(dao.getDeptnoCnt(30)+"명");
-	/*
-getSalCnt2
-insertDept
-updateStudent
-delEmp 
-	 * */	
-		System.out.println("연습24 급여의 사원수 :"+dao.getSalCnt2(1000, 4000)+"명");		
+
+		System.out.println("연습24 급여의 사원수 :"+
+					dao.getSalCnt2(1000, 4000)+"명");		
 		System.out.println("연습25 부서등록 :");
 		dao.insertDept(70, "회계2", "서울");
-		System.out.println("연습26 학생수정 :");
-		dao.updateStudent("마길동99", 90, 80, 90, 4);
+		//System.out.println("연습26 학생수정 :");
+		//dao.updateStudent("마길동11", 90, 80, 90, 4);
 		System.out.println("연습27 사원삭제 :");
 		dao.delEmp(1006);
-		
+		*/
+		System.out.println("연습28 동적 query 처리");
+		System.out.println("1) ename이 null일 때 키워드");
+		for(Emp e:dao.getDynamicSQL(null)) {
+			System.out.println(e.getEname());
+		}
+		System.out.println("2) ename이 null일 아닐 때(A)");
+		for(Emp e:dao.getDynamicSQL("A")) {
+			System.out.println(e.getEname());
+		}
 		
 	}
 	

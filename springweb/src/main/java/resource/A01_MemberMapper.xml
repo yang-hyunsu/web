@@ -220,5 +220,20 @@ public interface A01_MemberDao {
 		WHERE e.JOB_ID = j.JOB_ID
 		AND first_name LIKE '%'||#{first_name}||'%'
 		AND job_title LIKE '%'||#{job_title}||'%'	
-	</select>	 
+	</select>	
+	<!-- 
+List<Emp> getDynamicSQL(@Param("ename") 
+									String ename)	
+	 -->
+	<select id="getDynamicSQL" resultType="emp">
+		select *
+		from emp
+		where 1=1
+		<if test="ename != null">
+			and ename like '%'||#{ename}||'%'
+		</if>
+	</select> 
+	
+	
+	 
 </mapper>	

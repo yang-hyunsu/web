@@ -63,17 +63,35 @@ public interface A01_MemberDao {
 	@Select("SELECT count(*) FROM emp WHERE deptno = #{deptno}")
 	public int getDeptnoCnt(@Param("deptno") int deptno);
 	
-	@Select("SELECT count(*) FROM emp WHERE sal BETWEEN #{minSal} AND #{maxSal}")
-	public int getSalCnt2(@Param("minSal") int minSal, @Param("maxSal") int maxSal);
-	
-	@Insert("INSERT INTO dept01 values(#{deptno},#{dname},#{loc})")
-	public void insertDept(@Param("deptno") int minSal,@Param("dname") String dname, @Param("loc") String loc);
-	
-	@Update("UPDATE student02 SET name=#{name}, kor=#{kor}, eng=#{eng}, math=#{math} WHERE sno=#{sno}")
-	public void updateStudent(@Param("name") String name,@Param("kor") int kor, @Param("eng") int eng,@Param("math") int math,@Param("sno") int sno);
+	@Select("SELECT count(*) FROM emp "
+			+ "WHERE sal BETWEEN #{minSal} AND #{maxSal}")
+	public int getSalCnt2(@Param("minSal") int minSal, 
+						  @Param("maxSal") int maxSal);
+	@Insert("INSERT INTO dept01 "
+			+ "values(#{deptno},#{dname},#{loc})")
+	public void insertDept(@Param("deptno") int deptno,
+			@Param("dname") String dname, 
+			@Param("loc") String loc);
+	@Update("UPDATE student02 "
+			+ "SET name=#{name}, "
+			+ "kor=#{kor}, "
+			+ "eng=#{eng}, "
+			+ "math=#{math} "
+			+ "WHERE sno=#{sno}")
+	public void updateStudent(@Param("name") String name,
+			@Param("kor") int kor, 
+			@Param("eng") int eng,
+			@Param("math") int math,
+			@Param("sno") int sno);
 
 	@Delete("DELETE FROM emp02 WHERE empno = #{empno}")
 	public void delEmp(@Param("empno") int empno);	
+	
+	
+	public List<Emp> getDynamicSQL(@Param("ename") 
+									String ename);
+	
+	
 	
 }
 /*

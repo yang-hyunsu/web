@@ -702,12 +702,6 @@ class EmpJob{
 	public List<EmpJob> getEmpJobList(
 			  @Param("first_name") String first_name,
 			  @Param("job_title") String job_title);	
-
-
-
-
-
-			
 		
 	6) service 호출 test
 
@@ -717,7 +711,28 @@ class EmpJob{
 	@Select("sql구문과 매개변수 처리")
 	public 리턴유형 메서드명(@Param("매개변수명") 입력데이터);
 	
-
+# 동적 sql 처리
+1. 프로그래밍 DB 처리시, 가능한한 동적 sql을 만들지 말아야지
+	효과적으로 데이터 처리를 할 수 있지만, 여건에 따라서
+	sql의 변화가 필요로 하는 경우가 있다.
+2. 이를 동적 query이라고 한다. 즉, 조건에 따라 sql 구문 자체가
+	변경되는 것을 말한다.
+3. mybatis는 동적 쿼리를 위하여, ${전달데이터}와 
+	ognl(object graph navigation language) 방식의
+	조건<if><choose><when>, 반복<foreach>, <where>
+	<trim><set> 등을 지원하고 있다.
+4. 기본 형식
+	select *
+	from emp
+	where 1=1
+	<if test="ename != null and ename!='' ">
+		and ename like '%'|| #{ename} ||'%'
+	</if>
+	<if test="job != null">
+		and job like '%'|| #{job} ||'%'
+	</if>	
+	ename이 null값일 때는 전체 검색을 하고, 데이터가 있을 때는
+	해당 이름으로 키워드 검색하게 처리..
 
 
 
