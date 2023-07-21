@@ -119,12 +119,18 @@ public class A01_MemberService {
 		System.out.println("연습23 resultMap association 연습");
 		
 		
-		for(EmpJob ej:dao.getEmpJobList("", "")) {
+		for(EmpJob ej:dao.getEmpJobList("o", "Acc")) {
 			Employee e = ej.getEmployee();
 			Job j = ej.getJob();
+			System.out.print(e.getEmployee_id()+"\t");
 			System.out.print(e.getFirst_name()+"\t");
+			System.out.print(e.getLast_name()+"\t");
+			System.out.print(e.getEmail()+"\t");
+			System.out.print(e.getSalary()+"\t");
+			System.out.print(j.getJob_id()+"\t");
 			System.out.print(j.getJob_title()+"\n");
-		}		
+		}	
+		
 	}
 	
 	

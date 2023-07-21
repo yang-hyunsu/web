@@ -683,6 +683,30 @@ FROM dept01
 				<result column="loc" property="loc"/>
 			</association>
 		</resultMap>
+ex) Employee, Job Association
+1. sql
+SELECT e.*, job_title, min_salary,
+	   max_salary
+FROM EMPLOYEES e, JOBS j	
+WHERE e.JOB_ID = j.JOB_ID
+AND first_name LIKE '%'||#{first_name}||'%'
+AND job_title LIKE '%'||#{job_title}||'%'
+2. vo
+class EmpJob{
+	private Employee employee;
+	private Job job;
+}
+3. mybatis 등록.
+
+4. interface 선언
+	public List<EmpJob> getEmpJobList(
+			  @Param("first_name") String first_name,
+			  @Param("job_title") String job_title);	
+
+
+
+
+
 			
 		
 	6) service 호출 test
