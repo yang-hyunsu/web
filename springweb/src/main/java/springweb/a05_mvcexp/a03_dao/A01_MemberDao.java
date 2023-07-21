@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Param;
 import springweb.a05_mvcexp.z01_vo.Dept;
 import springweb.a05_mvcexp.z01_vo.Emp;
 import springweb.a05_mvcexp.z01_vo.EmpDept;
+import springweb.a05_mvcexp.z01_vo.EmpJob;
 import springweb.a05_mvcexp.z01_vo.Employee;
 import springweb.a05_mvcexp.z01_vo.Job;
 import springweb.a05_mvcexp.z01_vo.Location;
@@ -52,8 +53,10 @@ public interface A01_MemberDao {
 	public List<EmpDept> getEmpDeptList(
 			  @Param("ename") String ename,
 			  @Param("dname") String dname);  
+	public List<EmpJob> getEmpJobList(
+			  @Param("first_name") String first_name,
+			  @Param("job_title") String job_title);
 	
-
 }
 /*
 

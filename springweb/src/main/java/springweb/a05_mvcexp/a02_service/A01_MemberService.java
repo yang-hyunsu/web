@@ -11,6 +11,7 @@ import springweb.a05_mvcexp.a03_dao.A01_MemberDao;
 import springweb.a05_mvcexp.z01_vo.Dept;
 import springweb.a05_mvcexp.z01_vo.Emp;
 import springweb.a05_mvcexp.z01_vo.EmpDept;
+import springweb.a05_mvcexp.z01_vo.EmpJob;
 import springweb.a05_mvcexp.z01_vo.Employee;
 import springweb.a05_mvcexp.z01_vo.Job;
 import springweb.a05_mvcexp.z01_vo.Member;
@@ -103,17 +104,27 @@ public class A01_MemberService {
 			System.out.print(e.getSal()+"\n");
 		}
 		System.out.println("연습22 resultMap association 연습");
-		for(EmpDept ed:dao.getEmpDeptList("A", "SAL")) {
-
-			
-			
-			System.out.print(ed.getEmp().getEmpno()+"\t");
-			System.out.print(ed.getEmp().getEname()+"\t");
-			System.out.print(ed.getEmp().getSal()+"\t");
-			System.out.print(ed.getDept().getDeptno()+"\t");
-			System.out.print(ed.getDept().getDname()+"\n");
-		}
 		
+		
+		for(EmpDept ed:dao.getEmpDeptList("A", "SAL")) {
+			Emp e = ed.getEmp();
+			Dept d = ed.getDept();
+			System.out.print(e.getEmpno()+"\t");
+			System.out.print(e.getEname()+"\t");
+			System.out.print(e.getJob()+"\t");
+			System.out.print(e.getSal()+"\t");
+			System.out.print(d.getDeptno()+"\t");
+			System.out.print(d.getDname()+"\n");
+		}
+		System.out.println("연습23 resultMap association 연습");
+		
+		
+		for(EmpJob ej:dao.getEmpJobList("", "")) {
+			Employee e = ej.getEmployee();
+			Job j = ej.getJob();
+			System.out.print(e.getFirst_name()+"\t");
+			System.out.print(j.getJob_title()+"\n");
+		}		
 	}
 	
 	
