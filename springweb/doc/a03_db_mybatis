@@ -710,14 +710,14 @@ class EmpJob{
 			
 		
 	6) service 호출 test
-	
-
-		
-
-
-
 
 # 기타 여러가지 형식의 dao인터페이스 형식 처리.
+1. 간단하게 mapper 사용하지 않고 dao 인터페이스에서 sql로 처리하는 경우
+2. 형식(dao 인터페이스에서 처리)
+	@Select("sql구문과 매개변수 처리")
+	public 리턴유형 메서드명(@Param("매개변수명") 입력데이터);
+	
+
 
 
 

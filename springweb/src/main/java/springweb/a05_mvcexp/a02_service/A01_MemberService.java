@@ -130,6 +130,9 @@ public class A01_MemberService {
 			System.out.print(j.getJob_id()+"\t");
 			System.out.print(j.getJob_title()+"\n");
 		}	
+		System.out.println("연습24 부서의 사원수 :");
+		System.out.println(dao.getDeptnoCnt(30)+"명");
+		
 		
 	}
 	
