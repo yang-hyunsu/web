@@ -132,6 +132,19 @@ public class A01_MemberService {
 		}	
 		System.out.println("연습24 부서의 사원수 :");
 		System.out.println(dao.getDeptnoCnt(30)+"명");
+	/*
+getSalCnt2
+insertDept
+updateStudent
+delEmp 
+	 * */	
+		System.out.println("연습24 급여의 사원수 :"+dao.getSalCnt2(1000, 4000)+"명");		
+		System.out.println("연습25 부서등록 :");
+		dao.insertDept(70, "회계2", "서울");
+		System.out.println("연습26 학생수정 :");
+		dao.updateStudent("마길동99", 90, 80, 90, 4);
+		System.out.println("연습27 사원삭제 :");
+		dao.delEmp(1006);
 		
 		
 	}

@@ -4,8 +4,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import springweb.a05_mvcexp.z01_vo.Dept;
 import springweb.a05_mvcexp.z01_vo.Emp;
@@ -60,9 +63,29 @@ public interface A01_MemberDao {
 	@Select("SELECT count(*) FROM emp WHERE deptno = #{deptno}")
 	public int getDeptnoCnt(@Param("deptno") int deptno);
 	
+	@Select("SELECT count(*) FROM emp WHERE sal BETWEEN #{minSal} AND #{maxSal}")
+	public int getSalCnt2(@Param("minSal") int minSal, @Param("maxSal") int maxSal);
+	
+	@Insert("INSERT INTO dept01 values(#{deptno},#{dname},#{loc})")
+	public void insertDept(@Param("deptno") int minSal,@Param("dname") String dname, @Param("loc") String loc);
+	
+	@Update("UPDATE student02 SET name=#{name}, kor=#{kor}, eng=#{eng}, math=#{math} WHERE sno=#{sno}")
+	public void updateStudent(@Param("name") String name,@Param("kor") int kor, @Param("eng") int eng,@Param("math") int math,@Param("sno") int sno);
+
+	@Delete("DELETE FROM emp02 WHERE empno = #{empno}")
+	public void delEmp(@Param("empno") int empno);	
 	
 }
 /*
+getSalCnt2
+insertDept
+updateStudent
+delEmp 
+
+SELECT count(*) FROM emp WHERE sal BETWEEN #{minSal} AND #{maxSal}
+INSERT INTO dept01 values(#{deptno},#{dname},#{loc})
+UPDATE student02 SET name=#{name}, kor=#{kor}, eng=#{eng}, math=#{math} WHERE sno=#{sno}
+DELETE FROM emp02 WHERE empno = #{empno}
 
 	private int sno;
 	private String name;
