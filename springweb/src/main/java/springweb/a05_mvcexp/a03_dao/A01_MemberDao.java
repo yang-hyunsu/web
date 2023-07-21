@@ -72,18 +72,21 @@ public interface A01_MemberDao {
 	public void insertDept(@Param("deptno") int deptno,
 			@Param("dname") String dname, 
 			@Param("loc") String loc);
-	@Update("UPDATE student02 "
-			+ "SET name=#{name}, "
-			+ "kor=#{kor}, "
-			+ "eng=#{eng}, "
-			+ "math=#{math} "
-			+ "WHERE sno=#{sno}")
+//	@Update("UPDATE student02 SET name=#{name} WHERE sno=#{sno}")
+//	public void updateStudent(@Param("name") String name,
+//			@Param("kor") int kor, 
+//			@Param("eng") int eng,
+//			@Param("math") int math,
+//			@Param("sno") int sno);
+	@Update("UPDATE student09 SET name=#{name}, kor=#{kor}, eng=#{eng}, math=#{math} WHERE sno=#{sno}")
 	public void updateStudent(@Param("name") String name,
-			@Param("kor") int kor, 
-			@Param("eng") int eng,
-			@Param("math") int math,
-			@Param("sno") int sno);
-
+				@Param("kor") int kor, 
+				@Param("eng") int eng,
+				@Param("math") int math,
+				@Param("sno") int sno);
+	
+	
+	
 	@Delete("DELETE FROM emp02 WHERE empno = #{empno}")
 	public void delEmp(@Param("empno") int empno);	
 	

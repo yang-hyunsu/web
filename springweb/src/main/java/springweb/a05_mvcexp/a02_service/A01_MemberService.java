@@ -144,6 +144,11 @@ public class A01_MemberService {
 		System.out.println("연습27 사원삭제 :");
 		dao.delEmp(1006);
 		*/
+		System.out.println("연습25 부서등록1 :");
+		dao.insertDept(80, "회계2", "서울");		
+		System.out.println("연습26 학생수정 :");
+		dao.updateStudent("마길동12", 90, 80, 90, 4);	
+				
 		System.out.println("연습28 동적 query 처리");
 		System.out.println("1) ename이 null일 때 키워드");
 		for(Emp e:dao.getDynamicSQL(null)) {
