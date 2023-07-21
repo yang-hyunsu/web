@@ -160,4 +160,36 @@ public interface A01_MemberDao {
 		SELECT deptno NO, dname name, loc location
 		FROM dept01
 	</select>
+	<!-- 
+		public EmpDept getEmpDeptList(@Param("ename") String ename,
+									  @Param("dname") String dname);  
+	
+	
+	 -->
+	<resultMap type="empdept" id="edRst">
+		<association property="emp" javaType="emp">
+			<id column="empno" property="empno"/>
+			<result column="ename" property="ename"/>
+			<result column="job" property="job"/>
+			<result column="mgr" property="mgr"/>
+			<result column="hiredate" property="hiredate"/>
+			<result column="comm" property="comm"/>
+			<result column="deptno" property="deptno"/>
+		</association>
+		<association property="dept"   javaType="dept">
+			<id column="deptno" property="deptno"/>
+			<result column="dname" property="dname"/>
+			<result column="loc" property="loc"/>
+		</association>
+	</resultMap>
+	
+	<select id="getEmpDeptList" resultMap="edRst" >
+		SELECT e.*, dname, loc
+		FROM emp e, dept d
+		WHERE e.deptno =d.deptno
+		AND ename LIKE '%'||#{ename}||'%'
+		AND dname LIKE '%'||#{dname}||'%'		
+	</select>
+	
+	
 </mapper>	

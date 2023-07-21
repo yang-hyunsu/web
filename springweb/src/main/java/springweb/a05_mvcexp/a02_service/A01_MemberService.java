@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import springweb.a05_mvcexp.a03_dao.A01_MemberDao;
+import springweb.a05_mvcexp.z01_vo.Dept;
 import springweb.a05_mvcexp.z01_vo.Emp;
 import springweb.a05_mvcexp.z01_vo.EmpDept;
 import springweb.a05_mvcexp.z01_vo.Employee;
@@ -100,6 +101,15 @@ public class A01_MemberService {
 			System.out.print(e.getEmpno()+"\t");
 			System.out.print(e.getEname()+"\t");
 			System.out.print(e.getSal()+"\n");
+		}
+		System.out.println("연습22 resultMap association 연습");
+		for(EmpDept ed:dao.getEmpDeptList("A", "SAL")) {
+
+			System.out.print(ed.getEmp().getEmpno()+"\t");
+			System.out.print(ed.getEmp().getEname()+"\t");
+			System.out.print(ed.getEmp().getSal()+"\t");
+			System.out.print(ed.getDept().getDeptno()+"\t");
+			System.out.print(ed.getDept().getDname()+"\n");
 		}
 		
 	}

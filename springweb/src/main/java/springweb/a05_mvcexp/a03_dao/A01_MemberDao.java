@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 
 import springweb.a05_mvcexp.z01_vo.Dept;
 import springweb.a05_mvcexp.z01_vo.Emp;
+import springweb.a05_mvcexp.z01_vo.EmpDept;
 import springweb.a05_mvcexp.z01_vo.Employee;
 import springweb.a05_mvcexp.z01_vo.Job;
 import springweb.a05_mvcexp.z01_vo.Location;
@@ -49,6 +49,9 @@ public interface A01_MemberDao {
 	public List<String> getCities(@Param("id") String id);
 	public List<Emp> getEmpResultExp();
 	public List<Dept> getDeptResultExp();
+	public List<EmpDept> getEmpDeptList(
+			  @Param("ename") String ename,
+			  @Param("dname") String dname);  
 	
 
 }

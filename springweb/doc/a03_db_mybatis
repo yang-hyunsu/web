@@ -634,6 +634,59 @@ FROM dept01
 
 
 
+# 여러가지 join 구문을 통한 1:1관계 vo객체의  resultMap 처리
+1. sql을 사용하면, 하나의 테이블을 sql을 만드는 것보다,
+	여러개의 테이블을 이용해서 join하여 결과를 만드는 경우가 많은데,
+2. 이 때, 기존에 만들어진 VO를 재활용하여 객체안에 객체로 사용할 때,
+	mybatis의 resultMap에서 새로운 구성요소를 이용하여서 사용한다.
+3. 처리 순서
+	1) sql 작성(join구문)
+		SELECT e.*, dname, loc
+		FROM emp e, dept d
+		WHERE e.deptno =d.deptno
+		AND ename LIKE '%'||#{ename}||'%'
+		AND dname LIKE '%'||#{dname}||'%'	
+	
+	2) VO - 기존 만들어진 class로 객체 안에 객체의 구성으로 
+		선언한다.
+		class EmpDept{
+			private Emp emp;
+			private Dept dept;
+		}
+		
+	3) 공통 mybatis vo 추가
+		springweb.a05_mvcexp.z01_vo.EmpDept	
+	
+	4) dao 인터페이스 선언
+		public EmpDept getEmpDeptList(@Param("ename") String ename,
+									  @Param("dname") String dname);  
+		SELECT e.*, dname, loc
+		FROM emp e, dept d
+		WHERE e.deptno =d.deptno
+		AND ename LIKE '%'||#{ename}||'%'
+		AND dname LIKE '%'||#{dname}||'%'										  
+	5) mapper 선언
+		resultmap에서 association 요소 사용
+		<resultMap type="empdept" id="edRst">
+			<association property="emp">
+				<id column="empno" property="empno"/>
+				<result column="ename" property="ename"/>
+				<result column="job" property="job"/>
+				<result column="mgr" property="mgr"/>
+				<result column="hiredate" property="hiredate"/>
+				<result column="comm" property="comm"/>
+				<result column="deptno" property="deptno"/>
+			</association>
+			<association property="dept">
+				<id column="deptno" property="deptno"/>
+				<result column="dname" property="dname"/>
+				<result column="loc" property="loc"/>
+			</association>
+		</resultMap>
+			
+		
+	6) service 호출 test
+	
 
 		
 
