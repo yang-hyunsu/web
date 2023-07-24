@@ -50,7 +50,13 @@
 	<context:property-placeholder location="classpath:resource/a01_config"/>
 	<context:property-placeholder location="classpath:resource/a02_config"/>
 	 -->
-	<!-- container안에서도 접근, java소스로도 접근 가능..key/val -->
+	<!-- container안에서도 접근, java소스로도 접근 가능..key/val 
+	
+	jdbc.driver=oracle.jdbc.driver.OracleDriver
+jdbc.url=jdbc:oracle:thin:@localhost:1521:xe
+jdbc.user=scott
+jdbc.pass=tiger
+	-->
 	
 	
 	<bean class="backendWeb.a01_dao.A04_PreparedDao"/>
@@ -63,10 +69,10 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" 
-			value="oracle.jdbc.driver.OracleDriver"/>
-		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-		<property name="username" value="scott"/>	
-		<property name="password" value="tiger"/>	
+			value="${jdbc.driver}"/>
+		<property name="url" value="${jdbc.url}"/>
+		<property name="username" value="${jdbc.user}"/>	
+		<property name="password" value="${jdbc.pass}"/>	
 	
 	</bean> 
 	<!-- 
