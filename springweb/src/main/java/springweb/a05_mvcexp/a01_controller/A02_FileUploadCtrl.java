@@ -1,12 +1,14 @@
 package springweb.a05_mvcexp.a01_controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
+import springweb.a05_mvcexp.a02_service.A02_FileUploadSevice;
 
 @Controller
 public class A02_FileUploadCtrl {
@@ -16,6 +18,10 @@ public class A02_FileUploadCtrl {
 	private String age;
 	@Value("${loc}")
 	private String loc;
+	
+	@Autowired
+	private A02_FileUploadSevice service;
+	
 	
 	@GetMapping("upload01.do")
 	public String upload01() {
@@ -30,6 +36,7 @@ public class A02_FileUploadCtrl {
 			System.out.println("업로드파일:"+mf.getOriginalFilename());
 		}
 		System.out.println("자료명:"+title);
+		service.uploadFile(mfs, title);
 		return "WEB-INF\\views\\a05_mvcexp\\a03_fileupload.jsp";
 	}
 	//
