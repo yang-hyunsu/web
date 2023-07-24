@@ -25,6 +25,10 @@
     	$(document).ready( function(){
     		
     		//$("h2").text("jquery 로딩 성공")
+    		var msg = "${msg}"
+    		if(msg!=""){
+    			alert(msg)
+    		}
     	});
     </script>      
     
@@ -49,6 +53,7 @@
 	     	</form>
 	 	    </div>
 	 	</nav>
+	 	<!-- 
 		<table class="table table-striped table-hover">
 			<thead class="table-success">
 		      	<tr  class="text-center">
@@ -64,7 +69,8 @@
 			        <td>john@example.com</td>
 			   	</tr>
 		 	</tbody>
-		</table>      	
+		</table>
+		 -->      	
     </div>
 </body>
 </html>

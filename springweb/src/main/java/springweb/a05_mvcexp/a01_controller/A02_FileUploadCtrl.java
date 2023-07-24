@@ -3,6 +3,7 @@ package springweb.a05_mvcexp.a01_controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,12 +32,13 @@ public class A02_FileUploadCtrl {
 		return "WEB-INF\\views\\a05_mvcexp\\a03_fileupload.jsp";
 	}
 	@PostMapping("upload01.do")
-	public String upload01(@RequestParam("report") MultipartFile[] mfs,						   @RequestParam("title") String title) {
-		for(MultipartFile mf:mfs) {
-			System.out.println("업로드파일:"+mf.getOriginalFilename());
-		}
-		System.out.println("자료명:"+title);
-		service.uploadFile(mfs, title);
+	public String upload01(@RequestParam("report") MultipartFile[] mfs,						   @RequestParam("title") String title,
+							Model d) {
+//		for(MultipartFile mf:mfs) {
+//			System.out.println("업로드파일:"+mf.getOriginalFilename());
+//		}
+//		System.out.println("자료명:"+title);
+		d.addAttribute("msg",service.uploadFile(mfs, title));
 		return "WEB-INF\\views\\a05_mvcexp\\a03_fileupload.jsp";
 	}
 	//

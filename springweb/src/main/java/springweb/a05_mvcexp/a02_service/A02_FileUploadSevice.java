@@ -12,25 +12,23 @@ public class A02_FileUploadSevice {
 	
 	@Value("${user.upload}")
 	String path;
-	public void uploadFile(MultipartFile[] mps, String title) {
+	public String uploadFile(MultipartFile[] mps, String title) {
+		String msg="업로드 성공";
 		//  파일객체 만들기..
 		for(MultipartFile mpf : mps) {
 			File upFile = new File(path + 
 						mpf.getOriginalFilename());
-			// MultipartFile ==> File
 			try {
 				mpf.transferTo(upFile);
-				
 			} catch (IllegalStateException e) {
 				System.out.println(e.getMessage());
+				msg="업로드 에러:"+e.getMessage()+"\n";
 			} catch (IOException e) {
 				System.out.println("#파일업로드에러발생#");
 				System.out.println(e.getMessage());
+				msg="업로드 에러:"+e.getMessage()+"\n";
 			}
-			System.out.println("파일업로드 성공");
-			
-			
 		}
-		
+		return msg;
 	}
 }
