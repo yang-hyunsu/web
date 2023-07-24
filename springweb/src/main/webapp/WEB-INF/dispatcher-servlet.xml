@@ -43,6 +43,11 @@
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
 	</context:component-scan>
+	<context:property-placeholder 
+		location="classpath:resource/a01_config"/>
+	<!-- container안에서도 접근, java소스로도 접근 가능..key/val -->
+	
+	
 	<bean class="backendWeb.a01_dao.A04_PreparedDao"/>
 	<!-- 
 	# DB연결처리
@@ -60,6 +65,9 @@
 	
 	</bean> 
 	<!-- 
+oracle.jdbc.driver.OracleDriver	
+jdbc:oracle:thin:@localhost:1521:xe
+	
 	# mybatis연동처리..
 	1. 위 연결 정보 설정
 	2. mybatis 공통 xml 연동 처리

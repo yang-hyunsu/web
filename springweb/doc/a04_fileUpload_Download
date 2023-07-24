@@ -51,6 +51,34 @@
 	2) form 요소객체
 		type=file
 		multiple : 파일 다중 설정시 필요	 
+	3) submit로 처리시
+5. controller
+	@Param("이름") MultipartFile[] mpfs
+6. service 저장..
+	1) 저장 경로설정 : container 공통 설정 파일로 처리
+		resource 파일로 a01_config 파일 만들기 
+			파일 경로, DB 서버 정보등을 설정
+		container에서 위 내용일 인식할 수 있게 설정.
+		
+	2) @Value("공통설정명)
+	   String path;  : 공통설정문자열 가져오기..
+	3) File 객체 생성
+		위 파일경로명과 파일명을 기준으로 파일 객체 생성
+	4) MultipartFile ==> File객체로 변환처리..
+		멀티파일.transerTo(파일객체)
+		파일저장 처리..
+	5) 해당 경로에 파일 저장된 내용 확인..
+7. DB처리
+	1) 데이터베이스 자료 테이블 만들어서
+		입력 sql 작성 확인
+	2) VO 생성
+	3) dao 인력 인터페이스
+	4) mapper 생성
+	5) 위 파일업로드 service에서 DB 입력 정보 처리..
+	 
+			
+
+
 		
 
 ex) A02_FileUploadCtrl 추가 메서드로
