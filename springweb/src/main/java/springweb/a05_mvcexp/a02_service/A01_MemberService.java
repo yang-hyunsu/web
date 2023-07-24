@@ -7,8 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import springweb.a05_mvcexp.a03_dao.A01_MemberDao;
+import springweb.a05_mvcexp.a03_dao.A04_FileUploadDao;
 import springweb.a05_mvcexp.z01_vo.Emp;
+import springweb.a05_mvcexp.z01_vo.FileVo;
 import springweb.a05_mvcexp.z01_vo.Member;
+import springweb.a05_mvcexp.z01_vo.Restore;
 
 @Service
 public class A01_MemberService {
@@ -137,29 +140,34 @@ public class A01_MemberService {
 		System.out.println("연습27 사원삭제 :");
 		dao.delEmp(1006);
 		*/
-		System.out.println("연습25 부서등록1 :");
-		dao.insertDept(80, "회계2", "서울");		
-		System.out.println("연습26 학생수정 :");
-		dao.updateStudent("마길동12", 90, 80, 90, 4);	
-				
-		System.out.println("연습28 동적 query 처리");
-		System.out.println("1) ename이 null일 때 키워드");
-		for(Emp e:dao.getDynamicSQL(null)) {
-			System.out.println(e.getEname());
-		}
-		System.out.println("2) ename이 null일 아닐 때(A)");
-		for(Emp e:dao.getDynamicSQL("A")) {
-			System.out.println(e.getEname());
-		}
-		System.out.println("연습29 동적 query 처리(foreach)");
-		List<Integer> empnos = new ArrayList<Integer>();
-		empnos.add(7369);
-		empnos.add(7499);
-		empnos.add(7521);
-		for(Emp emp:dao.getEmpByEmpnos(empnos)){
-		   System.out.print(emp.getEmpno()+"\t");
-		   System.out.print(emp.getEname()+"\t");
-		   System.out.print(emp.getJob()+"\n");
-		}		
+//		System.out.println("연습25 부서등록1 :");
+//		dao.insertDept(80, "회계2", "서울");		
+//		System.out.println("연습26 학생수정 :");
+//		dao.updateStudent("마길동12", 90, 80, 90, 4);	
+//				
+//		System.out.println("연습28 동적 query 처리");
+//		System.out.println("1) ename이 null일 때 키워드");
+//		for(Emp e:dao.getDynamicSQL(null)) {
+//			System.out.println(e.getEname());
+//		}
+//		System.out.println("2) ename이 null일 아닐 때(A)");
+//		for(Emp e:dao.getDynamicSQL("A")) {
+//			System.out.println(e.getEname());
+//		}
+//		System.out.println("연습29 동적 query 처리(foreach)");
+//		List<Integer> empnos = new ArrayList<Integer>();
+//		empnos.add(7369);
+//		empnos.add(7499);
+//		empnos.add(7521);
+//		for(Emp emp:dao.getEmpByEmpnos(empnos)){
+//		   System.out.print(emp.getEmpno()+"\t");
+//		   System.out.print(emp.getEname()+"\t");
+//		   System.out.print(emp.getJob()+"\n");
+//		}		
+		System.out.println("연습30 파일업로드 등록");
+		dao2.insFileInfo(new Restore(2, "파일내용", "파일명"));
 	}
+	@Autowired
+	private A04_FileUploadDao dao2;
+
 }
