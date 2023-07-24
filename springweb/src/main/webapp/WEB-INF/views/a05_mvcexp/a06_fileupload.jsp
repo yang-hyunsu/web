@@ -25,9 +25,6 @@
     	$(document).ready( function(){
     		
     		//$("h2").text("jquery 로딩 성공")
-    		var msg = "${msg}"
-    		if(msg!="")
-    			alert(msg)
     	});
     </script>      
     
@@ -35,16 +32,22 @@
 </head>
 <body>
     <div class="container mt-3">
-    	<h2>파일업로드 3번째..</h2>
+    	<h2>파일업로드 DB 처리</h2>
 	  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	  		<div class="container-fluid">    	
-	    	<form method="post" enctype="multipart/form-data" class="d-flex align-items-center" >
+	    	<form method="post"  class="d-flex align-items-center" >
 	            <input type="text" class="form-control me-2" 
-	      	     id="title01" placeholder="자료명 입력" value="${param.title01}" name="title01"  aria-label="Search">
-	            <input type="file" class="form-control me-2" 
-	      	     id="report01"  name="report01" multiple="multiple"  aria-label="Search">
-	         	<button type="submit" class="btn btn-primary" 
-	         		style="width:200px;">자료등록</button>
+	      	     id="title" placeholder="직책명 입력" value="${param.title}" name="title"  aria-label="Search">
+	            <input type="text" class="form-control me-2" 
+	      	     id="min_sal1" placeholder="최소급여 시작"  
+	      	     value="${empty param.min_sal1? 0: param.min_sal1}"  name="min_sal1"  aria-label="Search">
+	      	    ~
+	            <input type="text" class="form-control me-2" 
+	      	     id="min_sal2" placeholder="최소급여 마지막" 
+	      	      value="${empty param.min_sal2? 9999999: param.min_sal2}"  name="min_sal2"  aria-label="Search">
+	      	     
+	      	     
+	         	<button type="submit" class="btn btn-primary" style="width:200px;">조회</button>
 	     	</form>
 	 	    </div>
 	 	</nav>
