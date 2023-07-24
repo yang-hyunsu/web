@@ -43,7 +43,7 @@
 	      	     placeholder="파일선택"  
 	      	     name="image" multiple="multiple"  aria-label="Search">
 	      	
-	         	<button type="submit" class="btn btn-primary" style="width:200px;">파일업로</button>
+	         	<button type="submit" class="btn btn-primary" style="width:200px;">파일업로드</button>
 	     	</form>
 	 	    </div>
 	 	</nav>
