@@ -21,4 +21,22 @@ public class A02_FileUploadCtrl {
 		System.out.println("자료명:"+title);
 		return "WEB-INF\\views\\a05_mvcexp\\a03_fileupload.jsp";
 	}
+	//
+	@GetMapping("upload02.do")
+	public String upload02() {
+		return "WEB-INF\\views\\a05_mvcexp\\a04_fileupload.jsp";
+	}
+	@PostMapping("upload02.do")
+	public String upload02(@RequestParam("image") MultipartFile[] images,
+			               @RequestParam("img01") String img01 ) {
+		for(MultipartFile mp:images) {
+			System.out.println("이미지:"+mp.getOriginalFilename());
+		}
+		System.out.println("자료명:"+img01);
+		return "WEB-INF\\views\\a05_mvcexp\\a04_fileupload.jsp";
+	}	
+	
+	
+	
+	
 }

@@ -53,7 +53,13 @@
 		multiple : 파일 다중 설정시 필요	 
 		
 
-
+ex) A02_FileUploadCtrl 추가 메서드로
+	/upload02.do로 해서
+	a04_fileupload.jsp
+		자료명 : img01
+		파일요소 : image
+		로 처리해서 업로드된 자료 출력..
+		 
 
 	
 	
