@@ -60,6 +60,12 @@
 			파일 경로, DB 서버 정보등을 설정
 		container에서 위 내용일 인식할 수 있게 설정.
 		
+		ex) resource/a02_config 파일 만들어서
+			영어 -  이름,나이,사는곳 설정
+			@GetMapping("upload01.do")로 호출하여 출력되게
+			하세요..
+			
+		
 	2) @Value("공통설정명)
 	   String path;  : 공통설정문자열 가져오기..
 	3) File 객체 생성

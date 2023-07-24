@@ -43,8 +43,13 @@
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
 	</context:component-scan>
-	<context:property-placeholder 
-		location="classpath:resource/a01_config"/>
+	 
+	<context:property-placeholder location="classpath:resource/a01_config,classpath:resource/a02_config"/>
+	
+	<!-- 
+	<context:property-placeholder location="classpath:resource/a01_config"/>
+	<context:property-placeholder location="classpath:resource/a02_config"/>
+	 -->
 	<!-- container안에서도 접근, java소스로도 접근 가능..key/val -->
 	
 	

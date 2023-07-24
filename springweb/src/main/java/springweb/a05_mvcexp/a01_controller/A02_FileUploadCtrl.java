@@ -1,5 +1,6 @@
 package springweb.a05_mvcexp.a01_controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,8 +10,18 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class A02_FileUploadCtrl {
+	@Value("${name}")
+	private String name;
+	@Value("${age}")
+	private String age;
+	@Value("${loc}")
+	private String loc;
+	
 	@GetMapping("upload01.do")
 	public String upload01() {
+		System.out.println("이름:"+name);
+		System.out.println("나이:"+age);
+		System.out.println("사는곳:"+loc);
 		return "WEB-INF\\views\\a05_mvcexp\\a03_fileupload.jsp";
 	}
 	@PostMapping("upload01.do")
