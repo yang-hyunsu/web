@@ -78,6 +78,42 @@
 		<property name="basePackage" 
 			value="springweb.a05_mvcexp.a03_dao"/>
 	</bean>
+	<!-- 
+	# jsp뷰가 default인데, 이 뷰뿐만 아니라 선언된 뷰를 사용할려면
+	두가지 뷰가 특정 규칙에 의해서 우선 순위가 설정이 되어야 한다. 
+	1. 우선 jsp뷰를 제외한 bean으로 선언할 뷰
+	2. 두번째 우선순위로 jsp뷰 선언..
+	
+	ex) 파랑구슬(2), 빨강구슬(8)
+	 -->
+	<bean id="btnViewResolver" 
+	class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="0"/>
+	</bean>
+	
+	
+	
+	
+	<!-- 추가되는 뷰가 적기 때문에 우선순위를 지정.
+	 
+	return "파일업로드 view" ==> container에서 명시적으로 선언하여
+		처리하는 뷰
+	-->
+	<!-- 파일업로드 뷰 추가.. 
+	컨트롤러에 요청값으로 MultiPartFile이 파일업로드 객체로 사용할 수 있게 해준다-->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+
+	
+		
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="order" value="1"/>
+	</bean>	 
+	<!-- 그 외는 화면을 처리하는 viewer(jsp)로 우선순위를 뒤로 지정 
+	
+	return "WEB-INF\\views\\a02_emp\\a02_emp_datail.jsp";
+	-->
+	 
 	
 </beans>   
 

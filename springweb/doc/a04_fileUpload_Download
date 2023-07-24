@@ -31,6 +31,22 @@
 		file를 처리하는 뷰 선언.
 	2) 초기 파일을 첨부할 수 있는 화면과 화면을 호출하는 controller
 		url mapping 선언	
+	3) 첨부 파일 화면 구현 : front 속성 지정
+	4) 파일 첨부시 처리되는 controller 선언
+	5) service 단에서 MultipartFile을 File객체로 변환해서
+		특정위치에 저장
+	6) 저장하면서 파일정보도 DB에 저장 처리
+	
+# 컨테이너 선언
+1. 일반 jsp 뷰와 기타 다른 viewer를 선언이 가능 한 환경 설정
+2. 파일 업로드 뷰 선언.
+
+
+
+	
+	
+	
+	 	
 		
 
 
