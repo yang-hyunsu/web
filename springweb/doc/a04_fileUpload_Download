@@ -119,8 +119,8 @@ ex) A03_FileUploadService.java
 				int no = dao.getNo(); 반복문 밖에서 호출
 				
 				// DB 처리(반복문안에서 처리)
-				dao.insertFileInfo(no, fname, 
-								f.getContent());
+				dao.insertFileInfo(new Restore(no, fname, 
+								f.getContent() ));
 			}			
 	3) Dao
 		A04_FileUploadDao.java
@@ -128,9 +128,7 @@ ex) A03_FileUploadService.java
 		public int getNo();
 		@insert("insert into restore values(	
 			#{no},#{content},#{fname},sysdate,sysdate)")
-		public void insFileInfo(@Param("no") int no,
-			@Param("fname") String name, 
-			@Param("content") String content);
+		public void insFileInfo(Restore ins);
 	4) VO
 		- 파일업로드 DB 처리  
 			Restore.java
@@ -160,7 +158,39 @@ ex) A03_FileUploadService.java
 		확인할 때, 처리내용.	
 		select * from restore
 		where no = #{no}			   
-	   
+# 처리 순서
+1. DB 생성
+	CREATE table restore(
+			no	NUMBER,
+			content varchar2(1000),
+			filename varchar2(100),
+			regdte DATE,
+			uptdte DATE);
+	create sequence file_seq;
+	select file_seq.nextval from dual;
+	insert into restore values(	
+				1,'내용','파일명',sysdate,sysdate);	
+	select * from restore
+	where no = 1;
+
+2. vo, Dao처리
+		- 파일업로드 DB 처리  
+			Restore.java
+				private int no;
+				private String content;
+				private String filename;
+				private Date regdte;
+				private Date uptdte;
+		- 요청값 처리 FileVo.java
+			private MultiPartFile[] fileInfos;
+			private String content; 
+3. Dao호출 service단처리
+	
+
+4. service 파일업로드
+5. controller 요청 처리
+6. 화면구현..
+
 	   
 	   
 	    	
