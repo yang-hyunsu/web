@@ -3,6 +3,7 @@ package springweb.a05_mvcexp.z01_vo;
 import org.springframework.web.multipart.MultipartFile;
 
 public class FileVo {
+	// fileInfos content
 	private MultipartFile[] fileInfos;
 	private String content;
 	public FileVo() {
