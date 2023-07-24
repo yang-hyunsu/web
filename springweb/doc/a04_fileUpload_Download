@@ -59,8 +59,16 @@ ex) A02_FileUploadCtrl 추가 메서드로
 		자료명 : img01
 		파일frm요소명 : image
 		로 처리해서 업로드된 자료 출력..
-		 
-WEB-INF\views\a05_mvcexp\a04_fileupload.jsp
+	WEB-INF\views\a05_mvcexp\a04_fileupload.jsp
+	
+A03_FileUploadCtrl.java
+	/uploadExp03.do
+	a05_fileupload.jsp
+		자료명 : title01
+		파일form요소명 : report01
+		
+
+
 	
 	
 	
