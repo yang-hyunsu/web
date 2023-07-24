@@ -40,6 +40,18 @@
 # 컨테이너 선언
 1. 일반 jsp 뷰와 기타 다른 viewer를 선언이 가능 한 환경 설정
 2. 파일 업로드 뷰 선언.
+3. 초기 화면 로딩 및 파일을 업로드 할 수 있는 form 화면 구성 controller
+	선언
+	1) controller(A02_FileUploadCtrl.java)
+		upload01.do
+	2) view(a05_mvcexp/a03_fileupload.jsp)
+4. view단 처리
+	1) form 속성
+		enctype="multipart/form-data"
+	2) form 요소객체
+		type=file
+		multiple : 파일 다중 설정시 필요	 
+		
 
 
 
