@@ -39,6 +39,16 @@ public class A02_FileUploadCtrl {
 //		}
 //		System.out.println("자료명:"+title);
 		d.addAttribute("msg",service.uploadFile(mfs, title));
+		/*  # jsp단에 처리 내용#
+    		var msg = "${msg}"
+    		if(msg!=""){
+    			alert(msg)
+    		}
+    		
+    	ex) A03_FileUoadService.java
+    		A03_FileUploadCtrl.java
+    		로 파일이 업로드 처리되게 하세요.
+		 * */
 		return "WEB-INF\\views\\a05_mvcexp\\a03_fileupload.jsp";
 	}
 	//
