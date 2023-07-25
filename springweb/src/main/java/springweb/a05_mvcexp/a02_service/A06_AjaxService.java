@@ -10,7 +10,7 @@ import springweb.a05_mvcexp.a03_dao.A06_AjaxDao;
 
 @Service
 public class A06_AjaxService {
-	@Autowired
+	@Autowired 
 	private A06_AjaxDao dao;
 	public List<Job> getJobList(Job sch){
 		if(sch.getJob_id()==null) sch.setJob_id("");

@@ -25,46 +25,81 @@
     	$(document).ready( function(){
     		
     		//$("h2").text("jquery 로딩 성공")
+    		$("#job_id, #job_title").keyup(function(){
+    			
+    			//alert( $("form").serialize() )
+    			$.ajax({
+    				type:"post",
+    				url:"${path}/jobListData2.do",
+    				data:$("form").serialize(),
+    				dataType:"json",
+    				success:function(jobs){
+    					//console.log(jobs)
+    					//job_id   job_title  min_salary max_salary
+    					var add = ""
+    					jobs.forEach(function(job){
+    						console.log(job)
+    						add+="<tr  class='text-center'>"
+    						add+="<td>"+job.job_id+"</td>"
+    						add+="<td>"+job.job_title+"</td>"
+    						add+="<td>"+job.min_salary+"</td>"
+    						add+="<td>"+job.max_salary+"</td>"
+    						add+="</tr>"
+    					})
+    					$("#show").html(add);
+    				},
+    				error:function(err){
+    					console.log(err)
+    				}
+    				
+    			})
+    		})
+    		
     	});
     </script>      
     
     
 </head>
 <body>
+<!-- 
+	 	직책아이디  직책명      최소급여     최대급여
 
+job_id job_title
+
+jobListData2.do
+ -->
     <div class="container mt-3">
     	<h2>ajax로 화면 처리!!!@@@</h2>
 	  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	  		<div class="container-fluid">    	
 	    	<form method="post"  class="d-flex align-items-center" >
 	            <input type="text" class="form-control me-2" 
-	      	     id="title" placeholder="직책명 입력" value="${param.title}" name="title"  aria-label="Search">
+	      	     placeholder="직책아이디 입력" id="job_id" name="job_id"  aria-label="Search">
 	            <input type="text" class="form-control me-2" 
-	      	     id="min_sal1" placeholder="최소급여 시작"  
-	      	     value="${empty param.min_sal1? 0: param.min_sal1}"  name="min_sal1"  aria-label="Search">
-	      	    ~
-	            <input type="text" class="form-control me-2" 
-	      	     id="min_sal2" placeholder="최소급여 마지막" 
-	      	      value="${empty param.min_sal2? 9999999: param.min_sal2}"  name="min_sal2"  aria-label="Search">
+	      	     placeholder="직책명 입력" id="job_title" name="job_title"  aria-label="Search">
 	      	     
-	      	     
-	         	<button type="submit" class="btn btn-primary" style="width:200px;">조회</button>
+	         	<button type="button" class="btn btn-primary" style="width:200px;">조회</button>
 	     	</form>
 	 	    </div>
 	 	</nav>
+	 	<!-- 
+
+	 	 -->
 		<table class="table table-striped table-hover">
 			<thead class="table-success">
 		      	<tr  class="text-center">
-				    <th>Firstname</th>
-				    <th>Lastname</th>
-				    <th>Email</th>
+				    <th>직책아이디</th>
+				    <th>직책명</th>
+				    <th>최소급여</th>
+				    <th>최대급여</th>
 		      	</tr>
 		    </thead>
-		    <tbody>
+		    <tbody id="show">
 			   	<tr  class="text-center">
-			        <td>John</td>
-			        <td>Doe</td>
-			        <td>john@example.com</td>
+			        <td></td>
+			        <td></td>
+			        <td></td>
+			        <td></td>
 			   	</tr>
 		 	</tbody>
 		</table>      	
