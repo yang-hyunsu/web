@@ -2,6 +2,7 @@ package springweb.a05_mvcexp.a02_service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,7 +23,6 @@ public class A04_FileUploadService {
 	
 	public String uploadFile(FileVo vo) {
 		String msg = "업로드 성공";
-		
 		boolean isFirst=true;
 		int no = 0;
 		for(MultipartFile mf:vo.getFileInfos() ) {
@@ -37,6 +37,7 @@ public class A04_FileUploadService {
 					msg = "예외발생2:"+e.getMessage();
 				}
 				if(msg.equals("업로드 성공")) {
+					
 					if(isFirst) {
 						no = dao.getNo();
 						isFirst=false;
@@ -53,4 +54,7 @@ public class A04_FileUploadService {
 		
 		return msg;
 	}
+	public List<Restore> restoreList(){
+		return dao.restoreList();
+	}		
 }

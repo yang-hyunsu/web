@@ -1,5 +1,7 @@
 package springweb.a05_mvcexp.a03_dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
@@ -10,5 +12,8 @@ public interface A04_FileUploadDao {
 	public int getNo();
 	@Insert("insert into restore values(#{no},#{content},"
 			+ "#{filename},sysdate,sysdate)")
-	public void insFileInfo(Restore ins);	
+	public void insFileInfo(Restore ins);
+	@Select("SELECT * FROM RESTORE order by regdte desc")
+	public List<Restore> restoreList();	
+	
 }

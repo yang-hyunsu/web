@@ -52,17 +52,31 @@
 		<table class="table table-striped table-hover">
 			<thead class="table-success">
 		      	<tr  class="text-center">
-				    <th>Firstname</th>
-				    <th>Lastname</th>
-				    <th>Email</th>
+				    <th>번호</th>
+				    <th>내용</th>
+				    <th>파일명</th>
+				    <th>등록일</th>
+				    <th>수정일</th>
 		      	</tr>
 		    </thead>
 		    <tbody>
+		    	<c:forEach var="rs" items="${rlist}">
 			   	<tr  class="text-center">
-			        <td>John</td>
-			        <td>Doe</td>
-			        <td>john@example.com</td>
+			        <td>${rs.no}</td>
+			        <td>${rs.content}</td>
+			        <td>${rs.filename}</td>
+			        <td><fmt:formatDate type="both"
+			        	 dateStyle="short"
+			        	 timeStyle="short"
+			        	 value="${rs.regdte}"/></td>
+			        <td><fmt:formatDate type="both"
+			        	 dateStyle="short"
+			        	 timeStyle="short"
+			        	 value="${rs.uptdte}"/>			        
+			        
+			        </td>
 			   	</tr>
+			   	</c:forEach>
 		 	</tbody>
 		</table>      	
     </div>
