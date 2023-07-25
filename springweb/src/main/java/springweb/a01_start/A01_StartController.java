@@ -1,5 +1,6 @@
 package springweb.a01_start;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,7 @@ public class A01_StartController {
 		// view단에 넘겨줄 핵심 데이터 : 모델데이터
 		// jsp ==> <h3>${msg}</h3>
 		d.addAttribute("msg", "안녕하세요 스프링 모델 데이터");
+		//ystem.out.println("##"+web.test());
 		return "WEB-INF\\views\\a01_start.jsp";
 	}
 	@RequestMapping("/start2.do")
