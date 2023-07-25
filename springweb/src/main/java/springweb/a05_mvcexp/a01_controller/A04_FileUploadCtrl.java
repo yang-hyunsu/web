@@ -14,6 +14,8 @@ public class A04_FileUploadCtrl {
 	@Autowired
 	private A04_FileUploadService service;
 	
+	
+	// 초기화면 구성과 파일업로드 요청 처리를 한번에 처리..
 	@RequestMapping("upload04.do")
 	public String upload04(FileVo vo,  Model d) {
 		if(vo.getContent()!=null) {

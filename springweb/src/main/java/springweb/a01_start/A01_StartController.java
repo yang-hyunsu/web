@@ -1,9 +1,11 @@
 package springweb.a01_start;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import backendWeb.z01_vo.Person;
 import backendWeb.z01_vo.Product;
@@ -81,14 +83,22 @@ public class A01_StartController {
 	}
 	// ex2) req06.do?tname=LG&win=5&def=2
 	@RequestMapping("req06.do")
+	
 	public String req06(Team t) {
 		System.out.println("팀명:"+t.getTname());
 		System.out.println("승:"+t.getWin());
 		System.out.println("패:"+t.getDef());
 		return "";
 	}
-	
-	
+	// req07.do?tname=LG&win=7&def=3
+	@RequestMapping("req07.do")
+	@ResponseBody
+	public ResponseEntity<Team>  req07(Team t) {
+		System.out.println("팀명:"+t.getTname());
+		System.out.println("승:"+t.getWin());
+		System.out.println("패:"+t.getDef());
+		 return ResponseEntity.ok(t);
+	}	
 	
 	
 }

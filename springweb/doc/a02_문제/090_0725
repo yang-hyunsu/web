@@ -1,0 +1,255 @@
+문제 1) 스프링에서 파일 업로드를 처리하는 과정에 대한 설명으로 올바른 것은?
+
+a) 파일 업로드 처리는 일반적으로 스프링 컨테이너 설정 파일에 객체를 선언하지 않고 처리한다.
+b) 파일 업로드를 위한 뷰 리졸버 설정은 파일 다운로드와는 함께 설정해야 한다.
+c) 파일을 첨부하는 화면을 구성할 때, `<input type="file">` 요소를 사용하며, `enctype="multipart/form-data"` 속성을 반드시 지정해야 한다.
+d) 파일 업로드 처리를 위해 스프링 컨트롤러에서 `File` 객체를 매개변수로 사용하면 된다.
+
+문제 2) 파일 업로드를 처리하는 스프링 컨트롤러의 메서드 선언 방법으로 올바른 것은?
+
+a) `@DeleteMapping("/upload.do") public String handleFileUpload(@RequestParam("file") MultipartFile file)`
+b) `@GetMapping("/upload.do") public String handleFileUpload(@RequestParam("file") MultipartFile file)`
+c) `@PostMapping("/upload") public String handleFileUpload(@RequestParam("file") MultipartFile file)`
+d) `@PutMapping("/upload") public String handleFileUpload(@RequestParam("file") MultipartFile file)`
+
+
+문제 3) 스프링에서 파일을 서버에 저장하기 위해 `MultipartFile` 객체를 `File` 객체로 변환하는 방법으로 올바른 것은?
+
+a) `MultipartFile` 객체를 `File` 객체로 변환할 필요가 없다. `MultipartFile` 객체를 그대로 사용하면 된다.
+b) `MultipartFile` 객체의 `transferTo()` 메서드를 사용하여 `File` 객체로 저장한다.
+c) `File` 객체의 `createNewFile()` 메서드를 사용하여 빈 파일을 생성한 후, `MultipartFile`의 데이터를 쓴다.
+d) `MultipartFile` 객체의 `getBytes()` 메서드를 사용하여 `byte[]` 배열로 변환한 후, `File` 객체로 저장한다.
+
+
+문제 4) 스프링에서 파일 업로드를 처리하는 서비스 클래스에서 사용된 `path` 변수에 대한 올바른 설정은?
+
+a) `@Value("${user.upload}") private String path;`
+b) `@Value("${file.upload.path}") private String path;`
+c) `@Value("user.upload.path") private String path;`
+d) `@Value("file.upload.path") private String path;`
+
+
+
+문제 5) 스프링에서 파일 업로드를 처리하는 서비스 클래스에서 사용된 `@Value` 어노테이션의 역할은?
+
+a) 해당 어노테이션은 파일 업로드를 수행하는데 필요한 값을 주입하기 위해 사용된다.
+b) `@Value` 어노테이션을 통해 스프링 설정 파일의 속성값을 가져와서 사용할 수 있다.
+c) `@Value` 어노테이션을 사용하여 파일 업로드를 위한 경로 설정을 할 수 있다.
+d) `@Value` 어노테이션을 사용하면 컨트롤러로부터 받은 파라미터를 VO 객체에 매핑할 수 있다.
+
+문제 6) 스프링에서 파일 업로드를 처리하는 서비스 클래스에서 사용된 `path` 변수에 대한 올바른 설정은?
+
+a) `@Value("${user.upload}") private String path;`
+b) `@Value("${file.upload.path}") private String path;`
+c) `@Value("user.upload.path") private String path;`
+d) `@Value("file.upload.path") private String path;`
+
+
+문제 7) 파일 업로드를 처리하는 서비스 클래스에서 사용되는 `uploadFile` 메서드의 매개변수로 사용된 `FileVo` 클래스의 멤버 변수로 올바른 것은?
+
+a) `private String path;`
+b) `private String filename;`
+c) `private Date uploadDate;`
+d) `private MultipartFile[] fileInfos;`
+
+
+문제 8) 파일을 업로드하고 DB에 저장하는 기능을 가진 `A04_FileUploadService` 클래스의 `uploadFile` 메서드에서 사용된 DB 처리코드로 올바른 것은?
+
+```java
+String msg = "업로드 성공";
+int no = dao.getNo();
+for (MultipartFile mf : vo.getFileInfos()) {
+    String fname = mf.getOriginalFilename();
+    File f = new File(path + fname);
+    try {
+        mf.transferTo(f);
+    } catch (IllegalStateException e) {
+        msg = "예외발생1: " + e.getMessage();
+    } catch (IOException e) {
+        msg = "예외발생2: " + e.getMessage();
+    }
+    if (msg.equals("업로드 성공")) {
+        dao.insFileInfo(new Restore(no, vo.getContent(), fname));
+    }
+}
+``
+a) `dao.getNo()`는 DB에서 파일의 고유 번호를 가져오는 메서드이다.
+b) `mf.getOriginalFilename()`은 업로드한 파일의 경로명을 가져오는 메서드이다.
+c) `mf.transferTo(f)`는 `File` 객체의 데이터를 `MultipartFile` 객체로 저장하는 역할을 한다.
+d) `dao.insFileInfo(new Restore(no, vo.getContent(), fname))`는 파일 정보를 DB에 조회하는 메서드이다.
+
+
+
+
+
+문제 1) 스프링에서 파일 업로드를 처리하는 과정에 대한 설명으로 올바른 것은?
+
+a) 파일 업로드 처리는 일반적으로 스프링 컨테이너 설정 파일에 객체를 선언하여 처리한다.
+b) 파일 업로드를 위한 뷰 리졸버 설정은 파일 다운로드와는 무관하게 별도로 설정해야 한다.
+c) 파일을 첨부하는 화면을 구성할 때, `<input type="file">` 요소를 사용하며, `enctype="multipart/form-data"` 속성을 반드시 지정해야 한다.
+d) 파일 업로드 처리를 위해 스프링 컨트롤러에서 `MultipartFile` 객체를 매개변수로 사용하면 된다.
+
+정답: c
+
+문제 2) 파일 업로드를 처리하는 스프링 컨트롤러의 메서드 선언 방법으로 올바른 것은?
+
+a) `@RequestMapping("/upload") public String handleFileUpload(@RequestParam("file") MultipartFile file)`
+b) `@GetMapping("/upload") public String handleFileUpload(@RequestParam("file") MultipartFile file)`
+c) `@PostMapping("/upload") public String handleFileUpload(@RequestParam("file") MultipartFile file)`
+d) `@PutMapping("/upload") public String handleFileUpload(@RequestParam("file") MultipartFile file)`
+
+정답: c
+
+문제 3) 파일을 관리하기 위해 DB에 저장할 때 사용하는 VO 객체의 멤버 변수로 올바른 것은?
+
+a) `private MultipartFile muti;`
+b) `private String filename;`
+c) `private Date uploadDate;`
+d) `private byte[] fileData;`
+
+정답: b
+
+문제 4) 스프링에서 파일을 서버에 저장하기 위해 `MultipartFile` 객체를 `File` 객체로 변환하는 방법으로 올바른 것은?
+
+a) `MultipartFile` 객체를 `File` 객체로 변환할 필요가 없다. `MultipartFile` 객체를 그대로 사용하면 된다.
+b) `MultipartFile` 객체의 `transferTo()` 메서드를 사용하여 `File` 객체로 저장한다.
+c) `File` 객체의 `createNewFile()` 메서드를 사용하여 빈 파일을 생성한 후, `MultipartFile`의 데이터를 쓴다.
+d) `MultipartFile` 객체의 `getBytes()` 메서드를 사용하여 `byte[]` 배열로 변환한 후, `File` 객체로 저장한다.
+
+정답: b
+
+문제 5) 파일을 업로드하고 DB에 저장하는 기능을 가진 `A04_FileUploadService` 클래스의 `uploadFile` 메서드에서 사용된 DB 처리코드로 올바른 것은?
+
+```java
+String msg = "업로드 성공";
+int no = dao.getNo();
+for (MultipartFile mf : vo.getFileInfos()) {
+    String fname = mf.getOriginalFilename();
+    File f = new File(path + fname);
+    try {
+        mf.transferTo(f);
+    } catch (IllegalStateException e) {
+        msg = "예외발생1: " + e.getMessage();
+    } catch (IOException e) {
+        msg = "예외발생2: " + e.getMessage();
+    }
+    if (msg.equals("업로드 성공")) {
+        dao.insFileInfo(new Restore(no, vo.getContent(), fname));
+    }
+}
+```
+
+a) `dao.getNo()`는 DB에서 파일의 고유 번호를 가져오는 메서드이다.
+b) `mf.getOriginalFilename()`은 업로드한 파일의 원본 파일명을 가져오는 메서드이다.
+c) `mf.transferTo(f)`는 `MultipartFile` 객체의 데이터를 `File` 객체로 저장하는 역할을 한다.
+d) `dao.insFileInfo(new Restore(no, vo.getContent(), fname))`는 파일 정보를 DB에 저장하는 메서드이다.
+
+정답: 모든 보기가 맞다
+
+문제 6) 스프링 컨트롤러에서 파일 업로드를 처리하는 요청 URL과 해당 URL로 처리되는 메서드 이름으로 올바른 것은?
+
+a) URL: `/upload`, 메서드: `handleFileUpload`
+b) URL: `/upload`, 메서드: `uploadFile`
+c) URL: `/fileUpload`, 메서드: `uploadFile`
+d) URL: `/fileUpload`, 메서드: `handleFileUpload`
+
+정답: c
+
+문제 7) 파일 업로드를 위한 화면을 구성하는 HTML 코드의 일부로 올바른 것은?
+
+```html
+<form method="post" enctype="multipart/form-data">
+    <input type="text" name="content" placeholder="파일정보 입력">
+    <input type="file" name="fileInfos" multiple="multiple">
+    <button type="submit">업로드</button>
+</form>
+```
+
+a) 파일 업로드를 처리하기 위해 `<form>` 요소에 `enctype="multipart/form-data"` 속성을 지정해야 한다.
+b) `<input type="text">` 요소로 파일 정보를 입력받을 수 있으며, `name` 속성을 통해 서버로 전달된다.
+c) `<input type="file">` 요소로 파일을 첨부할 수 있으며, `name` 속성을 통해 서버로 전달된다.
+d) 파일을 업로드하는 버튼에는 `<input type="submit">`을 사용하며, 폼을 전송하여 서버로 파일을 업로드한다.
+
+정답: a, c, d
+
+문제 8) 스프링에서 파일 업로드를 처리하는 서비스 클래스에서 사용된 `@Value` 어노테이션의 역할은?
+
+a) 해당 어노테이션은 파일 업로드를 수행하는데 필요한 값을 주입하기 위해 사용된다.
+b) `@Value` 어노테이션을 통해 스프링 설정 파일의 속성값을 가져와서 사용할 수 있다.
+c) `@Value` 어노테이션을 사용하여 파일 업로드를 위한 경로 설정을 할 수 있다.
+d) `@Value` 어노테이션을 사용하면
+
+ 컨트롤러로부터 받은 파라미터를 VO 객체에 매핑할 수 있다.
+
+정답: c
+
+문제 9) 스프링에서 파일 업로드를 처리하는 서비스 클래스에서 사용된 `path` 변수에 대한 올바른 설정은?
+
+a) `@Value("${user.upload}") private String path;`
+b) `@Value("${file.upload.path}") private String path;`
+c) `@Value("user.upload.path") private String path;`
+d) `@Value("file.upload.path") private String path;`
+
+정답: a
+
+문제 10) 파일 업로드를 처리하는 서비스 클래스에서 사용되는 `uploadFile` 메서드의 매개변수로 사용된 `FileVo` 클래스의 멤버 변수로 올바른 것은?
+
+a) `private String path;`
+b) `private String filename;`
+c) `private Date uploadDate;`
+d) `private MultipartFile[] fileInfos;`
+
+정답: d
+
+문제 11) 스프링 컨트롤러에서 파일 업로드를 처리하는 요청 URL과 해당 URL로 처리되는 메서드 이름으로 올바른 것은?
+
+a) URL: `/upload`, 메서드: `uploadFile`
+b) URL: `/upload`, 메서드: `handleFileUpload`
+c) URL: `/fileUpload`, 메서드: `uploadFile`
+d) URL: `/fileUpload`, 메서드: `handleFileUpload`
+
+정답: a
+
+문제 12) 파일 업로드를 위한 화면을 구성하는 HTML 코드의 일부로 올바른 것은?
+
+```html
+<form method="post" enctype="multipart/form-data">
+    <input type="text" name="content" placeholder="파일정보 입력">
+    <input type="file" name="fileInfos" multiple="multiple">
+    <button type="submit">업로드</button>
+</form>
+```
+
+a) 파일 업로드를 처리하기 위해 `<form>` 요소에 `enctype="multipart/form-data"` 속성을 지정해야 한다.
+b) `<input type="text">` 요소로 파일 정보를 입력받을 수 있으며, `name` 속성을 통해 서버로 전달된다.
+c) `<input type="file">` 요소로 파일을 첨부할 수 있으며, `name` 속성을 통해 서버로 전달된다.
+d) 파일을 업로드하는 버튼에는 `<input type="submit">`을 사용하며, 폼을 전송하여 서버로 파일을 업로드한다.
+
+정답: a, c, d
+
+문제 13) 스프링에서 파일 업로드를 처리하는 서비스 클래스에서 사용된 `@Value` 어노테이션의 역할은?
+
+a) 해당 어노테이션은 파일 업로드를 수행하는데 필요한 값을 주입하기 위해 사용된다.
+b) `@Value` 어노테이션을 통해 스프링 설정 파일의 속성값을 가져와서 사용할 수 있다.
+c) `@Value` 어노테이션을 사용하여 파일 업로드를 위한 경로 설정을 할 수 있다.
+d) `@Value` 어노테이션을 사용하면 컨트롤러로부터 받은 파라미터를 VO 객체에 매핑할 수 있다.
+
+정답: c
+
+문제 14) 스프링에서 파일 업로드를 처리하는 서비스 클래스에서 사용된 `path` 변수에 대한 올바른 설정은?
+
+a) `@Value("${user.upload}") private String path;`
+b) `@Value("${file.upload.path}") private String path;`
+c) `@Value("user.upload.path") private String path;`
+d) `@Value("file.upload.path") private String path;`
+
+정답: a
+
+문제 15) 파일 업로드를 처리하는 서비스 클래스에서 사용되는 `uploadFile` 메서드의 매개변수로 사용된 `FileVo` 클래스의 멤버 변수로 올바른 것은?
+
+a) `private String path;`
+b) `private String filename;`
+c) `private Date uploadDate;`
+d) `private MultipartFile[] fileInfos;`
+
+정답: d

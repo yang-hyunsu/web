@@ -1,5 +1,5 @@
 package backendWeb.z01_vo;
-
+// tname=LG&win=7&def=3
 public class Team {
 	private String tname;
 	private int win;
