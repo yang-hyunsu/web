@@ -27,7 +27,7 @@ public class A04_FileUploadService {
 		int no = 0;
 		for(MultipartFile mf:vo.getFileInfos() ) {
 			String fname = mf.getOriginalFilename();
-			if(fname!=null&&!fname.equals("")) {
+			if(fname!=null&&!fname.trim().equals("")) {
 				File f = new File(path+fname);
 				try {
 					mf.transferTo(f);
