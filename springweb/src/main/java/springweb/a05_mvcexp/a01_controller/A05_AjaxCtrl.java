@@ -1,6 +1,9 @@
 package springweb.a05_mvcexp.a01_controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -76,6 +79,17 @@ public class A05_AjaxCtrl {
 		
 		return g.toJson(new Product("apple",1500,5));
 	}
+	// ajax09.do?name=사과&price=1200&cnt=3
+	@GetMapping("ajax09.do")
+	public ResponseEntity<Product> ajax09(Product prod){
+		
+		return ResponseEntity.ok(prod); 
+	}
+	@GetMapping("ajax10.do")
+	public ResponseEntity<Emp> ajax10(Emp sch){
+		return ResponseEntity.ok(sch); 
+	}	
+	
 	
 	
 	
