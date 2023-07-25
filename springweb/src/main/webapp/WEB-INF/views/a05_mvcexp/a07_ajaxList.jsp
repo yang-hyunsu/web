@@ -42,8 +42,8 @@
     						add+="<tr  class='text-center'>"
     						add+="<td>"+job.job_id+"</td>"
     						add+="<td>"+job.job_title+"</td>"
-    						add+="<td>"+job.min_salary+"</td>"
-    						add+="<td>"+job.max_salary+"</td>"
+    						add+="<td>"+job.min_salary.toLocaleString()+"</td>"
+    						add+="<td>"+job.max_salary.toLocaleString()+"</td>"
     						add+="</tr>"
     					})
     					$("#show").html(add);
