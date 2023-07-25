@@ -63,6 +63,10 @@ public class DownloadViewer extends AbstractView {
 		FileCopyUtils.copy(fis, out);
 		//  4. 마지막으로 response buffer를 flush하고 자원해제
 		out.flush();
+		out.close();
+		fis.close();
+		
+		
 		// 11:05~
 	}
 }
