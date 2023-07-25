@@ -28,12 +28,7 @@ public class Member {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
+
 	public String getAuth() {
 		return auth;
 	}
@@ -45,6 +40,12 @@ public class Member {
 	}
 	public void setPoint(int point) {
 		this.point = point;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }

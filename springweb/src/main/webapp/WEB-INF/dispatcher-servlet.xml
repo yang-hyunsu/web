@@ -109,12 +109,7 @@ jdbc:oracle:thin:@localhost:1521:xe
 	class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<property name="order" value="0"/>
 	</bean>
-	
-	
-	
-	
 	<!-- 추가되는 뷰가 적기 때문에 우선순위를 지정.
-	 
 	return "파일업로드 view" ==> container에서 명시적으로 선언하여
 		처리하는 뷰
 	-->

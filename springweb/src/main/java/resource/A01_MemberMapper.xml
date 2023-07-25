@@ -5,7 +5,7 @@
 <mapper namespace="springweb.a05_mvcexp.a03_dao.A01_MemberDao">
 	<select id="memberList" 
 		parameterType="member" 
-		resultType="member">
+		resultType="member" >
 		SELECT * 
 		FROM MEMBER01
 		WHERE id LIKE '%'||#{id}||'%'
