@@ -1,6 +1,9 @@
 package springweb.a05_mvcexp.a01_controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,4 +29,12 @@ public class A06_AjaxCtrlView {
 		d.addAttribute("jList",service.getJobList(sch) );
 		return "jsonView";
 	}
+	
+	@RequestMapping("jobListData2.do")
+	public ResponseEntity<List<Job>> jobList(Job sch) {
+		return ResponseEntity.ok(service.getJobList(sch));
+	}
+
+	
+	
 }
