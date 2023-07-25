@@ -13,7 +13,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.servlet.view.AbstractView;
-
+// springweb.a06_util.DownloadViewer
+// downloadViewer
 @Component("downloadViewer")
 public class DownloadViewer extends AbstractView {
 	// 다운로드할 파일의 위치 경로
@@ -37,7 +38,9 @@ public class DownloadViewer extends AbstractView {
 		//         파일객체를 생성..
 		// 	1) 파일명 가져오기.
 		String fileName = (String)model.get("downloadFile");
+		System.out.println("다운로드 파일:"+fileName);
 		//  2) 파일 객체 생성..
+		System.out.println();
 		File file = new File(path+fileName);
 		//  2. response객체를 통해서 client에 전달하기 위해 설정.
 		//   1) contentType(파일전송전용)
@@ -50,7 +53,7 @@ public class DownloadViewer extends AbstractView {
 					"utf-8").replaceAll("\\+", " ");
 		//      - 파일명 지정   filename="파일명"
 		res.setHeader("Content-Disposition", 
-				"attachment:filename=\""+fileName+"\"");
+				"attachment;filename=\""+fileName+"\"");
 		res.setHeader("Content-Transfer-Encoding", "binary");
 		//  3. 파일을 보내기 위해 
 		//     File ==> FileInputStream ==>  

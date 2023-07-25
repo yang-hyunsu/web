@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class DownloadCtrl {
+	// download.do?fname=파일명
 	@RequestMapping("download.do")
 	public String download(@RequestParam("fname") 
 			String fname, Model d) {
 		d.addAttribute("downloadFile", fname);
+		System.out.println("호출!!!!");
 		return "downloadViewer";
 	}
 }

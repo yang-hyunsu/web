@@ -27,6 +27,7 @@
     		if(msg!="")
     			alert(msg)
     	});
+    	// 
     </script>      
     
     
@@ -59,9 +60,17 @@
 				    <th>수정일</th>
 		      	</tr>
 		    </thead>
+		    <script>
+		    	function down(fname){
+		    		if(confirm(fname+"\n파일을 다운로드하시겠습니까?")){
+		    			// download.do?fname=파일명
+		    			location.href="${path}/download.do?fname="+fname
+		    		}
+		    	}
+		    </script>
 		    <tbody>
 		    	<c:forEach var="rs" items="${rlist}">
-			   	<tr  class="text-center">
+			   	<tr onclick="down('${rs.filename}')" class="text-center">
 			        <td>${rs.no}</td>
 			        <td>${rs.content}</td>
 			        <td>${rs.filename}</td>
@@ -76,6 +85,7 @@
 			        
 			        </td>
 			   	</tr>
+			   	
 			   	</c:forEach>
 		 	</tbody>
 		</table>      	
