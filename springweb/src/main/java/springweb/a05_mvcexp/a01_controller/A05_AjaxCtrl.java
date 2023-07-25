@@ -51,6 +51,8 @@ public class A05_AjaxCtrl {
 		d.addAttribute("memList", service2.memberList(new Member()));
 		return "jsonView";
 	}
+		
+	
 	@GetMapping("ajax05.do")
 	@ResponseBody
 	public String ajax05() {
@@ -89,7 +91,10 @@ public class A05_AjaxCtrl {
 	public ResponseEntity<Emp> ajax10(Emp sch){
 		return ResponseEntity.ok(sch); 
 	}	
-	
+	@GetMapping("ajax11.do")
+	public ResponseEntity<List<Member>> ajax11(Member sch){
+		return ResponseEntity.ok(service2.memberList(sch)); 
+	}	
 	
 	
 	

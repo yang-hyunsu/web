@@ -10,15 +10,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebMvc
-public class WebConfig implements WebMvcConfigurer{
+public class WebConfig  implements WebMvcConfigurer {
+	
 	
 	// ResponseEntity<객체>를 리턴할 때, json데이터로 변경처리
 	@Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> 
 		converters) {
 		converters.add(new MappingJackson2HttpMessageConverter());
-		
 	}
+
 	
 	
 
