@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/springweb/a00_com/bootstrap.min.css" >
+<style>
+	td{text-align:center;}
+</style>
+<script src="/springweb/a00_com/jquery.min.js"></script>
+<script src="/springweb/a00_com/bootstrap.min.js"></script>
+<script src="/springweb/a00_com/vue.js"></script>
+
+<script type="text/javascript">
+/*
+# 조건문 처리 디렉티브
+1. 특정요소객체가 조건에 합당할 때 즉 true일 때만
+	화면에 보이게 할때 사용하는 디렉티브이다.
+2. 모델데이터의 조건값에 따른 처리로 볼 수 있다.
+3. 기본 형식
+	var model = {price:0}
+	
+	<input v-model="price"/>
+	<span v-if="price>=6000">Gold</span>
+	<span v-else-if="price>=3000">Silver</span>
+	<span v-else>Basic</span>
+ 
+ */
+	$(document).ready(function(){
+		var model = {msg:"조건문(v-if)처리",price:0}
+		var vm = new Vue({
+			el:".container",
+			data:model
+		})
+	});
+</script>
+</head>
+<body>
+<div class="container">
+	<div class="jumbotron text-center">
+	  <h2 >{{msg}}</h2>
+	  <h3 v-if="price>=6000">Gold</h3>
+	  <h3 v-else-if="price>=3000">Silver</h3>
+	  <h3 v-else>Basic</h3>
+	</div>
+	<form id="frm01" class="form-inline"  method="post">
+  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	    <input v-model="price" class="form-control mr-sm-2" placeholder="가격입력" />
+ 	</nav>
+	</form>
+   <table class="table table-hover table-striped">
+   	<col width="10%">
+   	<col width="50%">
+   	<col width="15%">
+   	<col width="15%">
+   	<col width="10%">
+    <thead>
+    
+      <tr class="table-success text-center">
+        <th>번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>작성일</th>
+        <th>조회</th>
+      </tr>
+    </thead>	
+    <tbody>
+    	<tr><td></td><td></td><td></td><td></td><td></td></tr>
+    	<tr><td></td><td></td><td></td><td></td><td></td></tr>
+    	<tr><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+	</table>       
+</div>
+</body>
+</html>
