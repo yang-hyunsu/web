@@ -11,15 +11,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style type="text/css">
-    	.btn{width:200px;}
-    </style>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <title>Insert title here</title>
-   
-    <script src = "https://code.jquery.com/jquery-3.7.0.js" type="text/javascript"></script>
-    
+	<link rel="stylesheet" href="${path}/a00_com/bootstrap.min.css" >
+	<link rel="stylesheet" href="${path}/a00_com/jquery-ui.css" >
+	<style>
+		td{text-align:center;}
+	</style>
+	<script src="${path}/a00_com/jquery.min.js"></script>
+	<script src="${path}/a00_com/popper.min.js"></script>
+	<script src="${path}/a00_com/bootstrap.min.js"></script>
+	<script src="${path}/a00_com/jquery-ui.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
+
     <script type="text/javascript">
     	// window.onload와 동일한 메서드
     	$(document).ready( function(){
