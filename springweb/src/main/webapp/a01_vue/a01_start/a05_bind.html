@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/springweb/a00_com/bootstrap.min.css" >
+<style>
+	td{text-align:center;}
+</style>
+<script src="/springweb/a00_com/jquery.min.js"></script>
+<script src="/springweb/a00_com/bootstrap.min.js"></script>
+<script src="/springweb/a00_com/vue.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		var model = {im01:"apple.jpeg",
+					 ph01:"입력1",ph02:"입력2",
+					 width01:"20%",val01:"홍길동"}
+		var vm = new Vue({
+			el:".container",
+			data:model
+		})
+		// ex) placeholder, width, value
+		//     아래 기본 태그의 속성을 이용해서 
+		//     모델데이터로 속성값을 선언한 후, 호출하여
+		//     출력하세요..
+	});
+</script>
+</head>
+<body>
+<div class="container">
+	<div class="jumbotron text-center">
+	  <img v-bind:src="im01"><br>
+	  <img :src="im01"><br>
+	</div>
+	<!-- 
+	ph01:"입력1",ph02:"입력2",width01:"20%",val01:"홍길동"
+	 -->
+	<form id="frm01" class="form-inline"  method="post">
+  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	    <input class="form-control mr-sm-2" 
+	    	v-bind:placeholder="ph01" />
+	    <input class="form-control mr-sm-2" 
+	    	:placeholder="ph02" />
+	    <input class="form-control mr-sm-2" 
+	    	:value="val01" />
+	    <button class="btn btn-info" type="submit">Search</button>
+ 	</nav>
+	</form>
+   <table class="table table-hover table-striped">
+   	<col :width="width01">
+   	<col :width="width01">
+   	<col :width="width01">
+   	<col :width="width01">
+   	<col width="20%">
+    <thead>
+    
+      <tr class="table-success text-center">
+        <th>번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>작성일</th>
+        <th>조회</th>
+      </tr>
+    </thead>	
+    <tbody>
+    	<tr><td></td><td></td><td></td><td></td><td></td></tr>
+    	<tr><td></td><td></td><td></td><td></td><td></td></tr>
+    	<tr><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+	</table>       
+</div>
+</body>
+</html>
