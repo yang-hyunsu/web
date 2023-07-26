@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/springweb/a00_com/bootstrap.min.css" >
+<style>
+	td{text-align:center;}
+</style>
+<script src="/springweb/a00_com/jquery.min.js"></script>
+<script src="/springweb/a00_com/bootstrap.min.js"></script>
+<script src="/springweb/a00_com/vue.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		var vm = new Vue({
+			el:".container",
+			data:{
+				msg:"뷰 v-if연습",
+				point:0
+			}
+			
+		})
+	});
+</script>
+</head>
+<body>
+
+<div class="container">
+	<div class="jumbotron text-center">
+	  <h2 >{{msg}}</h2>
+	</div>
+	<form id="frm01" class="form-inline"  method="post">
+  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	    <input v-model="point" class="form-control mr-sm-2" placeholder="점수입력" />
+	    <button class="btn btn-info" type="submit">Search</button>
+ 	</nav>
+	</form>
+   <table class="table table-hover table-striped">
+   	<col width="50%">
+   	<col width="50%">
+    <thead>
+    
+      <tr class="table-success text-center">
+        <th>점수</th>
+        <th>학점</th>
+      </tr>
+    </thead>	
+    <tbody>
+    	<tr><td v-text="point"></td>
+    		<td v-if="point>=90">A학점</td>
+    		<td v-else-if="point>=80">B학점</td>
+    		<td v-else-if="point>=70">C학점</td>
+    		<td v-else-if="point>=60">D학점</td>
+    		<td v-else>F학점</td>
+    	</tr>
+    </tbody>
+	</table>       
+</div>
+</body>
+</html>

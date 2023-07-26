@@ -23,8 +23,15 @@
 	<input v-model="price"/>
 	<span v-if="price>=6000">Gold</span>
 	<span v-else-if="price>=3000">Silver</span>
-	<span v-else>Basic</span>
- 
+	<span v-else>Basic</span> 
+	
+	a09_if.html
+		점수:[   ]  : 점수에 따른 테이블에 출력과 학점을 표시하세요
+	    ------
+		점수 : 학점
+		92    A점
+	
+	
  */
 	$(document).ready(function(){
 		var model = {msg:"조건문(v-if)처리",price:0}
