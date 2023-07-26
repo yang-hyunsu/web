@@ -24,24 +24,30 @@
     	// window.onload와 동일한 메서드
     	$(document).ready( function(){
     		
-    		
     	});
     </script>      
     
     
 </head>
 <body>
+<!-- 
+	 	직책아이디  직책명      최소급여     최대급여
+
+
+
+jobListData2.do
+ -->
     <div class="container mt-3">
     	<h2>직책 리스트</h2>
 	  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	  		<div class="container-fluid">    	
 	    	<form method="post"  class="d-flex align-items-center" >
 	            <input type="text" class="form-control me-2" 
-	      	     placeholder="직책아이디 입력" id="job_id" name="job_id"  aria-label="Search">
+	      	     value="${param.job_id}" placeholder="직책아이디 입력" id="job_id" name="job_id"  aria-label="Search">
 	            <input type="text" class="form-control me-2" 
-	      	     placeholder="직책명 입력" id="job_title" name="job_title"  aria-label="Search">
+	      	     value="${param.job_title }" placeholder="직책명 입력" id="job_title" name="job_title"  aria-label="Search">
 	      	     
-	         	<button type="button" class="btn btn-primary" style="width:200px;">조회</button>
+	         	<button type="submit" class="btn btn-primary" style="width:200px;">조회</button>
 	     	</form>
 	 	    </div>
 	 	</nav>
@@ -58,12 +64,15 @@
 		      	</tr>
 		    </thead>
 		    <tbody id="show">
+		    	<!-- job_id job_title -->
+		    	<c:forEach var="job" items="${jobList}">
 			   	<tr  class="text-center">
-			        <td></td>
-			        <td></td>
-			        <td></td>
-			        <td></td>
+			        <td>${job.job_id}</td>
+			        <td>${job.job_title}</td>
+			        <td><fmt:formatNumber value="${job.min_salary}"/> </td>
+			        <td><fmt:formatNumber value="${job.max_salary}"/> </td>
 			   	</tr>
+			   	</c:forEach>
 		 	</tbody>
 		</table>      	
     </div>
