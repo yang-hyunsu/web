@@ -1,5 +1,7 @@
 package springweb.a05_mvcexp.z01_vo;
 // springweb.a05_mvcexp.z01_vo.Job
+// job_id=ASS&job_title=개발자&min_salary=3500&max_salary=12000
+
 public class Job {
 	private String job_id;
 	private String job_title;

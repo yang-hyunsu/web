@@ -18,5 +18,9 @@ public class A06_JobService {
 		if(sch.getJob_title()==null) sch.setJob_title("");
 		return dao.getJobList(sch);
 	}
+	public String insertJob(Job ins) {
+		return dao.insertJob(ins)>0?"등록성공":"등록되지 않음" ;
+		
+	}	
 
 }
