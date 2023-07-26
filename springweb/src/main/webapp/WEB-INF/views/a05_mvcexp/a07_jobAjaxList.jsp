@@ -38,7 +38,7 @@
     		})
     		$("#jobRegBtn").click(function(){
     			if(confirm("직책정보를 등록하겠습니까?")){
-    				alert($("#regFrm").serialize())
+    				//alert($("#regFrm").serialize())
     				// jobInsAjax2.do?job_id=ASS4&job_title=개발자4&min_salary=3500&max_salary=12000
     				$.ajax({
     					url:"${path}/jobInsAjax2.do",
