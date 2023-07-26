@@ -66,6 +66,9 @@
 		    			// download.do?fname=파일명
 		    			location.href="${path}/download.do?fname="+fname
 		    		}
+		    		// a05_mvcexp\a06_fileupload.jsp
+		    		// <tr onclick="down('${rs.filename}')" 
+		    		
 		    	}
 		    </script>
 		    <tbody>

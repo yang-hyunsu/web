@@ -37,23 +37,30 @@
 		특정위치에 저장
 	6) 저장하면서 파일정보도 DB에 저장 처리
 	
-# 컨테이너 선언
+# 파일업로드 주요 내용
 1. 일반 jsp 뷰와 기타 다른 viewer를 선언이 가능 한 환경 설정
 2. 파일 업로드 뷰 선언.
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+	
 3. 초기 화면 로딩 및 파일을 업로드 할 수 있는 form 화면 구성 controller
 	선언
 	1) controller(A02_FileUploadCtrl.java)
 		upload01.do
+	@PostMapping("upload01.do")
+	public String upload01(@RequestParam("report01") 
+								MultipartFile[] mpfs)		
+		
 	2) view(a05_mvcexp/a03_fileupload.jsp)
 4. view단 처리
 	1) form 속성
 		enctype="multipart/form-data"
 	2) form 요소객체
-		type=file
-		multiple : 파일 다중 설정시 필요	 
+		type=file name="report01"
+		multiple="multiple" : 파일 다중 설정시 필요	 
 	3) submit로 처리시
 5. controller
-	@Param("이름") MultipartFile[] mpfs
+	@RequestParam("이름") MultipartFile[] mpfs
 6. service 저장..
 	1) 저장 경로설정 : container 공통 설정 파일로 처리
 		resource 파일로 a01_config 파일 만들기 
@@ -220,10 +227,33 @@ ex) A03_FileUploadService.java
 		호출하여 다운로드 되게 한다.
 4. 개발 순서
 	1) 다운로드 뷰 클래스 선언
-	2) 다운로드 뷰 컨테이너에 등록
+	2) 다운로드 뷰 컨테이너에 등록(클래스상단에 @Component, @Bean)
 	3) 예시용 파일 리스트 컨트롤러/서비스/dao 구현
 	4) 다운로드 처리를 위한 컨트롤러 선언
 	5) 화면단에서 클릭시, 다운로드 컨트롤로 호출 확인
+5. 다운로드 처리를 위한 파일 구조
+	1) 컨테이너에 등록할 다운로드 뷰
+		// springweb.a06_util.DownloadViewer
+		@Component("downloadViewer")
+		String fileName = 
+			(String)model.get("downloadFile");		
+	2) 화면에서 클릭시 다운로드뷰를 파일명을 모델명으로
+		전달할 컨트롤러/메서드
+		// springweb.a06_util.DownloadCtrl
+		// download.do?fname=파일명
+		@RequestMapping("download.do")
+		public String download(@RequestParam("fname") 
+				String fname, Model d) {
+			d.addAttribute("downloadFile", fname);
+			return "downloadViewer";		
+	3) 화면에서 리스트된 파일정보 데이터 중에 클릭하여
+		컨트롤러를 호출할 이벤트와 함수 처리
+	   	// a05_mvcexp\a06_fileupload.jsp
+ 		function down(fname){
+		   	if(confirm(fname+"\n파일을 다운로드하시겠습니까?")){
+		    location.href="${path}/download.do?fname="+fname
+ 		<tr onclick="down('${rs.filename}')" 		
+
 	
 # 예시용 파일 리스트 컨트롤러/서비스/dao 구현
 1. DB 처리

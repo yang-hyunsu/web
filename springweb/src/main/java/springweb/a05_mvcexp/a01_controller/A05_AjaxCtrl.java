@@ -47,8 +47,9 @@ public class A05_AjaxCtrl {
 	@Autowired
 	private A01_MemberService service2;
 	@GetMapping("ajax04.do")
-	public String ajax04(Model d) {
-		d.addAttribute("memList", service2.memberList(new Member()));
+	public String ajax04(Member sch, Model d) {
+		d.addAttribute("memList", 
+				service2.memberList(sch));
 		return "jsonView";
 	}
 		

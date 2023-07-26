@@ -4,6 +4,7 @@
 	backend에서 json데이터를 효율적으로 처리하고 있다.
 3. 스프링 ajax 처리 기본 형태
 	1) container에 json viewer를 처리를 할 수 있게 처리
+		자바의 객체 ==> json형식의 객체
 	2) ajax 요청 및 모델 데이터를 호출하여
 	3) return "json뷰어"를 통해 ajax 데이터를 가져올 수 있다.
 4. 개발 순서

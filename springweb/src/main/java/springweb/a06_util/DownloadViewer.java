@@ -15,6 +15,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.servlet.view.AbstractView;
 // springweb.a06_util.DownloadViewer
 // downloadViewer
+// springweb.a06_util.DownloadViewer
 @Component("downloadViewer")
 public class DownloadViewer extends AbstractView {
 	// 다운로드할 파일의 위치 경로

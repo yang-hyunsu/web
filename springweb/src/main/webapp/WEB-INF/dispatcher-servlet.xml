@@ -122,6 +122,17 @@ jdbc:oracle:thin:@localhost:1521:xe
 		class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
 		<property name="contentType" value="text/html;charset=utf-8"/>
 	</bean>
+	<!-- 
+		@Component("이름")
+		@Bean("이름")
+		로 클래스를 선언하여 컨테이너 등록도 가능하다.
+		1. 일반적으로 사용자 정의 클래스의 경우 클래스의 선언과 
+			함께 위 형식으로 등록하고
+		2. framework(lib의 jar)에 있는 객체인 경우 컨테이너
+			에서 선언하여 등록한다. 
+		ex) 뷰리졸버를 호출할 때, 컨트롤러의 메서드 마지막에
+			return "뷰"를 형식으로 지정할 수 있다. 
+	 -->
 	
 		
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
