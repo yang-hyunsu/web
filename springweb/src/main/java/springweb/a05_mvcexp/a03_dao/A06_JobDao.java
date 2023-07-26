@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Select;
 
 import backendWeb.z01_vo.Job;
 
-public interface A06_AjaxDao {
+public interface A06_JobDao {
 	@Select("SELECT * \r\n"
 			+ "FROM jobs\r\n"
 			+ "WHERE job_id LIKE '%'||#{job_id}||'%'\r\n"
