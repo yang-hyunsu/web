@@ -11,7 +11,8 @@ public interface A06_JobDao {
 	@Select("SELECT * \r\n"
 			+ "FROM jobs01\r\n"
 			+ "WHERE job_id LIKE '%'||#{job_id}||'%'\r\n"
-			+ "AND job_title LIKE '%'||#{job_title}||'%'")
+			+ "AND job_title LIKE '%'||#{job_title}||'%'\r\n "
+			+ "ORDER BY job_id" )
 	public List<Job> getJobList(Job sch);
 	@Insert("INSERT INTO jobs01 values(#{job_id},#{job_title},\r\n"
 			+ "			#{min_salary},#{max_salary})")

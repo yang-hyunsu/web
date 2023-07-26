@@ -27,7 +27,7 @@
     	// window.onload와 동일한 메서드
     	$(document).ready( function(){
     		search()
-    		// jobInsAjax2.do?job_id=ASS4&job_title=개발자4&min_salary=3500&max_salary=12000
+    		
     		//$("h2").text("jquery 로딩 성공")
     		$("#job_id, #job_title").keyup(function(){
     			search()
@@ -38,7 +38,25 @@
     		})
     		$("#jobRegBtn").click(function(){
     			if(confirm("직책정보를 등록하겠습니까?")){
-    				
+    				alert($("#regFrm").serialize())
+    				// jobInsAjax2.do?job_id=ASS4&job_title=개발자4&min_salary=3500&max_salary=12000
+    				$.ajax({
+    					url:"${path}/jobInsAjax2.do",
+    					type:"post",
+    					data:$("#regFrm").serialize(),
+    					dataType:"text",
+    					success:function(data){
+    						search();
+    						if(!confirm(data+"\n계속 등록하시겠습니까?")){
+    							$("#clsBtn").click();
+    						}
+    					},
+    					error:function(err){
+    						console.log(err)
+    					}
+    				})		
+    						
+    						
     			}
     		})
     		
@@ -162,7 +180,7 @@ jobListData2.do
 	    </form> 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="clsBtn" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" id="jobRegBtn" class="btn btn-success">직책등록</button>
       </div>
     </div>
