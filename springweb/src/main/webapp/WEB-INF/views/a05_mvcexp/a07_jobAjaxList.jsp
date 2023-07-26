@@ -47,6 +47,7 @@
     					dataType:"text",
     					success:function(data){
     						search();
+    						$("#regFrm")[0].reset();
     						if(!confirm(data+"\n계속 등록하시겠습니까?")){
     							$("#clsBtn").click();
     						}
