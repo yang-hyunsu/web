@@ -23,39 +23,46 @@
     <script type="text/javascript">
     	// window.onload와 동일한 메서드
     	$(document).ready( function(){
-    		
+    		search()
+    		// jobInsAjax2.do?job_id=ASS4&job_title=개발자4&min_salary=3500&max_salary=12000
     		//$("h2").text("jquery 로딩 성공")
     		$("#job_id, #job_title").keyup(function(){
-    			
-    			//alert( $("form").serialize() )
-    			$.ajax({
-    				type:"post",
-    				url:"${path}/jobListData2.do",
-    				data:$("form").serialize(),
-    				dataType:"json",
-    				success:function(jobs){
-    					//console.log(jobs)
-    					//job_id   job_title  min_salary max_salary
-    					var add = ""
-    					jobs.forEach(function(job){
-    						console.log(job)
-    						add+="<tr  class='text-center'>"
-    						add+="<td>"+job.job_id+"</td>"
-    						add+="<td>"+job.job_title+"</td>"
-    						add+="<td>"+job.min_salary.toLocaleString()+"</td>"
-    						add+="<td>"+job.max_salary.toLocaleString()+"</td>"
-    						add+="</tr>"
-    					})
-    					$("#show").html(add);
-    				},
-    				error:function(err){
-    					console.log(err)
-    				}
-    				
-    			})
+    			search()
+
+    		})
+    		$("#schBtn").click(function(){
+    			search()
     		})
     		
     	});
+    	function search(){
+			//alert( $("form").serialize() )
+			$.ajax({
+				type:"post",
+				url:"${path}/jobListData2.do",
+				data:$("form").serialize(),
+				dataType:"json",
+				success:function(jobs){
+					//console.log(jobs)
+					//job_id   job_title  min_salary max_salary
+					var add = ""
+					jobs.forEach(function(job){
+						console.log(job)
+						add+="<tr  class='text-center'>"
+						add+="<td>"+job.job_id+"</td>"
+						add+="<td>"+job.job_title+"</td>"
+						add+="<td>"+job.min_salary.toLocaleString()+"</td>"
+						add+="<td>"+job.max_salary.toLocaleString()+"</td>"
+						add+="</tr>"
+					})
+					$("#show").html(add);
+				},
+				error:function(err){
+					console.log(err)
+				}
+			})    		
+    		
+    	}
     </script>      
     
     
@@ -69,7 +76,10 @@ job_id job_title
 jobListData2.do
  -->
     <div class="container mt-3">
-    	<h2>ajax로 화면 처리!!!@@@</h2>
+    	<h2>ajax로 화면 처리</h2>
+       	<h2 data-toggle="modal" data-target="#exampleModalCenter">타이틀</h2>
+   
+    	
 	  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	  		<div class="container-fluid">    	
 	    	<form method="post"  class="d-flex align-items-center" >
@@ -78,7 +88,7 @@ jobListData2.do
 	            <input type="text" class="form-control me-2" 
 	      	     placeholder="직책명 입력" id="job_title" name="job_title"  aria-label="Search">
 	      	     
-	         	<button type="button" class="btn btn-primary" style="width:200px;">조회</button>
+	         	<button id="schBtn" type="button" class="btn btn-primary" style="width:200px;">조회</button>
 	     	</form>
 	 	    </div>
 	 	</nav>
@@ -104,7 +114,34 @@ jobListData2.do
 		 	</tbody>
 		</table>      	
     </div>
-    
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">타이틀</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<form id="frm02" class="form"  method="post">
+	     <div class="row">
+	      <div class="col">
+	        <input type="text" class="form-control" placeholder="사원명 입력" name="ename">
+	      </div>
+	      <div class="col">
+	        <input type="text" class="form-control" placeholder="직책명 입력" name="job">
+	      </div>
+	     </div>
+	    </form> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>    
     
 </body>
 </html>
