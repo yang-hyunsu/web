@@ -36,6 +36,11 @@
     		$("#schBtn").click(function(){
     			search()
     		})
+    		$("#jobRegBtn").click(function(){
+    			if(confirm("직책정보를 등록하겠습니까?")){
+    				
+    			}
+    		})
     		
     	});
     	function search(){
@@ -43,7 +48,7 @@
 			$.ajax({
 				type:"post",
 				url:"${path}/jobListData2.do",
-				data:$("form").serialize(),
+				data:$("#schFrm").serialize(),
 				dataType:"json",
 				success:function(jobs){
 					//console.log(jobs)
@@ -79,19 +84,22 @@ job_id job_title
 jobListData2.do
  -->
     <div class="container mt-3">
-    	<h2>ajax로 화면 처리</h2>
-       	<h2 data-toggle="modal" data-target="#exampleModalCenter">타이틀</h2>
-   
+    	<h2>직책 관리 리스트</h2>
     	
-	  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+     	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	  		<div class="container-fluid">    	
-	    	<form method="post"  class="d-flex align-items-center" >
+	    	<form method="post" id="schFrm"  class="d-flex align-items-center" >
 	            <input type="text" class="form-control me-2" 
 	      	     placeholder="직책아이디 입력" id="job_id" name="job_id"  aria-label="Search">
 	            <input type="text" class="form-control me-2" 
 	      	     placeholder="직책명 입력" id="job_title" name="job_title"  aria-label="Search">
 	      	     
 	         	<button id="schBtn" type="button" class="btn btn-primary" style="width:200px;">조회</button>
+	         	<button id="regBtn" type="button" 
+	         		class="btn btn-success" 
+	         		data-toggle="modal" data-target="#exampleModalCenter"
+	         		>등록</button>
+	         	
 	     	</form>
 	 	    </div>
 	 	</nav>
@@ -121,26 +129,41 @@ jobListData2.do
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">타이틀</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">직책 등록</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-		<form id="frm02" class="form"  method="post">
+      	<!-- 
+      	job_id=ASS4&job_title=개발자4&min_salary=3500&max_salary=12000
+      	 -->
+		<form  id="regFrm"   class="form"  method="post">
 	     <div class="row">
 	      <div class="col">
-	        <input type="text" class="form-control" placeholder="사원명 입력" name="ename">
+	        <input type="text" class="form-control" 
+	        	placeholder="직책아이디 입력" name="job_id">
 	      </div>
 	      <div class="col">
-	        <input type="text" class="form-control" placeholder="직책명 입력" name="job">
+	        <input type="text" class="form-control"
+	        	 placeholder="직책명 입력" name="job_title">
 	      </div>
 	     </div>
+	     <div class="row">
+	      <div class="col">
+	        <input type="number" class="form-control" 
+	        	placeholder="최대급여 입력" name="min_salary">
+	      </div>
+	      <div class="col">
+	        <input type="number" class="form-control"
+	        	 placeholder="최소급여 입력" name="max_salary">
+	      </div>
+	     </div>	     
 	    </form> 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" id="jobRegBtn" class="btn btn-success">직책등록</button>
       </div>
     </div>
   </div>
