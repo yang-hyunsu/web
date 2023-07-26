@@ -12,15 +12,13 @@
 <script src="/springweb/a00_com/vue.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		// 모델데이터 선언(데이터 처리)
-		var model = {msg:"vue 시작(메시지)", 
-					name:"홍길동", age:25}
-		// view와 model을 연결해주는 Vue객체(view model)
+		// 1. 모델데이터 선언
+		var model = {name:"사과",price:3000,cnt:2}
+		// 3. 모델과 뷰를 연결시키는 뷰모델 객체 생성
 		var vm = new Vue({
-			el:".container",  // view의 범위를 속성으로 지정
-			data:model        // 선언된 모델 데이터를 연결 처리
-		})	
-		// ex) a02_start.html  물건명 가격 갯수..
+			el:".container",
+			data:model
+		})
 	});
 </script>
 </head>
@@ -28,10 +26,10 @@
 
 <div class="container">
 	<div class="jumbotron text-center">
-	  <!-- 화면단 모델명으로 선언할 수 있다. -->
-	  <h2 >{{msg}}</h2>
-	  <h2 >{{name}}</h2>
-	  <h2 >{{age}}</h2>
+		<!-- 2. view단 구성 -->
+	  <h2 >물건명:{{name}}</h2>
+	  <h2 >가격:{{price}}</h2>
+	  <h2 >갯수:{{cnt}}</h2>
 	</div>
 	<form id="frm01" class="form-inline"  method="post">
   	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
