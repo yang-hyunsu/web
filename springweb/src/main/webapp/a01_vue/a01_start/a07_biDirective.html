@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/springweb/a00_com/bootstrap.min.css" >
+<style>
+	td{text-align:center;}
+</style>
+<script src="/springweb/a00_com/jquery.min.js"></script>
+<script src="/springweb/a00_com/bootstrap.min.js"></script>
+<script src="/springweb/a00_com/vue.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		var model = {msg:"양방향 directive",name:"", price:0, cnt:0}
+		var vm = new Vue({
+			el:".container",
+			data:model
+		})
+	});
+</script>
+</head>
+<body>
+
+<div class="container">
+	<div class="jumbotron text-center">
+	  <h2 >{{msg}}</h2>
+	</div>
+	<form id="frm01" class="form-inline"  method="post">
+  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	    <input v-model="name" class="form-control mr-sm-2"  />
+	    <input v-model="price" class="form-control mr-sm-2"  />
+	    <input v-model="cnt" class="form-control mr-sm-2"  />
+	    <button class="btn btn-info" type="submit">Search</button>
+ 	</nav>
+	</form>
+   <table class="table table-hover table-striped">
+   	<col width="25%">
+   	<col width="25%">
+   	<col width="25%">
+   	<col width="25%">
+    <thead>
+      <tr class="table-success text-center">
+        <th>물건명</th>
+        <th>가격</th>
+        <th>갯수</th>
+        <th>총계</th>
+      </tr>
+    </thead>	
+    <tbody>
+    	<tr><td>{{name}}</td>
+    		<td>{{price}}</td>
+    		<td>{{cnt}}</td>
+    		<td>{{price*cnt}}</td></tr>
+    	<tr><td>{{name}}</td>
+    		<td>{{price}}</td>
+    		<td>{{cnt}}</td>
+    		<td>{{price*cnt}}</td></tr>
+    	<tr><td>{{name}}</td>
+    		<td>{{price}}</td>
+    		<td>{{cnt}}</td>
+    		<td>{{price*cnt}}</td></tr>
+    	<tr><td colspan="3">총계</td>
+    		<td v-text="price*cnt*3"></td></tr>	
+    		
+    </tbody>
+	</table>       
+</div>
+</body>
+</html>
