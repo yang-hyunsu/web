@@ -14,7 +14,12 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		var model = {msg:"뷰 디렉티브", msg2:"안녕하세요",
-					 msg3:"<h2>반갑습니다</h2>"}
+					 msg3:"<h2>반갑습니다</h2>",
+					 al01:"right",
+					 im01:"apple.jpeg",
+					 im02:"banana.jpeg",
+					 im03:"mango.jpeg"
+					 }
 		var vm = new Vue({
 			el:".container",
 			data:model
@@ -40,7 +45,11 @@
 		처리할 때, 사용된다.
 		ex) var model = {show:"<h3>반가워용</h3>"}
 		<div v-html="show"></div>
-		
+	4) v-bind:속성명="모델명", :속성명="모델명"
+		해당 태그의 속성을 모델 데이터로 처리할 수 있다.
+		ex) var model = {al01:"center",img01:"a01_img.jpg"}
+		<h2 v-bind:align="al01">안녕하세요</h2>
+		<img :src="img01" >
 			
 		
  
@@ -55,6 +64,10 @@
 	  <h3 v-text="msg2"></h3>
 	  <div v-text="msg3"></div>
 	  <div v-html="msg3"></div>
+	  <h3 v-bind:align="al01">{{msg}}</h3>
+	  <img v-bind:src="im01">
+	  <img :src="im02">
+	  <img :src="im03">
 	</div>
 	<!-- 
 	ex) a04_vtext_vhtml.html
