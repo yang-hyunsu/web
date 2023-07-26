@@ -9,9 +9,16 @@
 </style>
 <script src="/springweb/a00_com/jquery.min.js"></script>
 <script src="/springweb/a00_com/bootstrap.min.js"></script>
+<script src="/springweb/a00_com/vue.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-
+		// 모델데이터 선언(데이터 처리)
+		var model = {msg:"vue 시작(메시지)"}
+		// view와 model을 연결해주는 Vue객체(view model)
+		var vm = new Vue({
+			el:".container",  // view의 범위를 속성으로 지정
+			data:model        // 선언된 모델 데이터를 연결 처리
+		})		
 	});
 </script>
 </head>
@@ -19,7 +26,8 @@
 
 <div class="container">
 	<div class="jumbotron text-center">
-	  <h2 >뷰시작</h2>
+	  <!-- 화면단 모델명으로 선언할 수 있다. -->
+	  <h2 >{{msg}}</h2>
 	</div>
 	<form id="frm01" class="form-inline"  method="post">
   	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
