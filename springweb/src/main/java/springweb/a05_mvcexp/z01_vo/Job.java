@@ -5,6 +5,7 @@ public class Job {
 	private String job_title;
 	private int min_salary;
 	private int max_salary;
+	
 	public Job() {
 		// TODO Auto-generated constructor stub
 	}

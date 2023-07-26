@@ -15,6 +15,7 @@ public class A07_JobFormList {
 	
 	@RequestMapping("jobFormList.do")
 	public String jobList(Job sch, Model d) {
+		d.addAttribute("jobList", service.getJobList(sch));
 		return "WEB-INF\\views\\a05_mvcexp\\a08_jobFormList.jsp";
 	}
 }

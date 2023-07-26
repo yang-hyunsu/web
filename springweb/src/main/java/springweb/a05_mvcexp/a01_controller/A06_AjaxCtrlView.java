@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import backendWeb.z01_vo.Job;
+import springweb.a05_mvcexp.z01_vo.Job;
 import springweb.a05_mvcexp.a02_service.A06_JobService;
 import springweb.a05_mvcexp.z01_vo.Member;
 

@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import backendWeb.z01_vo.Job;
+import springweb.a05_mvcexp.z01_vo.Job;
 import springweb.a05_mvcexp.a03_dao.A06_JobDao;
 
 @Service
