@@ -34,7 +34,35 @@
 		- 등록창 클릭시, 모달 창 처리
 		- 모달창 항목에 등록 내용 입력
 		- 등록 버튼 클릭시, ajax로 입력된 내용 controller단 호출
+ex) 연습예제 지역리스트 및 등록 처리
+1. DB 처리
+	1) sql
+		SELECT * 
+		FROM regions01
+		WHERE REGION_NAME LIKE '%'||''||'%';
+		INSERT INTO regions01 values(5,'서울');
+	2) dao;
+		A07_RegDao.java
+	3) service
+		A07_RegService.java
+-------------------------------------------------		
+	4) Controller
+		A07_RegCtrl.java
+		- ajax data url
+			/regData.do
+			/regInsert.do
+--------------------------------------------------					
+		- 초기화면
+			/regList.do
+
+2. 화면처리(views\a05_mvcexp\a09_regList.jsp)
+	1) 			
+			
 		
+		
+		
+		
+						
 	
 	
 				
