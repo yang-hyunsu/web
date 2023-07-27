@@ -23,7 +23,11 @@
     <script type="text/javascript">
     	// window.onload와 동일한 메서드
     	$(document).ready( function(){
-    		
+    		$("#regBtn").click(function(){
+    			if(confirm("등록화면 이동합니다.")){
+    				location.href="${path}/jobInsert.do"
+    			}
+    		})
     	});
     </script>      
     
@@ -48,6 +52,7 @@ jobListData2.do
 	      	     value="${param.job_title }" placeholder="직책명 입력" id="job_title" name="job_title"  aria-label="Search">
 	      	     
 	         	<button type="submit" class="btn btn-primary" style="width:200px;">조회</button>
+	         	<button type="button" id="regBtn" class="btn btn-success" style="width:200px;">등록</button>
 	     	</form>
 	 	    </div>
 	 	</nav>

@@ -20,6 +20,14 @@ public class A07_JobFormList {
 		d.addAttribute("jobList", service.getJobList(sch));
 		return "WEB-INF\\views\\a05_mvcexp\\a08_jobFormList.jsp";
 	}
+	@RequestMapping("jobInsert.do")
+	public String jobInsert(Job ins, Model d) {
+		if(ins.getJob_id()!=null) {
+			
+		}
+			
+		return "WEB-INF\\views\\a05_mvcexp\\a10_jobInsertForm.jsp";
+	}
 }
 
 

@@ -45,7 +45,8 @@
     					success:function(msg){
     						search()
     						$("#regFrm")[0].reset()
-    						if(!confirm(msg.replaceAll("\"","")+"\n계속 등록하시겠습니까?")){
+    						if(!confirm(msg.replaceAll("\"","")+
+    								"\n계속 등록하시겠습니까?")){
     							$("#clsBtn").click()
     						}
     					},
@@ -91,7 +92,7 @@
 	            <input type="text" class="form-control me-2" 
 	      	     id="region_name" placeholder="지역명 입력" 
 	      	     name="region_name"  aria-label="Search">
-	         	<button type="button" id="schBtn" class="btn btn-primary" style="width:200px;">조회</button>
+	         	<button type="button" id="schBtn" class="btn " style="width:200px;">조회</button>
 	         	<button type="button" 
 	         		class="btn btn-success" 
 	         		data-toggle="modal" data-target="#exampleModalCenter"
