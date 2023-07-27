@@ -54,6 +54,7 @@ public class A04_FileUploadService {
 		
 		return msg;
 	}
+	
 	public List<Restore> restoreList(){
 		return dao.restoreList();
 	}		

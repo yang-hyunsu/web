@@ -46,9 +46,13 @@
     					data:$("#regFrm").serialize(),
     					dataType:"text",
     					success:function(data){
+    						// 등록후 반영된 내용을 리스트하게
     						search();
+    						// 폼에 있는 등록시 입력된 내용을 초기화할 때,
+    						// 처리하는 form하위 요소객체 초기화
     						$("#regFrm")[0].reset();
     						if(!confirm(data+"\n계속 등록하시겠습니까?")){
+    							// 창을 닫게 처리 : 이벤트 강제 처리
     							$("#clsBtn").click();
     						}
     					},
@@ -171,11 +175,11 @@ jobListData2.do
 	     <div class="row">
 	      <div class="col">
 	        <input type="number" class="form-control" 
-	        	placeholder="최대급여 입력" name="min_salary">
+	        	placeholder="최소급여 입력" name="min_salary">
 	      </div>
 	      <div class="col">
 	        <input type="number" class="form-control"
-	        	 placeholder="최소급여 입력" name="max_salary">
+	        	 placeholder="최대급여 입력" name="max_salary">
 	      </div>
 	     </div>	     
 	    </form> 
