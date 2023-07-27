@@ -23,7 +23,7 @@ public class A07_JobFormList {
 	@RequestMapping("jobInsert.do")
 	public String jobInsert(Job ins, Model d) {
 		if(ins.getJob_id()!=null) {
-			
+			d.addAttribute("msg", service.insertJob(ins));
 		}
 			
 		return "WEB-INF\\views\\a05_mvcexp\\a10_jobInsertForm.jsp";

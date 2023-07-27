@@ -31,7 +31,9 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-	
+		$("#mainBtn").click(function(){
+			location.href="${path}/jobFormList.do"			
+		})
 	});
 </script>
 </head>
@@ -67,40 +69,10 @@
 	</div>	
 				
 	<div style="text-align:right;">
-		<input type="button" class="btn btn-success" value="등록" id="regBtn"/>
+		<input type="submit" class="btn btn-success" value="등록" id="regBtn"/>
 		<input type="button" class="btn btn-primary" value="조회리스트" id="mainBtn"/>		
 	</div>	
 	</form>		
 </div>
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">직책 등록</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-		<form  id="regFrm"   class="form"  method="post">
-	     <div class="row">
-	      <div class="col">
-	        <input type="text" class="form-control" 
-	        	placeholder="직책아이디 입력" name="job_id">
-	      </div>
-	      <div class="col">
-	        <input type="text" class="form-control"
-	        	 placeholder="직책명 입력" name="job_title">
-	      </div>
-	     </div>
-	    </form> 
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="clsBtn" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" id="jobRegBtn" class="btn btn-success">직책등록</button>
-      </div>
-    </div>
-  </div>
-</div>    
 </body>
 </html>
