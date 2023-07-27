@@ -39,10 +39,26 @@ ex) 연습예제 지역리스트 및 등록 처리
 	1) sql
 		SELECT * 
 		FROM regions01
-		WHERE REGION_NAME LIKE '%'||''||'%';
+		WHERE REGION_NAME LIKE '%'||''||'%'
+		;
 		INSERT INTO regions01 values(5,'서울');
 	2) dao;
+		VO
+		class Region{
+			private int region_id; 
+			private String region_name;  
+		}
 		A07_RegDao.java
+		@Select("SELECT * 
+				FROM regions01
+				WHERE REGION_NAME LIKE '%'||#{region_name}||'%'")
+		public List<Region> regionList(@Param("region_name)
+			String region_name);
+		@Insert("INSERT INTO regions01 values(
+				#{region_id},#{region_name})")
+		public int insertRegion(Region insert);			 
+		
+		
 	3) service
 		A07_RegService.java
 -------------------------------------------------		
