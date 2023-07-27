@@ -65,8 +65,23 @@ ex) 연습예제 지역리스트 및 등록 처리
 	4) Controller
 		A07_RegCtrl.java
 		- ajax data url
-			/regData.do
-			/regInsert.do
+			/regData.do  json데이터 리스트 처리
+			/regInsert.do 등록성공 출력..
+	참고..
+	@Autowired
+	private A07_RegService service;
+	// regData.do
+	@RequestMapping("regData.do")
+	public ResponseEntity<List<Region>> jobList(
+		@RequestParam("region_name") String region_name){
+		return ResponseEntity.ok(
+			service.regionList(region_name));
+	}		
+	// regInsert.do?region_id=5&region_name=부산
+	@RequestMapping("regInsert.do")
+	public ResponseEntity<String> regInsert(Region ins){
+		return ResponseEntity.ok(service.insertRegion(ins));
+	}
 --------------------------------------------------					
 		- 초기화면
 			/regList.do

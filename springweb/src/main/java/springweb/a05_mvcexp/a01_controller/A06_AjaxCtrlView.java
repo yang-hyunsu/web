@@ -34,10 +34,7 @@ public class A06_AjaxCtrlView {
 		return "jsonView";
 	}
 	
-	@RequestMapping("jobListData2.do")
-	public ResponseEntity<List<Job>> jobList(Job sch) {
-		return ResponseEntity.ok(service.getJobList(sch));
-	}
+
 	// jobInsAjax.do?job_id=ASS&job_title=개발자&min_salary=3500&max_salary=12000
 	@RequestMapping("jobInsAjax.do")
 	@ResponseBody
@@ -45,6 +42,10 @@ public class A06_AjaxCtrlView {
 		service.insertJob(ins);
 		return "등록성공";
 	}
+	@RequestMapping("jobListData2.do")
+	public ResponseEntity<List<Job>> jobList(Job sch) {
+		return ResponseEntity.ok(service.getJobList(sch));
+	}	
 	// jobInsAjax2.do?job_id=ASS4&job_title=개발자4&min_salary=3500&max_salary=12000
 	@RequestMapping("jobInsAjax2.do")
 	public ResponseEntity<String> insertJob2(Job ins){
