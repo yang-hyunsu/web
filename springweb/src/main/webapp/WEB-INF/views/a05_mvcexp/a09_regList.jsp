@@ -25,7 +25,26 @@
     	$(document).ready( function(){
     		
     		//$("h2").text("jquery 로딩 성공")
+    		search()  // 초기화면 로딩
     	});
+    	function search(){
+    		$.ajax({
+    			url:"${path}/regData.do",
+    			dataType:"json",
+    			success:function(regList){
+    				console.log(regList)
+    				var add=""
+    				// region_id=5&region_name
+    				regList.forEach(function(reg){
+    					add+="<tr>"
+    					add+="<td>"+reg.region_id+"</td>"
+    					add+="<td>"+reg.region_name+"</td>"
+    					add+="</tr>"
+    				})
+    				$("#show").html(add)
+    			}
+    		})
+    	}
     </script>      
     
     
@@ -37,33 +56,23 @@
 	  		<div class="container-fluid">    	
 	    	<form method="post"  class="d-flex align-items-center" >
 	            <input type="text" class="form-control me-2" 
-	      	     id="title" placeholder="직책명 입력" value="${param.title}" name="title"  aria-label="Search">
-	            <input type="text" class="form-control me-2" 
-	      	     id="min_sal1" placeholder="최소급여 시작"  
-	      	     value="${empty param.min_sal1? 0: param.min_sal1}"  name="min_sal1"  aria-label="Search">
-	      	    ~
-	            <input type="text" class="form-control me-2" 
-	      	     id="min_sal2" placeholder="최소급여 마지막" 
-	      	      value="${empty param.min_sal2? 9999999: param.min_sal2}"  name="min_sal2"  aria-label="Search">
-	      	     
-	      	     
-	         	<button type="submit" class="btn btn-primary" style="width:200px;">조회</button>
+	      	     id="region_name" placeholder="지역명 입력" 
+	      	     name="region_name"  aria-label="Search">
+	         	<button type="button" class="btn btn-primary" style="width:200px;">조회</button>
 	     	</form>
 	 	    </div>
 	 	</nav>
 		<table class="table table-striped table-hover">
 			<thead class="table-success">
 		      	<tr  class="text-center">
-				    <th>Firstname</th>
-				    <th>Lastname</th>
-				    <th>Email</th>
+				    <th>지역아이디</th>
+				    <th>지역명</th>
 		      	</tr>
 		    </thead>
-		    <tbody>
+		    <tbody id="show">
 			   	<tr  class="text-center">
 			        <td>John</td>
 			        <td>Doe</td>
-			        <td>john@example.com</td>
 			   	</tr>
 		 	</tbody>
 		</table>      	

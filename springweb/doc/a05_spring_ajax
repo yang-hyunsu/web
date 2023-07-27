@@ -87,7 +87,30 @@ ex) 연습예제 지역리스트 및 등록 처리
 			/regList.do
 
 2. 화면처리(views\a05_mvcexp\a09_regList.jsp)
-	1) 			
+	1)	등록리스트 조회 ajax 출력 만들기.
+		$(document).ready(function(){
+			search()
+		})
+		function search(){
+			$.ajax({
+				url:"regList.do",
+				success:function(regList){
+					var add=""
+					regList.forEach(function(reg){
+						add+="<tr><td>"+region_id+"</td>"
+						add+="<td>"+region_name+"</td></tr>"
+						
+					})
+					$("tbody").html(add);
+				}
+			})
+		}
+		-------------------------------------------
+	2) 등록 버튼 추가 
+		클릭시, 모달창 로딩.
+	3) 등록 입력 값 처리ㅣ..
+		name="region_id" name="region_name"
+		 			
 			
 		
 		
