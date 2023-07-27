@@ -29,10 +29,18 @@
     		
     		//$("h2").text("jquery 로딩 성공")
     		search()  // 초기화면 로딩
+    		$("#region_name").keyup(function(){
+    			search();
+    		})
+    		$("#schBtn").click(function(){
+    			search();
+    		})
     	});
     	function search(){
     		$.ajax({
     			url:"${path}/regData.do",
+    			type:"post",
+    			data:"region_name="+$("#region_name").val(),
     			dataType:"json",
     			success:function(regList){
     				console.log(regList)
@@ -61,7 +69,7 @@
 	            <input type="text" class="form-control me-2" 
 	      	     id="region_name" placeholder="지역명 입력" 
 	      	     name="region_name"  aria-label="Search">
-	         	<button type="button" class="btn btn-primary" style="width:200px;">조회</button>
+	         	<button type="button" id="schBtn" class="btn btn-primary" style="width:200px;">조회</button>
 	         	<button id="regBtn" type="button" 
 	         		class="btn btn-success" 
 	         		data-toggle="modal" data-target="#exampleModalCenter"
@@ -71,6 +79,8 @@
 	 	    </div>
 	 	</nav>
 		<table class="table table-striped table-hover">
+			<col width="50%">
+			<col width="50%">
 			<thead class="table-success">
 		      	<tr  class="text-center">
 				    <th>지역아이디</th>
