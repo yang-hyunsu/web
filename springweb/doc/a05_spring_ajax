@@ -109,7 +109,47 @@ ex) 연습예제 지역리스트 및 등록 처리
 	2) 등록 버튼 추가 
 		클릭시, 모달창 로딩.
 	3) 등록 입력 값 처리ㅣ..
+		등록 타이틀 
+		입력 form 설정
 		name="region_id" name="region_name"
+		등록 버튼 클릭 이벤트 핸들러 처리
+		등록 ajax 호출
+		$.ajax({
+			url:"${path}/regInsert.do"
+		})
+		<form id="regFrm">
+			<input name="region_id" 
+			<input name="region_name"
+		<button id="regBtn">
+		참고..
+    		$("#regBtn").click(function(){
+    			if(confirm("지역정보를 등록하겠습니까?")){
+    				$.ajax({
+    					url:"${path}/regInsert.do",
+    					type:"post",
+    					data:$("#regFrm").serialize(),
+    					dataType:"text",
+    					success:function(data){
+    						// 등록후 반영된 내용을 리스트하게
+    						search();
+    						// 폼에 있는 등록시 입력된 내용을 초기화할 때,
+    						// 처리하는 form하위 요소객체 초기화
+    						$("#regFrm")[0].reset();
+    						if(!confirm(data.replaceAll("\"", "")+"\n계속 등록하시겠습니까?")){
+    							// 창을 닫게 처리 : 이벤트 강제 처리
+    							$("#clsBtn").click();
+    						}
+    					},
+    					error:function(err){
+    						console.log(err)
+    					}
+    				})		
+		
+		
+		
+		
+		
+		
 		 			
 			
 		

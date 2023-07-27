@@ -11,7 +11,8 @@ import springweb.a05_mvcexp.z01_vo.Region;
 public interface A07_RegDao {
 	@Select("SELECT * \r\n"
 			+ "FROM regions01\r\n"
-			+ "WHERE REGION_NAME LIKE '%'||#{region_name}||'%'")
+			+ "WHERE REGION_NAME LIKE '%'||#{region_name}||'%'\r\n"
+			+ "order by region_id")
 	public List<Region> regionList(@Param("region_name")
 		String region_name);
 	@Insert("INSERT INTO regions01 values(\r\n"

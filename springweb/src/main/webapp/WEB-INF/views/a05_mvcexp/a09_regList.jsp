@@ -35,6 +35,28 @@
     		$("#schBtn").click(function(){
     			search();
     		})
+    		$("#regBtn").click(function(){
+    			if(confirm("지역정보 등록하시겠습니까?")){
+    				$.ajax({
+    					url:"${path}/regInsert.do",
+    					type:"post",
+    					data:$("#regFrm").serialize(),
+    					dataType:"text",
+    					success:function(msg){
+    						search()
+    						$("#regFrm")[0].reset()
+    						if(!confirm(msg.replaceAll("\"","")+"\n계속 등록하시겠습니까?")){
+    							$("#clsBtn").click()
+    						}
+    					},
+    					error:function(err){
+    						console.log(err)
+    					}
+    				})
+    			}
+    			
+    			
+    		})
     	});
     	function search(){
     		$.ajax({
@@ -70,10 +92,10 @@
 	      	     id="region_name" placeholder="지역명 입력" 
 	      	     name="region_name"  aria-label="Search">
 	         	<button type="button" id="schBtn" class="btn btn-primary" style="width:200px;">조회</button>
-	         	<button id="regBtn" type="button" 
+	         	<button type="button" 
 	         		class="btn btn-success" 
 	         		data-toggle="modal" data-target="#exampleModalCenter"
-	         		>등록</button>
+	         		>등록창</button>
 	         			         	
 	     	</form>
 	 	    </div>
@@ -108,19 +130,19 @@
 		<form  id="regFrm"   class="form"  method="post">
 	     <div class="row">
 	      <div class="col">
-	        <input type="text" class="form-control" 
-	        	placeholder="직책아이디 입력" name="job_id">
+	        <input type="number" class="form-control" 
+	        	placeholder="지역아이디 입력(숫자)" name="region_id">
 	      </div>
 	      <div class="col">
 	        <input type="text" class="form-control"
-	        	 placeholder="직책명 입력" name="job_title">
+	        	 placeholder="지역명 입력" name="region_name">
 	      </div>
 	     </div>    
 	    </form> 
       </div>
       <div class="modal-footer">
         <button type="button" id="clsBtn" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" id="jobRegBtn" class="btn btn-success">직책등록</button>
+        <button type="button" id="regBtn" class="btn btn-success">지역등록</button>
       </div>
     </div>
   </div>
