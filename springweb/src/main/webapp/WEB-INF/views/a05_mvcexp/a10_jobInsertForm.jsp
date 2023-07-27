@@ -34,7 +34,42 @@
 		$("#mainBtn").click(function(){
 			location.href="${path}/jobFormList.do"			
 		})
+		$("#ckId").click(function(){
+			ckValidId()
+
+		})
 	});
+	function ckValidId(){
+	 	var idVal = $("#job_id").val()
+	 	var idLen = idVal.length
+ 		// "등록불가":"등록가능";
+	 	if(idLen<4 || idLen>8){
+	 		alert("등록 아이디는 글자는 4~8이여야 합니다.")
+	 	}else{
+	 		// checkJob_id.do?job_id=PU_MAN
+	 		$.ajax({
+	 			url:"${path}/checkJob_id.do",
+	 			data:"job_id="+idVal,
+	 			dataType:"text",
+	 			success:function(msg){
+	 				var msg = msg.replaceAll("\"","")
+	 				alert(msg)
+	 				if(msg=="등록가능"){
+	 					$("#ckId").val("유효성재확인")
+	 					$("[name=job_id]").attr("readonly",true)
+	 				}else{
+	 					alert("다른 아이디 입력하세요")
+	 					$("#job_id").val("").focus()
+	 				}
+		 		},
+		 		error:function(err){
+		 			console.log(err)
+		 		}
+		 			
+		 	})
+	 	}
+	 			
+	}
 </script>
 </head>
 <body>
@@ -47,13 +82,19 @@
 		<div class="input-group-prepend ">
 			<span class="input-group-text  justify-content-center">직책아이디</span>
 		</div>
-		<input type="text" name="job_id" class="form-control" placeholder=""/>	
+		<input type="text" id="job_id" name="job_id" class="form-control" 
+			placeholder="글자수는 4~8자/중복불가"/>
+		<input id="ckId" type="button" class="btn btn-info" value="유효성확인" />
+			
 	</div>	
 	<div class="input-group mb-3">	
 		<div class="input-group-prepend ">
 			<span class="input-group-text  justify-content-center">직책명</span>
 		</div>
-		<input type="text" name="job_title" class="form-control" value="" />	
+		<input type="text" name="job_title" class="form-control" 
+			placeholder="글자수는 8자이상/중복불가"/>
+		<input  id="ckTitle"  type="button" class="btn btn-info" value="유효성확인" />	
+			
 	</div>	
 	<div class="input-group mb-3">	
 		<div class="input-group-prepend ">
