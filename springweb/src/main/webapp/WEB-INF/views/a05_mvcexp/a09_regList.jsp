@@ -11,15 +11,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style type="text/css">
-    	.btn{width:200px;}
-    </style>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <title>Insert title here</title>
-   
-    <script src = "https://code.jquery.com/jquery-3.7.0.js" type="text/javascript"></script>
-    
+	<link rel="stylesheet" href="${path}/a00_com/bootstrap.min.css" >
+	<link rel="stylesheet" href="${path}/a00_com/jquery-ui.css" >
+	<style>
+		td{text-align:center;}
+	</style>
+	<script src="${path}/a00_com/jquery.min.js"></script>
+	<script src="${path}/a00_com/popper.min.js"></script>
+	<script src="${path}/a00_com/bootstrap.min.js"></script>
+	<script src="${path}/a00_com/jquery-ui.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
+
     <script type="text/javascript">
     	// window.onload와 동일한 메서드
     	$(document).ready( function(){
@@ -59,6 +62,11 @@
 	      	     id="region_name" placeholder="지역명 입력" 
 	      	     name="region_name"  aria-label="Search">
 	         	<button type="button" class="btn btn-primary" style="width:200px;">조회</button>
+	         	<button id="regBtn" type="button" 
+	         		class="btn btn-success" 
+	         		data-toggle="modal" data-target="#exampleModalCenter"
+	         		>등록</button>
+	         			         	
 	     	</form>
 	 	    </div>
 	 	</nav>
@@ -77,5 +85,37 @@
 		 	</tbody>
 		</table>      	
     </div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">직책 등록</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<form  id="regFrm"   class="form"  method="post">
+	     <div class="row">
+	      <div class="col">
+	        <input type="text" class="form-control" 
+	        	placeholder="직책아이디 입력" name="job_id">
+	      </div>
+	      <div class="col">
+	        <input type="text" class="form-control"
+	        	 placeholder="직책명 입력" name="job_title">
+	      </div>
+	     </div>    
+	    </form> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="clsBtn" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="jobRegBtn" class="btn btn-success">직책등록</button>
+      </div>
+    </div>
+  </div>
+</div>  
+    
+    
 </body>
 </html>
