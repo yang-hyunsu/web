@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -15,6 +16,13 @@ import springweb.a05_mvcexp.z01_vo.Region;
 public class A07_RegCtrl {
 	@Autowired
 	private A07_RegService service;
+	//regList.do
+	@GetMapping("regList.do")
+	public String regList() {
+		return "WEB-INF\\views\\a05_mvcexp\\a09_regList.jsp";
+	}
+	
+	
 	// regData.do
 	@RequestMapping("regData.do")
 	public ResponseEntity<List<Region>> jobList(

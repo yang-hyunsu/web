@@ -32,7 +32,7 @@
 </head>
 <body>
     <div class="container mt-3">
-    	<h2>사원정보 등록</h2>
+    	<h2>지역정보 리스트</h2>
 	  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	  		<div class="container-fluid">    	
 	    	<form method="post"  class="d-flex align-items-center" >
