@@ -1,10 +1,12 @@
 package springweb.a05_mvcexp.a01_controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import springweb.a05_mvcexp.a02_service.A06_JobService;
 import springweb.a05_mvcexp.z01_vo.Job;
@@ -28,6 +30,25 @@ public class A07_JobFormList {
 			
 		return "WEB-INF\\views\\a05_mvcexp\\a10_jobInsertForm.jsp";
 	}
+	//  President
+	// checkJob_id.do?job_id=PU_MAN
+	@RequestMapping("checkJob_id.do")
+	public ResponseEntity<String> checkJob_Id(
+			@RequestParam("job_id") String job_id){
+		return ResponseEntity.ok(service.checkId(job_id));
+	}
+	// checkjob_title.do?job_title=President
+	@RequestMapping("checkjob_title.do")
+	public ResponseEntity<String> checkJob_Title(
+			@RequestParam("job_title") String job_title){
+		return ResponseEntity.ok(service.checktitle(job_title));
+	}	
+	/*
+	/checkJob_id.do job_id
+	/checkjob_title.do job_title
+	 * 
+	 */
+	
 }
 
 

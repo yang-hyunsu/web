@@ -22,5 +22,14 @@ public class A06_JobService {
 		return dao.insertJob(ins)>0?"등록성공":"등록되지 않음" ;
 		
 	}	
+	public String checkId(String job_id) {
+		return dao.checkId(job_id)>0?"등록불가":"등록가능";
+	}
+	public String checktitle(String job_title) {
+		return dao.checktitle(job_title)>0?"등록불가":"등록가능";
+	}
+	/*
+	
+	 * */
 
 }

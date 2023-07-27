@@ -21,6 +21,7 @@ public class A06_AjaxCtrlView {
 	// 초기 화면 호출
 	
 	
+	
 	@GetMapping("jobListAjax.do")
 	public String jobListAjax() {
 		return "WEB-INF\\views\\a05_mvcexp\\a07_jobAjaxList.jsp";

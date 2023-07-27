@@ -8,6 +8,7 @@ public class Job {
 	private int min_salary;
 	private int max_salary;
 	
+	
 	public Job() {
 		// TODO Auto-generated constructor stub
 	}

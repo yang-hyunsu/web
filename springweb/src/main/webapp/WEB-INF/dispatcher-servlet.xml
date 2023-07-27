@@ -122,6 +122,7 @@ jdbc:oracle:thin:@localhost:1521:xe
 		class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
 		<property name="contentType" value="text/html;charset=utf-8"/>
 	</bean>
+	<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
 	<!-- 
 		@Component("이름")
 		@Bean("이름")

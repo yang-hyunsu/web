@@ -47,7 +47,7 @@
 		<div class="input-group-prepend ">
 			<span class="input-group-text  justify-content-center">직책아이디</span>
 		</div>
-		<input type="number" name="job_id" class="form-control" placeholder="번호입력"/>	
+		<input type="text" name="job_id" class="form-control" placeholder=""/>	
 	</div>	
 	<div class="input-group mb-3">	
 		<div class="input-group-prepend ">

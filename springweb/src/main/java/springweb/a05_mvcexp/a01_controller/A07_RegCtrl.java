@@ -22,7 +22,7 @@ public class A07_RegCtrl {
 		return "WEB-INF\\views\\a05_mvcexp\\a09_regList.jsp";
 	}
 	
-	
+	// 
 	// regData.do
 	@RequestMapping("regData.do")
 	public ResponseEntity<List<Region>> jobList(
