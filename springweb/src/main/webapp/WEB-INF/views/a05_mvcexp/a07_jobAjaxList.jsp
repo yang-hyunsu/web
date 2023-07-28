@@ -109,7 +109,31 @@
     		$("#modalTitle").text("직책 상세정보("+job_id+")")
    			$("#jobRegBtn").hide()
   			$("#jobUptBtn").show()
-  			$("#jobDelBtn").show()  		
+  			$("#jobDelBtn").show()  
+  			// ajax 처리..
+  			//getJob.do?job_id=AC_ACCOUNT
+  			/*
+  			success:function(job){
+				$("#frm [name=job_title]").val(job.job_title);
+				
+  			*/
+  			$.ajax({
+  			   url:"${path}/getJob.do",
+  			   type:"post",
+  			   data:"job_id="+job_id,
+  			   dataType:"json",
+  			   success:function(job){
+  				 $("#frm [name=job_id]").val(job.job_id);	 	  
+  				 $("#frm [name=job_title]").val(job.job_title);	 	  
+  				 $("#frm [name=min_salary]").val(job.min_salary);	 	  
+  				 $("#frm [name=max_salary]").val(job.max_salary);	 	  
+  			   },
+  			   error:function(err){
+  				  console.log(err)
+  			   }
+  			})
+  			
+  			
     	}
     	
     </script>      
