@@ -20,5 +20,5 @@ public class A07_RegService {
 		return dao.insertRegion(insert)>0?
 				"등록성공":"등록되지 않음";
 	}			 
-	
+
 }

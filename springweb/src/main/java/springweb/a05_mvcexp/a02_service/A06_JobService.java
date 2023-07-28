@@ -28,8 +28,14 @@ public class A06_JobService {
 	public String checktitle(String job_title) {
 		return dao.checktitle(job_title)>0?"등록불가":"등록가능";
 	}
-	/*
-	
-	 * */
+	public Job getJob(String job_id){
+		return dao.getJob(job_id);
+	}				
+	public String updateJob(Job upt){
+		return dao.updateJob(upt)>0?"수정성공":"수정되지않음";
+	}
+	public String deleteJob(String job_id){
+		return dao.deleteJob(job_id)>0?"삭제성공":"수정되지않음";
+	}	
 
 }

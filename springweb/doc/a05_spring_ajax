@@ -145,11 +145,46 @@ ex) 연습예제 지역리스트 및 등록 처리
     					}
     				})		
 		
+# 직책관리 상세화면에서 수정/삭제
+1. 프로세스
+	1) 직책관리리스트에서 특정 직책을 row단위로 클릭하면
+	2) 모달창으로 직책정보를 변경할 수 있는 창이 로딩된다.
+	3) 수정시, 수정이 되었습니다. 창을 닫으시겠습니까? 확인 처리
+	4) 삭제시, 삭제되었습니다. 창이 닫기면 삭제된 리스트를 확인
+2. 개발순서
+	1) Dao 작성
+		sql
+		(상세) select * from jobs01 where job_id=#{job_id}
+		(수정) update jobs01
+				set job_title=#{job_title},
+					min_salary=#{min_salary},	
+					max_salary=#{max_salary}
+				where job_id=#{job_id}
+		(삭제) delete 
+		      from jobs01
+		      where job_id=#{job_id}				
+		메서드
+		public Job getJob(@Param("job_id") String job_id);
+		public int updateJob(Job upt);
+		public int deleteJob(@Param("job_id") String job_id);
+	2) Service
+		public Job getJob(String job_id){
+			return dao.getJob(job_id);
+		}				
+		public String updateJob(Job upt){
+			return dao.updateJob(upt)>0?"수정성공":"수정되지않음";
+		}
+		public String deleteJob(String job_id){
+			return dao.deleteJob(job_id)>0?"삭제성공":"수정되지않음";
+		}
+	--------------------------------
+	3) Controller
+		/getJob.do
+		/updateJob.do
+		/deleteJob.do
+								
 		
-		
-		
-		
-		
+				
 		 			
 			
 		

@@ -2,9 +2,11 @@ package springweb.a05_mvcexp.a03_dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import springweb.a05_mvcexp.z01_vo.Job;
 
@@ -27,7 +29,16 @@ public interface A06_JobDao {
 			+ "	FROM jobs01\r\n"
 			+ "	WHERE LOWER(job_title)=lower(#{job_title}) ")
 	public int checktitle(@Param("job_title") String job_title);
-
-	
-	
+	@Select("select * from jobs01 where job_id=#{job_id}")
+	public Job getJob(@Param("job_id") String job_id);
+	@Update("update jobs01\r\n"
+			+ "set job_title=#{job_title},\r\n"
+			+ "    min_salary=#{min_salary},	\r\n"
+			+ "	   max_salary=#{max_salary}\r\n"
+			+ "where job_id=#{job_id}")
+	public int updateJob(Job upt);
+	@Delete("delete \r\n"
+			+ "from jobs01\r\n"
+			+ "where job_id=#{job_id}")
+	public int deleteJob(@Param("job_id") String job_id);
 }
