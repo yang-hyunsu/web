@@ -61,7 +61,7 @@
     						// 폼에 있는 등록시 입력된 내용을 초기화할 때,
     						// 처리하는 form하위 요소객체 초기화
     						$("#frm")[0].reset();
-    						if(!confirm(data.replace("\"", "")+"\n계속 등록하시겠습니까?")){
+    						if(!confirm(data.replaceAll("\"", "")+"\n계속 등록하시겠습니까?")){
     							// 창을 닫게 처리 : 이벤트 강제 처리
     							$("#clsBtn").click();
     						}
@@ -90,7 +90,7 @@
     					success:function(data){
     						// 수정후 반영된 내용을 리스트하게
     						search();
-    						if(!confirm(data.replace("\"", "")+"\n계속 하시겠습니까?")){
+    						if(!confirm(data.replaceAll("\"", "")+"\n계속 하시겠습니까?")){
     							// 창을 닫게 처리 : 이벤트 강제 처리
     							$("#clsBtn").click();
     						}
