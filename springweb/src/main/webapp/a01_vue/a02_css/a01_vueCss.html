@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Good day!! ^^</title>
+<link rel="stylesheet" href="/springweb/a00_com/bootstrap.min.css" >
+<style>
+	td{txt-align:center;}
+</style>
+<script src="/springweb/a00_com/jquery.min.js"></script>
+<script src="/springweb/a00_com/bootstrap.min.js"></script>
+<script src="/springweb/a00_com/vue.js"></script>
+
+<script type="text/javascript">
+/*
+# vue에서 css 처리
+1. vue에서는 css를 프로그램적으로 동적으로 처리가 가능하다.
+2. 기본 css 선언된 내용으로 프로그램의 객체화 하여 처리한다.
+	1) css: <h2 style="color:red">
+	   vue: <h2 v-bind:style="{color:'red'}"
+	   위와 같이 기본적은 속성을 객체화 하여 처리한다
+	2) 객체화 처리하면, model 속성으로 위 속성값을 지정하거나
+		호출할 수 있다.
+		data:{color01:'red'}
+		vue: <h2 v-bind:style="{color:color01}"
+		위 내용을 객체화하고 모델설정값으로 처리할 수 있다.
+	3) vue에서 모델객체로 들어가면, v-model로 인해 입력값에 의해
+		속성값도 동적으로 변경할 수 있다.
+		<select v-model="color01"
+			<option>red</option>
+			<option>green</option>
+			<option>blue</option>
+			<option>orange</option>
+	   
+ */
+	$(document).ready(function(){
+
+	});
+</script>
+</head>
+<body>
+
+<div class="container">
+	<div class="jumbotron text-center">
+	  <h2 ></h2>
+	</div>
+	<form id="frm01" class="form-inline"  method="post">
+  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	    <input class="form-control mr-sm-2" placeholder="제목" />
+	    <input class="form-control mr-sm-2" placeholder="내용" />
+	    <button class="btn btn-info" type="submit">Search</button>
+ 	</nav>
+	</form>
+   <table class="table table-hover table-striped">
+   	<col width="10%">
+   	<col width="50%">
+   	<col width="15%">
+   	<col width="15%">
+   	<col width="10%">
+    <thead>
+    
+      <tr class="table-success text-center">
+        <th>번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>작성일</th>
+        <th>조회</th>
+      </tr>
+    </thead>	
+    <tbody>
+    	<tr  class="text-center"><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+	</table>       
+</div>
+</body>
+</html>
