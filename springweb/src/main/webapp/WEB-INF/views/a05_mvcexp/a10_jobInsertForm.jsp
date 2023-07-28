@@ -85,7 +85,8 @@
 			}
 		})		
 	});
-	
+	// 매개변수1:유효성 확인할 name이나 id 값을 설정
+	// 매개변수2:check할 유효성 확인 controller 주소..
 	function ckValid(tar_str, url){
 	 	 
  		$.ajax({

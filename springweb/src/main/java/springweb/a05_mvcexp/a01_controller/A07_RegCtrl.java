@@ -32,7 +32,8 @@ public class A07_RegCtrl {
 					  defaultValue = "") String region_name){
 		return ResponseEntity.ok(
 			service.regionList(region_name));
-	}		
+	}	
+	
 	// regInsert.do?region_id=5&region_name=부산
 	@RequestMapping("regInsert.do")
 	public ResponseEntity<String> regInsert(Region ins){
