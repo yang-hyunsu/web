@@ -26,6 +26,7 @@
     <script type="text/javascript">
     	// window.onload와 동일한 메서드
     	$(document).ready( function(){
+    		$("#detailBtn").hide()
     		search()
     		
     		//$("h2").text("jquery 로딩 성공")
@@ -79,13 +80,14 @@
 					var add = ""
 					jobs.forEach(function(job){
 						console.log(job)
-						add+="<tr  class='text-center'>"
+						add+="<tr  class='text-center' onclick='detail(\""+job.job_id+"\")' >"
 						add+="<td>"+job.job_id+"</td>"
 						add+="<td>"+job.job_title+"</td>"
 						add+="<td>"+job.min_salary.toLocaleString()+"</td>"
 						add+="<td>"+job.max_salary.toLocaleString()+"</td>"
 						add+="</tr>"
 					})
+					console.log(add)
 					$("#show").html(add);
 				},
 				error:function(err){
@@ -93,6 +95,10 @@
 				}
 			})    		
     		
+    	}
+    	function detail(job_id){
+    		alert(job_id)
+    		$("#detailBtn").click()
     	}
     </script>      
     
@@ -122,6 +128,21 @@ jobListData2.do
 	         		class="btn btn-success" 
 	         		data-toggle="modal" data-target="#exampleModalCenter"
 	         		>등록</button>
+	         	<button id="detailBtn" type="button" 
+	         		class="btn btn-success" 
+	         		data-toggle="modal" data-target="#exampleModalCenter"
+	         		></button>
+	         	<!-- 
+	         	$("#detailBtn").hide()
+	         	
+	           	function detail(job_id){
+    				alert(job_id)
+    				$("#detailBtn").click()
+    			}
+	         	
+	         	
+	         	 -->	
+	         		
 	         	
 	     	</form>
 	 	    </div>
@@ -139,7 +160,7 @@ jobListData2.do
 		      	</tr>
 		    </thead>
 		    <tbody id="show">
-			   	<tr  class="text-center">
+			   	<tr  class="text-center" >
 			        <td></td>
 			        <td></td>
 			        <td></td>

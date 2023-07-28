@@ -29,6 +29,7 @@ public class A06_AjaxCtrlView {
 	
 	}
 	
+	
 	// ajax데이터 처리
 	@RequestMapping("jobListData.do")
 	public String jobList(Job sch, Model d) {
