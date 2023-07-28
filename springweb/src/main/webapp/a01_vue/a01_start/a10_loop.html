@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Good day!! ^^</title>
+<link rel="stylesheet" href="/springweb/a00_com/bootstrap.min.css" >
+<style>
+	td{txt-align:center;}
+</style>
+<script src="/springweb/a00_com/jquery.min.js"></script>
+<script src="/springweb/a00_com/bootstrap.min.js"></script>
+<script src="/springweb/a00_com/vue.js"></script>
+
+<script type="text/javascript">
+/*
+# Vue에서 반복문 처리
+1. model 데이터가 객체나 배열형식일 때,
+	반복문에 의해서 데이터를 처리를 할 수 있다.
+2. 기본형식
+	1) 객체형
+		v-for="(val, prop) in 객체"
+	2) 배열형
+		v-for="(단위, index) in 배열모델"
+	3) 객체형배열
+		v-for="(단위객체, index) in 객체배열모델"
+			단위객체.속성
+ 
+ */
+	$(document).ready(function(){
+		
+		var vm = new Vue({
+			el:".container",
+			data:{
+				msg:"반복문 처리",
+				person:{name:"홍길동",age:25,loc:"서울신림동"}
+			}
+		})
+	});
+	// ex) product로 물건명 가격 갯수 선언
+	//     아래 테이블에 항목과 데이터를 출력하세요..
+	
+</script>
+</head>
+<body>
+
+<div class="container">
+	<div class="jumbotron text-center">
+		<h1></h1>
+	  <h2 >{{msg}}</h2>
+	  <h3 v-for="(val,prop) in person">{{prop}}:{{val}}</h3>
+	</div>
+	<form id="frm01" class="form-inline"  method="post">
+  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	    <input class="form-control mr-sm-2" placeholder="제목" />
+	    <input class="form-control mr-sm-2" placeholder="내용" />
+	    <button class="btn btn-info" type="submit">Search</button>
+ 	</nav>
+	</form>
+   <table class="table table-hover table-striped">
+   	<col width="10%">
+   	<col width="50%">
+   	<col width="15%">
+   	<col width="15%">
+   	<col width="10%">
+    <thead>
+    
+      <tr class="table-success text-center">
+        <th>번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>작성일</th>
+        <th>조회</th>
+      </tr>
+    </thead>	
+    <tbody>
+    	<tr  class="text-center"><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+	</table>       
+</div>
+</body>
+</html>

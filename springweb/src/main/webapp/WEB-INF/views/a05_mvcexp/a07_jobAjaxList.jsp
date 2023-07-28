@@ -32,7 +32,6 @@
     		//$("h2").text("jquery 로딩 성공")
     		$("#job_id, #job_title").keyup(function(){
     			search()
-
     		})
     		$("#schBtn").click(function(){
     			search()
