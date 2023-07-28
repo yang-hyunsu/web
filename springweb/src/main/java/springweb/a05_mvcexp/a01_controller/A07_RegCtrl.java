@@ -39,4 +39,27 @@ public class A07_RegCtrl {
 	public ResponseEntity<String> regInsert(Region ins){
 		return ResponseEntity.ok(service.insertRegion(ins));
 	}	
+	/*
+	/getReg.do
+	/updateReg.do
+	/deleteReg.do	
+	*/
+	@RequestMapping("getReg.do")
+	public ResponseEntity<Region> getReg(
+			@RequestParam(value = "region_id",
+			defaultValue = "0") int region_id){
+		return ResponseEntity.ok(service.getReg(region_id));
+	}
+	@RequestMapping("updateReg.do")
+	public ResponseEntity<String> updateReg(Region upt){
+		return ResponseEntity.ok(service.updateReg(upt));
+	}
+	@RequestMapping("deleteReg.do")
+	public ResponseEntity<String> deleteReg(
+			@RequestParam(value = "region_id",
+			defaultValue = "0") int region_id){
+		return ResponseEntity.ok(
+				service.deleteReg(region_id));
+	}	
+	
 }

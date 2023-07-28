@@ -201,6 +201,15 @@ ex) 연습 예제(지역정보리스트)
 	public int deleteReg(@Param("region_id") int region_id);
 
 	A07_RegService.java
+	public Region getReg(int region_id){
+		return dao.getReg(region_id);
+	}
+	public String updateReg(Region upt){
+		return dao.updateReg(upt)>0?"수정성공":"수정되지않음";
+	}
+	public String deleteReg(int region_id){
+		return dao.deleteReg(region_id)>0?"삭제성공":"삭제되지않음";
+	}	
 	A07_RegCtrl.java
 	/getReg.do
 	/updateReg.do
