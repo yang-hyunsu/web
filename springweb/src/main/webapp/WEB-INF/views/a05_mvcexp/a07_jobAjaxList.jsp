@@ -38,7 +38,9 @@
     			search()
     		})
     		$("#regBtn").click(function(){
+    			$("#frm")[0].reset();
     			$("#modalTitle").text("직책 등록")
+    			$("#frm [name=job_id]").attr("readonly",false)
        			$("#jobRegBtn").show()
       			$("#jobUptBtn").hide()
       			$("#jobDelBtn").hide()   			
@@ -72,6 +74,54 @@
     						
     			}
     		})
+    		/*
+    		      			$("#jobUptBtn").hide()
+      			$("#jobDelBtn").hide()
+    		*/
+    		$("#jobUptBtn").click(function(){
+    			if(confirm("수정하시겠습니까?")){
+    				// updateJob.do?job_id=AC_MGR&job_title=Accountant&min_salary=9000&max_salary=18000
+    				// $("frm").serialize()	
+    				$.ajax({
+    					url:"${path}/updateJob.do",
+    					type:"post",
+    					data:$("#frm").serialize(),
+    					dataType:"text",
+    					success:function(data){
+    						// 수정후 반영된 내용을 리스트하게
+    						search();
+    						if(!confirm(data.replace("\"", "")+"\n계속 하시겠습니까?")){
+    							// 창을 닫게 처리 : 이벤트 강제 처리
+    							$("#clsBtn").click();
+    						}
+    					},
+    					error:function(err){
+    						console.log(err)
+    					}
+    				})		
+    			}
+    		})
+    		$("#jobDelBtn").click(function(){
+    			if(confirm("삭제하시겠습니까?")){
+    				// deleteJob.do?job_id=AA_PP
+    				$.ajax({
+    					url:"${path}/deleteJob.do",
+    					type:"post",
+    					data:"job_id="+$("#frm [name=job_id]").val(),
+    					dataType:"text",
+    					success:function(data){
+    						// 삭제후 반영된 내용을 리스트하게
+    						search();
+    						alert( data.replaceAll("\"", "") )
+    						$("#clsBtn").click();
+    						
+    					},
+    					error:function(err){
+    						console.log(err)
+    					}
+    				})	    						
+    			}
+    		})    		
     		
     	});
     	function search(){
@@ -126,7 +176,8 @@
   				 $("#frm [name=job_id]").val(job.job_id);	 	  
   				 $("#frm [name=job_title]").val(job.job_title);	 	  
   				 $("#frm [name=min_salary]").val(job.min_salary);	 	  
-  				 $("#frm [name=max_salary]").val(job.max_salary);	 	  
+  				 $("#frm [name=max_salary]").val(job.max_salary);
+  				 $("#frm [name=job_id]").attr("readonly",true)
   			   },
   			   error:function(err){
   				  console.log(err)
