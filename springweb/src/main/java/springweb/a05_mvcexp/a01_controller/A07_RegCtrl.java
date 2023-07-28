@@ -44,20 +44,25 @@ public class A07_RegCtrl {
 	/updateReg.do
 	/deleteReg.do	
 	*/
+	// getReg.do?region_id=0
 	@RequestMapping("getReg.do")
 	public ResponseEntity<Region> getReg(
 			@RequestParam(value = "region_id",
 			defaultValue = "0") int region_id){
 		return ResponseEntity.ok(service.getReg(region_id));
 	}
+	// updateReg.do?region_id=0&region_name=KOR
 	@RequestMapping("updateReg.do")
 	public ResponseEntity<String> updateReg(Region upt){
 		return ResponseEntity.ok(service.updateReg(upt));
 	}
+	// deleteReg.do?region_id=7
 	@RequestMapping("deleteReg.do")
 	public ResponseEntity<String> deleteReg(
 			@RequestParam(value = "region_id",
 			defaultValue = "0") int region_id){
+		System.out.println("###삭제아이디:"+region_id);
+		
 		return ResponseEntity.ok(
 				service.deleteReg(region_id));
 	}	
