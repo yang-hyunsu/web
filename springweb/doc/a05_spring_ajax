@@ -183,6 +183,29 @@ ex) 연습예제 지역리스트 및 등록 처리
 		/updateJob.do
 		/deleteJob.do
 								
+ex) 연습 예제(지역정보리스트)
+	상세조회/수정/삭제
+	A07_RegDao.java
+	sql
+	메서드선언
+	select *
+	from regions01
+	where  region_id = #{region_id}
+	public Region getReg(@Param("region_id") int region_id);
+	update regions01
+	   set region_name = #{region_name}
+	where region_id = #{region_id}   
+	public int updateReg(Region upt);
+	delete regions01
+	where region_id = #{region_id}   
+	public int deleteReg(@Param("region_id") int region_id);
+
+	A07_RegService.java
+	A07_RegCtrl.java
+	/getReg.do
+	/updateReg.do
+	/deleteReg.do
+	---------------------------
 		
 				
 		 			
