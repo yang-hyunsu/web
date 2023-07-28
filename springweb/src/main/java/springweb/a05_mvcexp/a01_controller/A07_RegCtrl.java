@@ -24,6 +24,8 @@ public class A07_RegCtrl {
 	
 	// 
 	// regData.do
+	//  defaultValue = "" 요청값이 없더라도 화면이 호출되게 하기 위해서
+	//  설정하여야 한다.
 	@RequestMapping("regData.do")
 	public ResponseEntity<List<Region>> jobList(
 		@RequestParam(value = "region_name",

@@ -30,7 +30,13 @@
     		//$("h2").text("jquery 로딩 성공")
     		search()  // 초기화면 로딩
     		$("#region_name").keyup(function(){
-    			search();
+    			// 주의) form하위는 enter키로 submit가 default
+    			//     이벤트가 있기에 이를 막아주는 설정을 하여야
+    			//     한다.
+    			/* 키입력시 enter입력시만 호출 처리
+    			if(event.keyCode==13)
+    				search();
+    			*/
     		})
     		$("#schBtn").click(function(){
     			search();

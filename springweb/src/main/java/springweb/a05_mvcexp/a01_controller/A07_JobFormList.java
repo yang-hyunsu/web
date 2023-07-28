@@ -38,7 +38,7 @@ public class A07_JobFormList {
 		return ResponseEntity.ok(service.checkId(job_id));
 	}
 	// checkjob_title.do?job_title=President
-	@RequestMapping("checkjob_title.do")
+	@RequestMapping("checkJob_title.do")
 	public ResponseEntity<String> checkJob_Title(
 			@RequestParam("job_title") String job_title){
 		return ResponseEntity.ok(service.checktitle(job_title));
