@@ -39,6 +39,9 @@
     		})
     		$("#regBtn").click(function(){
     			$("#modalTitle").text("직책 등록")
+       			$("#jobRegBtn").show()
+      			$("#jobUptBtn").hide()
+      			$("#jobDelBtn").hide()   			
     		})
     		
     		$("#jobRegBtn").click(function(){
@@ -104,6 +107,9 @@
     		//alert(job_id)
     		$("#detailBtn").click()
     		$("#modalTitle").text("직책 상세정보("+job_id+")")
+   			$("#jobRegBtn").hide()
+  			$("#jobUptBtn").show()
+  			$("#jobDelBtn").show()  		
     	}
     	
     </script>      
@@ -212,8 +218,20 @@ jobListData2.do
 	    </form> 
       </div>
       <div class="modal-footer">
-        <button type="button" id="clsBtn" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <!-- 등록시   
+      			$("#jobRegBtn").show()
+      			$("#jobUptBtn").hide()
+      			$("#jobDelBtn").hide()
+           , 
+      		상세시  show(), hide() 
+       			$("#jobRegBtn").hide()
+      			$("#jobUptBtn").show()
+      			$("#jobDelBtn").show()     		
+      		-->
         <button type="button" id="jobRegBtn" class="btn btn-success">직책등록</button>
+        <button type="button" id="jobUptBtn" class="btn btn-warning">직책수정</button>
+        <button type="button" id="jobDelBtn" class="btn btn-danger">직책삭제</button>
+        <button type="button" id="clsBtn" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
