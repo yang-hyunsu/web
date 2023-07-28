@@ -64,7 +64,7 @@ public class A06_AjaxCtrlView {
 			@RequestParam("job_id") String job_id){
 		return ResponseEntity.ok(service.getJob(job_id));
 	}
-	// updateJob.do?job_id=AC_MGR&min_salary=9000&max_salary=18000
+	// updateJob.do?job_id=AC_MGR&job_title=Accountant&min_salary=9000&max_salary=18000
 	@RequestMapping("updateJob.do")
 	public ResponseEntity<String> updateJob(Job upt){
 		return ResponseEntity.ok(service.updateJob(upt));

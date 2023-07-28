@@ -35,7 +35,7 @@ public class A06_JobService {
 		return dao.updateJob(upt)>0?"수정성공":"수정되지않음";
 	}
 	public String deleteJob(String job_id){
-		return dao.deleteJob(job_id)>0?"삭제성공":"수정되지않음";
+		return dao.deleteJob(job_id)>0?"삭제성공":"삭제되지않음";
 	}	
 
 }
