@@ -24,6 +24,18 @@
 				},
 				search:function(){
 					console.log("부서명:"+this.dname+", 부서위치:"+this.loc)
+					var vm = this
+					var url = "/springweb/deptListAjax.do?dname="+this.dname+"&loc="+this.loc
+					fetch(url).then(function(response){
+						return response.json()
+					}).then(function(json){
+						console.log("# 함수2 #")
+						console.log(json)
+						vm.deptList = json;
+					}).catch(function(err){
+						console.log(err)
+					})		
+					
 				}
 			}
 		}) 
@@ -34,6 +46,7 @@
 		// ------------------------------------
 		// 4. fetch api에 의해 데이터 로딩.
 		// 5. 화면단 출력 처리
+		
 	});
 </script>
 </head>
@@ -61,7 +74,9 @@
       </tr>
     </thead>	
     <tbody>
-    	<tr  class="text-center"><td></td><td></td><td></td></tr>
+    	<tr v-for="dept in deptList" class="text-center">
+    		<td>{{dept.deptno}}</td><td>{{dept.dname}}</td>
+    		<td>{{dept.loc}}</td></tr>
     </tbody>
 	</table>       
 </div>
