@@ -45,9 +45,10 @@ public class A01_Controller {
 	}
 	/*  ${p01.name} ${p01.age} ${p01.loc}
 	 * */
+	
 	@Autowired
 	private A01_Service service;
-	// http://localhost:5050/a06_empList
+	// http://localhost:5050/a06-+_empList
 	@RequestMapping("a06_empList")
 	public String a06_empList(Emp sch, Model d) {
 		
