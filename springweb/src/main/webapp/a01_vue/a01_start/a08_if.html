@@ -21,6 +21,14 @@
 	var model = {price:0}
 	
 	<input v-model="price"/>
+	
+	<span v-show="price>=6000">Gold</span>
+	:v-if와 동일한 내용인데, 자주 사용하거나 메모리를 로딩할 때
+	시간이 걸릴 때 사용된다. v-show는 일단 메모리에 로딩된 상황에서
+	hide/show로 처리되는 것이고, 아래 v-if는 초기에 화면자체가
+	조건에 의해서 로딩여부를 결정하는 것이다.
+	
+	
 	<span v-if="price>=6000">Gold</span>
 	<span v-else-if="price>=3000">Silver</span>
 	<span v-else>Basic</span> 

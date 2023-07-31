@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Good day!! ^^</title>
+<link rel="stylesheet" href="/springweb/a00_com/bootstrap.min.css" >
+<style>
+	td{txt-align:center;}
+</style>
+<script src="/springweb/a00_com/jquery.min.js"></script>
+<script src="/springweb/a00_com/bootstrap.min.js"></script>
+<script src="/springweb/a00_com/vue.js"></script>
+
+<script type="text/javascript">
+/*
+# vue에서 기능 함수인 메서드 사용
+1. vue에서 이벤트에 의해 특정한 기능 함수를 처리하는데, 이 기능 처리함수
+	내용이 모델 데이터와 연동해서 처리할 때, Vue 객체 하위에서 함수형태로
+	선언한 메서드를 활용하여 처리한다.
+2. 기본 형식
+	data:{모델데이터:초기데이터}
+	methods:{
+		함수명1:function(){
+			처리할 내용
+			this.모델데이터 : 데이터를 동적으로 처리할 수 있다.		
+		}
+	}
+	함수 호출 이벤트
+	<요소태그 v-on:이벤트명="함수명1"
+	<요소태그 @이벤트명="함수명1"
+ */
+
+	$(document).ready(function(){
+		var vm = new Vue({
+			el:".container",
+			data:{msg:"method 처리",num01:0,num02:0,sum:0},
+			methods:{
+				plus:function(){
+					// this : Vue객체를 지칭하고, Vue객체가 가지고 있는
+					// 모델데이터나, 메서드를 접근할 수 있다.
+					this.sum = 
+						Number(this.num01) + Number(this.num02)
+				}
+			}
+/*<h3>{{num01}} + {{num02}} = {{sum}}</h3>
+   <input v-model="num01" class="form-control mr-sm-2" />
+    <input v-model="num02"  class="form-control mr-sm-2" />
+    <button v-on:click="plus" type="button">합산</button>  
+ */		
+		}) 
+	});
+	
+</script>
+</head>
+<body>
+
+<div class="container">
+	<div class="jumbotron text-center">
+	  <h2 >{{msg}}</h2>
+	  <h3>{{num01}} + {{num02}} = {{sum}}</h3>
+	</div>
+	<form id="frm01" class="form-inline"  method="post">
+  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	    <input v-model="num01" class="form-control mr-sm-2" />
+	    <input v-model="num02"  class="form-control mr-sm-2" />
+	    <button v-on:click="plus" 
+	    	class="btn btn-info" type="button">합산</button>
+ 	</nav>
+	</form>
+   <table class="table table-hover table-striped">
+   	<col width="10%">
+   	<col width="50%">
+   	<col width="15%">
+   	<col width="15%">
+   	<col width="10%">
+    <thead>
+    
+      <tr class="table-success text-center">
+        <th>번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>작성일</th>
+        <th>조회</th>
+      </tr>
+    </thead>	
+    <tbody>
+    	<tr  class="text-center"><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+	</table>       
+</div>
+</body>
+</html>

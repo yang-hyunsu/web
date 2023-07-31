@@ -44,6 +44,7 @@
 		html 코드가 포함되어 있을 때, 해당 코드가 적용된 출력을
 		처리할 때, 사용된다.
 		ex) var model = {show:"<h3>반가워용</h3>"}
+		<div v-text="show"></div>
 		<div v-html="show"></div>
 	4) v-bind:속성명="모델명", :속성명="모델명"
 		해당 태그의 속성을 모델 데이터로 처리할 수 있다.
@@ -60,6 +61,11 @@
 
 <div class="container">
 	<div class="jumbotron text-center">
+	<!-- 
+	data:{cls01:'jumbotron',cls02:'text-center'}
+	
+	<div :class="[cls01, cls02]">
+	 -->
 	  <h2 >{{msg}}</h2>
 	  <h3 v-text="msg2"></h3>
 	  <div v-text="msg3"></div>
