@@ -72,7 +72,7 @@
 					console.log("검색!")
 					// http://localhost:7080/springweb/empListAjax.do 현재 서버를 이용할 때 생략가능
 					
-					var url = "/springweb/empListAjax.do";
+					var url = "/springweb/empListAjax.do?ename="+this.ename+"&job="+this.job;
 					this.empList = [] // 검색 내용 초기화
 					var vm = this
 					// 주의) this : Vue()객체로 메서드나 모델데이터를
@@ -89,10 +89,12 @@
 						empList.forEach(function(emp){
 							// emp.hiredate : 1970.1.1 기준 시간 1/1000
 							// js에서 날짜로 사용할려면 new Date(위시간)
+							emp.sal = emp.sal.toLocaleString()
 							var dte = new Date(emp.hiredate)
 							console.log(dte.toLocaleDateString())
 							emp.hiredateS=dte.toLocaleDateString()
 						})
+						vm.empList = empList
 						console.log(empList)
 					}).catch(function(err){
 						console.log("#에러 발생시#")
@@ -127,23 +129,28 @@
  	</nav>
 	
    <table class="table table-hover table-striped">
-   	<col width="10%">
-   	<col width="50%">
-   	<col width="15%">
-   	<col width="15%">
-   	<col width="10%">
+   	<col width="20%">
+   	<col width="20%">
+   	<col width="20%">
+   	<col width="20%">
+   	<col width="20%">
     <thead>
     
       <tr class="table-success text-center">
-        <th>번호</th>
-        <th>제목</th>
-        <th>작성자</th>
-        <th>작성일</th>
-        <th>조회</th>
+        <th>사원번호</th>
+        <th>사원명</th>
+        <th>입사일</th>
+        <th>급여</th>
+        <th>부서번호</th>
       </tr>
     </thead>	
     <tbody>
-    	<tr  class="text-center"><td></td><td></td><td></td><td></td><td></td></tr>
+    	<tr v-for="emp in empList"  class="text-center">
+    		<td>{{emp.empno}}</td>
+    		<td>{{emp.ename}}</td>
+    		<td>{{emp.hiredateS}}</td>
+    		<td>{{emp.sal}}</td>
+    		<td>{{emp.deptno}}</td></tr>
     </tbody>
 	</table>       
 </div>
