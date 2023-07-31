@@ -13,10 +13,15 @@ import com.web.board.vo.Person;
 
 @Controller
 public class A01_Controller {
+	// http://localhost:5050/start1
+	@GetMapping("start1")
+	public String start1() {
+		return "a01.html";
+	}	
 	// http://localhost:5050/start
 	@GetMapping("start")
 	public String start() {
-		return "a01_exp/a01_start";
+		return "WEB-INF\\views\\a01_exp\\a01_start.jsp";
 	}
 	// http://localhost:5050/bootstrap
 	@GetMapping("bootstrap")
@@ -45,10 +50,9 @@ public class A01_Controller {
 	}
 	/*  ${p01.name} ${p01.age} ${p01.loc}
 	 * */
-	
 	@Autowired
 	private A01_Service service;
-	// http://localhost:5050/a06-+_empList
+	// http://localhost:5050/a06_empList
 	@RequestMapping("a06_empList")
 	public String a06_empList(Emp sch, Model d) {
 		
