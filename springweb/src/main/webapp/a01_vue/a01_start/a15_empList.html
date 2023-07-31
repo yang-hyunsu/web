@@ -70,6 +70,25 @@
 				},
 				search:function(){
 					console.log("검색!")
+					// http://localhost:7080 현재 서버를 이용할 때 생략가능
+					var url = "/springweb/empListAjax.do";
+					this.empList = [] // 검색 내용 초기화
+					var vm = this
+					// 주의) this : Vue()객체로 메서드나 모델데이터를
+					// 접근 가능..
+					fetch(url).then(function(response){
+						//this : fetch api 객체를 지칭.
+						console.log("# 함수1(response 객체) #")
+						console.log(response)
+						return response.json()
+					}).then(function(json){
+						console.log("# 함수2(json 객체) #")
+						console.log(json)						
+					}).catch(function(err){
+						console.log("#에러 발생시#")
+						console.log(err)
+					})
+					
 				}
 			}	  
 			/*
