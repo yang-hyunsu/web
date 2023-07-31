@@ -41,11 +41,45 @@
 		}
 	4) fetch api 처리
 		- url : http://localhost:7080/springweb/empListAjax.do
+		- fetch(url).then(
+				함수1(response)).then(
+				함수2(json)).catch(
+				예외처리함수)	
+		- 함수2에서 json 데이터를 받아서.
+			this.empList = jon.empList 로처리..
+	5) view단 구현
+		{{}}, v-model등 form 속성 설정
+		테이블 리스트
+		<tr v-for="emp in empList"
+			{{emp.empno}}
+			{{emp.ename}}
+			{{emp.job}}
+			
 */
 	$(document).ready(function(){
 		var vm = new Vue({
 			el:".container",
-			data:{msg:"타이틀"}
+			data:{msg:"사원정보리스트",ename:"",job:"",
+				  empList:[]},
+			methods:{
+				checkValid:function(){
+					console.log("키업")
+					if(event.keyCode==13){
+						this.search()
+					}
+				},
+				search:function(){
+					console.log("검색!")
+				}
+			}	  
+			/*
+  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	    <input v-model="ename" @keyup="checkValid" class="form-control mr-sm-2" placeholder="사원명" />
+	    <input v-model="job"  @keyup="checkValid"  class="form-control mr-sm-2" placeholder="직책명" />
+	    <button @click="search" class="btn btn-info" type="button">Search</button>
+ 	</nav>			
+			*/
+				  
 		}) 
 	});
 </script>
@@ -56,13 +90,13 @@
 	<div class="jumbotron text-center">
 	  <h2 >{{msg}}</h2>
 	</div>
-	<form id="frm01" class="form-inline"  method="post">
+	
   	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-	    <input class="form-control mr-sm-2" placeholder="제목" />
-	    <input class="form-control mr-sm-2" placeholder="내용" />
-	    <button class="btn btn-info" type="submit">Search</button>
+	    <input v-model="ename" @keyup="checkValid" class="form-control mr-sm-2" placeholder="사원명" />
+	    <input v-model="job"  @keyup="checkValid"  class="form-control mr-sm-2" placeholder="직책명" />
+	    <button @click="search" class="btn btn-info" type="button">Search</button>
  	</nav>
-	</form>
+	
    <table class="table table-hover table-striped">
    	<col width="10%">
    	<col width="50%">
