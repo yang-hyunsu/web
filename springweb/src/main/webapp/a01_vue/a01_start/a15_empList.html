@@ -139,18 +139,18 @@
       <tr class="table-success text-center">
         <th>사원번호</th>
         <th>사원명</th>
+        <th>직책명</th>
         <th>입사일</th>
         <th>급여</th>
-        <th>부서번호</th>
       </tr>
     </thead>	
     <tbody>
     	<tr v-for="emp in empList"  class="text-center">
     		<td>{{emp.empno}}</td>
     		<td>{{emp.ename}}</td>
+    		<td>{{emp.job}}</td>
     		<td>{{emp.hiredateS}}</td>
-    		<td>{{emp.sal}}</td>
-    		<td>{{emp.deptno}}</td></tr>
+    		<td>{{emp.sal}}</td></tr>
     </tbody>
 	</table>       
 </div>
