@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Good day!! ^^</title>
+<link rel="stylesheet" href="/springweb/a00_com/bootstrap.min.css" >
+<style>
+	td{txt-align:center;}
+</style>
+<script src="/springweb/a00_com/jquery.min.js"></script>
+<script src="/springweb/a00_com/bootstrap.min.js"></script>
+<script src="/springweb/a00_com/vue.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		var vm = new Vue({
+			el:".container",
+			data:{msg:"부서정보검색", dname:"",loc:"",deptList:[]},
+			methods:{
+				ckValid:function(){
+					if(event.keyCode==13){
+						this.search()
+					}
+				},
+				search:function(){
+					console.log("부서명:"+this.dname+", 부서위치:"+this.loc)
+				}
+			}
+		}) 
+		// /springweb/deptListAjax.do?dname=O&loc=BO
+		// 1. 모델데이터 선언
+		// 2. 기본 메서드 선언
+		// 3. 이벤트 핸들러에 의해 모델데이터, 메서드 호출 처리
+		// ------------------------------------
+		// 4. fetch api에 의해 데이터 로딩.
+		// 5. 화면단 출력 처리
+	});
+</script>
+</head>
+<body>
+
+<div class="container">
+	<div class="jumbotron text-center">
+	  <h2 >{{msg}}</h2>
+	</div>
+  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	    <input @keyup="ckValid" v-model="dname" class="form-control mr-sm-2" placeholder="부서명" />
+	    <input @keyup="ckValid"  v-model="loc" class="form-control mr-sm-2" placeholder="부서위치" />
+	    <button @click="search" class="btn btn-info" type="button">Search</button>
+ 	</nav>
+   <table class="table table-hover table-striped">
+   	<col width="33%">
+   	<col width="33%">
+   	<col width="33%">
+    <thead>
+    
+      <tr class="table-success text-center">
+        <th>부서번호</th>
+        <th>부서명</th>
+        <th>부서위치</th>
+      </tr>
+    </thead>	
+    <tbody>
+    	<tr  class="text-center"><td></td><td></td><td></td></tr>
+    </tbody>
+	</table>       
+</div>
+</body>
+</html>

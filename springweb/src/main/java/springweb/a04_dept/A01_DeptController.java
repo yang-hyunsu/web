@@ -3,11 +3,13 @@ package springweb.a04_dept;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import backendWeb.z01_vo.Dept;
+import backendWeb.z01_vo.Emp;
 import backendWeb.z01_vo.Job;
 
 @Controller
@@ -32,6 +34,11 @@ public class A01_DeptController {
 		
 		return "WEB-INF\\views\\a04_dept\\a01_deptList.jsp";
 	}
+	// /springweb/deptListAjax.do?dname=O&loc=BO
+	@RequestMapping("deptListAjax.do")
+	public ResponseEntity<List<Dept>> deptList(Dept sch) {
+		return ResponseEntity.ok(service.getDeptList(sch));
+	}		
 	/*
 	dao 직책 검색 직책아이디로 검색.
 	List<Job> getJobs(String job_id) 
