@@ -44,6 +44,17 @@ public class BoardController {
 			session.removeAttribute("mem");
 		}
 		return "redirect:/login";
+		// controller에서 메서드로 기능 메서드 호출시..
+		/*
+		forward: 요청값 전달
+		redirect : 요청값 전달하지 않고 호출..
+		 * */
 	}
+	// http://localhost:5050/boardInsert
+	@RequestMapping("boardInsert")
+	public String boardInsert() {
+		return "a03_boardInsert";
+	}
+	
 	
 }

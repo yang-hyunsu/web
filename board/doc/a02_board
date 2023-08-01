@@ -158,6 +158,15 @@
 	2) 로그인 성공시 session 처리
 		front단에서 main화면 이동
 	3) 
+
+# 등록 처리(첨부파일X)
+1. 리스트에서 등록화면 버튼 클릭시, 등록화면이동
+2. 등록 controller 초기 화면 호출.
+	boardInsert
+	a03_boardInsert.jsp	
+	
+
+
 			 		
 		
 		
