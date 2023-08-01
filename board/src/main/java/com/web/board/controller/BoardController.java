@@ -3,6 +3,7 @@ package com.web.board.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.web.board.service.BoardService;
@@ -35,6 +36,13 @@ public class BoardController {
 			d.addAttribute("msg", msg);
 		}
 		
+		return "a02_login";
+	}
+	@GetMapping("logout")
+	public String logout(HttpSession session) {
+		if(session.getAttribute("mem")!=null) {
+			session.removeAttribute("mem");
+		}
 		return "a02_login";
 	}
 	

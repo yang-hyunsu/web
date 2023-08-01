@@ -36,7 +36,10 @@
 			alert("로그인이 필요합니다\n로그인 화면이동")
 			location.href="${path}/login";
 		}
-			
+		$("#logout").click(function(){
+			if(confirm("로그아웃 하시겠습니까?"))
+				location.href="${path}/logout";
+		})	
 	});
 </script>
 </head>
@@ -48,6 +51,9 @@
   <h2>답변형 게시판 리스트</h2>
   <br><br><br>
   <p align="right">${mem.name}님 로그인 중</p>
+  <p align="right">
+  	<button id="logout" class="btn btn-success" 
+  		type="button">로그아웃</button></p>
 
 </div>
 
