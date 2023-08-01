@@ -30,7 +30,13 @@
 	$(document).ready(function(){
 		<%-- 
 		
-		--%>	
+		--%>
+		var sessName = "${mem.name}";
+		if(sessName==""){
+			alert("로그인이 필요합니다\n로그인 화면이동")
+			location.href="${path}/login";
+		}
+			
 	});
 </script>
 </head>
@@ -40,7 +46,8 @@
 <div class="jumbotron text-center">
   <h2 data-toggle="modal" data-target="#exampleModalCenter"></h2>
   <h2>답변형 게시판 리스트</h2>
-  
+  <br><br><br>
+  <p align="right">${mem.name}님 로그인 중</p>
 
 </div>
 
