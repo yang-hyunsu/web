@@ -11,4 +11,6 @@ import com.web.board.vo.Member;
 public interface BoardDao {
 	public List<Board> boardList(Board sch);
 	public Member login(Member mem);
+	public int getNo();
+	public int insertBoard(Board insert);	
 }

@@ -19,4 +19,16 @@
 		WHERE id = #{id}
 		AND pass = #{pass}		
 	</select>
-</mapper>	
+	<select id="getNo" resultType="int">
+		SELECT board_seq.nextval FROM dual	
+	</select>
+	<insert id="insertBoard" parameterType="board">
+		INSERT INTO board VALUES(#{no},#{refno},
+		#{subject},#{content},
+		#{writer},0, sysdate, sysdate)		
+	</insert>
+</mapper>
+
+
+
+	

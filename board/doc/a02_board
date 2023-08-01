@@ -165,7 +165,34 @@
 	boardInsert
 	a03_boardInsert.jsp	
 	session 없을 때는 로그인 처리 하게 처리..
+3. DB
+	1) sql
+		SELECT board_seq.nextval FROM dual	
+	
+		INSERT INTO board VALUES(1,0,'첫번째글','내용',
+		'himan',0, sysdate, sysdate);
 		
+		INSERT INTO board VALUES(#{no},#{refno},
+		#{subject},#{content},
+		#{writer},0, sysdate, sysdate)	
+	2) vo
+	3) dao/mapper
+		SELECT board_seq.nextval FROM dual	
+	
+		public int getNo();
+		INSERT INTO board VALUES(#{no},#{refno},
+		#{subject},#{content},
+		#{writer},0, sysdate, sysdate)	
+		
+		public int insertBoard(Board insert);
+4. service
+	public String insertBoard(Board ins){
+		ins.setNo(dao.getNo())
+		return ins.insertBoard(ins)>0?"등록성공":"등록실패";
+	}
+	---------------------------------
+5. controller
+			
 	
 
 
