@@ -51,6 +51,11 @@
 <script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		var sessName = "${mem.name}";
+		if(sessName==""){
+			alert("로그인이 필요합니다\n로그인 화면이동")
+			location.href="${path}/login";
+		}	
 		<%-- 
 		
 		--%>	
@@ -73,7 +78,8 @@
           </div>
           <div class="mb-3">
             <label for="writer">작성자</label>
-            <input type="text" name="writer" value="${mem.name}" readonly	 class="form-control ckValid" id="작성자" placeholder="작성자를 입력" required>
+            <input type="hidden" name="writer" value="${mem.id}" >
+            <input type="text"  value="${mem.name}" readonly	 class="form-control ckValid" id="작성자" placeholder="작성자를 입력" required>
             <div class="invalid-feedback">
               작성자를 입력해주세요.
             </div>
@@ -87,7 +93,7 @@
           </div> 
            <div class="mb-3">
          	<div class="custom-file">
-		        <input type="file" name="report" class="custom-file-input" id="file01">
+		        <input type="file" name="report" class="custom-file-input" multiple="multiple" id="file01">
 		        <label class="custom-file-label" for="file01">파일 선택</label>
 			</div>
 		  </div>	

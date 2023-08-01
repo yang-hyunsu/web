@@ -164,6 +164,8 @@
 2. 등록 controller 초기 화면 호출.
 	boardInsert
 	a03_boardInsert.jsp	
+	session 없을 때는 로그인 처리 하게 처리..
+		
 	
 
 

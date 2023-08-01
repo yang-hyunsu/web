@@ -63,8 +63,17 @@
 	    
 	    <input name="writer" class="form-control mr-sm-2" placeholder="내용" />
 	    <button class="btn btn-info" type="submit">Search</button>
+	    <button  class="btn btn-success" id="regBtn" type="button">등록화면</button>
  	</nav>
 	</form>
+	<script type="text/javascript">
+		$("#regBtn").click(function(){
+			if(confirm("등록화면 이동합니다.")){
+				location.href="${path}/boardInsert"
+				
+			}
+		})
+	</script>
    <table class="table table-hover table-striped">
    	<col width="10%">
    	<col width="50%">
