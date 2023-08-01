@@ -43,7 +43,7 @@ public class BoardController {
 		if(session.getAttribute("mem")!=null) {
 			session.removeAttribute("mem");
 		}
-		return "a02_login";
+		return "redirect:/login";
 	}
 	
 }
