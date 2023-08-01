@@ -156,7 +156,7 @@
 	1) 초기화면 로딩/로그인 처리
 		public String login(Member login, Model d)
 	2) 로그인 성공시 session 처리
-		main화면 이동
+		front단에서 main화면 이동
 	3) 
 			 		
 		
