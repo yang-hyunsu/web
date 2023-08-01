@@ -18,5 +18,9 @@ public class BoardController {
 		d.addAttribute("boardList", service.boardList(sch));
 		return "a01_boardList";
 	}
+	@RequestMapping("login")
+	public String login() {
+		return "a02_login";
+	}
 	
 }

@@ -139,7 +139,20 @@
 4. 화면단 리스트 처리
 
 ---------------------------
-
+# 로그인/로그아웃 session 처리
+1. DB
+	1) sql
+	2) VO
+	3) Dao/mapper
+		public Member login(Member mem);
+		
+2. service
+3. controller
+	1) 초기화면 로딩/로그인 처리
+		public String login(Member login, Model d)
+	2) 로그인 성공시 session 처리
+		main화면 이동
+	3) 
 			 		
 		
 		

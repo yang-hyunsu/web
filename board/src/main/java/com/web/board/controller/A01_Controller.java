@@ -1,12 +1,12 @@
 package com.web.board.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 // 15:10~
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.web.board.service.A01_Service;
 import com.web.board.vo.Emp;
@@ -14,7 +14,6 @@ import com.web.board.vo.Person;
 
 @Controller
 public class A01_Controller {
-
 
 	// http://localhost:5050/start
 	@GetMapping("start")
