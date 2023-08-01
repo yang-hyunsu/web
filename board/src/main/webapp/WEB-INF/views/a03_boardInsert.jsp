@@ -79,7 +79,27 @@
     <div class="input-form-backgroud row">
       <div class="input-form col-md-12 mx-auto">
         <h4 class="mb-3">게시판 등록</h4>
-        <form method="post"  enctype="multipart/form-data"  class="validation-form" novalidate>
+        <!-- 
+        form 하위에 있는 
+        	name="key" value="val"
+        	
+        	submit를 클릭시, form에 action="boardInsert"으로 지정한
+        	controller단에 query string 
+        	
+        	boardInsert?key=val로 전송한다. 
+        	
+		      @RequestMapping("boardInsert")
+			public String boardInsert(Board ins, Model d) {  	
+        		setKey(String val)
+        		
+        	단, form에 action속성이 설정되지 않으면,
+        	이 화면을 호출한 controller를 다시 호출한다.
+        		
+        		
+         -->
+        <form method="post" 
+         enctype="multipart/form-data" 
+         class="validation-form" novalidate>
         	<input type="hidden" name="refno"
         		 value="${empty param.refno?'0':param.refno}"/>
           <div class="mb-3">

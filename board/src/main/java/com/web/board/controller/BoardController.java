@@ -50,6 +50,7 @@ public class BoardController {
 		redirect : 요청값 전달하지 않고 호출..
 		 * */
 	}
+	// location.href="${path}/boardInsert"
 	// http://localhost:5050/boardInsert
 	@RequestMapping("boardInsert")
 	public String boardInsert(Board ins, Model d) {
@@ -57,6 +58,14 @@ public class BoardController {
 			d.addAttribute("msg", service.insertBoard(ins));
 		}
 		return "a03_boardInsert";
+		// "a03_boardInsert";??
+		/*
+		spring.mvc.view.prefix=/WEB-INF/views/
+		spring.mvc.view.suffix=.jsp
+		
+		/WEB-INF/views/a03_boardInsert.jsp
+		
+		 * */
 	}
 	
 	
