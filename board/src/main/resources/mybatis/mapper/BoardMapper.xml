@@ -10,4 +10,13 @@
    	   where subject like '%'||#{subject}||'%'
    	   and writer  like '%'||#{writer}||'%'
 	</select>
+	<!-- 
+	public Member login(Member mem);
+	 -->
+	<select id="login" resultType="member" parameterType="member">
+		SELECT *
+		FROM MEMBER01
+		WHERE id = #{id}
+		AND pass = #{pass}		
+	</select>
 </mapper>	

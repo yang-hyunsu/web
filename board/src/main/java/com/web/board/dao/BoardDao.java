@@ -5,9 +5,10 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.web.board.vo.Board;
+import com.web.board.vo.Member;
 // com.web.board.dao.BoardDao
 @Mapper
 public interface BoardDao {
 	public List<Board> boardList(Board sch);
-	
+	public Member login(Member mem);
 }

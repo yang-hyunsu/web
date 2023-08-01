@@ -5,5 +5,6 @@
 	<typeAliases>
 		<typeAlias alias="emp" type="com.web.board.vo.Emp"/>
 		<typeAlias alias="board" type="com.web.board.vo.Board"/>
+		<typeAlias alias="member" type="com.web.board.vo.Member"/>
 	</typeAliases>
 </configuration>
