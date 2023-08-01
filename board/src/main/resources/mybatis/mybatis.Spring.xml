@@ -4,5 +4,6 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="emp" type="com.web.board.vo.Emp"/>
+		<typeAlias alias="board" type="com.web.board.vo.Board"/>
 	</typeAliases>
 </configuration>

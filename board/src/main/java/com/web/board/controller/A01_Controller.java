@@ -1,6 +1,7 @@
 package com.web.board.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,11 +14,8 @@ import com.web.board.vo.Person;
 
 @Controller
 public class A01_Controller {
-	// http://localhost:5050/start1
-	@GetMapping("start1")
-	public String start1() {
-		return "a01.html";
-	}	
+
+
 	// http://localhost:5050/start
 	@GetMapping("start")
 	public String start() {
@@ -28,6 +26,8 @@ public class A01_Controller {
 	public String a02_bootstrapTmp() {
 		return "a01_exp/a02_bootstrapTmp";
 	}
+	
+	
 	// ex) http://localhost:5050/a03_exp
 	//     안녕하세요 시작입니다.
 	//     a03_exp.jsp 호출..
