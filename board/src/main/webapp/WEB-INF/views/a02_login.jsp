@@ -79,6 +79,8 @@
               아이디를 입력해주세요.
             </div>
           </div>
+          <div class="mb-4"></div>
+          <button id="loinBtn" class="btn btn-primary btn-lg btn-block" type="submit">로그인</button>
         </form>
       </div>
      </div>

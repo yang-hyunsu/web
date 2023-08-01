@@ -142,9 +142,14 @@
 # 로그인/로그아웃 session 처리
 1. DB
 	1) sql
+		SELECT *
+		FROM MEMBER01
+		WHERE id = 'himan'
+		AND pass = '7777'	
 	2) VO
 	3) Dao/mapper
 		public Member login(Member mem);
+------------------------------------------
 		
 2. service
 3. controller
