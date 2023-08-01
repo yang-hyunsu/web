@@ -192,6 +192,18 @@
 	}
 	---------------------------------
 5. controller
+	insertBoard
+	public String insertBoard(Board ins, Model d){
+		if(ins.getSubject()!=null){
+			d.addAttribute("msg",service.insertBoard(ins));
+		}
+		return ""
+	}
+6. 화면단처리(jsp)
+	var msg = "${msg}"
+	if(msg!=""){
+		alert(msg);
+	}
 			
 	
 

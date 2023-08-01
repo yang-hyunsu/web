@@ -56,6 +56,18 @@
 			alert("로그인이 필요합니다\n로그인 화면이동")
 			location.href="${path}/login";
 		}	
+		var msg = "${msg}"
+		if(msg!=""){
+			alert(msg)
+			if(msg=="등록성공"){
+				if(!confirm("계속 등록하시겠습니까?")){
+					location.href="${path}/boardList"
+				}
+			}
+		}
+		$("#goMain").click(function(){
+			location.href="${path}/boardList"
+		})	
 		<%-- 
 		
 		--%>	
@@ -67,8 +79,9 @@
     <div class="input-form-backgroud row">
       <div class="input-form col-md-12 mx-auto">
         <h4 class="mb-3">게시판 등록</h4>
-        <form method="post"  enctype="multipart/form-data"  action="${path}/insert.do" class="validation-form" novalidate>
-        	<input type="hidden" name="refno" value="${empty param.refno?'0':param.refno}"/>
+        <form method="post"  enctype="multipart/form-data"  class="validation-form" novalidate>
+        	<input type="hidden" name="refno"
+        		 value="${empty param.refno?'0':param.refno}"/>
           <div class="mb-3">
             <label for="subject">제목</label>
             <input name="subject" type="text" value="${param.subject}" class="form-control  ckValid" id="subject" placeholder="제목 입력" required>
@@ -104,7 +117,7 @@
 	          })			  
 		  </script>                     
           <div class="mb-4"></div>
-          <button id="regBtn" class="btn btn-primary btn-lg btn-block" type="button">게시물 등록</button>
+          <button id="regBtn" class="btn btn-primary btn-lg btn-block" type="submit">게시물 등록</button>
           <button id="goMain" class="btn btn-info btn-lg btn-block" type="button">조회 화면</button>
         </form>
       </div>

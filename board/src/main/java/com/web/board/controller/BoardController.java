@@ -52,7 +52,10 @@ public class BoardController {
 	}
 	// http://localhost:5050/boardInsert
 	@RequestMapping("boardInsert")
-	public String boardInsert() {
+	public String boardInsert(Board ins, Model d) {
+		if(ins.getSubject()!=null) {
+			d.addAttribute("msg", service.insertBoard(ins));
+		}
 		return "a03_boardInsert";
 	}
 	
