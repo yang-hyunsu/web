@@ -59,7 +59,7 @@
 		if(msg!=""){
 			alert(msg)	
 			if(msg == "로그인 성공"){
-				location.href="${path}/list.do";
+				location.href="${path}/boardList";
 			}
 			
 		}
@@ -79,6 +79,13 @@
               아이디를 입력해주세요.
             </div>
           </div>
+          <div class="mb-3">
+            <label for="pass">패스워드</label>
+            <input name="pass" type="password" class="form-control  " id="pass" placeholder="패스워드 입력" required>
+            <div class="invalid-feedback">
+              패스워드를 입력해주세요.
+            </div>
+          </div>          
           <div class="mb-4"></div>
           <button id="loinBtn" class="btn btn-primary btn-lg btn-block" type="submit">로그인</button>
         </form>
