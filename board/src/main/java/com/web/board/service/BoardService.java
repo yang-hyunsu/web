@@ -22,5 +22,12 @@ public class BoardService {
 	public Member login(Member mem) {
 		return dao.login(mem);
 	}
+	public String insertBoard(Board insert) {
+		insert.setNo(dao.getNo());
+		return dao.insertBoard(insert)>0?
+				"등록성공":"등록되지 않았습니다";
+	}	
+	
+	
 
 }
