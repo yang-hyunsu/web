@@ -9,6 +9,7 @@
    	   from board
    	   where subject like '%'||#{subject}||'%'
    	   and writer  like '%'||#{writer}||'%'
+   	   order by no desc
 	</select>
 	<!-- 
 	public Member login(Member mem);
