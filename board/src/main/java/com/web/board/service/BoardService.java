@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.web.board.dao.BoardDao;
 import com.web.board.vo.Board;
+import com.web.board.vo.Member;
 
 @Service
 public class BoardService {
@@ -16,6 +17,10 @@ public class BoardService {
 		if(sch.getSubject()==null) sch.setSubject("");
 		if(sch.getWriter()==null) sch.setWriter("");
 		return dao.boardList(sch);
+	}
+	
+	public Member login(Member mem) {
+		return dao.login(mem);
 	}
 
 }
