@@ -132,10 +132,13 @@
 2. service BoardService.java
    1) 초기 검색 null 처리
 3. controller BoardController.java
-	1) boardList
-	2) 요청값 BoardSch				 	
+	1) /boardList
+	2) 요청값 Board				 	
 	3) 모델처리
+		boardList
 4. 화면단 리스트 처리
+
+---------------------------
 
 			 		
 		
