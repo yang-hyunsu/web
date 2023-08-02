@@ -46,7 +46,7 @@
 
 <body>
 <div class="container">
-	<div class="jumbotron text-center">
+	<div class="h-50 jumbotron text-center">
 	  <h2 data-toggle="modal" data-target="#exampleModalCenter"></h2>
 	  <h2>답변형 게시판 리스트</h2>
 	  <p align="right">${mem.name}님 로그인 중</p>
@@ -91,7 +91,7 @@
     <tbody>
     	<c:forEach var="board" items="${boardList}">
     	<tr ondblclick="detail(${board.no})"><td>${board.no}</td>
-    		<td>${board.subject}</td>
+    		<td class="text-left">${board.subject}</td>
     		<td>${board.writer }</td>
     		<td><fmt:formatDate value="${board.regdte}"/></td>
     		<td>${board.readcnt}</td></tr>

@@ -84,19 +84,15 @@ body {
 			}
 		})		
 		var msg = "${msg}"
-		if (msg != "") {
-			
-			if(msg.indexOf("수정")!=-1){
-				if (confirm(msg+"\n 조회화면으로 이동 하시겠습니까?")) {
-					location.href = "${path}/boardList"
-				}
-			}
-			
-			if(msg.indexOf("삭제")!=-1){
-				alert(msg+"\n 조회화면으로 이동 합니다.")
+		if(msg.indexOf("수정")!=-1){
+			if (confirm(msg+"\n 조회화면으로 이동 하시겠습니까?")) {
 				location.href = "${path}/boardList"
-			}	
+			}
 		}
+		if(msg.indexOf("삭제")!=-1){
+			alert(msg+"\n 조회화면으로 이동 합니다.")
+			location.href = "${path}/boardList"
+		}	
 		$("#goMain").click(function() {
 			location.href = "${path}/boardList"
 		})

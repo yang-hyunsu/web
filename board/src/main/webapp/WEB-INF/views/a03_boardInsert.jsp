@@ -57,16 +57,14 @@
 			location.href="${path}/login";
 		}	
 		var msg = "${msg}"
-		if(msg!=""){
-			if(msg.indexOf("등록")!=-1){
-				$("#refno").val("0")
-				$(".initFrm").val("")
-				
-				if (confirm(msg+"\n 조회화면으로 이동 하시겠습니까?")) {
-					location.href = "${path}/boardList"
-				}
+		if(msg.indexOf("등록")!=-1){
+			$("#refno").val("0")
+			$(".initFrm").val("")
+			if (confirm(msg+"\n 조회화면으로 이동 하시겠습니까?")) {
+				location.href = "${path}/boardList"
 			}
 		}
+
 		$("#goMain").click(function(){
 			location.href="${path}/boardList"
 		})	
@@ -102,7 +100,7 @@
         <form method="post" action="${path}/boardInsert"
          enctype="multipart/form-data" 
          class="validation-form" novalidate>
-        	<input id="refno" type="text" name="refno"
+        	<input id="refno" type="hidden" name="refno"
         		 value="${empty param.refno?'0':param.refno}"/>
           <div class="mb-3">
             <label for="subject">제목</label>
