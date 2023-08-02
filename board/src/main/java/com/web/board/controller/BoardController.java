@@ -84,5 +84,11 @@ public class BoardController {
 		
 		return "a04_boardDetail";
 	}  
+	@GetMapping("boardDelete")
+	public String boardDelete(@RequestParam("no") int no,
+							   Model d) {
+		d.addAttribute("msg", service.deleteBoard(no));
+		return "a04_boardDetail"; 
+	}	
 	
 }
