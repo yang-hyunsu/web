@@ -67,11 +67,25 @@ body {
 				$("form").submit();
 			}
 		})
+		$("#delBtn").click(function(){
+			if(confirm("삭제 하시겠습니까?")){
+				location.href="${path}/boardDelete?no="
+						+$("#no").val()
+			}
+		})		
 		var msg = "${msg}"
 		if (msg != "") {
-			if (confirm(msg+" 조회화면으로 이동 하시겠습니까?")) {
-				location.href = "${path}/boardList"
+			
+			if(msg.indexOf("수정")!=-1){
+				if (confirm(msg+"\n 조회화면으로 이동 하시겠습니까?")) {
+					location.href = "${path}/boardList"
+				}
 			}
+			
+			if(msg.indexOf("삭제")!=-1){
+				alert(msg+"\n 조회화면으로 이동 합니다.")
+				location.href = "${path}/boardList"
+			}	
 		}
 		$("#goMain").click(function() {
 			location.href = "${path}/boardList"

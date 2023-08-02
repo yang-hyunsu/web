@@ -84,6 +84,7 @@ public class BoardController {
 		
 		return "a04_boardDetail";
 	}  
+	// boardDelete?no=4
 	@GetMapping("boardDelete")
 	public String boardDelete(@RequestParam("no") int no,
 							   Model d) {
