@@ -46,13 +46,12 @@
 
 <body>
 <div class="container">
-	<div class="h-50 jumbotron text-center">
+	<div class="jumbotron text-center" style="padding:35px 5px 0px 5px;">
 	  <h2 data-toggle="modal" data-target="#exampleModalCenter"></h2>
-	  <h2>답변형 게시판 리스트</h2>
-	  <p align="right">${mem.name}님 로그인 중</p>
-	  <p align="right">
-	  	<button id="logout" class="btn btn-success" 
-	  		type="button">로그아웃</button></p>
+	  <h2>답변형 게시판 리스트</h2><br>
+	  <p align="right">${mem.name}님 로그인 중
+	  					<button id="logout" class="btn btn-primary" 
+	  					type="button">로그아웃</button></p>
 	
 	</div>
 
