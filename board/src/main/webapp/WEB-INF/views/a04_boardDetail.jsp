@@ -164,9 +164,9 @@ body {
 				<button id="reBtn" class="btn btn-primary btn-lg btn-block"
 					type="button">답글 달기</button>
 				<button id="uptBtn" class="btn btn-warning btn-lg btn-block"
-					type="button">수정</button>
+					type="button">수정(권한필요)</button>
 				<button id="delBtn" class="btn btn-danger btn-lg btn-block"
-					type="button">삭제</button>
+					type="button">삭제(권한필요)</button>
 					
 				<button id="goMain" class="btn btn-info btn-lg btn-block"
 					type="button">조회 화면</button>
