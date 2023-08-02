@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 // 15:10~
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.web.board.service.A01_Service;
 import com.web.board.vo.Emp;
@@ -14,11 +15,11 @@ import com.web.board.vo.Person;
 
 @Controller
 public class A01_Controller {
-
+	
 	// http://localhost:5050/start
 	@GetMapping("start")
 	public String start() {
-		return "WEB-INF\\views\\a01_exp\\a01_start.jsp";
+		return "a01_exp\\a01_start";
 	}
 	// http://localhost:5050/bootstrap
 	@GetMapping("bootstrap")

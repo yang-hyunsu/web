@@ -27,6 +27,9 @@ public class BoardService {
 		return dao.insertBoard(insert)>0?
 				"등록성공":"등록되지 않았습니다";
 	}	
+	public Board getBoard(int no) {
+		return dao.getBoard(no);
+	}
 	
 	
 

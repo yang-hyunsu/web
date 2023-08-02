@@ -28,6 +28,11 @@
 		#{subject},#{content},
 		#{writer},0, sysdate, sysdate)		
 	</insert>
+	<!-- Board getBoard(int no); -->
+	<select id="getBoard" parameterType="int" 
+						  resultType="board">
+		select * from board where no  = #{no}
+	</select>
 </mapper>
 
 

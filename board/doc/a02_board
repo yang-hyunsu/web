@@ -50,7 +50,7 @@
 		게시물 삭제
 		게시물 첨부파일 정보삭제
 	3) VO
-		조회를 위한 BoardSch
+		조회를 위한 BoardSch : 조회, 페이징로직 포함
 		리스트/등록/수정 위한 Board
 		첨부파일 정보 BoardFile
 		회원정보 Member
@@ -72,6 +72,7 @@
 		조회리스트
 		등록처리
 		상세화면
+		답글처리(답글을 위한 요청값변경 후, 등록처리)
 		수정처리
 		삭제처리	
 		
@@ -107,6 +108,7 @@
 	1) 초기 리스트 화면 처리(페이지처리X)
 	2) 로그인/로그아웃 session 처리
 	3) 등록 처리(첨부파일X)
+	-------------------------------
 	4) 상세 화면 처리
 	5) 수정 처리(첨부파일X)
 	6) 삭제 처리
@@ -204,6 +206,63 @@
 	if(msg!=""){
 		alert(msg);
 	}
+	
+# 상세 화면 조회 처리
+1. 처리 프로세스
+	1) 리스트 화면에서 특정한 row를 클릭시, 상세화면 이동
+	2) 상세화면에서 글번호, 상위글번호, 제목, 작성자,
+		조회수, 내용, 첨부파일 출력을 확인할 수 있고,
+	3) 기능버튼으로 답글, 수정, 삭제, 메인페이지이동을 처리할 수 있다.
+2. 개발 순서
+	1) DB 처리
+		상세조회 sql : 
+			select * from board where no  = #{no}
+		VO 확인
+		dao/mapper 처리
+			public Board getBoard(int no);
+	2) service
+	--------------------------------------------
+	3) controller
+		@GetMapping(/boardDetail
+			@RequestParam("no") int no
+			d.addAttribute("board",service.getBoard(no));
+	4) view(a01_boardList.jsp)
+		tr ondblclick="goDetail(${board.no)"
+			주의) js 넘기는 데이터 유형에 따라서 문자열형이면
+				반드시 ''사이로 처리하여야 한다.
+				ex) "goDetail('${board.writer')"
+		function goDetail(no)
+			location.href="${path}/boardDetail?no="+no
+		
+	   view(a04_boardDetail.jsp)
+		name="no"	value="${board.no}"
+		name="refno" value="" ==> value="0"	
+		숫자형 VO의 property는 아에 없든지 있으면
+		반드시 숫자형으로 초기값을 선언하여야 한다.
+		그렇지 않으면 controller 요청 처리가 아에 되지 않는다.
+		404발생.
+			void setRefno(int refno)  int refno = ""
+		name="refno" value="${board.refno}"	
+		
+		
+		
+		name="subject" value="${board.subject}"
+		name="writer" value="${board.writer}"
+		name="readcnt" value="${board.readcnt}"
+		name="content" value="${board.content}"
+		//name="report" value="${board.report}"
+		id="reBtn"
+		id="uptBtn"
+		id="delBtn"
+		id="mainBtn"
+		$("#uptBtn").click(function(){
+			// 각 기능 버튼마다 요청 action이 다른 경우 
+			// 처리할 내용..
+			$("form").attr("action","${path}/updateBoard");
+		})
+		
+				
+
 			
 	
 
