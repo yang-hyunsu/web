@@ -107,8 +107,9 @@ body {
 								
 				<div class="mb-3">
 					<label for="subject">제목</label> 
-					   <input type="text" value="${board.subject}"
-						class="form-control ckValid" id="제목"
+					   <input name="subject" type="text" 
+					   value="${board.subject}"
+						class="form-control ckValid" id="subject"
 						placeholder="제목 입력" required>
 				</div>				
 				<div class="row">
