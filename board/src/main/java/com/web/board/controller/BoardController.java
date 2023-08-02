@@ -56,7 +56,8 @@ public class BoardController {
 	// http://localhost:5050/boardInsert
 	@RequestMapping("boardInsert")
 	public String boardInsert(Board ins, Model d) {
-		if(ins.getSubject()!=null) {
+		//System.out.println("답글번호:"+ins.getRefno());
+		if(ins.getSubject()!=null || ins.getRefno()>0) {
 			d.addAttribute("msg", service.insertBoard(ins));
 		}
 		return "a03_boardInsert";

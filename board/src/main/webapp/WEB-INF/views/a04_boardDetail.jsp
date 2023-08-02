@@ -60,7 +60,17 @@ body {
 		if(sessId!=$("#writer").val()){
 			$("#uptBtn").hide()
 			$("#delBtn").hide()
-		}		 
+		}	
+		$("#reBtn").click(function(){
+			if(confirm("답글을 처리하시겠습니까?")){
+				$("#refno").val($("#no").val())
+				$("#subject").val("RE:"+$("#subject").val())
+				$("#content").val("\n\n\n\n"+
+						"=== 이전글 ===\n"+$("#content").val())
+				$("form").attr("action","${path}/boardInsert")
+				$("form").submit()
+			}
+		})
 		$("#uptBtn").click(function(){
 			if(confirm("수정하시겠습니까?")){
 				$("form").attr("action","${path}/boardUpdate");

@@ -99,4 +99,4 @@ private Date uptdte;
    	   where subject like '%'||''||'%'
    	   and writer  like '%'||''||'%';
 
-
+SELECT * FROM board;
