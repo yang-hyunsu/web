@@ -72,7 +72,7 @@ public class BoardController {
 	@GetMapping("boardDetail")
 	public String boardDetail(@RequestParam("no") int no, 
 								Model d) {
-		d.addAttribute("board", service.getBoard(no));
+		d.addAttribute("board", service.getDetail(no));
 		return "a04_boardDetail";
 	}
 	

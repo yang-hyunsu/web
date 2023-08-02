@@ -108,7 +108,6 @@
 	1) 초기 리스트 화면 처리(페이지처리X)
 	2) 로그인/로그아웃 session 처리
 	3) 등록 처리(첨부파일X)
-	-------------------------------
 	4) 상세 화면 처리(조회수카운트업)
 	5) 수정 처리(첨부파일X)
 	6) 삭제 처리
@@ -275,6 +274,42 @@
 			public Board detailBoard()
 				dao.readCntUp();
 				 	 	
+# 수정 처리(첨부파일X)
+1. 프로세스
+	1) 수정할 내용 변경 수정버튼 클릭 
+	2) 권한 점검 - 로그인한 회원만 작성한 글 수정 가능
+	3) 수정 처리 프로세스 수정성공 알람 뜨고, 수정 내용 확인
+		메인화면 이동 처리 여부 확인
+2. 개발순서
+	1) js에서 session id 가져오기
+		 ex) var sessId = "${mem.id}"
+	2) 수정 버튼 클릭시, 위	sessId와 현재 작성자 비교하여
+		같지 않으면 수정권한이 없다고 처리
+	3) 데이터 베이스 처리
+		sql
+		update board
+			set subject=#{subject},
+			    content=#{content},
+			    uptdte = sysdate
+			where no = #{no}
+		dao/mapper
+			public int updateBoard(Board upt);
+	4) service
+			public String updateBoard(Board upt){
+				dao.updateBoard(upt)>0?"수정성공":"수정되지 않았습니다"
+			}
+	5) controller
+		updateBoard
+		public String updateBoard(Board upt,Model d){
+			d.addAttribute("msg", service.updateBoard(upt));
+			d.addAttribute("board",service.getBoard(upt.getNo()));
+			
+			return "화면단"
+		}  
+		
+					
+				 
+# 삭제 처리
 
 		
 				
