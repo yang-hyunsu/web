@@ -51,11 +51,13 @@
 <script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		/*
 		var sessName = "${mem.name}";
 		if(sessName==""){
 			alert("로그인이 필요합니다\n로그인 화면이동")
 			location.href="${path}/login";
 		}	
+		*/
 		var msg = "${msg}"
 		if(msg!=""){
 			alert(msg)

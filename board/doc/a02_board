@@ -233,7 +233,8 @@
 				ex) "goDetail('${board.writer')"
 		function goDetail(no)
 			location.href="${path}/boardDetail?no="+no
-		
+	    ----------------------------------------------
+	    	
 	   view(a04_boardDetail.jsp)
 		name="no"	value="${board.no}"
 		name="refno" value="" ==> value="0"	

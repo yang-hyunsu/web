@@ -90,14 +90,21 @@
     </thead>	
     <tbody>
     	<c:forEach var="board" items="${boardList}">
-    	<tr><td>${board.no}</td>
+    	<tr ondblclick="detail(${board.no})"><td>${board.no}</td>
     		<td>${board.subject}</td>
     		<td>${board.writer }</td>
     		<td><fmt:formatDate value="${board.regdte}"/></td>
     		<td>${board.readcnt}</td></tr>
     	</c:forEach>
     </tbody>
-	</table>        
+	</table>     
+	<script type="text/javascript">
+		function detail(no){
+			if(confirm("상세화면이동")){
+				location.href="${path}/boardDetail?no="+no
+			}
+		}
+	</script>   
 </div>
 </body>
 </html>
