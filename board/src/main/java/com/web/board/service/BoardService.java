@@ -35,6 +35,11 @@ public class BoardService {
 	public Board getBoard(int no) {
 		return dao.getBoard(no);
 	}	
+	public String updateBoard(Board upt) {
+		return dao.updateBoard(upt)>0?
+					"수정완료":"수정되지 않았습니다.";
+	}
+	
 	
 
 }

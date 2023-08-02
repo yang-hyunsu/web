@@ -298,14 +298,31 @@
 			public String updateBoard(Board upt){
 				dao.updateBoard(upt)>0?"수정성공":"수정되지 않았습니다"
 			}
+		
 	5) controller
 		updateBoard
 		public String updateBoard(Board upt,Model d){
 			d.addAttribute("msg", service.updateBoard(upt));
 			d.addAttribute("board",service.getBoard(upt.getNo()));
 			
-			return "화면단"
+			return "a04_boardDetail"
 		}  
+		-------------------------------------	
+	6) view(a04_boardDetail.jsp)
+		var msg = "${msg}"
+		if(msg!=""){
+			alert(msg)
+			if(msg=="수정성공"){
+				if(confirm("메인화면이동하시겠습니까?")){
+					location.href="${path}/a01_boardList"
+				}
+			}
+		}
+		var sessId = "${mem.id}"
+		if(sessId!=$("#writer").val()){
+			$("#uptBtn").hide()
+			$("#delBtn").hide()
+		}
 		
 					
 				 

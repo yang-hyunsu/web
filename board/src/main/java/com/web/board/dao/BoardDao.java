@@ -15,4 +15,5 @@ public interface BoardDao {
 	public int insertBoard(Board insert);
 	public Board getBoard(int no);
 	public void readCntUp(int no);
+	public int updateBoard(Board upt);
 }

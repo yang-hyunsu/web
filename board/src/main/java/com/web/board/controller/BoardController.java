@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -76,6 +77,12 @@ public class BoardController {
 		return "a04_boardDetail";
 	}
 	
-	
+	@PostMapping("updateBoard")
+	public String updateBoard(Board upt,Model d){
+		d.addAttribute("msg", service.updateBoard(upt));
+		d.addAttribute("board",service.getBoard(upt.getNo()));
+		
+		return "a04_boardDetail";
+	}  
 	
 }

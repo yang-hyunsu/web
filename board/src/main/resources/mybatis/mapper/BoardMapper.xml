@@ -33,19 +33,29 @@
 						  resultType="board">
 		select * from board where no  = #{no}
 	</select>
-	<!-- 
-			update board
-				set readcnt = readcnt + 1
-			 where no = #{no}
-		dao/mapper	 
-			public void readCntUp(int no);
-	
-	 -->
 	<update id="readCntUp" parameterType="int">
 		update board
 			set readcnt = readcnt + 1
 		 where no = #{no}	
-	</update> 
+	</update>
+	<!-- 
+		update board
+			set subject=#{subject},
+			    content=#{content},
+			    uptdte = sysdate
+			where no = #{no}
+		dao/mapper
+			public int updateBoard(Board upt);
+	 -->
+	 <update id="updateBoard" parameterType="board">
+		update board
+			set subject=#{subject},
+			    content=#{content},
+			    uptdte = sysdate
+			where no = #{no}	 
+	 </update>
+	 
+	 
 </mapper>
 
 
