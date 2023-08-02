@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.web.board.service.BoardService;
 import com.web.board.vo.Board;
@@ -67,6 +68,13 @@ public class BoardController {
 		
 		 * */
 	}
+	// http://localhost:5050/boardDetail?no=0
+	@GetMapping("boardDetail")
+	public String boardDetail(@RequestParam("no") int no, 
+								Model d) {
+		return "a04_boardDetail";
+	}
+	
 	
 	
 }
