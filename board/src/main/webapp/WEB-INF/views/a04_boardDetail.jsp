@@ -69,11 +69,8 @@ body {
 		})
 		var msg = "${msg}"
 		if (msg != "") {
-			alert(msg)
-			if (msg == "수정성공") {
-				if (confirm("조회화면으로 이동 하시겠습니까?")) {
-					location.href = "${path}/boardList"
-				}
+			if (confirm(msg+" 조회화면으로 이동 하시겠습니까?")) {
+				location.href = "${path}/boardList"
 			}
 		}
 		$("#goMain").click(function() {

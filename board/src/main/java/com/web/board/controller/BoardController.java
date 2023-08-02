@@ -76,9 +76,9 @@ public class BoardController {
 		d.addAttribute("board", service.getDetail(no));
 		return "a04_boardDetail";
 	}
-	
-	@PostMapping("updateBoard")
-	public String updateBoard(Board upt,Model d){
+	// boardUpdate
+	@PostMapping("boardUpdate")
+	public String boardUpdate(Board upt,Model d){
 		d.addAttribute("msg", service.updateBoard(upt));
 		d.addAttribute("board",service.getBoard(upt.getNo()));
 		
