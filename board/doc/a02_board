@@ -333,6 +333,26 @@
 					
 				 
 # 삭제 처리
+1. 개발 순서
+	1) sql
+		delete from board where no = #{no}
+	2) mapper/dao
+		public int deleteBoard(int no);
+		delete from board where no = #{no}
+	3) service
+		public String deleteBoard(int no){
+			return dao.deleteBoard(no)>0?"삭제성공":"삭제되지 않음";
+		}
+	4) controller
+		deleteBoard
+		public String deleteBoard(@RequestParam("no") String no)
+	5) jsp
+		$("#delBtn").click(function(){
+			if(confirm("삭제하시겠습니까?")){
+				location.href=
+				"${path}/deleteBoard?no="+$("#no").val();
+			}
+		})			
 
 		
 				

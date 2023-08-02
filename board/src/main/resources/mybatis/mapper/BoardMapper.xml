@@ -54,8 +54,13 @@
 			    uptdte = sysdate
 			where no = #{no}	 
 	 </update>
-	 
-	 
+	 <!-- 
+	 		public int deleteBoard(int no);
+		delete from board where no = #{no}
+	  -->
+	 <delete id="deleteBoard" parameterType="int">
+	 	delete from board where no = #{no}
+	 </delete>	  
 </mapper>
 
 

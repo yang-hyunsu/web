@@ -39,6 +39,10 @@ public class BoardService {
 		return dao.updateBoard(upt)>0?
 					"수정완료":"수정되지 않았습니다.";
 	}
+	public String deleteBoard(int no) {
+		return dao.deleteBoard(no)>0?"삭제완료":"삭제되지 않았습니다.";
+	}
+
 	
 	
 
