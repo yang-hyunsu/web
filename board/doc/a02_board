@@ -309,6 +309,12 @@
 		}  
 		-------------------------------------	
 	6) view(a04_boardDetail.jsp)
+		$("#uptBtn").click(function(){
+			if(confirm("수정하시겠습니까?")){
+				$("form").attr("action","${path}/boardUpdate");
+				$("form").submit();
+			}
+		})
 		var msg = "${msg}"
 		if(msg!=""){
 			alert(msg)
