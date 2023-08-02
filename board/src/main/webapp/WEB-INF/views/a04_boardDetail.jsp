@@ -61,12 +61,17 @@ body {
 			$("#uptBtn").hide()
 			$("#delBtn").hide()
 		}		 
-		 
+		$("#uptBtn").click(function(){
+			if(confirm("수정하시겠습니까?")){
+				$("form").attr("action","${path}/boardUpdate");
+				$("form").submit();
+			}
+		})
 		var msg = "${msg}"
 		if (msg != "") {
 			alert(msg)
-			if (msg == "등록성공") {
-				if (!confirm("계속 등록하시겠습니까?")) {
+			if (msg == "수정성공") {
+				if (confirm("조회화면으로 이동 하시겠습니까?")) {
 					location.href = "${path}/boardList"
 				}
 			}
