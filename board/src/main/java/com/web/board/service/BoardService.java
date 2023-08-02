@@ -28,6 +28,8 @@ public class BoardService {
 				"등록성공":"등록되지 않았습니다";
 	}	
 	public Board getBoard(int no) {
+		// 조회할 때, 조회횟수 증가 처리..
+		dao.readCntUp(no);
 		return dao.getBoard(no);
 	}
 	

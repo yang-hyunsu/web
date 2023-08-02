@@ -109,7 +109,7 @@
 	2) 로그인/로그아웃 session 처리
 	3) 등록 처리(첨부파일X)
 	-------------------------------
-	4) 상세 화면 처리
+	4) 상세 화면 처리(조회수카운트업)
 	5) 수정 처리(첨부파일X)
 	6) 삭제 처리
 	7) 답글 처리
@@ -264,7 +264,17 @@
 			// 처리할 내용..
 			$("form").attr("action","${path}/updateBoard");
 		})
-		
+	5) 조회수 카운트업
+		sql
+			update board
+				set readcnt = readcnt + 1
+			 where no = #{no}
+		dao/mapper	 
+			public void readCntUp();
+		service
+			public Board detailBoard()
+				dao.readCntUp();
+				 	 	
 
 		
 				
