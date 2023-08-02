@@ -67,7 +67,7 @@ body {
 				$("#subject").val("RE:"+$("#subject").val())
 				$("#content").val("\n\n\n\n"+
 						"=== 이전글 ===\n"+$("#content").val())
-				$("form").attr("action","${path}/boardInsert")
+				$("form").attr("action","${path}/boardInsertFrm")
 				$("form").submit()
 			}
 		})

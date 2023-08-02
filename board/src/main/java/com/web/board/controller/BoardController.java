@@ -52,23 +52,17 @@ public class BoardController {
 		redirect : 요청값 전달하지 않고 호출..
 		 * */
 	}
+	@RequestMapping("boardInsertFrm")
+	public String boardInsertFrm(Board ins) {
+		return "a03_boardInsert";
+	}	
+	
 	// location.href="${path}/boardInsert"
 	// http://localhost:5050/boardInsert
 	@RequestMapping("boardInsert")
 	public String boardInsert(Board ins, Model d) {
-		//System.out.println("답글번호:"+ins.getRefno());
-		if(ins.getSubject()!=null || ins.getRefno()>0) {
-			d.addAttribute("msg", service.insertBoard(ins));
-		}
+		d.addAttribute("msg", service.insertBoard(ins));
 		return "a03_boardInsert";
-		// "a03_boardInsert";??
-		/*
-		spring.mvc.view.prefix=/WEB-INF/views/
-		spring.mvc.view.suffix=.jsp
-		
-		/WEB-INF/views/a03_boardInsert.jsp
-		
-		 * */
 	}
 	// http://localhost:5050/boardDetail?no=0
 	@GetMapping("boardDetail")

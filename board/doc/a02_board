@@ -381,7 +381,13 @@
 			refno가 0이 아님
 			subject가 RE 있음
 		- 글내용 등록시 조건(DB 처리)
-			subject가 있음 또는 refno가 있음.
+			일반글 등록
+			refno가 0
+			subject가 있음
+			
+			답글 등록
+			refno가 0>0
+			subject가 있음
 			
 		
 			

@@ -68,7 +68,7 @@
 	<script type="text/javascript">
 		$("#regBtn").click(function(){
 			if(confirm("등록화면 이동합니다.")){
-				location.href="${path}/boardInsert"
+				location.href="${path}/boardInsertFrm"
 				
 			}
 		})
