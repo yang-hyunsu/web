@@ -81,35 +81,70 @@ body {
 			<h4 class="mb-3">게시판 상세</h4>
 			<form method="post" enctype="multipart/form-data"
 				class="validation-form" novalidate>
-				<!-- ctrl+shift+f (코드정리) -->
+				<!-- ctrl+shift+f (코드정리) 
+						글번호   답글번호
+						제목
+						작성자   조회수
+						등록일   수정일
+						내용
+						첨부파일	
+				-->
 				<div class="row">
 					<div class="col-md-6 mb-3">
 						<label for="no">글번호</label> 
 							<input name="no" type="text"
-							value="${board.no}" class="form-control  ckValid"
+							value="${board.no}" readonly class="form-control  ckValid"
 							id="no"  required>
 					</div>
 					<div class="col-md-6 mb-3">
 						<label for="refno">답글번호</label> 
 							<input name="refno" type="text"
-							value="${board.refno}" class="form-control  ckValid"
-							id="refno"  required>
-						
+							value="${board.refno}" readonly class="form-control  ckValid"
+							id="refno"  required>		
 					</div>					
 				</div>
-				
-				
+
+								
 				<div class="mb-3">
-					<label for="writer">작성자</label> <input type="hidden" name="writer"
-						value="${mem.id}"> <input type="text" value="${mem.name}"
-						readonly class="form-control ckValid" id="작성자"
-						placeholder="작성자를 입력" required>
-					<div class="invalid-feedback">작성자를 입력해주세요.</div>
-				</div>
+					<label for="subject">제목</label> 
+					   <input type="text" value="${board.subject}"
+						class="form-control ckValid" id="제목"
+						placeholder="제목 입력" required>
+				</div>				
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="writer">작성자</label> 
+							<input name="writer" type="text"
+							value="${board.writer}" readonly class="form-control  ckValid"
+							id="writer"  required>
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="readcnt">조회수</label> 
+							<input name="readcnt" type="text"
+							value="${board.readcnt}" readonly class="form-control  ckValid"
+							id="readcnt"  required>
+						
+					</div>					
+				</div>	
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label >등록일</label> 
+						<input type="text"
+							value=
+							'<fmt:formatDate pattern="yyyy-MM-dd" 
+								value="${board.regdte}"/>' 
+								readonly class="form-control  ckValid">
+					</div>
+					<div class="col-md-6 mb-3">
+						<label >수정일</label> 
+						<input type="text"
+							value='<fmt:formatDate  pattern="yyyy-MM-dd"  value="${board.uptdte}"/>' readonly class="form-control  ckValid">		
+					</div>					
+				</div>				
 				<div class="mb-3">
 					<label for="content">내용</label>
 					<textarea name="content" class="form-control  ckValid" id="content"
-						placeholder="내용 입력" required rows="5">${param.content}</textarea>
+						placeholder="내용 입력" required rows="5">${board.content}</textarea>
 					<div class="invalid-feedback">내용를 입력해주세요.</div>
 				</div>
 				<div class="mb-3">
@@ -126,8 +161,13 @@ body {
 					})
 				</script>
 				<div class="mb-4"></div>
-				<button id="regBtn" class="btn btn-primary btn-lg btn-block"
-					type="submit">게시물 등록</button>
+				<button id="reBtn" class="btn btn-primary btn-lg btn-block"
+					type="button">답글 달기</button>
+				<button id="uptBtn" class="btn btn-warning btn-lg btn-block"
+					type="button">수정</button>
+				<button id="delBtn" class="btn btn-danger btn-lg btn-block"
+					type="button">삭제</button>
+					
 				<button id="goMain" class="btn btn-info btn-lg btn-block"
 					type="button">조회 화면</button>
 			</form>

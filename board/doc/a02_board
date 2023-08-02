@@ -244,9 +244,12 @@
 		404발생.
 			void setRefno(int refno)  int refno = ""
 		name="refno" value="${board.refno}"	
-		
-		
-		
+		글번호   답글번호
+		제목
+		작성자   조회수
+		등록일   수정일
+		내용
+		첨부파일		
 		name="subject" value="${board.subject}"
 		name="writer" value="${board.writer}"
 		name="readcnt" value="${board.readcnt}"
@@ -261,6 +264,8 @@
 			// 처리할 내용..
 			$("form").attr("action","${path}/updateBoard");
 		})
+		
+
 		
 				
 
