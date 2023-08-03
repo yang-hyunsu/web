@@ -57,9 +57,9 @@
 
 	<form id="frm01" class="form"  method="post">
   	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-	    <input name="subject" class="form-control mr-sm-2" placeholder="제목" />
+	    <input name="subject" value="${param.subject}" class="form-control mr-sm-2" placeholder="제목" />
 	    
-	    <input name="writer" class="form-control mr-sm-2" placeholder="내용" />
+	    <input name="writer" value="${param.writer}"  class="form-control mr-sm-2" placeholder="내용" />
 	    <button class="btn btn-info  mr-sm-2" type="submit">Search</button>
 	    <button  class="btn btn-success  mr-sm-2" id="regBtn" type="button">등록화면</button>
  	</nav>
@@ -87,13 +87,14 @@
         <th>조회수</th>
       </tr>
     </thead>	
-    <tbody>
+    <tbody><!-- 10:05~ -->
     	<c:forEach var="board" items="${boardList}">
     	<tr ondblclick="detail(${board.no})">
     		<td>${board.cnt}</td>
     		<td class="text-left">
     			<c:if test="${board.level>1}">
-    				<c:forEach begin="2" end="${board.level}">
+    				<c:forEach begin="2" 
+    				    end="${board.level}">
     					&nbsp;&nbsp;&nbsp;
     				</c:forEach>
     			</c:if>
