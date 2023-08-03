@@ -29,7 +29,10 @@ public class A03_FileUploadCtrl {
 	private A03_FileUploadService service;
 	
 	@PostMapping("uploadExp03.do")
-	public String uploadExp03(@RequestParam("report01") MultipartFile[] mpfs,
+	public String uploadExp03(
+			@RequestParam("report01") MultipartFile[] mpfs,
+			@RequestParam("report02") MultipartFile[] mpfs2,
+			@RequestParam("report03") MultipartFile[] mpfs3,
 							  @RequestParam("title01") String title01,
 							  Model d
 							  ) {
