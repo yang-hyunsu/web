@@ -48,7 +48,7 @@
 <div class="container">
 	<div class="jumbotron text-center" style="padding:35px 5px 0px 5px;">
 	  <h2 data-toggle="modal" data-target="#exampleModalCenter"></h2>
-	  <h2>답변형 게시판 리스트</h2><br>
+	  <h2>답변형 게시판</h2><br>
 	  <p align="right">${mem.name}님 로그인 중
 	  					<button id="logout" class="btn btn-primary" 
 	  					type="button">로그아웃</button></p>
@@ -60,16 +60,16 @@
 	    <input name="subject" class="form-control mr-sm-2" placeholder="제목" />
 	    
 	    <input name="writer" class="form-control mr-sm-2" placeholder="내용" />
-	    <button class="btn btn-info" type="submit">Search</button>
-	    <button  class="btn btn-success" id="regBtn" type="button">등록화면</button>
+	    <button class="btn btn-info  mr-sm-2" type="submit">Search</button>
+	    <button  class="btn btn-success  mr-sm-2" id="regBtn" type="button">등록화면</button>
  	</nav>
 	</form>
 	<script type="text/javascript">
 		$("#regBtn").click(function(){
-			if(confirm("등록화면 이동합니다.")){
-				location.href="${path}/boardInsertFrm"
+			//if(confirm("등록화면 이동합니다.")){
+			location.href="${path}/boardInsertFrm"
 				
-			}
+			//}
 		})
 	</script>
    <table class="table table-hover table-striped">
@@ -99,9 +99,9 @@
 	</table>     
 	<script type="text/javascript">
 		function detail(no){
-			if(confirm("상세화면이동")){
-				location.href="${path}/boardDetail?no="+no
-			}
+			//if(confirm("상세화면이동")){
+			location.href="${path}/boardDetail?no="+no
+			//}
 		}
 	</script>   
 </div>
