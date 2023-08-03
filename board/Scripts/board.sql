@@ -100,3 +100,16 @@ private Date uptdte;
    	   and writer  like '%'||''||'%';
 
 SELECT * FROM board;
+
+	select rownum cnt, level, b.*
+	from board b
+	where 1=1
+	and subject like '%'||''||'%'
+	and writer like '%'||''||'%'
+	start with refno = 0
+	connect by prior no = refno
+	order siblings by no DESC
+;
+
+
+

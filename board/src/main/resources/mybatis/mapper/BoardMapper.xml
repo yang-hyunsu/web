@@ -5,11 +5,14 @@
 <mapper namespace="com.web.board.dao.BoardDao">
 	<select id="boardList" resultType="board" 
 		parameterType="board">
-   	   select *
-   	   from board
-   	   where subject like '%'||#{subject}||'%'
-   	   and writer  like '%'||#{writer}||'%'
-   	   order by no desc
+		select rownum cnt, level, b.*
+		from board b
+		where 1=1
+		and subject like '%'||#{subject}||'%'
+		and writer like '%'||#{writer}||'%'
+		start with refno = 0
+		connect by prior no = refno
+		order siblings by no DESC		
 	</select>
 	<!-- 
 	public Member login(Member mem);

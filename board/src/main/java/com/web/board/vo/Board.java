@@ -3,6 +3,8 @@ package com.web.board.vo;
 import java.util.Date;
 // com.web.board.vo.Board
 public class Board {
+	private int cnt;
+	private int level;
 	private int no;
 	private int refno;
 	private String subject;
@@ -74,6 +76,18 @@ public class Board {
 	}
 	public void setUptdte(Date uptdte) {
 		this.uptdte = uptdte;
+	}
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+	public int getLevel() {
+		return level;
+	}
+	public void setLevel(int level) {
+		this.level = level;
 	} 
 	
 }
