@@ -58,8 +58,21 @@ INSERT INTO board VALUES(1,0,'첫번째글','내용',
 'himan',0, sysdate, sysdate);
 --		게시물 첨부파일 정보 등록
 SELECT * FROM BOARDFILE;
-INSERT INTO BOARDFILE values(1,'a01.txt','','첫번째글',
+INSERT INTO BOARDFILE values(1,
+	'a01.txt','','첫번째글',
 	sysdate,sysdate,'관리자');
+INSERT INTO BOARDFILE values(#{no},
+	#{fname},'',#{info}, sysdate,sysdate,'')
+/*
+private int no;
+private String fname;
+private String directory;
+private String info;
+private Date regdte;
+private Date uptdte;
+private String auth;
+ * */
+
 
 
 --		게시물 조회수 수정
@@ -112,8 +125,9 @@ SELECT * FROM board;
 	connect by prior no = refno
 	order siblings by no DESC
 ;
+SELECT board_seq.nextval FROM dual;
 SELECT * FROM boardfile;
-
+select * FROM board;
 
 
 

@@ -1,16 +1,23 @@
 package com.web.board.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.web.board.dao.BoardDao;
 import com.web.board.vo.Board;
+import com.web.board.vo.BoardFile;
 import com.web.board.vo.Member;
 
 @Service
 public class BoardService {
+
+	
 	@Autowired
 	private BoardDao dao;
 	public List<Board> boardList(Board sch){
@@ -22,8 +29,31 @@ public class BoardService {
 	public Member login(Member mem) {
 		return dao.login(mem);
 	}
+	@Value("${upload}")
+	private String path;	
 	public String insertBoard(Board insert) {
-		insert.setNo(dao.getNo());
+		int no = dao.getNo();
+		insert.setNo(no);
+		String msg = "업로드 성공";
+		for(MultipartFile mf:insert.getReport() ) {
+			String fname = mf.getOriginalFilename();
+			if(fname!=null && !fname.trim().equals("")) {
+				File f = new File(path+fname);
+				try {
+					mf.transferTo(f);
+					
+				} catch (IllegalStateException e) {
+					msg = "예외발생1:"+e.getMessage();
+				} catch (IOException e) {
+					msg = "예외발생2:"+e.getMessage();
+				}
+				if(msg.equals("업로드 성공")) {
+					dao.insertBoardFile(
+						new BoardFile(no,fname,insert.getSubject()));
+				}
+			}
+		}
+		System.out.println("파일첨부내용:"+msg);
 		return dao.insertBoard(insert)>0?
 				"등록성공":"등록되지 않았습니다";
 	}	

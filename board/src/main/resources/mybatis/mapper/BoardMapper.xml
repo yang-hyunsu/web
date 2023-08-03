@@ -63,7 +63,13 @@
 	  -->
 	 <delete id="deleteBoard" parameterType="int">
 	 	delete from board where no = #{no}
-	 </delete>	  
+	 </delete>	 
+		<!-- no, fname, info -->
+	 <insert id="insertBoardFile" 
+	 	parameterType="boardfile">
+		INSERT INTO BOARDFILE values(#{no},
+			#{fname},'',#{info}, sysdate,sysdate,'')	 
+	 </insert> 
 </mapper>
 
 
