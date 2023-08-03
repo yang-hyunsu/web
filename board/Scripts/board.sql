@@ -60,6 +60,8 @@ INSERT INTO board VALUES(1,0,'첫번째글','내용',
 SELECT * FROM BOARDFILE;
 INSERT INTO BOARDFILE values(1,'a01.txt','','첫번째글',
 	sysdate,sysdate,'관리자');
+
+
 --		게시물 조회수 수정
 UPDATE board
 	SET readcnt = readcnt+1
@@ -110,6 +112,8 @@ SELECT * FROM board;
 	connect by prior no = refno
 	order siblings by no DESC
 ;
+SELECT * FROM boardfile;
+
 
 
 
