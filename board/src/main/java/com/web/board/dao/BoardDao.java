@@ -19,4 +19,5 @@ public interface BoardDao {
 	public int updateBoard(Board upt);
 	public int deleteBoard(int no);
 	public int insertBoardFile(BoardFile ins);
+	public String[] getFnames(int no);
 }

@@ -70,6 +70,19 @@
 		INSERT INTO BOARDFILE values(#{no},
 			#{fname},'',#{info}, sysdate,sysdate,'')	 
 	 </insert> 
+	 <!-- 
+	 	select fname from boardfile
+		where no = #{no}
+		dao/mapper 작성
+		
+		public String[] getFnames(int no);
+	  -->
+	  <select id="getFnames" resultType="string" 
+	  		parameterType="int">
+	 	select fname from boardfile
+		where no = #{no}	  
+	  </select>
+	 
 </mapper>
 
 
