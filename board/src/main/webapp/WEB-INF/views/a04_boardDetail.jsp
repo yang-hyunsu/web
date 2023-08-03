@@ -125,7 +125,7 @@ body {
 							id="no"  required>
 					</div>
 					<div class="col-md-6 mb-3">
-						<label for="refno">답글번호</label> 
+						<label for="refno">상위글번호</label> 
 							<input name="refno" type="text"
 							value="${board.refno}" readonly class="form-control  ckValid"
 							id="refno"  required>		

@@ -97,7 +97,8 @@
         		
         		
          -->
-        <form method="post" action="${path}/boardInsert"
+        <form method="post" 
+        	action="${path}/boardInsert"
          enctype="multipart/form-data" 
          class="validation-form" novalidate>
         	<input id="refno" type="hidden" name="refno"

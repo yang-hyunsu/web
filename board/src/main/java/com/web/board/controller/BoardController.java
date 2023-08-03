@@ -52,13 +52,15 @@ public class BoardController {
 		redirect : 요청값 전달하지 않고 호출..
 		 * */
 	}
+	// http://localhost:5050/boardInsertFrm
+	// 글등록화면 로딩/답글화면 로딩
 	@RequestMapping("boardInsertFrm")
 	public String boardInsertFrm(Board ins) {
 		return "a03_boardInsert";
 	}	
 	
-	// location.href="${path}/boardInsert"
 	// http://localhost:5050/boardInsert
+	// 글등록 DB 처리
 	@RequestMapping("boardInsert")
 	public String boardInsert(Board ins, Model d) {
 		d.addAttribute("msg", service.insertBoard(ins));
