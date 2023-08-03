@@ -60,7 +60,13 @@ public class BoardService {
 	public Board getDetail(int no) {
 		// 조회할 때, 조회횟수 증가 처리..
 		dao.readCntUp(no);
-		return dao.getBoard(no);
+		Board b = dao.getBoard(no);
+		b.setFnames(dao.getFnames(no));
+		System.out.println("# 게시물의 파일 정보 #");
+		for(String fname:b.getFnames()) {
+			System.out.println(fname);
+		}
+		return b;
 	}
 	public Board getBoard(int no) {
 		return dao.getBoard(no);

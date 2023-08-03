@@ -1,6 +1,7 @@
 package com.web.board.vo;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 // com.web.board.vo.Board
@@ -15,7 +16,7 @@ public class Board {
 	private int readcnt;
 	private Date regdte; 
 	private Date uptdte;
-	private String[] fnames;
+	private List<String> fnames;
 	private MultipartFile[] report;
 	
 	public Board() {
@@ -95,10 +96,11 @@ public class Board {
 		this.level = level;
 	}
 
-	public String[] getFnames() {
+
+	public List<String> getFnames() {
 		return fnames;
 	}
-	public void setFnames(String[] fnames) {
+	public void setFnames(List<String> fnames) {
 		this.fnames = fnames;
 	}
 	public MultipartFile[] getReport() {
