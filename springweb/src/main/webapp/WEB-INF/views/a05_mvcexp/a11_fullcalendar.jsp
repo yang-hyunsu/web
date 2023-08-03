@@ -48,8 +48,8 @@
       dayMaxEvents: true, // allow "more" link when too many events
       events: [
     	{
-              title: '풀캘린더시작',
-              start: '2023-08-03'
+          title: '풀캘린더시작',
+          start: '2023-08-03'
         },
         {
           title: '전체일정',
