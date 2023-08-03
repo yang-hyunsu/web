@@ -88,6 +88,7 @@ public class BoardController {
 		d.addAttribute("msg", service.deleteBoard(no));
 		return "a04_boardDetail"; 
 	}	
+	// download.do?fname="+
 	@RequestMapping("download.do")
 	public String download(@RequestParam("fname") 
 			String fname, Model d) {

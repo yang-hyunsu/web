@@ -62,10 +62,10 @@ public class BoardService {
 		dao.readCntUp(no);
 		Board b = dao.getBoard(no);
 		b.setFnames(dao.getFnames(no));
-		System.out.println("# 게시물의 파일 정보 #");
-		for(String fname:b.getFnames()) {
-			System.out.println(fname);
-		}
+//		System.out.println("# 게시물의 파일 정보 #");
+//		for(String fname:b.getFnames()) {
+//			System.out.println(fname);
+//		}
 		return b;
 	}
 	public Board getBoard(int no) {

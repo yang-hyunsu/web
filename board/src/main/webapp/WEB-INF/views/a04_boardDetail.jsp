@@ -177,6 +177,24 @@ body {
 					<div class="invalid-feedback">내용를 입력해주세요.</div>
 				</div>
 				<div class="mb-3">
+					<label for="subject">첨부파일</label>
+					<c:forEach var="fname" items = "${board.fnames}"> 
+						<input onclick="download('${fname}')" 
+							type="text" value="${fname}" 
+						class="form-control">
+					</c:forEach>	
+				</div>
+				<script type="text/javascript">
+					function download(fname){
+						if(confirm(fname+" 다운로드 하시겠습니까?")){
+							location.href="${path}/download.do?fname="
+									+fname
+									
+						}
+					}
+				</script>					
+				
+				<div class="mb-3">
 					<div class="custom-file">
 						<input type="file" name="report" class="custom-file-input"
 							multiple="multiple" id="file01"> <label
