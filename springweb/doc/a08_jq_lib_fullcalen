@@ -40,8 +40,25 @@
 	- 필요로 하는 css, js, html 위치 확인 및 선언
 	- jsp로 기본 화면 호출 처리
 1. 초기 controller단을 통해서 화면 로딩.
-	
-	
+
+# backend단 처리(DB처리)
+1. 사용할 data json형식을 확인하여, DB 테이블 구성
+   groupId: 999,
+   title: '긴일정',
+   start: '2023-08-07',
+   end: '2023-08-10'
+   url: 'http://google.com/',
+
+
+
+		- 사용할 주요 sql 작성
+			전체 리스트
+			등록 
+			수정
+			삭제
+		- VO 작성 : 리스트, 등록, 수정, 삭제 시 사용되는 데이터를
+			바탕으로 VO 클래스 선언
+		- dao/mapper 선언	
 	
 	
 	
