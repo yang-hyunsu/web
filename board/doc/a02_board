@@ -473,6 +473,38 @@
 	5) 화면단, fileupload를 위해 form 속성
 		<input type="file" 객체 vo의 속성 report로 설정
 
+# 상세화면에서 첨부파일확인 및 다운로드 처리
+1. 프로세스
+	1) 상세화면 클릭시, 게시물에 대한 정보와 함께 첨부된 파일
+	리스트를 확인할 수 있다.
+	2) 다운로드해서 확인할 파일 클릭시, 다운로드가 되어, 로컬에서
+	확인 및 활용할 수 있다.
+2. 개발순서
+	1) 다운로드 view 등록
+	2) 다운로드 controller 추가:파일명으로 다운로드 처리되게 처리
+	3) DB 처리
+		해당 게시물 번호로 다운로드할 파일 정보를 가져온다.
+		sql 작성  
+		select fname from boardfile
+		where no = #{no}
+		dao/mapper 작성
+		
+		public List<String> getFnames(int no);
+		
+	4) service단에서
+		게시물 상세정보리스트에서 파일정보다 처리할 수 있게
+		Board ==> String fnames[] 추가.
+		파일정보로 fnames할당.
+	5) 화면단 
+		<c:forEach var="fname" items="${fnames}"
+			onclick="download('${fname}')	${fname}
+		function download(fname)
+			location.href="${path}/download?fname="+fname
+		
+				
+		
+
+
 # 수정 첨부파일 처리			 	 
 	 
 				

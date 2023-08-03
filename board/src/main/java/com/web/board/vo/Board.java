@@ -15,8 +15,9 @@ public class Board {
 	private int readcnt;
 	private Date regdte; 
 	private Date uptdte;
-	private String fname;
+	private String[] fnames;
 	private MultipartFile[] report;
+	
 	public Board() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -93,11 +94,12 @@ public class Board {
 	public void setLevel(int level) {
 		this.level = level;
 	}
-	public String getFname() {
-		return fname;
+
+	public String[] getFnames() {
+		return fnames;
 	}
-	public void setFname(String fname) {
-		this.fname = fname;
+	public void setFnames(String[] fnames) {
+		this.fnames = fnames;
 	}
 	public MultipartFile[] getReport() {
 		return report;
