@@ -178,11 +178,10 @@ body {
 				</div>
 				<div class="mb-3">
 					<label for="subject">첨부파일</label>
-					<c:forEach var="fname" items = "${board.fnames}"> 
-						<input onclick="download('${fname}')" 
-							type="text" value="${fname}" 
-						class="form-control">
+					<c:forEach var="fname" items = "${board.fnames}">	
+						<button  onclick="download('${fname}')"  type="button" class="btn btn-outline-info">${fname}</button>
 					</c:forEach>	
+						
 				</div>
 				<script type="text/javascript">
 					function download(fname){
