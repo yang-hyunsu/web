@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import com.web.board.dao.A01_Dao;
@@ -21,28 +22,30 @@ public class A01_Service {
 		if(sch.getJob()==null) sch.setJob("");
 		return dao.empList(sch);
 	}
+	//JpaRepository<Employee, Long>
 	
     @Autowired
     private EmployeeRepository employeeRepository;
 
     public List<Employee> findAll() {
         return employeeRepository.findAll();
-    }	
+    }
+    // 추가한 메서드..
     public List<Employee> findByNameAndJob(Employee sch){
     	return employeeRepository.findByNameAndJob(sch);
     }
     public Optional<Employee> findById(Long empno) {
         return employeeRepository.findById(empno);
     }
-
+    // Emp 테이블에 데이터를 저장..
     public Employee save(Employee employee) {
         return employeeRepository.save(employee);
     }
-
+    // Emp의 key을 통해서 특정 row 삭제..
     public void deleteById(Long empno) {
         employeeRepository.deleteById(empno);
     }
-
+    // Emp 테이블의 key인 empno를 통해서 수정 처리..
     public Employee update(Long empno, Employee updatedEmployee) {
         return employeeRepository.findById(empno)
                 .map(employee -> {
