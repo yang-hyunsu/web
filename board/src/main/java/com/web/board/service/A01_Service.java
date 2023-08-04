@@ -4,14 +4,15 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import com.web.board.dao.A01_Dao;
+import com.web.board.model.Dept;
 import com.web.board.model.Employee;
+import com.web.board.repository.DeptRepository;
 import com.web.board.repository.EmployeeRepository;
 import com.web.board.vo.Emp;
-
+// com.web.board.service.A01_Service
 @Service
 public class A01_Service {
 	@Autowired
@@ -58,5 +59,19 @@ public class A01_Service {
                     return employeeRepository.save(employee);
                 })
                 .orElseThrow(() -> new IllegalArgumentException("Invalid employee Id:" + empno));
+    }
+    @Autowired
+    private DeptRepository deptRepository;
+    
+    public List<Dept> findDeptAll() {
+        return deptRepository.findAll();
+    }
+    // 추가한 메서드..
+    public List<Dept> findByNameAndLoc(Dept sch){
+    	return deptRepository.findByNameAndLoc(sch);
+    }
+    public Optional<Dept> findByDeptno(Long deptno) {
+        return deptRepository.findById(deptno);
     }   
+    
 }

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.web.board.service.A01_Service;
 import com.web.board.vo.Emp;
 import com.web.board.vo.Person;
-
+ 
 @Controller
 public class A01_Controller {
 	

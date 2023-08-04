@@ -9,10 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.web.board.model.Dept;
 import com.web.board.model.Employee;
 import com.web.board.service.A01_Service;
 import com.web.board.vo.Person;
-
+// com.web.board.controller.A02_RestController
 @RestController
 public class A02_RestController {
 	// http://localhost:5050/start3
@@ -46,6 +47,21 @@ public class A02_RestController {
 		return service.findById(empno);
 	}		
 	
+	// http://localhost:5050/a10_deptList
+	@RequestMapping("a10_deptList")
+	public List<Dept> a10_deptList() {
+		return service.findDeptAll();
+	}	
+	// http://localhost:5050/a11_deptList?dname=A&loc=A
+	@RequestMapping("a11_deptList")
+	public List<Dept> a11_deptList(Dept sch) {
+		return service.findByNameAndLoc(sch);
+	}	
+	// http://localhost:5050/a12_dept?deptno=10
+	@RequestMapping("a12_dept")
+	public Optional<Dept> a12_dept(@RequestParam("deptno") Long deptno) {
+		return service.findByDeptno(deptno);
+	}		
 }
 
 

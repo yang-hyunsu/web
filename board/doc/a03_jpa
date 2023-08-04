@@ -12,9 +12,23 @@
 		사용하여 데이터베이스의 데이터를 조회한다.
 4. 개발 순서
 	1) lib 다운 설정 POM.xml
+		board\pom.xml : 프로젝트 update
 	2) 엔티티 클래스 작성 : 테이블과 mapping되는 VO클래스 작성
+		com.web.board.model.Employee
+		==> com.web.board.model.Dept
+		
 	3) 리포지터리 클래스 작성 : 기본 조회/등록/수정/삭제 api
 		선언 및 추가 기능메서드 처리 및 service 호출
-	4) interface dao 선언 : 추가적인 기능 메서드 처리하는
-		dao 처리..
-	5) serice/controller 호출 확인..  		
+		interface dao 선언 : 추가적인 기능 메서드 처리하는dao 처리..
+		
+		com.web.board.repository.EmployeeRepository
+		==> com.web.board.repository.DeptRepository
+	4) service에서 호출..	
+		com.web.board.service.A01_Service
+		==> 추가 호출 DeptRepository
+	5) serice/controller 호출 확인..
+		com.web.board.controller.A02_RestController
+		==> 추가 호출 dept 정보 출력...
+		
+		
+	  		

@@ -1,5 +1,5 @@
 package com.web.board.model;
-
+// com.web.board.model.Employee
 import java.util.Date;
 
 import jakarta.persistence.Column;
