@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.web.board.model.Dept;
-import com.web.board.model.Employee;
 
 public interface DeptRepository extends JpaRepository<Dept, Long> {
     @Query("SELECT d FROM Dept d WHERE d.dname LIKE %:#{#sch.dname}%  AND d.loc LIKE %:#{#sch.loc}%")
