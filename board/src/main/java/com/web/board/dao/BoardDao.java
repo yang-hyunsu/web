@@ -11,6 +11,10 @@ import com.web.board.vo.Member;
 // com.web.board.dao.BoardDao
 @Mapper
 public interface BoardDao {
+	public int getTot(BoardSch sch);
+	
+	
+	
 	public List<Board> boardList(BoardSch sch);
 	public Member login(Member mem);
 	public int getNo();
