@@ -6,11 +6,12 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.web.board.vo.Board;
 import com.web.board.vo.BoardFile;
+import com.web.board.vo.BoardSch;
 import com.web.board.vo.Member;
 // com.web.board.dao.BoardDao
 @Mapper
 public interface BoardDao {
-	public List<Board> boardList(Board sch);
+	public List<Board> boardList(BoardSch sch);
 	public Member login(Member mem);
 	public int getNo();
 	public int insertBoard(Board insert);

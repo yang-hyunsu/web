@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.web.board.service.BoardService;
 import com.web.board.vo.Board;
+import com.web.board.vo.BoardSch;
 import com.web.board.vo.Member;
 
 import jakarta.servlet.http.HttpSession;
@@ -20,7 +21,7 @@ public class BoardController {
 	private BoardService service;
 	// http://localhost:5050/boardList
 	@RequestMapping("boardList")
-	public String boardList(Board sch, Model d) {
+	public String boardList(BoardSch sch, Model d) {
 		d.addAttribute("boardList", service.boardList(sch));
 		return "a01_boardList";
 	}

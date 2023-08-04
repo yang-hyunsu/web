@@ -7,5 +7,6 @@
 		<typeAlias alias="board" type="com.web.board.vo.Board"/>
 		<typeAlias alias="member" type="com.web.board.vo.Member"/>
 		<typeAlias alias="boardfile" type="com.web.board.vo.BoardFile"/>
+		<typeAlias alias="boardsch" type="com.web.board.vo.BoardSch"/>
 	</typeAliases>
 </configuration>

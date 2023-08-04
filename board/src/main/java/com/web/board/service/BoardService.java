@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.web.board.dao.BoardDao;
 import com.web.board.vo.Board;
 import com.web.board.vo.BoardFile;
+import com.web.board.vo.BoardSch;
 import com.web.board.vo.Member;
 
 @Service
@@ -20,7 +21,7 @@ public class BoardService {
 	
 	@Autowired
 	private BoardDao dao;
-	public List<Board> boardList(Board sch){
+	public List<Board> boardList(BoardSch sch){
 		if(sch.getSubject()==null) sch.setSubject("");
 		if(sch.getWriter()==null) sch.setWriter("");
 		return dao.boardList(sch);
