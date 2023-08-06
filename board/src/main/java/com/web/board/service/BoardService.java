@@ -22,6 +22,8 @@ public class BoardService {
 	@Autowired
 	private BoardDao dao;
 	public List<Board> boardList(BoardSch sch){
+		if(sch.getSubject()==null) sch.setSubject("");
+		if(sch.getWriter()==null) sch.setWriter("");		
 //		private int count;// 전체 데이터 건수
 		sch.setCount(dao.getTot(sch));
 //		private int pageSize; // 한페이지에 보여줄 데이터 건수
@@ -49,14 +51,13 @@ public class BoardService {
 //		private int end;	// 현재 페이지 마지막번호
 //		//3.페이징블럭처리2단계
 //		private int blockSize; // 한번에 보여줄 block의 크기
-//		private int starBlock;	// block시작번호
+//		private int startBlock;	// block시작번호
 //		private int endBlock; // block마지막번호
 				
 		
 		
 		
-		if(sch.getSubject()==null) sch.setSubject("");
-		if(sch.getWriter()==null) sch.setWriter("");
+
 		return dao.boardList(sch);
 	}
 	
