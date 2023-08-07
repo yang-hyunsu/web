@@ -50,8 +50,13 @@ public class BoardService {
 		// 현재페이지번호는 화면단에서 요청값으로 전달.
 		// 초기에는 0이므로 첫페이지번호인 1로 설정.
 		if( sch.getCurPage()==0 ) sch.setCurPage(1);
-//		private int start; // 현재 페이지 시작번호
-//		private int end;	// 현재 페이지 마지막번호
+//		// 페이지 블럭에서 이후 처리시 예외 처리..
+		if(sch.getCurPage()>sch.getPageCount()) {
+			sch.setCurPage(sch.getPageCount());
+		}
+		
+		// 현재 페이지 시작번호
+		// 현재 페이지 마지막번호
 		sch.setStart((sch.getCurPage()-1)*sch.getPageSize()+1);
 		sch.setEnd(sch.getCurPage()*sch.getPageSize());
 		

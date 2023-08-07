@@ -60,14 +60,22 @@ td {
 		</div>
 		<script type="text/javascript">
 			function ckSearch(){
-				//$("[name=curPage]").val("1")
+				// 검색시, 전체 페이지 갯수가 검색시 달라지기에
+				// 	입력 후, 검색시는 현재페이지번호를 초기값으로 1로 설정
+				var subject = "${sch.subject}"				
+				var writer = "${sch.writer}"
+				var subjectVal = $("[name=subject]").val()
+				var writerVal = $("[name=writer]").val()
+				if(subject!=subjectVal||writer!=writerVal)
+					$("[name=curPage]").val("1")
+			
 			}
 		</script>
 		<form id="frm01" onSubmit="ckSearch()" class="form" method="post">
 			<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 				<input name="subject" value="${sch.subject}"
-					class="form-control mr-sm-2" placeholder="제목" /> <input
-					name="writer" value="${sch.writer}" class="form-control mr-sm-2"
+					class="form-control mr-sm-2" placeholder="제목" /> 
+				<input name="writer" value="${sch.writer}" class="form-control mr-sm-2"
 					placeholder="내용" />
 				<button class="btn btn-info  mr-sm-2" type="submit">Search</button>
 				<button class="btn btn-success  mr-sm-2" id="regBtn" type="button">등록화면</button>
@@ -145,13 +153,16 @@ td {
 		</script>
 		<ul class="pagination justify-content-end">
 			<li class="page-item">
-			<a class="page-link" href="#">Previous</a></li>
-			<c:forEach var = "cnt" begin="1" end="${sch.pageCount}">
-				<li class="page-item ${sch.curPage==cnt?'active':''}">
-					<a class="page-link" 
-						href="javascript:goPage(${cnt})">${cnt}</a></li>
-			</c:forEach>
-			<li class="page-item"><a class="page-link" href="#">Next</a></li>
+			<a class="page-link" 
+				href="javascript:goPage(${sch.startBlock-1})">Previous</a></li>
+				<c:forEach var = "cnt" begin="${sch.startBlock}" end="${sch.endBlock}">
+					<li class="page-item ${sch.curPage==cnt?'active':''}">
+						<a class="page-link" 
+							href="javascript:goPage(${cnt})">${cnt}</a></li>
+				</c:forEach>
+			<li class="page-item">
+			<a class="page-link" 
+				href="javascript:goPage(${sch.endBlock+1})">Next</a></li>
 		</ul>
 	</div>
 </body>
