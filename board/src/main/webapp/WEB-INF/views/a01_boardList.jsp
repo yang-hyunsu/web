@@ -58,8 +58,12 @@ td {
 			</p>
 
 		</div>
-
-		<form id="frm01" class="form" method="post">
+		<script type="text/javascript">
+			function ckSearch(){
+				//$("[name=curPage]").val("1")
+			}
+		</script>
+		<form id="frm01" onSubmit="ckSearch()" class="form" method="post">
 			<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 				<input name="subject" value="${sch.subject}"
 					class="form-control mr-sm-2" placeholder="제목" /> <input
@@ -81,11 +85,13 @@ td {
 			  	<option>50</option>
 			  </select>
 			</div>		
-				
-			
 		</form>
 		<script type="text/javascript">
 			$("[name=pageSize]").val("${sch.pageSize}")
+			$("[name=pageSize]").change(function(){
+				$("[name=curPage]").val("1")
+				$("#frm01").submit()
+			})
 			$("#regBtn").click(function() {
 				//if(confirm("등록화면 이동합니다.")){
 				location.href = "${path}/boardInsertFrm"
