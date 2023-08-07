@@ -59,10 +59,26 @@ public class BoardService {
 //		private int blockSize; // 한번에 보여줄 block의 크기
 //		private int startBlock;	// block시작번호
 //		private int endBlock; // block마지막번호
-				
-		
-		
-		
+		// 
+		// 	1) 블럭사이즈 지정.
+		sch.setBlockSize(5);
+		//  2) 클릭한 현재 페이지번호 기준으로 현재 블럭번호 처리
+		int blockNum = (int)Math.ceil(sch.getCurPage()/
+						(double)sch.getBlockSize());
+		//  3) 시작블럭(현재블럭번호, 블럭사이즈 기준)
+		sch.setStarBlock((blockNum-1)*
+						sch.getBlockSize()+1);
+		//  4) 마지막블럭??
+		sch.setEndBlock(blockNum*sch.getBlockSize());
+		// 총페이지수 7
+		// 블럭사이즈 5
+		// ==> 블럭번호 2, 블럭사이즈가 5이기 때문에
+		// 마지막블럭은 10
+		int endBlock = blockNum*sch.getBlockSize();
+		if(endBlock>sch.getPageCount()) {
+			endBlock = sch.getPageCount();
+		}
+		sch.setEndBlock(endBlock);
 
 		return dao.boardList(sch);
 	}

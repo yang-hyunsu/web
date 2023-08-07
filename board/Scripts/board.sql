@@ -140,3 +140,5 @@ select * FROM board;
 			order siblings by no DESC 
 		)
 		WHERE cnt between 6 and 10;
+		-- 데이터건수 7건
+	    -- 페이지 데이터 5건
