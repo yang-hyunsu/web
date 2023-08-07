@@ -47,8 +47,14 @@ public class BoardService {
 		
 		
 //		private int curPage;// 클릭한 현재 페이지 번호
+		// 현재페이지번호는 화면단에서 요청값으로 전달.
+		// 초기에는 0이므로 첫페이지번호인 1로 설정.
+		if( sch.getCurPage()==0 ) sch.setCurPage(1);
 //		private int start; // 현재 페이지 시작번호
 //		private int end;	// 현재 페이지 마지막번호
+		sch.setStart((sch.getCurPage()-1)*sch.getPageSize()+1);
+		sch.setEnd(sch.getCurPage()*sch.getPageSize());
+		
 //		//3.페이징블럭처리2단계
 //		private int blockSize; // 한번에 보여줄 block의 크기
 //		private int startBlock;	// block시작번호
