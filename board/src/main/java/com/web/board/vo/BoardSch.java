@@ -14,7 +14,7 @@ public class BoardSch {
 	private int end;	// 현재 페이지 마지막번호
 	//3.페이징블럭처리2단계
 	private int blockSize; // 한번에 보여줄 block의 크기
-	private int starBlock;	// block시작번호
+	private int startBlock;	// block시작번호
 	private int endBlock; // block마지막번호
 	
 	public String getSubject() {
@@ -71,11 +71,13 @@ public class BoardSch {
 	public void setBlockSize(int blockSize) {
 		this.blockSize = blockSize;
 	}
-	public int getStarBlock() {
-		return starBlock;
+
+	
+	public int getStartBlock() {
+		return startBlock;
 	}
-	public void setStarBlock(int starBlock) {
-		this.starBlock = starBlock;
+	public void setStartBlock(int startBlock) {
+		this.startBlock = startBlock;
 	}
 	public int getEndBlock() {
 		return endBlock;

@@ -71,7 +71,7 @@ public class BoardService {
 		int blockNum = (int)Math.ceil(sch.getCurPage()/
 						(double)sch.getBlockSize());
 		//  3) 시작블럭(현재블럭번호, 블럭사이즈 기준)
-		sch.setStarBlock((blockNum-1)*
+		sch.setStartBlock((blockNum-1)*
 						sch.getBlockSize()+1);
 		//  4) 마지막블럭??
 		sch.setEndBlock(blockNum*sch.getBlockSize());
