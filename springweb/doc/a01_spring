@@ -22,8 +22,10 @@
 5. 스프링 MVC 웹 개발
 6. 스프링의 Database Access
 	1) 스프링의 데이터베이스 처리를 위한 framework(mybatis)
+		
 	2) 데이터 처리 환경 설정
 	3) 데이터 처리를 위한 핵심 개발 패턴
+	4) JPA
 7. 스프링 AOP	
 8. 기타 실무 적용 처리 프로그램
 	1) 스프링에서 ajax로 처리하는 jquery lib

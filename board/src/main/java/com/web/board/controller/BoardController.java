@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,7 +22,7 @@ public class BoardController {
 	private BoardService service;
 	// http://localhost:5050/boardList
 	@RequestMapping("boardList")
-	public String boardList(BoardSch sch, Model d) {
+	public String boardList(@ModelAttribute("sch") BoardSch sch, Model d) {
 		d.addAttribute("boardList", service.boardList(sch));
 		return "a01_boardList";
 	}
