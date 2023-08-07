@@ -21,6 +21,7 @@ public class BoardController {
 	@Autowired
 	private BoardService service;
 	// http://localhost:5050/boardList
+	// ModelAttribute : 요청값과 모델데이터를 동시에 처리..
 	@RequestMapping("boardList")
 	public String boardList(@ModelAttribute("sch") BoardSch sch, Model d) {
 		d.addAttribute("boardList", service.boardList(sch));

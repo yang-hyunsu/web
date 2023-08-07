@@ -67,11 +67,25 @@ td {
 					placeholder="내용" />
 				<button class="btn btn-info  mr-sm-2" type="submit">Search</button>
 				<button class="btn btn-success  mr-sm-2" id="regBtn" type="button">등록화면</button>
-				<input type="text" name="curPage" value="${sch.curPage}" /> <input
-					type="text" name="pageSize" value="${sch.pageSize}">
+				<input type="hidden" name="curPage" value="${sch.curPage}" /> 
 			</nav>
+			<div class="input-group mt-3 mb-0">
+			  <span class="input-group-text">총 : ${sch.count} 건</span>
+			  <input type="text" class="form-control" style="width:70%">
+			  <span class="input-group-text">페이지수</span>
+			  <select  name="pageSize"  class="form-control" >
+			  	<option>3</option>
+			  	<option>5</option>
+			  	<option>10</option>
+			  	<option>20</option>
+			  	<option>50</option>
+			  </select>
+			</div>		
+				
+			
 		</form>
 		<script type="text/javascript">
+			$("[name=pageSize]").val("${sch.pageSize}")
 			$("#regBtn").click(function() {
 				//if(confirm("등록화면 이동합니다.")){
 				location.href = "${path}/boardInsertFrm"
@@ -83,6 +97,7 @@ td {
 				$("#frm01").submit()
 			}
 		</script>
+		
 		<table class="table table-hover table-striped">
 			<col width="10%">
 			<col width="50%">
@@ -123,13 +138,14 @@ td {
 			}
 		</script>
 		<ul class="pagination justify-content-end">
-			<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-			
+			<li class="page-item">
+			<a class="page-link" href="#">Previous</a></li>
 			<c:forEach var = "cnt" begin="1" end="${sch.pageCount}">
 				<li class="page-item ${sch.curPage==cnt?'active':''}">
 					<a class="page-link" 
 						href="javascript:goPage(${cnt})">${cnt}</a></li>
 			</c:forEach>
+			<li class="page-item"><a class="page-link" href="#">Next</a></li>
 		</ul>
 	</div>
 </body>
