@@ -66,52 +66,26 @@
 			},
 			editable : true,
 			dayMaxEvents : true, // allow "more" link when too many events
-			events : [ {
-				title : '풀캘린더시작',
-				start : '2023-08-03'
-			}, {
-				title : '전체일정',
-				start : '2023-08-01'
-			}, {
-				title : '긴일정',
-				start : '2023-08-07',
-				end : '2023-08-10'
-			}, {
-				groupId : 999,
-				title : '반복일정',
-				start : '2023-08-09T16:00:00'
-			}, {
-				groupId : 999,
-				title : '반복일정',
-				start : '2023-08-16T16:00:00'
-			}, {
-				title : '회의',
-				start : '2023-08-11',
-				end : '2023-08-13'
-			}, {
-				title : '미팅',
-				start : '2023-08-12T10:30:00',
-				end : '2023-08-12T12:30:00'
-			}, {
-				title : '점심',
-				start : '2023-08-12T12:00:00'
-			}, {
-				title : 'Meeting',
-				start : '2023-08-12T14:30:00'
-			}, {
-				title : 'Happy Hour',
-				start : '2023-08-12T17:30:00'
-			}, {
-				title : 'Dinner',
-				start : '2023-08-12T20:00:00'
-			}, {
-				title : 'Birthday Party',
-				start : '2023-08-13T07:00:00'
-			}, {
-				title : 'Click for Google',
-				url : 'http://google.com/',
-				start : '2023-08-28'
-			} ]
+			// calList.do
+			events : function(info, successCallback, failureCallback){
+				// 성공했을 때, 데이터를 처리해주는 함수:successCallback 
+				// 실패했을 때 처리해주는 함수:failureCallback
+				$.ajax({
+					type:"post",
+					url:"${path}/calList.do",
+					dataType:"json",
+					success:function(data){
+						console.log(data)
+						successCallback(data) // calendar리스트 데이터
+						
+					},
+					error:function(err){
+						console.log(err)	
+						failureCallback(err)
+					}
+				})
+				
+			}
 		});
 
 		calendar.render();
