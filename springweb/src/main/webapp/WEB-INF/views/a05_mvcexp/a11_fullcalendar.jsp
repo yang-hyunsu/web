@@ -44,7 +44,16 @@
 				console.log("시작:"+arg.startStr)
 				console.log("마지막:"+arg.endStr)
 				console.log("종일여부:"+arg.allDay)
-				
+				$("#calTitle").text("일정등록")
+				$("#regBtn").show()
+				$("#uptBtn").hide()
+				$("#delBtn").hide()
+				$("#start").val(arg.start.toLocaleString())
+				$("[name=start]").val(arg.startStr)
+				$("#end").val(arg.end.toLocaleString())
+				$("[name=end]").val(arg.endStr)				
+				$("#allDay").val(""+arg.allDay)				
+				$("[name=allDay]").val(arg.allDay?1:0)				
 				$("#modal01").click();
 				
 				
@@ -155,14 +164,7 @@ style>body {
 				</div>
 				<div class="modal-body">
 				<!-- 
-				$("#calTitle").text("일정등록")
-				$("#regBtn").show()
-				$("#uptBtn").hide()
-				$("#delBtn").hide()
-				$("#start").val()
-				$("[name=start]").val()
-				$("#end").val()
-				$("[name=end]").val()
+
 				
 				 -->
 				 
