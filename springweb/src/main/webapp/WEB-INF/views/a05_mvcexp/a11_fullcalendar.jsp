@@ -80,13 +80,51 @@
 				calendar.unselect()
 			},
 			eventClick : function(arg) {
+				console.log("# 일정 속성 #")
+				console.log("아이디:"+arg.event.id)
+				console.log("타이틀:"+arg.event.title)
+				console.log("시작:"+arg.event.startStr)
+				console.log("시작:"+arg.event.start.toLocaleString())
+				console.log("종료:"+arg.event.endStr)
+				console.log("종료:"+arg.event.end.toLocaleString())
+				console.log("종일여부:"+arg.event.allDay)
+				console.log("배경색상:"+arg.event.backgroundColor)
+				console.log("글자색상:"+arg.event.textColor)
+				console.log("작성자:"+arg.event.extendedProps.writer)
+				console.log("내용:"+arg.event.extendedProps.content)
+				console.log("링크:"+arg.event.extendedProps.urlLink)
+				$("#calTitle").text("일정상세")
+				$("#regBtn").hide()
+				$("#uptBtn").show()
+				$("#delBtn").show()
+				$("[name=id]").val(arg.event.id)
+				$("[name=title]").val(arg.event.title)
+				$("[name=writer]").val(arg.event.extendedProps.writer)
+				$("#start").val(arg.event.start.toLocaleString())
+				$("[name=start]").val(arg.event.startStr)
+				$("#end").val(arg.event.end.toLocaleString())
+				$("[name=end]").val(arg.event.endStr)
+				$("[name=backgroundColor]").val(arg.event.backgroundColor)
+				$("[name=textColor]").val(arg.event.textColor)
+				$("[name=content]").val(arg.event.extendedProps.content)
+				$("[name=urlLink]").val(arg.event.extendedProps.urlLink)
+				$("#allDay").val(""+arg.event.allDay)				
+				$("[name=allDay]").val(arg.event.allDay?1:0)					
 				/*
+				1. 타이틀 변경:일정상세
+				2. 버튼 보이기 : 등록X, 수정/삭제(O)
+				3. 각 form 요소에 위 데이터 할당하기..
+				
+				
+				
 				if (confirm('Are you sure you want to delete this event?')) {
 				  arg.event.remove()
 				}
 				 */
 				console.log($("#modal01").html())
 				$("#modal01").click();
+				console.log("#상세데이터확인#")
+				console.log(arg.event)
 			},
 			editable : true,
 			dayMaxEvents : true, // allow "more" link when too many events
