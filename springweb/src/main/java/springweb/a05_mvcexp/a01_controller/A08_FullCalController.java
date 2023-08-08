@@ -26,7 +26,7 @@ public class A08_FullCalController {
 	public ResponseEntity<List<Calendar>> calList() {
 		return ResponseEntity.ok(service.calList());
 	}	
-	// http://localhost:7080/springweb/insertCalendar.do
+	// http://localhost:7080/springweb/insertCalendar.do?id=0&title=%EC%84%B8%EB%B2%88%EC%A7%B8%EC%9D%BC%EC%A0%95&writer=%EB%A7%88%EA%B8%B8%EB%8F%99&start=2023-08-03&end=2023-08-04&content=%EC%9D%BC%EC%A0%95%EB%93%B1%EB%A1%9D&backgroundColor=%23cc1400&textColor=%23ccffff&allDay=1&urlLink=
 	// insertCalendar.do?title=등록2&writer=마길동&start=2023-08-01&end=2023-08-02&content=내용2&backgroundColor=blue&textColor=white&allDay=1&url=http://www.naver.com
 	@RequestMapping("insertCalendar.do")
 	public ResponseEntity<String> insertCalendar(Calendar ins) {

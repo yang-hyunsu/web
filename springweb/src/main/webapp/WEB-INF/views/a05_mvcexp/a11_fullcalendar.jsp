@@ -27,14 +27,18 @@
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
 		var calendarEl = document.getElementById('calendar');
-
+		var toDay = new Date();
+		//alert(toDay.toISOString())
+		//alert(toDay.toISOString().split("T")[0])
+		var toDayTitle = toDay.toISOString().split("T")[0];
+		
 		var calendar = new FullCalendar.Calendar(calendarEl, {
 			headerToolbar : {
 				left : 'prev,next today',
 				center : 'title',
 				right : 'dayGridMonth,timeGridWeek,timeGridDay'
 			},
-			initialDate : '2023-08-03',
+			initialDate : toDayTitle,
 			navLinks : true, // can click day/week names to navigate views
 			selectable : true,
 			selectMirror : true,
@@ -109,6 +113,30 @@
 		});
 
 		calendar.render();
+		$("#regBtn").click(function(){
+			if(confirm("등록하시겠습니까?")){
+				console.log("#등록데이터 확인#")
+				console.log("http://localhost:7080/springweb/insertCalendar.do?"
+						+$("form").serialize())
+				$.ajax({
+					type:"post",
+					url:"${path}/insertCalendar.do",
+					data:$("form").serialize(),
+					success:function(data){
+						if(confirm(data.replaceAll("\"","")+
+								"\n전체화면 확인하시겠습니까?")){
+							location.reload()
+						}
+					},
+					error:function(err){
+						console.log(err)
+					}
+				})
+				
+			}
+		})
+		
+		
 	});
 </script>
 <style>
