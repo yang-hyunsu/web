@@ -41,8 +41,19 @@
 			select : function(arg) {
 				console.log("#캘린더의 기본 속성 확인#")
 				console.log(arg)
+				console.log("시작:"+arg.startStr)
+				console.log("마지막:"+arg.endStr)
+				console.log("종일여부:"+arg.allDay)
+				
 				$("#modal01").click();
+				
+				
 				/*
+				arg : 기본 제공 데이터 객체
+				arg.startStr : 날짜 ISO
+				arg.endStr : 날짜 ISO
+				arg.allDay : 시간설정/날짜이냐
+				
 				var title = prompt('Event Title:');
 				if (title) {
 				calendar.addEvent({
@@ -136,23 +147,43 @@ style>body {
 		<div class="modal-dialog modal-dialog-centered" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLongTitle">타이틀</h5>
+					<h5 class="modal-title" id="calTitle">타이틀</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">
-
+				<!-- 
+				$("#calTitle").text("일정등록")
+				$("#regBtn").show()
+				$("#uptBtn").hide()
+				$("#delBtn").hide()
+				$("#start").val()
+				$("[name=start]").val()
+				$("#end").val()
+				$("[name=end]").val()
+				
+				 -->
+				 
 					<form class="form" method="post">
 						<input type="hidden" name="id" value="0" />
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
-								<span class="input-group-text">일정</span>
+								<span class="input-group-text">일정제목</span>
 							</div>
 							<input type="text" name="title" class="form-control"
 								placeholder="일정입력">
 						</div>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text">작성자</span>
+							</div>
+							<input type="text" name="writer" class="form-control"
+								placeholder="작성자입력">
+						</div>
+						
+						
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
 								<span class="input-group-text">시작일</span>
@@ -172,13 +203,6 @@ style>body {
 								<span class="input-group-text">내용</span>
 							</div>
 							<textarea name="content" rows="5" cols="10" class="form-control"></textarea>
-						</div>
-						<div class="input-group mb-3">
-							<div class="input-group-prepend">
-								<span class="input-group-text">테두리색상</span>
-							</div>
-							<input type="color" name="borderColor" value="#0099cc"
-								class="form-control" placeholder="입력">
 						</div>
 						<div class="input-group mb-3">
 							<div class="input-group-prepend">
@@ -203,14 +227,24 @@ style>body {
 								<option value="false">시간</option>
 							</select> <input type="hidden" name="allDay" />
 						</div>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text">연관페이지</span>
+							</div>
+							<input type="text" name="urlLink" class="form-control"
+								placeholder="url링크주소입력">
+						</div>
+						
 					</form>
 				</div>
+
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal">Close</button>
 					<button type="button" id='regBtn' class="btn btn-primary">등록</button>
 					<button type="button" id='uptBtn' class="btn btn-info">수정</button>
 					<button type="button" id='delBtn' class="btn btn-warning">삭제</button>
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+					
 				</div>
 			</div>
 		</div>
