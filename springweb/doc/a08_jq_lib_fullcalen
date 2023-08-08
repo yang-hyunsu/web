@@ -95,12 +95,11 @@ private boolean allDay;
 private String url;
 
 INSERT INTO calendar values(cal_seq.nextval,
-			#{writer},#{start},#{end},
+			#{title},#{writer},#{start},#{end},
 			#{content},#{backgroundColor},#{textColor},
 			#{allDay}, #{url})	
 
-insertCalendar.do?title=등록2&writer=마길동&
-start=2023-08-01&end=2023-08-02&content=내용2&backgroundColor=#330033&textColor=#FFCCE5&allDay=1&url=
+insertCalendar.do?title=등록2&writer=마길동&start=2023-08-01&end=2023-08-02&content=내용2&backgroundColor=#330033&textColor=#FFCCE5&allDay=1&url=
  * 
  * */
 CREATE SEQUENCE cal_seq;
