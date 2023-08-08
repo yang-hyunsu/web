@@ -13,7 +13,7 @@
 	</select>
 	<insert id="insertCalendar" parameterType="calendar">
 		INSERT INTO calendar values(cal_seq.nextval,
-			#{id},#{writer},#{start},#{end},
+			#{title},#{writer},#{start},#{end},
 			#{content},#{backgroundColor},#{textColor},
 			#{allDay}, #{url})	
 	</insert>
