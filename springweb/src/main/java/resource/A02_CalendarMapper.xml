@@ -3,11 +3,6 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >	
 <mapper namespace="springweb.a05_mvcexp.a03_dao.A08_FullCalDao">
-<!-- 
-	public int insertCalendar(Calendar ins);	
-	public List<Calendar> calList();
-
- -->
  	<resultMap type="calendar" id="calRst">
  		<result column="start1" property="start"/>
  		<result column="end1" property="end"/>
