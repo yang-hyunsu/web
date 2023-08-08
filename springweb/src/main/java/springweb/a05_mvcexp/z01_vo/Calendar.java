@@ -81,11 +81,12 @@ public class Calendar {
 	public void setAllDay(boolean allDay) {
 		this.allDay = allDay;
 	}
-	public String getUrl() {
+	public String getUrlLink() {
 		return urlLink;
 	}
-	public void setUrl(String url) {
-		this.urlLink = url;
+	public void setUrlLink(String urlLink) {
+		this.urlLink = urlLink;
 	}
+	
 	
 }
