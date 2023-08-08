@@ -71,17 +71,29 @@
 	 <!-- 
 	 		public int deleteBoard(int no);
 		delete from board where no = #{no}
+		
+		
 	  -->
 	 <delete id="deleteBoard" parameterType="int">
 	 	delete from board where no = #{no}
 	 </delete>	 
+	 
+	 
 		<!-- no, fname, info -->
 	 <insert id="insertBoardFile" 
 	 	parameterType="boardfile">
 		INSERT INTO BOARDFILE values(#{no},
 			#{fname},'',#{info}, sysdate,sysdate,'')	 
 	 </insert> 
+	 <delete id="deleteBoardFile" 
+	 	parameterType="boardfile">
+		delete from BOARDFILE
+		where no = #{no}
+		and fname = #{fname}	 
+	 </delete> 	 
 	 <!-- 
+	 
+	 public int deleteBoardFile(BoardFile del);
 	 	select fname from boardfile
 		where no = #{no}
 		dao/mapper 작성

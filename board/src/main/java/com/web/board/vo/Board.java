@@ -18,6 +18,7 @@ public class Board {
 	private Date uptdte;
 	private List<String> fnames;
 	private MultipartFile[] report;
+
 	
 	public Board() {
 		super();

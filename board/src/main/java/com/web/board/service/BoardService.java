@@ -131,9 +131,44 @@ public class BoardService {
 		return b;
 	}
 	public Board getBoard(int no) {
-		return dao.getBoard(no);
+		Board b = dao.getBoard(no);
+		b.setFnames(dao.getFnames(no));		
+		return b;
 	}	
 	public String updateBoard(Board upt) {
+		
+		//int no = dao.getNo();
+		//upt.setNo(no);
+		String msg = "업로드 성공";
+		System.out.println("# 수정 처리(파일) #");
+		for(MultipartFile mf:upt.getReport() ) {
+			String fname = mf.getOriginalFilename();
+			System.out.println("파일명:"+fname);
+			
+			if(fname!=null && !fname.trim().equals("")) {
+				File f = new File(path+fname);
+				try {
+					mf.transferTo(f);
+					
+				} catch (IllegalStateException e) {
+					msg = "예외발생1:"+e.getMessage();
+				} catch (IOException e) {
+					msg = "예외발생2:"+e.getMessage();
+				}
+				if(msg.equals("업로드 성공")) {
+					dao.insertBoardFile(
+						new BoardFile(upt.getNo(),fname,upt.getSubject()));
+				}
+			}
+			
+		}
+		// 삭제할 파일(DB)
+		System.out.println("# 삭제 파일 #");
+		for(String fname:upt.getFnames()) {
+			System.out.println(upt.getNo()+":"+fname);
+			dao.deleteBoardFile(new BoardFile(upt.getNo(),fname,null));
+		}
+		
 		return dao.updateBoard(upt)>0?
 					"수정완료":"수정되지 않았습니다.";
 	}

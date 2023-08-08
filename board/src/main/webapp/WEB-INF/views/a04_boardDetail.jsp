@@ -169,7 +169,7 @@ body {
 						<input type="text"
 							value='<fmt:formatDate  pattern="yyyy-MM-dd"  value="${board.uptdte}"/>' readonly class="form-control  ckValid">		
 					</div>					
-				</div>				
+				</div>	
 				<div class="mb-3">
 					<label for="content">내용</label>
 					<textarea name="content" class="form-control  ckValid" id="content"
@@ -178,26 +178,45 @@ body {
 				</div>
 				<div class="mb-3">
 					<label for="subject">첨부파일</label>
-					<c:forEach var="fname" items = "${board.fnames}">	
-						<button  onclick="download('${fname}')"  type="button" class="btn btn-outline-info">${fname}</button>
-					</c:forEach>	
-						
 				</div>
 				<script type="text/javascript">
 					function download(fname){
 						if(confirm(fname+" 다운로드 하시겠습니까?")){
 							location.href="${path}/download.do?fname="
 									+fname
-									
+							event.preventDefault()		
 						}
 					}
-				</script>					
+				</script>	
 				
+			    <script type="text/javascript">
+			    	function delFile(obj, fname){
+			    		if(confirm(fname+" 파일을 삭제하시겠습니까?")){
+			    			$(obj).next().remove()
+			    			$(obj).remove()
+			    			$("#delFiles").append("<input name='fnames' value='"+fname+"'>")
+			    		}
+			    		
+			    	}
+			    </script>		
+			    			
 				<div class="mb-3">
+					<div id="delFiles" style="display:none"></div>
+					<c:forEach var="fname" items = "${board.fnames}" varStatus="sts">
+						<span class="badge rounded-pill bg-info"  onclick="delFile(this,'${fname}')">x</span>
+						<div class="custom-file">
+							
+							<!-- <i class="fa-solid fa-trash">x@@@</i> -->
+							<input  onclick="download('${fname}')"  type="file" name="report"
+								class="custom-file-input" value="${fname}"
+								multiple="multiple" id="file${sts.count}"> <label
+								class="custom-file-label" for="file${sts.count}">${fname}</label>
+						</div>
+					</c:forEach>		
 					<div class="custom-file">
 						<input type="file" name="report" class="custom-file-input"
-							multiple="multiple" id="file01"> <label
-							class="custom-file-label" for="file01">파일 선택</label>
+							multiple="multiple" id="file0"> <label
+							class="custom-file-label" for="file0">파일 추가</label>
 					</div>
 				</div>
 

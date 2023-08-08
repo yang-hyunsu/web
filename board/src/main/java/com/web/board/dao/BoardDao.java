@@ -22,7 +22,9 @@ public interface BoardDao {
 	public Board getBoard(int no);
 	public void readCntUp(int no);
 	public int updateBoard(Board upt);
+	
 	public int deleteBoard(int no);
 	public int insertBoardFile(BoardFile ins);
+	public int deleteBoardFile(BoardFile del);
 	public List<String> getFnames(int no);
 }
