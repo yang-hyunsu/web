@@ -61,7 +61,8 @@
 				$("#end").val(arg.end.toLocaleString())
 				$("[name=end]").val(arg.endStr)				
 				$("#allDay").val(""+arg.allDay)				
-				$("[name=allDay]").val(arg.allDay?1:0)				
+				$("[name=allDay]").val(arg.allDay?1:0)	
+				
 				$("#modal01").click();
 				
 				
@@ -102,28 +103,13 @@
 				$("#regBtn").hide()
 				$("#uptBtn").show()
 				$("#delBtn").show()
-				$("[name=id]").val(arg.event.id)
-				$("[name=title]").val(arg.event.title)
-				$("[name=writer]").val(arg.event.extendedProps.writer)
-				$("#start").val(arg.event.start.toLocaleString())
-				$("[name=start]").val(arg.event.startStr)
-				$("#end").val(arg.event.end.toLocaleString())
-				$("[name=end]").val(arg.event.endStr)
-				$("[name=backgroundColor]").val(arg.event.backgroundColor)
-				$("[name=textColor]").val(arg.event.textColor)
-				$("[name=content]").val(arg.event.extendedProps.content)
-				$("[name=urlLink]").val(arg.event.extendedProps.urlLink)
-				$("#allDay").val(""+arg.event.allDay)				
-				$("[name=allDay]").val(arg.event.allDay?1:0)
-				
+				addForm(arg.event)
 				$("[name=urlLink]").click(function(){
 					// 내부페이지 외부 페이지 이동
 					if(confirm("해당페이지로 이동하겠습니까?")){
 						// 새로운 창으로 페이지 로딩 및 이동 처리
 						window.open($(this).val(),"","")	
-					}
-					
-					//location.href=
+					}			
 				})
 				/*
 				1. 타이틀 변경:일정상세
@@ -171,26 +157,44 @@
 				console.log("#등록데이터 확인#")
 				console.log("http://localhost:7080/springweb/insertCalendar.do?"
 						+$("form").serialize())
-				$.ajax({
-					type:"post",
-					url:"${path}/insertCalendar.do",
-					data:$("form").serialize(),
-					success:function(data){
-						if(confirm(data.replaceAll("\"","")+
-								"\n전체화면 확인하시겠습니까?")){
-							location.reload()
-						}
-					},
-					error:function(err){
-						console.log(err)
-					}
-				})
-				
+				ajaxFun("insertCalendar.do")		
 			}
 		})
-		
-		
 	});
+	// ajax 공통 처리 함수
+	function ajaxFun(url){
+		$.ajax({
+			type:"post",
+			url:"${path}/"+url,
+			data:$("form").serialize(),
+			success:function(data){
+				if(confirm(data.replaceAll("\"","")+
+						"\n전체화면 확인하시겠습니까?")){
+					location.reload()
+				}
+			},
+			error:function(err){
+				console.log(err)
+			}
+		})		
+	}
+	// form 입력 내용 처리 공통 함수
+	function addForm(event){
+		$("form")[0].reset()
+		$("[name=id]").val(event.id)
+		$("[name=title]").val(event.title)
+		$("[name=writer]").val(event.extendedProps.writer)
+		$("#start").val(event.start.toLocaleString())
+		$("[name=start]").val(event.startStr)
+		$("#end").val(event.end.toLocaleString())
+		$("[name=end]").val(event.endStr)
+		$("[name=backgroundColor]").val(event.backgroundColor)
+		$("[name=textColor]").val(event.textColor)
+		$("[name=content]").val(event.extendedProps.content)
+		$("[name=urlLink]").val(event.extendedProps.urlLink)
+		$("#allDay").val(""+event.allDay)				
+		$("[name=allDay]").val(event.allDay?1:0)
+	}
 </script>
 <style>
 <
