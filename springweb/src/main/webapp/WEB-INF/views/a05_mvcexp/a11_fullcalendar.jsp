@@ -104,7 +104,7 @@
 				$("#uptBtn").show()
 				$("#delBtn").show()
 				addForm(arg.event)
-				$("[name=urlLink]").click(function(){
+				$("[name=urlLink]").dblclick(function(){
 					// 내부페이지 외부 페이지 이동
 					if(confirm("해당페이지로 이동하겠습니까?")){
 						// 새로운 창으로 페이지 로딩 및 이동 처리
