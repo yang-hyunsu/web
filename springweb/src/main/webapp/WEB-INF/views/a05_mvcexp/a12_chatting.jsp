@@ -31,7 +31,27 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-
+		// 소켓서버접속 변수
+		var wsocket;
+		$("#enterBtn").click(function(){
+			var idVal = $("#id").val()
+			if(idVal==""){
+				alert("접속할 아이디를 입력하세요")
+				return
+			}
+			if(confirm(idVal+"님 채팅방 접속합니다")){
+				wsocket = new WebSocket(
+						"ws:localhost:7080/${path}/chat-ws.do")
+				// 서버의 접속 핸들러 처리하는 메서드..
+				wsocket.onopen = function(evt){
+					console.log(evt)
+					// 서버의 메시지 핸들러 메서드 호출..
+					wsocket.send("msg:"+idVal+"님 접속하셨습니다.");
+					
+				}
+			}
+		})
+		
 	});
 </script>
 </head>
