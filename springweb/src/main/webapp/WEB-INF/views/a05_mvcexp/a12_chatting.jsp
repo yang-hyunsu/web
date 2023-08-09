@@ -42,13 +42,32 @@
 	<div class="container">
 		<div class="input-group mb-3">	
 			<div class="input-group-prepend ">
-				<span class="input-group-text  justify-content-center">직책아이디</span>
+				<span class="input-group-text  justify-content-center">아이디</span>
 			</div>
-			<input type="text" id="job_id" name="job_id" class="form-control" 
-				placeholder="글자수는 4~8자/중복불가"/>
-			<input id="ckId" type="button" class="btn btn-info" value="유효성확인" />
-				
-		</div>		
+			<input type="text" id="id" class="form-control" 
+				placeholder="접속할 아이디 입력"/>
+			<input id="enterBtn" value="채팅방입장"  type="button" class="btn btn-info" />
+			<input id="exitBtn" value="채팅방나가기"  type="button" class="btn btn-success" />
+		</div>	
+		<div class="input-group mb-3">	
+			<div class="input-group-prepend ">
+				<span class="input-group-text  justify-content-center">메시지</span>
+			</div>
+			<div id="chatArea" class="input-group-append">
+				<div id="chatMessageArea"></div>
+			</div>
+		</div>	
+					
+		<div class="input-group mb-3">	
+			<div class="input-group-prepend ">
+				<span class="input-group-text  justify-content-center">메시지</span>
+			</div>
+			<input type="text" id="msg" class="form-control" 
+				placeholder="전송할 메시지 입력"/>
+			<input id="sndBtn" value="메시지전송"  type="button" class="btn btn-info" />
+		</div>
+			
+		
 	
 	</div>
 
