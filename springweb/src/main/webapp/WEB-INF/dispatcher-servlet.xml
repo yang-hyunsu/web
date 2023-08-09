@@ -43,6 +43,20 @@
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
 	</context:component-scan>
+	<!-- # 웹 소켓 통신을 위한 선언
+	1. java로 핸들러 클리스가 가능하게 mapping/adapter 선언.
+	 --> 
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>	 
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
+																<mvc:default-servlet-handler/>	 
+	<!-- 
+	2. java핸들러 클래스 선언및 client에서 호출 url 지정..
+	 --> 
+	<websocket:handlers>
+		<websocket:mapping handler="chatHandler" 
+			path="/chat-ws.do"/>
+	</websocket:handlers>
+	 
 	 
 	<context:property-placeholder location="classpath:resource/a01_config,classpath:resource/a02_config"/>
 	
