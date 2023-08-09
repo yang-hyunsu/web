@@ -18,9 +18,20 @@
 			#{content},#{backgroundColor},#{textColor},
 			#{allDay}, #{urlLink})	
 	</insert>
-	<!-- 
-insertCalendar.do?title=등록2&writer=마길동&start=2023-08-01&end=2023-08-02&content=내용2&backgroundColor=blue&textColor=white&allDay=1&url=http://www.naver.com	
-	
-	
-	 -->
+	<update id="uptCalendar" parameterType="calendar">
+		update calendar
+			set title=#{title},
+				start1=#{start},
+				end1=#{end},
+				writer=#{writer},
+				content=#{content},
+				backgroundColor=#{backgroundColor},
+				textColor=#{textColor},
+				allDay=#{allDay},
+				url = #{urlLink}
+		 where id=#{id}		
+	</update>
+	<delete id="delCalendar" parameterType="int">
+		delete from calendar where id=#{id}	
+	</delete>
 </mapper>	

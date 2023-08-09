@@ -17,6 +17,14 @@ public class A08_FullCalService {
 		return dao.insertCalendar(ins)>0?"등록성공":"등록되지 않았습니다.";
 		
 	}	
+	
+	public String uptCalendar(Calendar upt) {
+		return dao.uptCalendar(upt)>0?"수정성공":"수정되지 않았습니다.";
+	}
+	public String delCalendar(int id) {
+		return dao.delCalendar(id)>0?"삭제성공":"삭제되지 않았습니다.";
+	}		 		
+	
 	public List<Calendar> calList(){
 		return dao.calList();
 	}

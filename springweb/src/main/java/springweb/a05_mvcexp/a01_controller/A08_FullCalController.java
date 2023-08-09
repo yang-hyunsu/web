@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import springweb.a05_mvcexp.a02_service.A08_FullCalService;
 import springweb.a05_mvcexp.z01_vo.Calendar;
@@ -32,8 +33,15 @@ public class A08_FullCalController {
 	public ResponseEntity<String> insertCalendar(Calendar ins) {
 		return ResponseEntity.ok(service.insertCalendar(ins));
 	}	
+	@RequestMapping("calendarUpdate.do")
+	public ResponseEntity<String> calendarUpdate(Calendar upt) {
+		return ResponseEntity.ok(service.uptCalendar(upt));
+	}	
+	// http://localhost:7080/springweb/calendarDelete.do?id=10
 	
-	
-	
+	@RequestMapping("calendarDelete.do")
+	public ResponseEntity<String> calendarDelete(@RequestParam("id") int id) {
+		return ResponseEntity.ok(service.delCalendar(id));
+	}		
 	
 }

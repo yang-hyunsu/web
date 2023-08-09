@@ -164,8 +164,33 @@ SELECT * FROM calendar;
 	화면에 출력 처리..
 3. 데이터 입력에 대한 vo로 할당될 수 있게 name="속성" 처리
 4. 등록버튼 클릭시,
-	ajax 처리..		
+	ajax 처리..	
 	
+# 수정/삭제
+1. DB 처리
+	1) sql
+		update calendar
+			set title=#{title},
+				start1=#{start},
+				end1=#{end},
+				writer=#{writer},
+				content=#{content},
+				backgroundColor=#{backgroundColor},
+				textColor=#{textColor},
+				allDay=#{allDay},
+				url = #{urlLink}
+		 where id=#{id}		 
+		 delete from calendar where id=#{id}
+		public int uptCalendar(Calendar upt);
+		ppublic int delCalendar(int id);		 		
+	2) vo
+	3) dao		
+		public int uptCalendar(Calendar upt);
+		ppublic int delCalendar(int id);
+	4) controller
+		calendarUpdate.do
+		calendarDelete.do
+		
 	
 	
 	
