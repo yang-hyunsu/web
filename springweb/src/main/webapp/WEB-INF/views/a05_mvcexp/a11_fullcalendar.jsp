@@ -160,6 +160,23 @@
 				ajaxFun("insertCalendar.do")		
 			}
 		})
+		$("#uptBtn").click(function(){
+			if(confirm("수정하시겠습니까?")){
+				console.log("#수정 확인#")
+				console.log("http://localhost:7080/springweb/calendarUpdate.do?"
+						+$("form").serialize())
+				ajaxFun("calendarUpdate.do")		
+			}
+			
+		})
+		$("#delBtn").click(function(){
+			if(confirm("삭제하시겠습니까?")){
+				console.log("#삭제데이터 확인#")
+				console.log("http://localhost:7080/springweb/calendarDelete.do?"
+						+$("form").serialize())
+				ajaxFun("calendarDelete.do")		
+			}
+		})		
 	});
 	// ajax 공통 처리 함수
 	function ajaxFun(url){

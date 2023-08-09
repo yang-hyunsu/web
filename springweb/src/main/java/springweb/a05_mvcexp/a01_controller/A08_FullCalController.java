@@ -38,7 +38,6 @@ public class A08_FullCalController {
 		return ResponseEntity.ok(service.uptCalendar(upt));
 	}	
 	// http://localhost:7080/springweb/calendarDelete.do?id=10
-	
 	@RequestMapping("calendarDelete.do")
 	public ResponseEntity<String> calendarDelete(@RequestParam("id") int id) {
 		return ResponseEntity.ok(service.delCalendar(id));
