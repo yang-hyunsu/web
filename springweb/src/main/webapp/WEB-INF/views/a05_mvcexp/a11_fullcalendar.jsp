@@ -127,6 +127,17 @@
 				console.log("#상세데이터확인#")
 				console.log(arg.event)
 			},
+			eventDrop:function(arg){// 특정 일정을 드래그해서 드랍
+				// 실제는 일정의 시작과 종료일이 변경되는 것인데
+				// 수정할려면 form의 내용을 변경..
+				addForm(arg.event)
+				ajaxFun("calendarUpdate.do")
+				
+			},
+			eventResize:function(arg){// 특정 일정의 사이즈를 변경
+				addForm(arg.event)
+				ajaxFun("calendarUpdate.do")				
+			},
 			editable : true,
 			dayMaxEvents : true, // allow "more" link when too many events
 			// calList.do
