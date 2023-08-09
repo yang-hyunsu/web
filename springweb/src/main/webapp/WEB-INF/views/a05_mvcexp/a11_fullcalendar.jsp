@@ -23,7 +23,8 @@
 <script src="${path}/a00_com/popper.min.js"></script>
 <script src="${path}/a00_com/bootstrap.min.js"></script>
 <script src='${path}/a00_com/lib/main.js'></script>
-
+<script src='${path}/a00_com/dist/index.global.js'></script>
+<script src='${path}/a00_com/packages/core/locales/ko.global.js'></script>
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
 		var calendarEl = document.getElementById('calendar');
@@ -33,6 +34,7 @@
 		var toDayTitle = toDay.toISOString().split("T")[0];
 		
 		var calendar = new FullCalendar.Calendar(calendarEl, {
+			locale: 'ko',
 			headerToolbar : {
 				left : 'prev,next today',
 				center : 'title',
