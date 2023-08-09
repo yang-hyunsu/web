@@ -50,6 +50,8 @@
 				console.log("시작:"+arg.startStr)
 				console.log("마지막:"+arg.endStr)
 				console.log("종일여부:"+arg.allDay)
+				// 상세화면에 있던 내용 초기화 처리
+				$("form")[0].reset()
 				$("#calTitle").text("일정등록")
 				$("#regBtn").show()
 				$("#uptBtn").hide()
@@ -92,6 +94,7 @@
 				console.log("종일여부:"+arg.event.allDay)
 				console.log("배경색상:"+arg.event.backgroundColor)
 				console.log("글자색상:"+arg.event.textColor)
+				// 추가적인 속성을 지정하고 가져올 때, extendedProps 사용
 				console.log("작성자:"+arg.event.extendedProps.writer)
 				console.log("내용:"+arg.event.extendedProps.content)
 				console.log("링크:"+arg.event.extendedProps.urlLink)
@@ -111,7 +114,17 @@
 				$("[name=content]").val(arg.event.extendedProps.content)
 				$("[name=urlLink]").val(arg.event.extendedProps.urlLink)
 				$("#allDay").val(""+arg.event.allDay)				
-				$("[name=allDay]").val(arg.event.allDay?1:0)					
+				$("[name=allDay]").val(arg.event.allDay?1:0)
+				
+				$("[name=urlLink]").click(function(){
+					// 내부페이지 외부 페이지 이동
+					if(confirm("해당페이지로 이동하겠습니까?")){
+						// 새로운 창으로 페이지 로딩 및 이동 처리
+						window.open($(this).val(),"","")	
+					}
+					
+					//location.href=
+				})
 				/*
 				1. 타이틀 변경:일정상세
 				2. 버튼 보이기 : 등록X, 수정/삭제(O)
