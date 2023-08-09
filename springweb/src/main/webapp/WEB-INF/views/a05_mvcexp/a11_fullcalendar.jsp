@@ -214,8 +214,15 @@
 		$("[name=writer]").val(event.extendedProps.writer)
 		$("#start").val(event.start.toLocaleString())
 		$("[name=start]").val(event.startStr)
-		$("#end").val(event.end.toLocaleString())
-		$("[name=end]").val(event.endStr)
+		console.log("# 마지막일:"+event.end)
+		var end = event.end
+		if(end==null){
+			end = event.start
+			end.setDate(end.getDate()+(1/24));
+			console.log("# 마지막일(최종):"+ (end.toISOString()))
+		}		
+		$("#end").val(end.toLocaleString())
+		$("[name=end]").val(end.toISOString())
 		$("[name=backgroundColor]").val(event.backgroundColor)
 		$("[name=textColor]").val(event.textColor)
 		$("[name=content]").val(event.extendedProps.content)
