@@ -216,8 +216,10 @@
 		$("[name=start]").val(event.startStr)
 		console.log("# 마지막일:"+event.end)
 		var end = event.end
+		// 마지막일정이 null일 때, bug 처리..
 		if(end==null){
 			end = event.start
+			// null일때는 시작일정 + 1시간으로 기본 설정
 			end.setDate(end.getDate()+(1/24));
 			console.log("# 마지막일(최종):"+ (end.toISOString()))
 		}		
