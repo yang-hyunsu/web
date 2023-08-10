@@ -53,21 +53,18 @@
 		$("#msg").keyup(function(){
 			if(event.keyCode==13){
 				sendMsg();
+				
 			}
 		})
 		$("#sndBtn").click(function(){
 			sendMsg();
 		})
-		
-
-		
-		
-		
 	});
 	// <!-- msg  sndBtn-->
 	// 메시지 전송 함수..
 	function sendMsg(){
 		wsocket.send($("#id").val()+":"+$("#msg").val());
+		$("#msg").val("").focus()
 	}	
 	function conn(){
 		var idVal = $("#id").val()
