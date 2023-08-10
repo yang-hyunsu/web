@@ -30,6 +30,12 @@
 	type="text/javascript"></script>
 
 <script type="text/javascript">
+	window.addEventListener("resize",function(){
+		$("#chatMessageArea>div").width(
+				$("#chatArea").width()-20)
+	})
+
+
 	// 소켓서버접속 변수
 	var wsocket;
 	$(document).ready(function() {
@@ -94,10 +100,23 @@
 			return true;
 		}		
 	}
+	
 	var mx = 0
 	function revMsg(msg){
+		// 보내는 메시지는 오른쪽
+		// 받는 메시지 왼쪽 정렬 처리..
+		// 사용자아이디:메시지내용
+		var alignOpt = "left"
+		var msgArr = msg.split(":")
+		var sndId = msgArr[0]
+		if($("#id").val()==sndId){
+			alignOpt = "right"
+		}
 		// 메시지 객체 생성..
-		var msgObj = $("<div></div>").text(msg)
+		var msgObj = $("<div></div>"
+				).text(msg).attr("align",alignOpt
+				).css("width",$("#chatArea").width()-20)
+				
 		$("#chatMessageArea").append(msgObj)
 		// 스크롤링 처리
 		// 1. 전체 해당 데이터의 높이를 구한다.
