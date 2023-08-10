@@ -88,11 +88,24 @@
 			wsocket.onmessage=function(evt){
 				// evt.data : 서버에서 오는 메시지는 메시지 창에서 
 				// 출력 처리..
-				$("#chatMessageArea").append(evt.data+"<br>")
+				revMsg(evt.data)
 				
 			}
 			return true;
 		}		
+	}
+	var mx = 0
+	function revMsg(msg){
+		// 메시지 객체 생성..
+		var msgObj = $("<div></div>").text(msg)
+		$("#chatMessageArea").append(msgObj)
+		// 스크롤링 처리
+		// 1. 전체 해당 데이터의 높이를 구한다.
+		// 2. 포함하고 있는 부모 객체(#chatArea)에서
+		// 		스프롤 기능메서드로 스크롤되게 처리한다. scrollTop()
+		var height = parseInt($("#chatMessageArea").height())
+		mx+=height+20
+		$("#chatArea").scrollTop(mx)
 	}
 </script>
 </head>
