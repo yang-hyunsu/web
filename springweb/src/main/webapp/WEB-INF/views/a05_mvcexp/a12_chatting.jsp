@@ -41,7 +41,7 @@
 			}
 			if(confirm(idVal+"님 채팅방 접속합니다")){
 				wsocket = new WebSocket(
-						"ws:localhost:7080/${path}/chat-ws.do")
+						"ws:192.168.10.99:7080/${path}/chat-ws.do")
 				// 서버의 접속 핸들러 처리하는 메서드..
 				wsocket.onopen = function(evt){
 					console.log(evt)
@@ -49,6 +49,15 @@
 					wsocket.send("msg:"+idVal+"님 접속하셨습니다.");
 					
 				}
+				// 서버에서 오는 메시지 받는 처리
+				wsocket.onmessage=function(evt){
+					// evt.data : 서버에서 오는 메시지는 메시지 창에서 
+					// 출력 처리..
+					$("#chatMessageArea").append(evt.data+"<br>")
+					
+				}
+				
+				
 			}
 		})
 		
