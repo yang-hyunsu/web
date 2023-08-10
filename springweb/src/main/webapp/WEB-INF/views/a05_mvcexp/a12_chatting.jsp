@@ -46,7 +46,7 @@
 				wsocket.onopen = function(evt){
 					console.log(evt)
 					// 서버의 메시지 핸들러 메서드 호출..
-					wsocket.send("msg:"+idVal+"님 접속하셨습니다.");
+					wsocket.send(idVal+"님 접속하셨습니다.");
 					
 				}
 				// 서버에서 오는 메시지 받는 처리
@@ -60,6 +60,22 @@
 				
 			}
 		})
+		$("#msg").keyup(function(){
+			if(event.keyCode==13){
+				sendMsg();
+			}
+		})
+		$("#sndBtn").click(function(){
+			sendMsg();
+		})
+		
+		// <!-- msg  sndBtn-->
+		// 메시지 전송 함수..
+		function sendMsg(){
+			wsocket.send($("#id").val()+":"+$("#msg").val());
+		}
+		
+		
 		
 	});
 </script>
@@ -91,6 +107,7 @@
 			<div class="input-group-prepend ">
 				<span class="input-group-text  justify-content-center">메시지</span>
 			</div>
+			
 			<input type="text" id="msg" class="form-control" 
 				placeholder="전송할 메시지 입력"/>
 			<input id="sndBtn" value="메시지전송"  type="button" class="btn btn-info" />
