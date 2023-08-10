@@ -44,17 +44,20 @@
 # backend단 처리(DB처리)
 1. 사용할 data json형식을 확인하여, DB 테이블 구성
    groupId: 999,
+   
    id:일정고유내용..
    title: '긴일정', 타이틀
-   start: '2023-08-07', 시작일/시간
-   end: '2023-08-10' 종료일/시간
+   *start: '2023-08-07', 시작일/시간
+   *end: '2023-08-10' 종료일/시간
    #borderColor:  테두리색상(X)
    backgroundColor: 배경색상
    textColor: 글자색상
-   allDay 종일여부
+   *allDay 종일여부
+   url: 'http://google.com/'   
+   ==> urlLink
+   ----------------------
    writer : 작성 - 추가 속성
    content :내용 - 추가 속성..
-   url: 'http://google.com/'
    
 /*
    id:일정고유내용..
@@ -123,7 +126,8 @@ public List<Calendar> calList();
 3. Calendar.java ==> cal로 alias 등록		
 	
  * */
-SELECT * FROM calendar;
+SELECT * 
+FROM calendar;
    
    
 	- 사용할 주요 sql 작성
