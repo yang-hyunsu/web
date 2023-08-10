@@ -30,35 +30,25 @@
 	type="text/javascript"></script>
 
 <script type="text/javascript">
+	// 소켓서버접속 변수
+	var wsocket;
 	$(document).ready(function() {
-		// 소켓서버접속 변수
-		var wsocket;
+		
+		$("#id").focus() // 화면 로딩시 아이디를 입력하게..
+		// 아이디를 입력하면 enter입력시 접속/접속시는 
+		// 아이디 비활성화
+		$("#id").keyup(function(){
+			if(event.keyCode==13){
+				conn()
+				$(this).attr("readOnly",true)
+				$("#msg").focus()
+			}
+			
+		})
 		$("#enterBtn").click(function(){
-			var idVal = $("#id").val()
-			if(idVal==""){
-				alert("접속할 아이디를 입력하세요")
-				return
-			}
-			if(confirm(idVal+"님 채팅방 접속합니다")){
-				wsocket = new WebSocket(
-						"ws:192.168.10.99:7080/${path}/chat-ws.do")
-				// 서버의 접속 핸들러 처리하는 메서드..
-				wsocket.onopen = function(evt){
-					console.log(evt)
-					// 서버의 메시지 핸들러 메서드 호출..
-					wsocket.send(idVal+"님 접속하셨습니다.");
-					
-				}
-				// 서버에서 오는 메시지 받는 처리
-				wsocket.onmessage=function(evt){
-					// evt.data : 서버에서 오는 메시지는 메시지 창에서 
-					// 출력 처리..
-					$("#chatMessageArea").append(evt.data+"<br>")
-					
-				}
-				
-				
-			}
+			conn();
+			$("#id").attr("readOnly",true)
+			$("#msg").focus()
 		})
 		$("#msg").keyup(function(){
 			if(event.keyCode==13){
@@ -69,15 +59,41 @@
 			sendMsg();
 		})
 		
-		// <!-- msg  sndBtn-->
-		// 메시지 전송 함수..
-		function sendMsg(){
-			wsocket.send($("#id").val()+":"+$("#msg").val());
-		}
+
 		
 		
 		
 	});
+	// <!-- msg  sndBtn-->
+	// 메시지 전송 함수..
+	function sendMsg(){
+		wsocket.send($("#id").val()+":"+$("#msg").val());
+	}	
+	function conn(){
+		var idVal = $("#id").val()
+		if(idVal==""){
+			alert("접속할 아이디를 입력하세요")
+			return
+		}
+		if(confirm(idVal+"님 채팅방 접속합니다")){
+			wsocket = new WebSocket(
+					"ws:192.168.10.99:7080/${path}/chat-ws.do")
+			// 서버의 접속 핸들러 처리하는 메서드..
+			wsocket.onopen = function(evt){
+				console.log(evt)
+				// 서버의 메시지 핸들러 메서드 호출..
+				wsocket.send(idVal+"님 접속하셨습니다.");
+				
+			}
+			// 서버에서 오는 메시지 받는 처리
+			wsocket.onmessage=function(evt){
+				// evt.data : 서버에서 오는 메시지는 메시지 창에서 
+				// 출력 처리..
+				$("#chatMessageArea").append(evt.data+"<br>")
+				
+			}
+		}		
+	}
 </script>
 </head>
 <body>
