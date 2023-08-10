@@ -39,16 +39,18 @@
 		// 아이디 비활성화
 		$("#id").keyup(function(){
 			if(event.keyCode==13){
-				conn()
-				$(this).attr("readOnly",true)
-				$("#msg").focus()
+				if(conn()){
+					$(this).attr("readOnly",true)
+					$("#msg").focus()
+				}
 			}
 			
 		})
 		$("#enterBtn").click(function(){
-			conn();
-			$("#id").attr("readOnly",true)
-			$("#msg").focus()
+			if(conn()){
+				$("#id").attr("readOnly",true)
+				$("#msg").focus()
+			}
 		})
 		$("#msg").keyup(function(){
 			if(event.keyCode==13){
@@ -70,7 +72,7 @@
 		var idVal = $("#id").val()
 		if(idVal==""){
 			alert("접속할 아이디를 입력하세요")
-			return
+			return false
 		}
 		if(confirm(idVal+"님 채팅방 접속합니다")){
 			wsocket = new WebSocket(
@@ -89,6 +91,7 @@
 				$("#chatMessageArea").append(evt.data+"<br>")
 				
 			}
+			return true;
 		}		
 	}
 </script>
