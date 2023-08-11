@@ -138,6 +138,12 @@
 		var alignOpt = "left"
 		var msgArr = msg.split(":")
 		var sndId = msgArr[0]
+		if(msgArr[1]=="접속하셨습니다."||
+		   msgArr[1]=="연결을 종료하였습니다."		
+		   ){
+			conUsers();
+		}
+	
 		if($("#id").val()==sndId){
 			alignOpt = "right"
 			msg =msgArr[1]
@@ -156,6 +162,28 @@
 		mx+=height+20
 		$("#chatArea").scrollTop(mx)
 	}
+	function conUsers(){
+		// 접속자들 ajax로 확인
+		$.ajax({
+			url:"${path}/getChatMem.do",
+			dataType:"json",
+			success:function(mlist){
+				console.log(mlist)
+				var add=""
+				mlist.forEach(function(member){
+					console.log(member)
+					add+="<button class='btn btn-outline-primary'>"+
+							member+"</button>"
+				})
+				$(".chatGroup").html(add)
+				
+				
+			},
+			error:function(err){
+				console.log(err)
+			}
+		})
+	}
 </script>
 </head>
 <body>
@@ -172,6 +200,15 @@
 			<input id="enterBtn" value="채팅방입장"  type="button" class="btn btn-info" />
 			<input id="exitBtn" value="채팅방나가기"  type="button" class="btn btn-success" />
 		</div>	
+		<div class="input-group mb-3">	
+			<div class="input-group-prepend ">
+				<span class="input-group-text  justify-content-center">접속자</span>
+			</div>
+			<div class="input-group-append chatGroup">
+				
+			</div>
+		</div>		
+		
 		<div class="input-group mb-3">	
 			<div class="input-group-prepend ">
 				<span class="input-group-text  justify-content-center">메시지</span>
