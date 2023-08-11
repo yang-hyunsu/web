@@ -40,6 +40,8 @@
 	var wsocket;
 	$(document).ready(function() {
 		
+		
+		//$("#msg").attr("readOnly",true)
 		$("#id").focus() // 화면 로딩시 아이디를 입력하게..
 		// 아이디를 입력하면 enter입력시 접속/접속시는 
 		// 아이디 비활성화
@@ -55,6 +57,7 @@
 		$("#enterBtn").click(function(){
 			if(conn()){
 				$("#id").attr("readOnly",true)
+				//$("#msg").removeAttr("readOnly")
 				$("#msg").focus()
 			}
 		})
@@ -71,7 +74,20 @@
 			if($("#id").val()!=""){
 				if(confirm("접속을 종료하겠습니까?")){
 					//
-					alert("종료처리 프로세스진행..~~")
+					//alert("종료처리 프로세스진행..~~")
+					wsocket.send($("#id").val()+":연결을 종료하였습니다.")
+					wsocket.close()
+					// 대화내용 삭제
+					$("#chatMessageArea").text("")
+					// 등록자 아이디 내용 삭제
+					$("#id").val("").focus()
+					// 등록자 아이디 활성화
+					$("#id").attr("readOnly",false)
+					// 접속종료시 msg 부분 비활성황
+					//$("#msg").attr("readOnly",true)
+					
+					
+					
 				}
 			}else{
 				alert("접속되지 않았습니다!")
