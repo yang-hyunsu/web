@@ -32,7 +32,7 @@
 <script type="text/javascript">
 	window.addEventListener("resize",function(){
 		$("#chatMessageArea>div").width(
-				$("#chatArea").width()-20)
+				$("#chatArea").width())
 	})
 
 
@@ -82,12 +82,12 @@
 		}
 		if(confirm(idVal+"님 채팅방 접속합니다")){
 			wsocket = new WebSocket(
-					"ws:192.168.10.99:7080/${path}/chat-ws.do")
+					"ws:localhost:7080/${path}/chat-ws.do")
 			// 서버의 접속 핸들러 처리하는 메서드..
 			wsocket.onopen = function(evt){
 				console.log(evt)
 				// 서버의 메시지 핸들러 메서드 호출..
-				wsocket.send(idVal+"님 접속하셨습니다.");
+				wsocket.send(idVal+": 접속하셨습니다.");
 				
 			}
 			// 서버에서 오는 메시지 받는 처리
@@ -111,11 +111,12 @@
 		var sndId = msgArr[0]
 		if($("#id").val()==sndId){
 			alignOpt = "right"
+			msg =msgArr[1]
 		}
 		// 메시지 객체 생성..
 		var msgObj = $("<div></div>"
 				).text(msg).attr("align",alignOpt
-				).css("width",$("#chatArea").width()-20)
+				).css("width",$("#chatArea").width())
 				
 		$("#chatMessageArea").append(msgObj)
 		// 스크롤링 처리
