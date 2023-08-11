@@ -1,5 +1,7 @@
 package springweb.a06_util;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -50,13 +52,11 @@ public class ChatHandler extends TextWebSocketHandler{
 		if(msgArry[1].trim().equals("접속했습니다.")) {
 			// 전역변수에, web socket session 고유 id와 함께 접속자 등록.
 			ids.put(session.getId(), msgArry[0]);
-		}
-		
+		}	
 		System.out.println(session.getId()+"님이 보낸메시지:"+message.getPayload());
 		for(WebSocketSession ws:users.values()) {
 			ws.sendMessage(message);
-		}
-		
+		}		
 	}
 	// 종료시
 	@Override
@@ -77,6 +77,18 @@ public class ChatHandler extends TextWebSocketHandler{
 				exception.getMessage());
 
 	}
+	// 현재 접속중에 사용자를 리스트를 전달하기 위해 선언.
+	// controller 단에서 ajax로 호출하여 가져올 수 있게 처리..
+	public List<String> getIds(){
+		List<String> idList = new ArrayList<String>();
+		for(String id:ids.keySet()) {
+			// socket session에 연결된 실제 입력된 아이디를
+			// list에 할당..
+			idList.add(ids.get(id));
+		}
+		return idList;
+	}
+	
 	
 	
 }
