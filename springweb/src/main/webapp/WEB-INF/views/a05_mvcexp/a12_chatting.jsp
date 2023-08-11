@@ -34,10 +34,12 @@
 		$("#chatMessageArea>div").width(
 				$("#chatArea").width()-20)
 	})
-
+	
 
 	// 소켓서버접속 변수
 	var wsocket;
+	// 접속한사용자 변수
+	var members = []
 	$(document).ready(function() {
 		
 		
@@ -56,6 +58,8 @@
 			}
 			
 		})
+		conUsers();
+		
 		$("#enterBtn").click(function(){
 			if(conn()){
 				$("#id").attr("readOnly",true)
@@ -101,33 +105,47 @@
 		$("#msg").val("").focus()
 	}	
 	function conn(){
-		var idVal = $("#id").val()
-		if(idVal==""){
-			alert("접속할 아이디를 입력하세요")
-			return false
-		}
-		if(confirm(idVal+"님 채팅방 접속합니다")){
-			$("#msg").attr("readOnly",false)
-			wsocket = new WebSocket(
-					"ws:192.168.10.99:7080/${path}/chat-ws.do")
-			// 서버의 접속 핸들러 처리하는 메서드..
-			wsocket.onopen = function(evt){
-				console.log(evt)
-				// 서버의 메시지 핸들러 메서드 호출..
 
-				wsocket.send(idVal+":접속하셨습니다.");
-				
-				
+		var idVal = $("#id").val()
+		if(idVal.length<5 || idVal.length >12 ){
+			alert("접속할 아이디는 5~12 입력하여야 합니다.")
+			return false
+		}else{
+			var isNotValid=false;
+			$(members).each(function(idx, mem){
+				console.log(idVal+":"+mem)
+				if(idVal==mem){
+					isNotValid=true;
+				}
+			})
+			if(isNotValid){
+				alert("동일한 접속자 아이디가 있습니다.")
+				$("#id").val("").focus()
+				return false;
 			}
-			// 서버에서 오는 메시지 받는 처리
-			wsocket.onmessage=function(evt){
-				// evt.data : 서버에서 오는 메시지는 메시지 창에서 
-				// 출력 처리..
-				revMsg(evt.data)
-				
-			}
-			return true;
-		}		
+			if(confirm(idVal+"님 채팅방 접속합니다")){
+				$("#msg").attr("readOnly",false)
+				wsocket = new WebSocket(
+						"ws:192.168.10.99:7080/${path}/chat-ws.do")
+				// 서버의 접속 핸들러 처리하는 메서드..
+				wsocket.onopen = function(evt){
+					console.log(evt)
+					// 서버의 메시지 핸들러 메서드 호출..
+	
+					wsocket.send(idVal+":접속하셨습니다.");
+					
+					
+				}
+				// 서버에서 오는 메시지 받는 처리
+				wsocket.onmessage=function(evt){
+					// evt.data : 서버에서 오는 메시지는 메시지 창에서 
+					// 출력 처리..
+					revMsg(evt.data)
+					
+				}
+				return true;
+			}	
+		}
 	}
 	
 	var mx = 0
@@ -169,6 +187,7 @@
 			dataType:"json",
 			success:function(mlist){
 				console.log(mlist)
+				members = mlist
 				var add=""
 				mlist.forEach(function(member){
 					console.log(member)
