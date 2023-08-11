@@ -67,6 +67,16 @@
 		$("#sndBtn").click(function(){
 			sendMsg();
 		})
+		$("#exitBtn").click(function(){
+			if($("#id").val()!=""){
+				if(confirm("접속을 종료하겠습니까?")){
+					//
+					alert("종료처리 프로세스진행..~~")
+				}
+			}else{
+				alert("접속되지 않았습니다!")
+			}
+		})
 	});
 	// <!-- msg  sndBtn-->
 	// 메시지 전송 함수..
