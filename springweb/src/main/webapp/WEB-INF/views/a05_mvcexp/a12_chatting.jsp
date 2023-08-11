@@ -41,7 +41,9 @@
 	$(document).ready(function() {
 		
 		
-		//$("#msg").attr("readOnly",true)
+		$("#msg").attr("readOnly",true)
+		//alert("접속 활성화")
+		
 		$("#id").focus() // 화면 로딩시 아이디를 입력하게..
 		// 아이디를 입력하면 enter입력시 접속/접속시는 
 		// 아이디 비활성화
@@ -57,8 +59,6 @@
 		$("#enterBtn").click(function(){
 			if(conn()){
 				$("#id").attr("readOnly",true)
-				//$("#msg").removeAttr("readOnly")
-				$("#msg").focus()
 			}
 		})
 		$("#msg").keyup(function(){
@@ -76,15 +76,15 @@
 					//
 					//alert("종료처리 프로세스진행..~~")
 					wsocket.send($("#id").val()+":연결을 종료하였습니다.")
-					wsocket.close()
+					wsocket.close() // afterConnectionClosed 핸들러에 연동
 					// 대화내용 삭제
 					$("#chatMessageArea").text("")
 					// 등록자 아이디 내용 삭제
 					$("#id").val("").focus()
 					// 등록자 아이디 활성화
 					$("#id").attr("readOnly",false)
-					// 접속종료시 msg 부분 비활성황
-					//$("#msg").attr("readOnly",true)
+					// 접속종료시 msg 부분 비활성화
+					$("#msg").attr("readOnly",true)
 					
 					
 					
@@ -107,6 +107,7 @@
 			return false
 		}
 		if(confirm(idVal+"님 채팅방 접속합니다")){
+			$("#msg").attr("readOnly",false)
 			wsocket = new WebSocket(
 					"ws:192.168.10.99:7080/${path}/chat-ws.do")
 			// 서버의 접속 핸들러 처리하는 메서드..
@@ -114,6 +115,7 @@
 				console.log(evt)
 				// 서버의 메시지 핸들러 메서드 호출..
 				wsocket.send(idVal+": 접속하셨습니다.");
+				
 				
 			}
 			// 서버에서 오는 메시지 받는 처리
