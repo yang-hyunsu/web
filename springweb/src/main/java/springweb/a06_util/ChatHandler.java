@@ -59,10 +59,11 @@ public class ChatHandler extends TextWebSocketHandler{
 		//  2 : 바나나 (x)
 		//  3 : 딸기
 		//  2 : 오렌지
-		
-		if(msgArry[1].trim().equals("접속했습니다.")) {
+		// 
+		if(msgArry[1].trim().equals("접속하셨습니다.")) {
 			// 전역변수에, web socket session 고유 id와 함께 접속자 등록.
 			ids.put(session.getId(), msgArry[0]);
+			System.out.println("현재 접속자수:"+getIds().size());
 		}	
 		System.out.println(session.getId()+"님이 보낸메시지:"+message.getPayload());
 		for(WebSocketSession ws:users.values()) {
@@ -99,6 +100,7 @@ public class ChatHandler extends TextWebSocketHandler{
 			// ids.get(id)와 연결되어 있는 값
 			idList.add(ids.get(id));
 		}
+		System.out.println("접속자 인원:"+idList.size());
 		return idList;
 		// 현재 접속중인 아이디를 List로 가져온다.
 	}

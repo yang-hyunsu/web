@@ -73,7 +73,7 @@
 		$("#exitBtn").click(function(){
 			if($("#id").val()!=""){
 				if(confirm("접속을 종료하겠습니까?")){
-					//
+					// 
 					//alert("종료처리 프로세스진행..~~")
 					wsocket.send($("#id").val()+":연결을 종료하였습니다.")
 					wsocket.close() // afterConnectionClosed 핸들러에 연동
@@ -114,7 +114,8 @@
 			wsocket.onopen = function(evt){
 				console.log(evt)
 				// 서버의 메시지 핸들러 메서드 호출..
-				wsocket.send(idVal+": 접속하셨습니다.");
+
+				wsocket.send(idVal+":접속하셨습니다.");
 				
 				
 			}

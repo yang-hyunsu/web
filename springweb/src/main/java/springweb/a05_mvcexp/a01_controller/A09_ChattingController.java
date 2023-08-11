@@ -16,6 +16,7 @@ public class A09_ChattingController {
 	public String chatting() {
 		return "WEB-INF\\views\\a05_mvcexp\\a12_chatting.jsp";
 	}
+	
 	@Autowired
 	private ChatHandler chatHandler;
 	// ajax로 현재 접속한 인원 확인
