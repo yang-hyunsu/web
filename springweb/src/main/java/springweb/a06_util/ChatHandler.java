@@ -52,6 +52,14 @@ public class ChatHandler extends TextWebSocketHandler{
 		System.out.println("고유 session 아이디:"+session.getId());
 		String []msgArry = msg.split(":");
 		System.out.println("등록할 전송 아이디:"+msgArry[0]);
+		// {"롤로노아김동현","접속하셨습니다."}
+		
+		// Map: key/value
+		//  1 : 사과
+		//  2 : 바나나 (x)
+		//  3 : 딸기
+		//  2 : 오렌지
+		
 		if(msgArry[1].trim().equals("접속했습니다.")) {
 			// 전역변수에, web socket session 고유 id와 함께 접속자 등록.
 			ids.put(session.getId(), msgArry[0]);
@@ -84,12 +92,15 @@ public class ChatHandler extends TextWebSocketHandler{
 	// controller 단에서 ajax로 호출하여 가져올 수 있게 처리..
 	public List<String> getIds(){
 		List<String> idList = new ArrayList<String>();
+		// ids.keySet() : key를 기준 반복문처리
 		for(String id:ids.keySet()) {
 			// socket session에 연결된 실제 입력된 아이디를
 			// list에 할당..
+			// ids.get(id)와 연결되어 있는 값
 			idList.add(ids.get(id));
 		}
 		return idList;
+		// 현재 접속중인 아이디를 List로 가져온다.
 	}
 	
 	
