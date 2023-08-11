@@ -32,7 +32,7 @@
 <script type="text/javascript">
 	window.addEventListener("resize",function(){
 		$("#chatMessageArea>div").width(
-				$("#chatArea").width())
+				$("#chatArea").width()-20)
 	})
 
 
@@ -82,7 +82,7 @@
 		}
 		if(confirm(idVal+"님 채팅방 접속합니다")){
 			wsocket = new WebSocket(
-					"ws:localhost:7080/${path}/chat-ws.do")
+					"ws:192.168.10.99:7080/${path}/chat-ws.do")
 			// 서버의 접속 핸들러 처리하는 메서드..
 			wsocket.onopen = function(evt){
 				console.log(evt)
