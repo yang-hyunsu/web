@@ -14,7 +14,10 @@ public class ChatHandler extends TextWebSocketHandler{
 	// 접속한 채팅 소켓세션설정(접속자 저장)
 	private Map<String, WebSocketSession> 
 		users = new ConcurrentHashMap();
-		
+	// 입력한 접속자 아이디 리스트 저장
+	// socket server에서 제공하는 고유 id : 0, 1,2,....a,b...
+	// 입력한 himan 같이 저장...
+	private Map<String, String> ids = new ConcurrentHashMap();
 
 	// 접속시
 	@Override
@@ -32,6 +35,23 @@ public class ChatHandler extends TextWebSocketHandler{
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 		// TODO Auto-generated method stub
 		super.handleTextMessage(session, message);
+		// message.getPayload()
+		// 를 통해서 전송메시지가 온다. @@@ : 메시지...
+		// 받은 메시지
+		String msg = (String)message.getPayload();
+		// 홍길동:접속했습니다.
+		// 홍길동:안녕하세요...
+		/*
+		// :연결을 종료하였습니다.
+		// :접속하셨습니다.
+		*/
+		// {"홍길동","접속했습니다."}
+		String []msgArry = msg.split(":");
+		if(msgArry[1].trim().equals("접속했습니다.")) {
+			// 전역변수에, web socket session 고유 id와 함께 접속자 등록.
+			ids.put(session.getId(), msgArry[0]);
+		}
+		
 		System.out.println(session.getId()+"님이 보낸메시지:"+message.getPayload());
 		for(WebSocketSession ws:users.values()) {
 			ws.sendMessage(message);
@@ -46,6 +66,7 @@ public class ChatHandler extends TextWebSocketHandler{
 		System.out.println(session.getId()+"님 접속 종료되었습니다.");
 		// 전역변수로 되어있는 사용자 명단에서 삭제 처리..
 		users.remove(session.getId());
+		ids.remove(session.getId());
 	}
 	// 에러발생시
 	@Override
@@ -54,6 +75,7 @@ public class ChatHandler extends TextWebSocketHandler{
 		super.handleTransportError(session, exception);
 		System.out.println(session.getId()+"님 에러가 발생했습니다!"+
 				exception.getMessage());
+
 	}
 	
 	
