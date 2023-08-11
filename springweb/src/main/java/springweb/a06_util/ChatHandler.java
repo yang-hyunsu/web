@@ -48,7 +48,10 @@ public class ChatHandler extends TextWebSocketHandler{
 		// :접속하셨습니다.
 		*/
 		// {"홍길동","접속했습니다."}
+		System.out.println("메시지내용-"+msg);
+		System.out.println("고유 session 아이디:"+session.getId());
 		String []msgArry = msg.split(":");
+		System.out.println("등록할 전송 아이디:"+msgArry[0]);
 		if(msgArry[1].trim().equals("접속했습니다.")) {
 			// 전역변수에, web socket session 고유 id와 함께 접속자 등록.
 			ids.put(session.getId(), msgArry[0]);
