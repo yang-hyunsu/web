@@ -74,6 +74,10 @@
 		$("#sndBtn").click(function(){
 			sendMsg();
 		})
+		$("#ckMemBtn").click(function(){
+			conUsers()
+		})
+		
 		$("#exitBtn").click(function(){
 			if($("#id").val()!=""){
 				if(confirm("접속을 종료하겠습니까?")){
@@ -89,15 +93,16 @@
 					$("#id").attr("readOnly",false)
 					// 접속종료시 msg 부분 비활성화
 					$("#msg").attr("readOnly",true)
-					
+					$("#chatGroup").html("")
 					
 					
 				}
 			}else{
 				alert("접속되지 않았습니다!")
 			}
-		})
-	});
+	    })
+	})
+	
 	// <!-- msg  sndBtn-->
 	// 메시지 전송 함수..
 	function sendMsg(){
@@ -159,6 +164,7 @@
 		if(msgArr[1]=="접속하셨습니다."||
 		   msgArr[1]=="연결을 종료하였습니다."		
 		   ){
+			// push방식으로 메시지가 올 때..
 			conUsers();
 		}
 	
@@ -191,10 +197,16 @@
 				var add=""
 				mlist.forEach(function(member){
 					console.log(member)
-					add+="<button class='btn btn-outline-primary'>"+
-							member+"</button>"
+					add+="<div class='btn btn-outline-primary chMemDiv'>"+
+							member+"</div>"
 				})
-				$(".chatGroup").html(add)
+				$("#chatGroup").html(add)
+				console.log("#크기1#")
+				//console.log($(".chMemDiv").width()
+				//$(".chatGroup2").css("height",'150px')		
+				console.log("#크기2#")
+				//$(".chatGroup").css("width",'100%')
+				//console.log($(".chatGroup").width())
 				
 				
 			},
@@ -218,13 +230,14 @@
 				placeholder="접속할 아이디 입력"/>
 			<input id="enterBtn" value="채팅방입장"  type="button" class="btn btn-info" />
 			<input id="exitBtn" value="채팅방나가기"  type="button" class="btn btn-success" />
+			<input id="ckMemBtn" value="접속자확인"  type="button" class="btn btn-warning" />
 		</div>	
 		<div class="input-group mb-3">	
-			<div class="input-group-prepend ">
-				<span class="input-group-text  justify-content-center">접속자</span>
+			<div class="input-group-prepend">
+				<span class="input-group-text  justify-content-center ">접속자</span>
 			</div>
-			<div class="input-group-append chatGroup">
-				
+			<div class="input-group-append">
+				<div id="chatGroup"></div> 
 			</div>
 		</div>		
 		

@@ -11,12 +11,13 @@ import springweb.a06_util.ChatHandler;
 
 @Controller
 public class A09_ChattingController {
-	// http://localhost:7080/springweb/chatting.do
+	// http://192.168.10.99:7080/springweb/chatting.do
 	@GetMapping("chatting.do")
 	public String chatting() {
 		return "WEB-INF\\views\\a05_mvcexp\\a12_chatting.jsp";
 	}
-	
+	// A09_ChattingController.java
+	// getChatMem.do
 	@Autowired
 	private ChatHandler chatHandler;
 	// ajax로 현재 접속한 인원 확인
