@@ -9,6 +9,9 @@
 	.set1{background-color:aqua;color:purple;}
 	.set2{text-align:center;width:120px;}
 	.set3{border:sandybrown dashed 1px;}
+	.tcls1{border-collapse:separate; }
+	.tcls2{width:50%;}
+	.tcls3{font-size:30pt;}
 </style>
 <script src="/springweb/a00_com/jquery.min.js"></script>
 <script src="/springweb/a00_com/bootstrap.min.js"></script>
@@ -30,13 +33,23 @@
 		var vm = new Vue({
 			el:".container",
 			data:{msg:"객체 클래스 선언",
-				  myStyle:{set1:false,set2:false,set3:false}
+				  myStyle:{set1:false,set2:false,set3:false},
+				  myTable:{tcls1:false,tcls2:false,tcls3:false}
+		
 			}			
 		}); 
 	});
+	/*
+	ex) 테이블 관련 속성을 클래스 3개로 선언하고, 모델 데이터로
+		myTable로 클래스 3개의 적용여부 선언
+		클래스를 대상 객체로 지정하여 
+		checkbox의 선택여부에 따라 클래스 3개의 속성 적용여부를
+		처리하세요..
+	*/
 </script>
 </head>
 <body>
+
 
 <div class="container">
 	<div class="jumbotron text-center">
@@ -47,6 +60,17 @@
 	  	<input type="checkbox" v-model="myStyle.set2" value="true">set2 클래스 적용
 	  	<input type="checkbox" v-model="myStyle.set3" value="true">set3 클래스 적용
 	  </p>
+	  <table :class="myTable" border="1">
+	  	<tr><th>이름</th><th>점수</th></tr>
+	  	<tr><td>홍길동</td><td>70</td></tr>
+	  	<tr><td>김길동</td><td>80</td></tr>
+	  	<tr><td>신길동</td><td>90</td></tr>
+	  </table>
+	  <p>
+	  	<input type="checkbox" v-model="myTable.tcls1" value="true">테이블 클래스1 적용
+	  	<input type="checkbox" v-model="myTable.tcls2" value="true">테이블 클래스2 적용
+	  	<input type="checkbox" v-model="myTable.tcls3" value="true">테이블 클래스3 적용
+	  </p>	  
 	</div>
 	<form id="frm01" class="form-inline"  method="post">
   	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -55,7 +79,7 @@
 	    <button class="btn btn-info" type="submit">Search</button>
  	</nav>
 	</form>
-   <table class="table table-hover table-striped">
+   <table  :class="myTable"  class="table table-hover table-striped">
    	<col width="10%">
    	<col width="50%">
    	<col width="15%">
