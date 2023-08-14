@@ -6,6 +6,11 @@
 <link rel="stylesheet" href="/springweb/a00_com/bootstrap.min.css" >
 <style>
 	td{txt-align:center;}
+	.cls01{color:red;}
+	.cls02{background-color:yellow;}	
+	.cls11{border:1px solid green;}
+	.cls12{border:2px double red;font-size:20px;}
+	.cls13{border:3px dotted blue;color:red;}	
 </style>
 <script src="/springweb/a00_com/jquery.min.js"></script>
 <script src="/springweb/a00_com/bootstrap.min.js"></script>
@@ -30,16 +35,13 @@
 	$(document).ready(function(){
 		var vm = new Vue({
 			el:".container",
-			data:{msg:"클래스 처리",ck01:"",ck02:""}
+			data:{msg:"클래스 처리",ck01:"",ck02:"",
+				ck11:"",ck12:"",ck13:""}
 		}) 
 	});
 </script>
 </head>
 <body>
-<style>
-	.cls01{color:red;}
-	.cls02{background-color:yellow;}
-</style>
 <div class="container">
 	<div class="jumbotron text-center">
 	  <h2 >{{msg}}</h2>
@@ -58,15 +60,28 @@
 	             <option value="true">적용</option>
 	             <option value="">미적용</option>
 	  		 </select><br>
+
+	  <h2 :class="{cls11:ck11}">안녕하세요1</h2> 
+	  <h2 :class="{cls12:ck12}">안녕하세요2</h2> 
+	  <h2 :class="{cls13:ck13}">안녕하세요3</h2> 
+	  클래스11<select v-model="ck11"  class="form-control mr-sm-2" >
+	             <option value="true">적용</option>
+	             <option value="">미적용</option>
+	  		 </select><br>
+	  클래스12<select v-model="ck12"  class="form-control mr-sm-2" >
+	             <option value="true">적용</option>
+	             <option value="">미적용</option>
+	  		 </select><br>	   		 
+	  클래스13<select v-model="ck13"  class="form-control mr-sm-2" >
+	             <option value="true">적용</option>
+	             <option value="">미적용</option>
+	  		 </select><br>	  		 
 	  <!-- data:{msg:"클래스 처리",ck01:"",ck02:""} -->
 	  <!-- ex) 클래스1   보더굵기/색상/타입  -->		 
 	  <!-- ex) 클래스2   보더굵기/색상/타입  글자크기  -->		 
 	  <!-- ex) 클래스3   보더굵기/색상/타입  글자색상  -->
 	  <!-- 위 select 옵션으로 클래스1,클래스2,클래스3 적용유무로
 	  		선택하여 처리하게 하세요. -->		 
-	  		 			
-
-	  		  
 	</div>
 	<form id="frm01" class="form-inline"  method="post">
   	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
