@@ -30,16 +30,43 @@
 	$(document).ready(function(){
 		var vm = new Vue({
 			el:".container",
-			data:{msg:"타이틀"}
+			data:{msg:"클래스 처리",ck01:"",ck02:""}
 		}) 
 	});
 </script>
 </head>
 <body>
-
+<style>
+	.cls01{color:red;}
+	.cls02{background-color:yellow;}
+</style>
 <div class="container">
 	<div class="jumbotron text-center">
 	  <h2 >{{msg}}</h2>
+	  <h3 class="cls01 cls02" >일반 css 클래스 처리</h3>
+	  <h3 :class="{cls01:true,cls02:true}" >
+	  		vue에서 클래스 처리</h3>
+	  <h3 :class="{cls01:false,cls02:true}" >
+	  		vue에서 클래스 처리</h3>	
+	  <h3 :class="{cls01:ck01,cls02:ck02}" >
+	  		vue에서 클래스 처리(v-model로 연동)</h3>
+	  글자색상:<select v-model="ck01"  class="form-control mr-sm-2" >
+	             <option value="true">적용</option>
+	             <option value="">미적용</option>
+	  		 </select><br>
+	  배경색상:<select v-model="ck02"  class="form-control mr-sm-2" >
+	             <option value="true">적용</option>
+	             <option value="">미적용</option>
+	  		 </select><br>
+	  <!-- data:{msg:"클래스 처리",ck01:"",ck02:""} -->
+	  <!-- ex) 클래스1   보더굵기/색상/타입  -->		 
+	  <!-- ex) 클래스2   보더굵기/색상/타입  글자크기  -->		 
+	  <!-- ex) 클래스3   보더굵기/색상/타입  글자색상  -->
+	  <!-- 위 select 옵션으로 클래스1,클래스2,클래스3 적용유무로
+	  		선택하여 처리하게 하세요. -->		 
+	  		 			
+
+	  		  
 	</div>
 	<form id="frm01" class="form-inline"  method="post">
   	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
