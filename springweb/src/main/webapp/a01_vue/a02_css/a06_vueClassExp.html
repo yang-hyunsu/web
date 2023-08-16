@@ -13,11 +13,11 @@
 <body>
 	<div id="show">
 		<h2 align="center">{{msg}}</h2>
-		<h3 align="center" :class="ckscore">{{msg2}}</h3>
+		<h3 align="center" 
+			:class="ckscore">{{msg2}}</h3>
 		<p align="center">
 			<input type="text" v-model="score" />
 		</p>
-		
 	</div>
 </body>
 <script>
@@ -30,6 +30,8 @@
 //     2. Vue객체 정의 모델 및 computed 속성 
 //     3. 화면 처리.. 
  
+		<h3 align="center" :class="ckscore">{{msg2}}</h3>
+			<input type="text" v-model="score" /> 
  */
 	var vm = new Vue({
 		el:"#show",
@@ -42,7 +44,7 @@
 				var result = {isPass:false,isNotPass:true}
 				if(this.score>=70){
 					this.msg2="합격입니다."
-						result = {isPass:true,isNotPass:false}
+					result = {isPass:true,isNotPass:false}
 				}
 				return result;
 			}
