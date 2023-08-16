@@ -37,6 +37,8 @@
 		computed:{
 			ckscore:function(){
 				this.msg2="불합격입니다."
+				// 클래스명1:true, 클래스명2:false
+				// 클래스1은 적용, 클래스2는 미적용
 				var result = {isPass:false,isNotPass:true}
 				if(this.score>=70){
 					this.msg2="합격입니다."
