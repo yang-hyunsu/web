@@ -39,22 +39,21 @@
 1. class 선언(css)
 2. vue 객체 선언/모델데이터/computed메서드 선언
 3. 화면단 처리
-
-	
-	
-	
- 
  */
-
-
 	$(document).ready(function(){
 		var vm = new Vue({
 			el:".container",
 			data:{msg:"입력에 따른 클래스 적용", score:0},
 			computed:{
 				info:function(){
-					// 특정 클래스가 적용되지 않음.
-					return {warning:false}
+					// 특정 클래스가 적용되지 않음
+					// this.score : 모델데이터 접근
+					var warn = true
+					if(this.score>=1 && this.score<=100){
+						warn = false
+					}
+					console.log({warning:warn})
+					return {warning:warn}
 				}
 			}
 		})
@@ -73,11 +72,22 @@
   	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	    <input class="form-control mr-sm-2" 
 	    	v-model.number="score" 
-	    	v-bind:class="info"
+	    	v-bind:class="info" 
 	    	placeholder="점수를 입력(1~100까지 입력)" />
+	    	 <!--info: {warning:true} -->
 	    <img src="images/error.png" 
 	    	class="warnimage" v-show="info.warning"/>	
-	    
+	    <!-- 
+	    v-bind:class="info" 클래스가 적용여부를 computed 메서드
+	    의 로직에의해 결정..
+	    v-show="info.warning" 
+	    	info메서드안에 warning 속성의 true/false에따라서
+	   		보이느냐 보이지 않느냐(v-show)를 처리..
+	   		cf) v-if와 차이는 화면에 메모리로 로딩 되어서 보이느냐
+	   		보이지 않느냐를 해주는 경우와 아에 메모리로 로딩 자체도
+	   		하지 않는 차이점이 있다. v-show는 화면에 메모리 로딩
+	   		되어서 처리되기 때문에 빠르게 처리하는 장점이 있다.
+	     -->
  	</nav>
 	</form>
    <table class="table table-hover table-striped">
