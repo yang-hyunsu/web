@@ -11,20 +11,11 @@
 		<h2 align="center">{{msg}}</h2>
 		<p align="center">
    <input type="number" v-model="krw" placeholder="KRW" />원<br>
-    USD: {{ usd }}달러<br>
-    
+    USD: {{ usd }}달러<br>   
     JPY: {{ jpy }}엔<br></p>		
 	</div>
 </body>
 <script>
-/*
-0.00075
-달러화
-
-0.10870
-엔화 
- 
- */
 	var vm = new Vue({
 		el:"#show",
 		data:{msg:"환율계산",
