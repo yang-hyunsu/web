@@ -27,7 +27,8 @@
 	    <img src="images/error.png" 
 	    	class="warnimage" v-show="info.warning"/><br>
 	    <h5 align="center">{{errMsg}}</h5>
-	    </p>			
+	    </p>	
+	    		
 	</div>
 </body>
 <script>
@@ -50,5 +51,12 @@ var vm = new Vue({
 		}
 	}
 })
+// ex) a06_vueClassExp.html
+//     점수를 입력해서 70이상이면 합격 그 이하면 불합격 표시를 하되
+//     msg가 표시하는 곳에 배경색상이 노랑색/빨강색으로 배경이 처리되게
+//     하세요..
+//     1. 클래스정의
+//     2. Vue객체 정의 모델 및 computed 속성 
+//     3. 화면 처리..
 </script>
 </html>
