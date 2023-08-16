@@ -9,7 +9,7 @@
 <body>
 	<div id="show">
 		<h2 align="center">{{msg}}</h2>
-		<p v-if="!gameOver">맞출 숫자를 1~3까지 임의로 입력:</p>
+		<p v-if="!gameOver">맞출 숫자를 1~100까지 임의로 입력:</p>
 		<input v-model.number="userGuess" 
 			v-if="!gameOver" type="number">
 		<button @click="checkGuess" v-if="!gameOver">
@@ -25,7 +25,7 @@
 		el:"#show",
 		data:{msg:"숫자 맞추기 게임(라이프사이클)",
 			userGuess:"",
-			correctNumber:Math.floor(Math.random()*3)+1,
+			correctNumber:Math.floor(Math.random()*100)+1,
 			gameOver:false,
 			hitMsg:""
 		},
@@ -56,6 +56,17 @@
 			console.log("사라질 때 destory")
 		}
 	});
+	/*
+	ex) 위 내용 기준으로 홀짝 게임을 만들어 보세요.
+	created 를 이용해서 화면이 로딩될 때, 메시지(모델데이터) 
+		홀짝게임 시작입니다. 출력,  초기 랜덤 변수 선언(구슬의 갯수1~6)
+	updated를 상대팀이 입력한 구슬의 갯수를 출력 정답/오답표시
+		버튼을 클릭하지 않더라도 처리가능..
+	
+	
+	*/
+	
+	
 	/*
 # 뷰에서 지원하는 라이프사이클 관련 메서드
 1. vue에서는 컴포넌트의 생성, 업데이터 및 소멸과 같은 단계를
