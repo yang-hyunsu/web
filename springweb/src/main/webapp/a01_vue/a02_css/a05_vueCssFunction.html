@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Good day!! ^^</title>
+<link rel="stylesheet" href="/springweb/a00_com/bootstrap.min.css" >
+<style>
+	td{txt-align:center;}
+	.score{border:solid 1px black;}
+	.warning{background-color:orange;color:purple;}
+	.warnimage{width:18px;height:18px;top:5px;
+		position:relative;}
+	
+</style>
+<script src="/springweb/a00_com/jquery.min.js"></script>
+<script src="/springweb/a00_com/bootstrap.min.js"></script>
+<script src="/springweb/a00_com/vue.js"></script>
+
+<script type="text/javascript">
+/*
+# 클래스에 따른 이미지 처리 예제 해보기.
+0. 처리 내용
+	입력값의 범위에 따라서 클래스 적용을 동적인
+	처리를 하는 내용.
+1. 모델 데이터
+	score
+2. 화면 ui 및 모델 연결
+	v-model.number="score"
+	양방향 데이터를 처리를 score와 연결
+3. 메서드 선언
+	computed : 해당 내용이 이벤트에 따라 바로
+		반영되는 메서드 선언형식..
+		info:function(){
+			변경되는 내용 처리..
+	    }
+4. v-bind:class="info"
+	클래스 요소의 내용을 메서드의 리턴값으로 결정 처리..
+# 개발 순서.
+1. class 선언(css)
+2. vue 객체 선언/모델데이터/computed메서드 선언
+3. 화면단 처리
+
+	
+	
+	
+ 
+ */
+
+
+	$(document).ready(function(){
+		var vm = new Vue({
+			el:".container",
+			data:{msg:"입력에 따른 클래스 적용", score:0},
+			computed:{
+				info:function(){
+					// 특정 클래스가 적용되지 않음.
+					return {warning:false}
+				}
+			}
+		})
+	
+	});
+</script>
+</head>
+<body>
+
+
+<div class="container">
+	<div class="jumbotron text-center">
+	  <h2 >{{msg}}</h2>
+	</div>
+	<form id="frm01" class="form-inline"  method="post">
+  	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+	    <input class="form-control mr-sm-2" 
+	    	v-model.number="score" 
+	    	v-bind:class="info"
+	    	placeholder="점수를 입력(1~100까지 입력)" />
+	    <img src="images/error.png" 
+	    	class="warnimage" v-show="info.warning"/>	
+	    
+ 	</nav>
+	</form>
+   <table class="table table-hover table-striped">
+   	<col width="10%">
+   	<col width="50%">
+   	<col width="15%">
+   	<col width="15%">
+   	<col width="10%">
+    <thead>
+    
+      <tr class="table-success text-center">
+        <th>번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>작성일</th>
+        <th>조회</th>
+      </tr>
+    </thead>	
+    <tbody>
+    	<tr  class="text-center"><td></td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+	</table>       
+</div>
+</body>
+</html>
