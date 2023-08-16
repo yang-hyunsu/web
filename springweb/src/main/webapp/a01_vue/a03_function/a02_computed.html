@@ -14,7 +14,8 @@
 		가격:<input v-model="price"/><br>
 		갯수:<input v-model="cnt"/><br>
 		</p>
-		<p v-show="pname!=''" align="center" v-html="showAll"></p>
+		<p v-show="pname!=''" align="center" 
+			v-html="showAll"></p>
 	</div>
 </body>
 <script>
@@ -23,9 +24,11 @@
 		data:{msg:"computed 속성", pname:"",price:0,cnt:0},
 		computed:{
 			showAll:function(){
-				var show ="<h3 align='center'>구매정보</h3>물건명:"+this.pname
+				var show ="<h3 align='center'>구매정보</h3>물건명:"
+				+this.pname
 				+", 가격:"+this.price+","
-				show+=", 갯수:"+this.cnt+", 총계"+(this.price*this.cnt)+""
+				show+=", 갯수:"+this.cnt+", 총계"+
+				(this.price*this.cnt)+""
 				return show;
 			}
 		}
