@@ -197,5 +197,31 @@ vi webapps/manager/META-INF/context.xml
 :wq
 종료
 vi context.xml
-# 내용
+# 관리자 메뉴를 통한 프로젝트 빌드 하기.
+1. ec2 서버 톰캣 관리자 권한 변경
+	1) vi conf/tomcat-users.xml
+	2) <role rolename="manager-gui"/>
+	   <user username="admin" password="admin" 
+	   		roles="manager-gui"/>
+	3) esc :명령모드
+	   :wq 저장후 종료
+	4) cd bin
+	   ./shutdown.sh
+	   ./startup.sh
+	5) 톰캣화면에 Manager App로 들어가서 admin/admin으로 
+		들어가는지 확인한다.
+		ㅊㅇ   
+		   		
+
+
+
+
+
+heidiSQL 다운로드 및 설치..
+파일질라 다운로드 및 설치..
+
+
+
+
+
 
