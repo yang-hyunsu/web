@@ -142,6 +142,27 @@
       -->
      <bean id="localeResolver" 
         class="org.springframework.web.servlet.i18n.SessionLocaleResolver"></bean>
-       
+     <!-- 
+     # 메일 발송 서버접속 객체 선언
+      --> 
+     <bean id="mailSender" class=
+   "org.springframework.mail.javamail.JavaMailSenderImpl">
+   		<property name="host" value="smtp.gmail.com"/>
+   		<property name="port" value="587"/>
+   		<property name="username" value="ssangyoung5555@gmail.com"/>
+   		<property name="password" value="vytxyzxlmyldjkst"/>
+   		<property name="javaMailProperties">
+   			<props>
+   				<prop key="mail.smtp.starttls.enable">true</prop>
+   				<prop key="mail.smtp.auth">true</prop>
+   				<prop key="mail.transport.protocol">smtp</prop>
+   				<prop key="mail.debug">true</prop>
+   				<prop key="mail.smtp.ssl.true">smtp.gmail.com</prop>
+   				<prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
+   			</props>
+   		</property>	
+   	
+     </bean> 
+      
     
 </beans>      

@@ -232,6 +232,8 @@
 		$("#allDay").val(""+event.allDay)				
 		$("[name=allDay]").val(event.allDay?1:0)
 	}
+	
+		
 </script>
 <style>
 <
