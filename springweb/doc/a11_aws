@@ -218,14 +218,18 @@ heidiSQL 다운로드 및 설치..
 # 외부 툴을 이용해서 AWS 서버 접속 및 파일업로드/다운로드 처리
 1. putty : telnet서비스를 지원하는 툴.
 	원격으로 aws서버에 접속해서 명령 처리를 할 수 있다.
-	host: 
+	session
+		host: 
 		ec2-user@ec2-54-180-150-56.ap-northeast-2.compute.amazonaws.com
 		계정@사이트주소
-		비번은 보안키로 접속(보안키 저장 위치 확인)
-		
-	
-	
-	
+	Connection
+		SSH
+			Auth
+				Credential
+					private key file for authentication
+					브라우저에 보안키 선택
+					
+	비번은 보안키로 접속(보안키 저장 위치 확인)	
 	
 2. 파일질라 : sftp를 통해서 원격 aws 서버에 접속해서 파일을 업로드
 	다운로드 처리할 수 있다.
