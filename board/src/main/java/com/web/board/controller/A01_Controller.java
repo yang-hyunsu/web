@@ -1,13 +1,14 @@
 package com.web.board.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 // 15:10~
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.web.board.service.A01_Service;
 import com.web.board.vo.Emp;
@@ -60,6 +61,14 @@ public class A01_Controller {
 		d.addAttribute("empList", service.empList(sch));
 		return "a01_exp/a06_empList";
 	}
-	
+	// http://localhost:5050/a09_empList
+	@RequestMapping("a09_empList")
+	public ResponseEntity<List<Emp>> empList(Emp sch) {
+		
+		//System.out.println("크기"+service.empList(sch).size());
+		//d.addAttribute("empList", service.empList(sch));
+		
+		return ResponseEntity.ok(service.empList(sch));
+	}	
 	
 }

@@ -67,34 +67,34 @@ body {
 				$("#subject").val("RE:"+$("#subject").val())
 				$("#content").val("\n\n\n\n"+
 						"=== 이전글 ===\n"+$("#content").val())
-				$("form").attr("action","${path}/boardInsertFrm")
+				$("form").attr("action","${path}/board/boardInsertFrm")
 				$("form").submit()
 			}
 		})
 		$("#uptBtn").click(function(){
 			if(confirm("수정하시겠습니까?")){
-				$("form").attr("action","${path}/boardUpdate");
+				$("form").attr("action","${path}/board/boardUpdate");
 				$("form").submit();
 			}
 		})
 		$("#delBtn").click(function(){
 			if(confirm("삭제 하시겠습니까?")){
-				location.href="${path}/boardDelete?no="
+				location.href="${path}/board/boardDelete?no="
 						+$("#no").val()
 			}
 		})		
 		var msg = "${msg}"
 		if(msg.indexOf("수정")!=-1){
 			if (confirm(msg+"\n 조회화면으로 이동 하시겠습니까?")) {
-				location.href = "${path}/boardList"
+				location.href = "${path}/board/boardList"
 			}
 		}
 		if(msg.indexOf("삭제")!=-1){
 			alert(msg+"\n 조회화면으로 이동 합니다.")
-			location.href = "${path}/boardList"
+			location.href = "${path}/board/boardList"
 		}	
 		$("#goMain").click(function() {
-			location.href = "${path}/boardList"
+			location.href = "${path}/board/boardList"
 		})
 <%-- 
 		
@@ -182,7 +182,7 @@ body {
 				<script type="text/javascript">
 					function download(fname){
 						if(confirm(fname+" 다운로드 하시겠습니까?")){
-							location.href="${path}/download.do?fname="
+							location.href="${path}/board/download.do?fname="
 									+fname
 							event.preventDefault()		
 						}

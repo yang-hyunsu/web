@@ -8,7 +8,6 @@
 <%--
 
 
-
  --%>
 <html>
 <head>
@@ -31,18 +30,15 @@ td {
 	type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-<%-- 
-		
-		--%>
-	var sessName = "${mem.name}";
-		if (sessName == "") {
-			alert("로그인이 필요합니다\n로그인 화면이동")
-			location.href = "${path}/login";
-		}
 		$("#logout").click(function() {
 			if (confirm("로그아웃 하시겠습니까?"))
-				location.href = "${path}/logout";
+				location.href = "${path}/member/login/logout";
 		})
+	    var loginErr = "${session.loginErrorMessage}"
+	    if(loginErr!=""){
+	    	alert(loginErr)
+	 		location.href = "${path}/member/login/loginForm";   		
+	   	}	
 	});
 </script>
 </head>
@@ -53,11 +49,10 @@ td {
 			<h2 data-toggle="modal" data-target="#exampleModalCenter"></h2>
 			<h2>답변형 게시판</h2>
 			<br>
-			<p align="right">${mem.name}님
-				로그인 중
+			<p align="right">${member.name}님
+				로그인 중<br>
 				<button id="logout" class="btn btn-primary" type="button">로그아웃</button>
 			</p>
-
 		</div>
 		<script type="text/javascript">
 			function ckSearch(){
@@ -103,7 +98,7 @@ td {
 			})
 			$("#regBtn").click(function() {
 				//if(confirm("등록화면 이동합니다.")){
-				location.href = "${path}/boardInsertFrm"
+				location.href = "${path}/board/boardInsertFrm"
 
 				//}
 			})
@@ -148,7 +143,7 @@ td {
 		<script type="text/javascript">
 			function detail(no) {
 				//if(confirm("상세화면이동")){
-				location.href = "${path}/boardDetail?no=" + no
+				location.href = "${path}/board/boardDetail?no=" + no
 				//}
 			}
 		</script>

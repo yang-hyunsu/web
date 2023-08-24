@@ -51,22 +51,23 @@
 <script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		var sessName = "${mem.name}";
-		if(sessName==""){
-			alert("로그인이 필요합니다\n로그인 화면이동")
-			location.href="${path}/login";
-		}	
+
+		var loginErrorMessage = "${loginErrorMessage}"
+			if(loginErrorMessage!=""){
+				alert(loginErrorMessage)
+			}		
+		
 		var msg = "${msg}"
 		if(msg.indexOf("등록")!=-1){
 			$("#refno").val("0")
 			$(".initFrm").val("")
 			if (confirm(msg+"\n 조회화면으로 이동 하시겠습니까?")) {
-				location.href = "${path}/boardList"
+				location.href = "${path}/board/boardList"
 			}
 		}
 
 		$("#goMain").click(function(){
-			location.href="${path}/boardList"
+			location.href="${path}/board/boardList"
 		})	
 		<%-- 
 		
@@ -98,7 +99,7 @@
         		
          -->
         <form method="post" 
-        	action="${path}/boardInsert"
+        	action="${path}/board/boardInsert"
          enctype="multipart/form-data" 
          class="validation-form" novalidate>
         	<input id="refno" type="hidden" name="refno"

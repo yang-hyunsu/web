@@ -55,40 +55,42 @@
 		<%-- 
 		
 		--%>
-		var msg = "${msg}"
-		if(msg!=""){
-			alert(msg)	
-			if(msg == "로그인 성공"){
-				location.href="${path}/boardList";
-			}
-			
+		var loginErrorMessage = "${loginErrorMessage}"
+		if(loginErrorMessage!=""){
+			alert(loginErrorMessage)
 		}
+		
 	});
 </script>
 </head>
 
 <body>
-    <div class="input-form-backgroud row">
-      <div class="input-form col-md-12 mx-auto">
+<div class="input-form-backgroud row">
+    <div class="input-form col-md-12 mx-auto">
         <h4 class="mb-3">로그인</h4>
-        <form method="post"   class="validation-form" novalidate>
-          <div class="mb-3">
-            <label for="id">아이디</label>
-            <input name="id" type="text" class="form-control  " id="id" placeholder="아이디 입력" required>
-            <div class="invalid-feedback">
-              아이디를 입력해주세요.
+        <form method="post" action="/member/login/login" class="validation-form" novalidate>
+            <div class="mb-3">
+                <label for="username">아이디</label>
+                <input name="username" type="text" class="form-control" id="username" placeholder="아이디 입력" required>
+                <div class="invalid-feedback">
+                    아이디를 입력해주세요.
+                </div>
             </div>
-          </div>
-          <div class="mb-3">
-            <label for="pass">패스워드</label>
-            <input name="pass" type="password" class="form-control  " id="pass" placeholder="패스워드 입력" required>
-            <div class="invalid-feedback">
-              패스워드를 입력해주세요.
-            </div>
-          </div>          
-          <div class="mb-4"></div>
-          <button id="loinBtn" class="btn btn-primary btn-lg btn-block" type="submit">로그인</button>
+            <div class="mb-3">
+                <label for="password">패스워드</label>
+                <input name="password" type="password" class="form-control" id="password" placeholder="패스워드 입력" required>
+                <div class="invalid-feedback">
+                    패스워드를 입력해주세요.
+                </div>
+            </div>    
+            <div class="mb-3 form-check">
+                <input type="checkbox" name="remember-me" id="rememberMe" class="form-check-input">
+                <label class="form-check-label" for="rememberMe">자동로그인</label>
+            </div>                  
+            <div class="mb-4"></div>
+            <button id="loginBtn" class="btn btn-primary btn-lg btn-block" type="submit">로그인</button>
         </form>
-      </div>
-     </div>
+    </div>
+</div>       	
+ 
 </body>      
