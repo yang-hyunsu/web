@@ -33,6 +33,8 @@
 		//alert(toDay.toISOString())
 		//alert(toDay.toISOString().split("T")[0])
 		var toDayTitle = toDay.toISOString().split("T")[0];
+		//console.log(FullCalendar.getVersion())
+		//console.log(FullCalendar.VERSION)
 		
 		calendar = new FullCalendar.Calendar(calendarEl, {
 			locale: 'ko',
@@ -140,6 +142,7 @@
 				addForm(arg.event)
 				ajaxFun("calendarUpdate.do","D")				
 			},
+			
 			editable : true,
 			dayMaxEvents : true, // allow "more" link when too many events
 			// calList.do
@@ -152,6 +155,7 @@
 					dataType:"json",
 					success:function(data){
 						console.log(data)
+						calendar.removeAllEvents();
 						successCallback(data) // calendar리스트 데이터
 						
 					},
@@ -163,7 +167,6 @@
 				
 			}
 		});
-
 		calendar.render();
 		$("#regBtn").click(function(){
 			if(confirm("등록하시겠습니까?")){
@@ -213,10 +216,16 @@
 					$("#clsBtn").click()
 				}
 				
+				
 				calendar.removeAllEvents();
 					//location.reload()
+				console.log("# 캘린더#")
+				console.log(calendar)
+
+				//calendar.addEventSource(data.calList)
 				calendar.addEventSource(data.calList)
-			
+				//calendar.render();
+				
 				
 			},
 			error:function(err){
@@ -374,6 +383,8 @@ style>body {
 							<div class="input-group-prepend">
 								<span class="input-group-text">종일여부</span>
 							</div>
+							
+							
 							<select id="allDay" class="form-control">
 								<option value="true">종일</option>
 								<option value="false">시간</option>
