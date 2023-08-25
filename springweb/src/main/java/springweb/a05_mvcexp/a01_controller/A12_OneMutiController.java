@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import springweb.a05_mvcexp.z01_vo.Product;
-import springweb.a05_mvcexp.z01_vo.Room;
+
 
 @Controller
 public class A12_OneMutiController {
