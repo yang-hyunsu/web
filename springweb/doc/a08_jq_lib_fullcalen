@@ -195,7 +195,19 @@ FROM calendar;
 		calendarUpdate.do
 		calendarDelete.do
 		
-	
+CREATE TABLE calendar2
+AS SELECT * FROM calendar WHERE 1=0;
+
+ALTER TABLE calendar2
+MODIFY (start1 DATE, END1 date);
+
+
+INSERT INTO calendar2
+SELECT id, title, WRITEr,
+TO_date(start1, 'YYYY-MM-DD"T"HH24:MI:SS"+09:00"') start1,
+TO_date(end1, 'YYYY-MM-DD"T"HH24:MI:SS"+09:00"') end1,
+content, BACKGROUNDCOLOR, TEXTCOLOR, allday, url
+FROM calendar;	
 	
 	
 	
