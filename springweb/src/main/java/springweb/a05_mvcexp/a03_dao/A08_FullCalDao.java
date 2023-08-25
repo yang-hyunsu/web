@@ -9,5 +9,10 @@ public interface A08_FullCalDao {
 	public List<Calendar> calList();
 	public int uptCalendar(Calendar upt);
 	public int delCalendar(int id);	
+	
+	public int insertCalendar2(Calendar ins);	
+	public List<Calendar> calList2();
+	public int uptCalendar2(Calendar upt);	
+	public int delCalendar2(int id);	
 
 }

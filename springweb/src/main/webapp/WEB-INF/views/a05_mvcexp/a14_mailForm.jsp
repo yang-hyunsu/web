@@ -46,15 +46,15 @@
 </div>
 <div class="container">
 	<form method="post" action="${path}/mailSend.do">
-		<div class="input-group mb-3">	
-			<div class="input-group-prepend ">
+		<div class="input-group mb-3"  id="addDiv01">	
+			<div class="input-group-prepend">
 				<span class="input-group-text  justify-content-center">
 					수신자</span>
 			</div>
 			<input type="text" name="receiver" class="form-control" 
 				placeholder="수신자 메일 주소 입력"/>
 		</div>	
-		<div class="input-group mb-3">	
+		<div class="input-group mb-3" >	
 			<div class="input-group-prepend ">
 				<span class="input-group-text  justify-content-center">
 					발신자</span>
@@ -79,10 +79,10 @@
 			<textarea rows="10" cols=""
 				 name="content" class="form-control"
 				></textarea>
-		</div>				
+		</div>	
 		<div style="text-align:right;">
 			<input type="submit" class="btn btn-success" 
-				value="메일발송" id="sendBtn"/>		
+				value="메일발송" id="sendBtn"/>	
 		</div>	
 	</form>	
 </div>    

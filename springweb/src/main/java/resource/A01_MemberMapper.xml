@@ -6,6 +6,7 @@
 	<select id="memberList" 
 		parameterType="member" 
 		resultType="member" >
+		
 		SELECT * 
 		FROM MEMBER01
 		WHERE id LIKE '%'||#{id}||'%'

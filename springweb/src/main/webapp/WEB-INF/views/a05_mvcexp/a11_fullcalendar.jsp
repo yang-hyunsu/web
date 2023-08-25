@@ -26,6 +26,7 @@
 <script src='${path}/a00_com/dist/index.global.js'></script>
 <script src='${path}/a00_com/packages/core/locales/ko.global.js'></script>
 <script>
+	var calendar = null; 
 	document.addEventListener('DOMContentLoaded', function() {
 		var calendarEl = document.getElementById('calendar');
 		var toDay = new Date();
@@ -33,7 +34,7 @@
 		//alert(toDay.toISOString().split("T")[0])
 		var toDayTitle = toDay.toISOString().split("T")[0];
 		
-		var calendar = new FullCalendar.Calendar(calendarEl, {
+		calendar = new FullCalendar.Calendar(calendarEl, {
 			locale: 'ko',
 			headerToolbar : {
 				left : 'prev,next today',
@@ -59,6 +60,7 @@
 				$("#start").val(arg.start.toLocaleString())
 				$("[name=start]").val(arg.startStr)
 				$("#end").val(arg.end.toLocaleString())
+				
 				$("[name=end]").val(arg.endStr)				
 				$("#allDay").val(""+arg.allDay)				
 				$("[name=allDay]").val(arg.allDay?1:0)	
@@ -90,8 +92,8 @@
 				console.log("타이틀:"+arg.event.title)
 				console.log("시작:"+arg.event.startStr)
 				console.log("시작:"+arg.event.start.toLocaleString())
-				console.log("종료:"+arg.event.endStr)
-				console.log("종료:"+arg.event.end.toLocaleString())
+				//console.log("종료:"+arg.event.endStr)
+				//console.log("종료:"+arg.event.end.toLocaleString())
 				console.log("종일여부:"+arg.event.allDay)
 				console.log("배경색상:"+arg.event.backgroundColor)
 				console.log("글자색상:"+arg.event.textColor)
@@ -131,12 +133,12 @@
 				// 실제는 일정의 시작과 종료일이 변경되는 것인데
 				// 수정할려면 form의 내용을 변경..
 				addForm(arg.event)
-				ajaxFun("calendarUpdate.do")
+				ajaxFun("calendarUpdate.do","D")
 				
 			},
 			eventResize:function(arg){// 특정 일정의 사이즈를 변경
 				addForm(arg.event)
-				ajaxFun("calendarUpdate.do")				
+				ajaxFun("calendarUpdate.do","D")				
 			},
 			editable : true,
 			dayMaxEvents : true, // allow "more" link when too many events
@@ -168,7 +170,8 @@
 				console.log("#등록데이터 확인#")
 				console.log("http://localhost:7080/springweb/insertCalendar.do?"
 						+$("form").serialize())
-				ajaxFun("insertCalendar.do")		
+				ajaxFun("insertCalendar.do","Y")
+		
 			}
 		})
 		$("#uptBtn").click(function(){
@@ -176,7 +179,8 @@
 				console.log("#수정 확인#")
 				console.log("http://localhost:7080/springweb/calendarUpdate.do?"
 						+$("form").serialize())
-				ajaxFun("calendarUpdate.do")		
+				ajaxFun("calendarUpdate.do","Y")	
+	
 			}
 			
 		})
@@ -185,21 +189,35 @@
 				console.log("#삭제데이터 확인#")
 				console.log("http://localhost:7080/springweb/calendarDelete.do?"
 						+$("form").serialize())
-				ajaxFun("calendarDelete.do")		
+				ajaxFun("calendarDelete.do","N")
+				
 			}
 		})		
 	});
 	// ajax 공통 처리 함수
-	function ajaxFun(url){
+	function ajaxFun(url,ck){
 		$.ajax({
 			type:"post",
 			url:"${path}/"+url,
 			data:$("form").serialize(),
 			success:function(data){
-				if(confirm(data.replaceAll("\"","")+
-						"\n전체화면 확인하시겠습니까?")){
-					location.reload()
+				// flag, calList
+				var msg = data.flag.replaceAll("\"","")
+				if(ck=="Y"){
+					if(confirm(msg+"\n창을 닫으시겠습니까?")){
+						$("#clsBtn").click()
+					}
 				}
+				if(ck=="N" || ck=="D"){
+					alert(msg);
+					$("#clsBtn").click()
+				}
+				
+				calendar.removeAllEvents();
+					//location.reload()
+				calendar.addEventSource(data.calList)
+			
+				
 			},
 			error:function(err){
 				console.log(err)
@@ -218,13 +236,21 @@
 		var end = event.end
 		// 마지막일정이 null일 때, bug 처리..
 		if(end==null){
-			end = event.start
+			//end = event.start
 			// null일때는 시작일정 + 1시간으로 기본 설정
-			end.setDate(end.getDate()+(1/24));
-			console.log("# 마지막일(최종):"+ (end.toISOString()))
-		}		
-		$("#end").val(end.toLocaleString())
-		$("[name=end]").val(end.toISOString())
+			//end.setDate(end.getDate()+(1/24));
+			console.log("# 마지막일(최종):"+ (event.start.toISOString()))
+			$("#end").val(event.start.toLocaleString())
+			$("[name=end]").val(event.startStr)
+			
+		}else{		
+			$("#end").val(end.toLocaleString())
+			$("[name=end]").val(event.endStr)
+		}
+		console.log("# 변경할 시작일과 종료일 #")
+		console.log("시작일:"+$("[name=start]").val())
+		console.log("종료일:"+$("[name=end]").val())
+		
 		$("[name=backgroundColor]").val(event.backgroundColor)
 		$("[name=textColor]").val(event.textColor)
 		$("[name=content]").val(event.extendedProps.content)
@@ -281,7 +307,7 @@ style>body {
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title" id="calTitle">타이틀</h5>
-					<button type="button" class="close" data-dismiss="modal"
+					<button type="button" id="clsBtn" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>

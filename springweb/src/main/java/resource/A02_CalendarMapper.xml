@@ -34,4 +34,42 @@
 	<delete id="delCalendar" parameterType="int">
 		delete from calendar where id=#{id}	
 	</delete>
+	
+
+	<select id="calList2" resultMap="calRst" >
+		SELECT 
+			id, title, WRITEr,
+			TO_char(start1, 'YYYY-MM-DD"T"HH24:MI:SS"+09:00"') start1,
+			TO_char(end1, 'YYYY-MM-DD"T"HH24:MI:SS"+09:00"') end1,
+			content, BACKGROUNDCOLOR, TEXTCOLOR, allday, url
+		FROM calendar2
+	</select>
+	<insert id="insertCalendar2" parameterType="calendar">
+		INSERT INTO calendar2 values(cal_seq.nextval, 
+			#{title},#{writer}, TO_date(#{start}, 'YYYY-MM-DD"T"HH24:MI:SS"+09:00"'),
+			TO_date(#{end}, 'YYYY-MM-DD"T"HH24:MI:SS"+09:00"'),
+			#{content},#{backgroundColor},#{textColor},#{allDay}, #{urlLink})	
+	</insert>
+	<update id="uptCalendar2" parameterType="calendar">
+		UPDATE calendar2
+			set title = #{title},
+			    start1 = TO_date(#{start}, 'YYYY-MM-DD"T"HH24:MI:SS"+09:00"'),
+			    end1 = TO_date(#{end}, 'YYYY-MM-DD"T"HH24:MI:SS"+09:00"'),
+			    content = #{content},
+			    writer=#{writer},
+			    backgroundColor = #{backgroundColor},
+			    textColor = #{textColor},
+			    allDay = #{allDay},
+				url = #{urlLink}
+		WHERE id = #{id}	
+	</update>
+	<delete id="delCalendar2" parameterType="int">
+		delete from calendar2 where id=#{id}	
+	</delete>
+	
+	
+	
+		
+	
+	
 </mapper>	
