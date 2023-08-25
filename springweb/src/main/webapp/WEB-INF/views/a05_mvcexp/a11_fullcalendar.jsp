@@ -30,12 +30,7 @@
 	document.addEventListener('DOMContentLoaded', function() {
 		var calendarEl = document.getElementById('calendar');
 		var toDay = new Date();
-		//alert(toDay.toISOString())
-		//alert(toDay.toISOString().split("T")[0])
 		var toDayTitle = toDay.toISOString().split("T")[0];
-		//console.log(FullCalendar.getVersion())
-		//console.log(FullCalendar.VERSION)
-		
 		calendar = new FullCalendar.Calendar(calendarEl, {
 			locale: 'ko',
 			headerToolbar : {
@@ -68,41 +63,13 @@
 				$("[name=allDay]").val(arg.allDay?1:0)	
 				
 				$("#modal01").click();
-				
-				
-				/*
-				arg : 기본 제공 데이터 객체
-				arg.startStr : 날짜 ISO
-				arg.endStr : 날짜 ISO
-				arg.allDay : 시간설정/날짜이냐
-				
-				var title = prompt('Event Title:');
-				if (title) {
-				calendar.addEvent({
-				  title: title,
-				  start: arg.start,
-				  end: arg.end,
-				  allDay: arg.allDay
-				})
-				}
-				 */
+
 				calendar.unselect()
 			},
 			eventClick : function(arg) {
 				console.log("# 일정 속성 #")
-				console.log("아이디:"+arg.event.id)
-				console.log("타이틀:"+arg.event.title)
-				console.log("시작:"+arg.event.startStr)
-				console.log("시작:"+arg.event.start.toLocaleString())
-				//console.log("종료:"+arg.event.endStr)
-				//console.log("종료:"+arg.event.end.toLocaleString())
-				console.log("종일여부:"+arg.event.allDay)
-				console.log("배경색상:"+arg.event.backgroundColor)
-				console.log("글자색상:"+arg.event.textColor)
-				// 추가적인 속성을 지정하고 가져올 때, extendedProps 사용
-				console.log("작성자:"+arg.event.extendedProps.writer)
-				console.log("내용:"+arg.event.extendedProps.content)
-				console.log("링크:"+arg.event.extendedProps.urlLink)
+				console.log(arg.event)
+				
 				$("#calTitle").text("일정상세")
 				$("#regBtn").hide()
 				$("#uptBtn").show()
@@ -115,17 +82,6 @@
 						window.open($(this).val(),"","")	
 					}			
 				})
-				/*
-				1. 타이틀 변경:일정상세
-				2. 버튼 보이기 : 등록X, 수정/삭제(O)
-				3. 각 form 요소에 위 데이터 할당하기..
-				
-				
-				
-				if (confirm('Are you sure you want to delete this event?')) {
-				  arg.event.remove()
-				}
-				 */
 				console.log($("#modal01").html())
 				$("#modal01").click();
 				console.log("#상세데이터확인#")
@@ -221,12 +177,7 @@
 					//location.reload()
 				console.log("# 캘린더#")
 				console.log(calendar)
-
-				//calendar.addEventSource(data.calList)
 				calendar.addEventSource(data.calList)
-				//calendar.render();
-				
-				
 			},
 			error:function(err){
 				console.log(err)
