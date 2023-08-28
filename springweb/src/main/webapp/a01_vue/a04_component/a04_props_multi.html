@@ -15,7 +15,23 @@
 		<h3 align="center">사는곳:{{loc}}</h3>
 	</div>
 </template>
+<template id="buyTmp">
+	<div>
+		<h2 align="center">{{name}} 구매 정보</h2>
+		<h3 align="center">단가:{{price}} 원</h3>
+		<h3 align="center">구매갯수:{{cnt}} EA</h3>
+		<h3 align="center">총비용:{{price*cnt}} 원</h3>
+	</div>
+</template>
 <script type="text/javascript">
+	Vue.component("product",{
+		template:"#buyTmp",
+		props:{
+			name:{type:String},
+			price:{type:Number},
+			cnt:{type:Number}
+		}
+	})
 	Vue.component("person",{
 		template:"#personTmp",
 		props:{
@@ -32,6 +48,9 @@
 		<person name="홍길동" age="25" loc="서울"></person>
 		<person name="김길동" age="27" loc="부산"></person>
 		<person name="신길동" age="28" loc="제중"></person>
+		<product name="사과" price="2000" cnt="5"></product>
+		<product name="바나나" price="4000" cnt="3"></product>
+		<product name="딸기" price="12000" cnt="2"></product>
 	</div>
 	<!-- 
 	ex) product로 물건 구매 정보에 대하여 물건명 가격 갯수 총계
