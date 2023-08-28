@@ -6,12 +6,33 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
 </head>
+<template id="rainbowTmp">
+	<h2 :style="{backgroundColor:color}">{{color}}</h2>
+</template>
+<script type="text/javascript">
+	Vue.component("rainbow",{
+		template:"#rainbowTmp",
+		props:['color']
+	})
+	// ex) <person name="홍길동"></person>
+	//     ==> h3로 등록한 이름은 @@@ 입니다. 표현되게 처리..
+</script>
 <body>
 	<div id="show">
 		<h2 align="center">{{msg}}</h2>
+		<rainbow color="red"></rainbow>
+		<rainbow color="orange"></rainbow>
+		<rainbow color="yellow"></rainbow>
+		<rainbow color="green"></rainbow>
+		<rainbow color="blue"></rainbow>
+		<rainbow color="navy"></rainbow>
+		<rainbow color="purple"></rainbow>
 	</div>
 </body>
 <script>
+	
+
+
 /*
 # 컴포넌트의 다양한 속성을 통해 다른 데이터 처리
 1. 컴포넌트의 동일한 컴포넌트이지만, 다른 데이터를 통해서
@@ -26,24 +47,26 @@
 		{{속성명}}
 		각 화면별로 전달된 속성명에의해 directive형식으로
 		출력할 수 있다.
+3. 처리 순서
+	1) 구현할 내용  선언
+		<rainbow color="red"></rainbow>
+		<rainbow color="orange"></rainbow>
+		<rainbow color="yello"></rainbow>
+		속성에 따른 색테이프만들기(h2)
+	2) template
+		<h2 :style="{backgroundColor:color}">{{color}}</h2> 
+			==> color : 전달해온 속성을 지정
+	3) component 선언
+		Vue.component("rainbow",{
+			template:"#rainbowTmp",
+			props:['color']
+		})
+	
 
-		
-# 조별로 파일(12:40)
-1. 조별 프로젝트 진행율 
-2. 조별 현재 이슈사항
-	1) 프로그래밍 방향
-	2) 에러 및 이슈
-	3) 도움이 필요로 하는 프로그램
-3. 남은 수업 진행 시간 활용
-	1) AWS
-	2) VUE
-	3) 스프링고급내용
-	4) 프로젝트 진행시 방향을 못 잡는 부분에 대한 예시 진행.
-		- 내용을 정리.
  */
 	var vm = new Vue({
 		el:"#show",
-		data:{msg:"시작!!"}
+		data:{msg:"컴포넌트의 속성전달 props!!"}
 	});
 </script>
 </html>
