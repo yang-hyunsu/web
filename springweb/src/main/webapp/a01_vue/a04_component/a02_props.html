@@ -9,17 +9,28 @@
 <template id="rainbowTmp">
 	<h2 :style="{backgroundColor:color}">{{color}}</h2>
 </template>
+<template id="memberTmp">
+	<h3 align="center">등록한 이름은 {{name}} 입니다.</h3>
+</template>
 <script type="text/javascript">
 	Vue.component("rainbow",{
 		template:"#rainbowTmp",
 		props:['color']
 	})
+	Vue.component("person",{
+		template:"#memberTmp",
+		props:['name']
+	})
 	// ex) <person name="홍길동"></person>
+	// ex) <person name="김길동"></person>
 	//     ==> h3로 등록한 이름은 @@@ 입니다. 표현되게 처리..
 </script>
 <body>
 	<div id="show">
 		<h2 align="center">{{msg}}</h2>
+		<person name="홍길동"></person>
+		<person name="김길동"></person>
+		<person name="신길동"></person>
 		<rainbow color="red"></rainbow>
 		<rainbow color="orange"></rainbow>
 		<rainbow color="yellow"></rainbow>
@@ -61,7 +72,10 @@
 			template:"#rainbowTmp",
 			props:['color']
 		})
-	
+cf) 컴포넌트는 Vue를 최상위로 하여 하위 계층구조로 Component를
+	선언하여 사용할 수 있다.
+	그래서, 상위에 있는 Vue의 모델 데이터를 이용해서 컴포넌트는 
+	반복문 또는 조건문에서도 활용할 수 있다.
 
  */
 	var vm = new Vue({
@@ -70,3 +84,6 @@
 	});
 </script>
 </html>
+
+
+
