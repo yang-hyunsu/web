@@ -241,7 +241,10 @@ heidiSQL 다운로드 및 설치..
 	접속
 	파일 업로드/다운로드 연습.
 	
-
+	DB : xe
+	마스터 사용:admin/11111111
+	
+	xe.ckgzc9e2n7d7.ap-northeast-2.rds.amazonaws.com
 # 스프링 부트 프로젝트 로딩 하기.
 1. 스프링 부트 프로젝트를 생성하여, jar파일로 필드한 후.
 2. local에서 실행해서 확인 후,
