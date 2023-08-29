@@ -40,8 +40,24 @@
 	var wsocket;
 	// 접속한사용자 변수
 	var members = []
+	var chmembers =[] // choMems(chmembers)
 	$(document).ready(function() {
 		
+	    $('#chatM').on('click', '.chMemDiv', function() {
+	    	//alert($(this).attr("class"))
+	    	if($(this).attr("class").indexOf('btn-outline-primary')>0){
+	    		$(this).removeClass("btn-outline-primary")
+	    		$(this).addClass("btn-primary")
+	    		chmembers.push($(this).text())
+	    		choMems()	
+	    	}else{
+	    		$(this).removeClass("btn-primary")
+	    		$(this).addClass("btn-outline-primary")	 
+	    		chmembers = chmembers.filter(str => str !== $(this).text());
+	    		choMems()	
+	    		
+	    	}
+	    });		
 		
 		$("#msg").attr("readOnly",true)
 		//alert("접속 활성화")
@@ -67,11 +83,13 @@
 		})
 		$("#msg").keyup(function(){
 			if(event.keyCode==13){
+				choMems();
 				sendMsg();
 				
 			}
 		})
 		$("#sndBtn").click(function(){
+			choMems()	
 			sendMsg();
 		})
 		$("#ckMemBtn").click(function(){
@@ -190,14 +208,20 @@
 		// 접속자들 ajax로 확인
 		$.ajax({
 			url:"${path}/getChatMem.do",
+
 			dataType:"json",
 			success:function(mlist){
 				console.log(mlist)
 				members = mlist
+				chmembers = mlist
+				console.log("#현재 채팅자members#")
+				console.log(members)
+				console.log("#현재 채팅자chmembers#")
+				console.log(chmembers)
 				var add=""
 				mlist.forEach(function(member){
 					console.log(member)
-					add+="<div class='btn btn-outline-primary chMemDiv'>"+
+					add+="<div class='btn btn-primary chMemDiv'>"+
 							member+"</div>"
 				})
 				$("#chatGroup").html(add)
@@ -215,6 +239,37 @@
 			}
 		})
 	}
+	function choMems(){	
+		console.log("#대화할 사람(전송싱)#")
+		console.log(chmembers)
+		var len = chmembers.length
+		var params=""
+		var cnt = 0;
+		chmembers.forEach(function(mem){
+			cnt++;
+			
+			params+="members="+mem+(len !=cnt ?'&':'')
+		})
+		console.log(params)
+		$.ajax({
+		type:"get",	
+		url:"${path}/choMems.do",
+	    data: params,
+		dataType:"text",
+		success:function(msg){
+			console.log("# 메시지 전송(서버에서 온 값) #")
+			console.log(msg)
+
+			
+		},
+		error:function(err){
+			console.log("# 에러발생 #")
+			console.log(err)
+		}
+	})
+		
+	}
+	
 </script>
 </head>
 <body>
@@ -236,7 +291,7 @@
 			<div class="input-group-prepend">
 				<span class="input-group-text  justify-content-center ">접속자</span>
 			</div>
-			<div class="input-group-append">
+			<div class="input-group-append"  id="chatM">
 				<div id="chatGroup"></div> 
 			</div>
 		</div>		
