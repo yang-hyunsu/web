@@ -20,10 +20,11 @@
 		},
 		methods:{
 			clickEvent:function(){
-				var name=prompt("이벤트 호출, 이름입력:","")
-				this.name=name
+				//var name=prompt("이벤트 호출, 이름입력:","")
 				// 입력된 입력을 모델데이터에 할당처리..
 				// body에 <child-comp></child-comp> 선언
+				this.$emit("btnclick", this.name)
+				// 상위컴포넌트 @btnclick="상위이벤트핸들러함수"
 				
 			}
 		}
@@ -33,16 +34,24 @@
 <body>
 	<div id="show">
 		<h2 >{{msg}}</h2>
-		<child-comp></child-comp>
-		<child-comp></child-comp>
-		<child-comp></child-comp>
+		<h3>이름:{{name}}</h3>
+		<child-comp @btnclick="parentClick"></child-comp>
+		<child-comp @btnclick="parentClick"></child-comp>
+		<child-comp @btnclick="parentClick"></child-comp>
 	</div>
 </body>
 <script>
 
 	var vm = new Vue({
 		el:"#show",
-		data:{msg:"컴포넌트 이벤트 발산 연습"}
+		data:{msg:"컴포넌트 이벤트 발산 연습",name:""},
+		methods:{
+			parentClick:function(param1){
+				alert("하위에서 전달해 온 이름:"+param1)
+				// 현재 모델 데이터 name에 할당.
+				this.name += param1+" "
+			}
+		}
 	});
 /*
 # 컴포넌트간 데이터 전달1 : 이벤트 발산
