@@ -12,6 +12,9 @@
 		<button v-on:click="clickEvent">클릭(이벤트)</button>
 	</div>
 </template>
+
+
+
 <script type="text/javascript">
 	Vue.component("child-comp",{
 		template:"#child-tmp",
@@ -41,7 +44,11 @@
 	</div>
 </body>
 <script>
-
+	// <product> 컴포넌트를 통해
+	//   1단계 [   ] [구매]
+	//   2단계 
+	// 		물건명  가격  [구매]가 출력되고, 클릭시,
+	//      상단에 구매한 물건리스트와  총비용을 출력하세요..
 	var vm = new Vue({
 		el:"#show",
 		data:{msg:"컴포넌트 이벤트 발산 연습",name:""},

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://developers.google.com/web/ilt/pwa/working-with-the-fetch-api" type="text/javascript"></script>
+<template id="buy-tmp1">
+	<div>
+		<input v-model="name"/><button v-on:click="clickEvent">구매</button>
+	</div>
+</template>
+<script type="text/javascript">
+Vue.component("product1",{
+	template:"#buy-tmp1",
+	data:function(){
+		return {name:""}
+	},
+	methods:{
+		clickEvent:function(){
+			this.$emit("btnclick", this.name);
+			this.name=""
+		}
+	}
+});
+
+</script>
+</head>
+<body>
+	<div id="show">
+		<h2>{{msg}}</h2>
+ 		<h3>구매물건들1:{{name}}</h3>
+ 		<product1 @btnclick="parentClick"></product1>		
+	</div>
+</body>
+<script>
+	var vm = new Vue({
+		el:"#show",
+		data:{msg:"구매처리!!",
+			  name:""},
+		methods:{
+			parentClick:function(param1){
+				this.name += param1+" ";
+				
+			}			
+		}
+	});
+</script>
+</html>
