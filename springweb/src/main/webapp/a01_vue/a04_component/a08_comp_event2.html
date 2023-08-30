@@ -13,13 +13,11 @@
 </template>
 <template id="buy-tmp2">
 	<div>
-	   물건명:<input v-model="name"/> 
-	   가격:<input v-model="price"/> 
+	   물건명:<input v-model="nameVal" /> 
+	   가격:<input v-model="priceVal"  /> 
 	   <button v-on:click="buying">구매</button></h2>
 	</div>
 </template>
-
-
 <script type="text/javascript">
 Vue.component("product1",{
 	template:"#buy-tmp1",
@@ -37,11 +35,11 @@ Vue.component("product2",{
 	template:"#buy-tmp2",
 	props:['name','price'],
 	data:function(){
-		return {name:"",price:0}
+		return {nameVal:this.name,priceVal:this.price}
 	},
 	methods:{
 		buying:function(){
-			this.$emit("buyclick", this.name, this.price);
+			this.$emit("buyclick", this.nameVal, this.priceVal);
 		}
 	}
 });	
