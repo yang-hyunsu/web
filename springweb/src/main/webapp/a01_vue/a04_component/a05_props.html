@@ -54,6 +54,9 @@
 <body>
 	<div id="show">
 		<h2>{{msg}}</h2>
+		<!-- 모델데이터 name의 컴포넌트의 props 속성 sch로
+			컴포넌트와 연결되어 있는 template에 전달
+		 -->
 		<schlistcomp :sch="name" :datalist="list" ></schlistcomp>
 		<!-- list와 name은 vue에 가져온 데이터
 			 sch, datalist : 컴포넌트의 props로 사용할 속성

@@ -24,10 +24,14 @@
 	Vue.component("countup",{
 		template:"#tmp02",
 		data:function(){
+			// 컴포넌트의 모델 데이터는 function(){}
+			// return 형식으로 사용한다.
 			return {title:"카운트업",count:0}
 		},
 		methods:{
 			countclick:function(){
+				// + 연산시만 문자열형을 숫자로 변환처리 필요
+				// 그외 연산자는 자동형변환된다.(js)
 				this.count = Number(this.count)+1
 			}
 		}
