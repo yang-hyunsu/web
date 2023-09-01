@@ -272,6 +272,13 @@ heidiSQL 다운로드 및 설치..
 
 
 
+java -jar -Dserver.port=7979 vue_rds.jar
+
+
+http://ec2-3-36-70-44.ap-northeast-2.compute.amazonaws.com:7979/empList
+
+
+awsprj-0.0.1-SNAPSHOT.jar
 
 
 
