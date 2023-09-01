@@ -165,6 +165,11 @@ wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.79/bin/apache-tomcat-9.0.79.t
 tar -xzvf apache-tomcat-9.0.79.tar.gz
 tar -xzvf openjdk-17+35_linux-x64_bin.tar.gz
 
+
+
+
+
+
 /home/ec2-user/jdk-17/bin
 /home/ec2-user/apache-tomcat-9.0.79/bin
 path경로 잡기 : 운영체제 환경변수로 어디서나 명령어를 수행할 수 있게 처리
@@ -271,6 +276,23 @@ heidiSQL 다운로드 및 설치..
 	5) 스프링 부트 빌드 및 원격서버 로딩 및 확인.
 
 
+wget https://download.java.net/openjdk/jdk17/ri/openjdk-17+35_linux-x64_bin.tar.gz
+tar -xzvf openjdk-17+35_linux-x64_bin.tar.gz
+
+export JAVA_HOME=/home/ec2-user/jdk-17
+export PATH=$PATH:$JAVA_HOME/bin
+sudo vi /etc/profile
+i  :입력모드 밑으로 가서
+ctrl+v 붙여넣기
+esc :명령모드
+:wq
+
+
+
+source /etc/profile
+java -version
+
+
 
 java -jar -Dserver.port=7979 vue_rds.jar
 
@@ -279,6 +301,9 @@ http://ec2-3-36-70-44.ap-northeast-2.compute.amazonaws.com:7979/empList
 
 
 awsprj-0.0.1-SNAPSHOT.jar
+
+
+
 
 
 
