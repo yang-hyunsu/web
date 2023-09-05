@@ -17,8 +17,6 @@
  --%>
 <link href='${path}/a00_com/lib/main.css' rel='stylesheet' />
 <link rel="stylesheet" href="${path}/a00_com/bootstrap.min.css">
-
-
 <script src="${path}/a00_com/jquery.min.js"></script>
 <script src="${path}/a00_com/popper.min.js"></script>
 <script src="${path}/a00_com/bootstrap.min.js"></script>

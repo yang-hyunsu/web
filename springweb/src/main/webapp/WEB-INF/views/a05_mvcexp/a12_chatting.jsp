@@ -18,9 +18,12 @@
 	#chatArea{
 		width:80%;height:200px;overflow-y:auto;text-align:left;
 		border:1px solid green;
-	}
+		padding-right: 13px;
+	}	
 </style>
+
 <script src="${path}/a00_com/jquery.min.js"></script>
+
 <script src="${path}/a00_com/popper.min.js"></script>
 <script src="${path}/a00_com/bootstrap.min.js"></script>
 <script src="${path}/a00_com/jquery-ui.js"></script>
@@ -30,11 +33,14 @@
 	type="text/javascript"></script>
 
 <script type="text/javascript">
+
+
 	window.addEventListener("resize",function(){
+		
 		$("#chatMessageArea>div").width(
-				$("#chatArea").width()-20)
+				($("#chatArea").width())-5)
 	})
-	
+
 
 	// 소켓서버접속 변수
 	var wsocket;
@@ -42,6 +48,17 @@
 	var members = []
 	var chmembers =[] // choMems(chmembers)
 	$(document).ready(function() {
+		/*
+		$("#chatMessageArea>div").on("resize",function(){
+			
+			console.log("## 채팅 area ##")
+			console.log($(this).width())
+			console.log($("#chatArea").width())
+		})
+		*/
+		
+		
+		loadChatMessages();
 		
 	    $('#chatM').on('click', '.chMemDiv', function() {
 	    	//alert($(this).attr("class"))
@@ -101,7 +118,7 @@
 				if(confirm("접속을 종료하겠습니까?")){
 					// 
 					//alert("종료처리 프로세스진행..~~")
-					wsocket.send($("#id").val()+":연결을 종료하였습니다.")
+					//wsocket.send($("#id").val()+":연결을 종료하였습니다.")
 					wsocket.close() // afterConnectionClosed 핸들러에 연동
 					// 대화내용 삭제
 					$("#chatMessageArea").text("")
@@ -150,6 +167,7 @@
 				$("#msg").attr("readOnly",false)
 				wsocket = new WebSocket(
 						"ws:192.168.10.99:7080/${path}/chat-ws.do")
+				
 				// 서버의 접속 핸들러 처리하는 메서드..
 				wsocket.onopen = function(evt){
 					console.log(evt)
@@ -190,12 +208,15 @@
 			alignOpt = "right"
 			msg =msgArr[1]
 		}
+		console.log("# 서버에서 온 메시지 #")
+		console.log(msg)
 		// 메시지 객체 생성..
 		var msgObj = $("<div></div>"
 				).text(msg).attr("align",alignOpt
 				).css("width",$("#chatArea").width())
-				
+		//$("#chatMessageArea").width($("#chatMessageArea").width()+15)		
 		$("#chatMessageArea").append(msgObj)
+		
 		// 스크롤링 처리
 		// 1. 전체 해당 데이터의 높이를 구한다.
 		// 2. 포함하고 있는 부모 객체(#chatArea)에서
@@ -269,7 +290,56 @@
 	})
 		
 	}
-	
+	function sendMessage() {
+	    const chatBox = document.getElementById("chatMessageArea");
+	    const chatInput = document.getElementById("id");
+	    const message = chatInput.value;
+		
+	    if (message) {
+	        // 메시지 추가
+	        //chatBox.innerHTML += '<div>'+message+'</div>';
+
+	        // 로컬 스토리지에 메시지 저장
+	        saveChatMessage(chatBox.innerHTML);
+
+	        // 입력창 초기화
+	        //chatInput.value = '';
+	    }
+	}
+
+	function saveChatMessage(message) {
+	    let messages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+	    messages.push(message);
+	    localStorage.setItem("chatMessages", JSON.stringify(messages));
+	    console.log("#메시지 저장#")
+	    console.log(message)
+	}
+
+	function loadChatMessages() {
+	    const chatBox = document.getElementById("chatMessageArea");
+	    let messages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+		
+	    console.log("#메시지 가져오기#")
+	    console.log(messages)
+	    messages.forEach(message => {
+	        chatBox.innerHTML += '<div>'+message+'</div>';
+	    });
+		//var height1 = parseInt($("#chatMessageArea").height())
+		//var height2 = parseInt($("#chatArea").height())
+		var divHeight = document.querySelector("#chatArea").offsetHeight;
+		var chatMessageArea = document.querySelector("#chatMessageArea").offsetHeight;
+		//console.log("# 높이 #")
+		//console.log(height1)
+		//console.log(height2)
+		//mx+=height1+height2
+		mx = chatMessageArea+divHeight+5000
+		console.log("초기 높이:"+mx)
+		$("#chatArea").scrollTop(mx)	    
+	    
+	}	
+	function clearChatMessages(){
+		$("#chatMessageArea").html("")
+	}
 </script>
 </head>
 <body>
@@ -285,8 +355,10 @@
 				placeholder="접속할 아이디 입력"/>
 			<input id="enterBtn" value="채팅방입장"  type="button" class="btn btn-info" />
 			<input id="exitBtn" value="채팅방나가기"  type="button" class="btn btn-success" />
-			<input id="ckMemBtn" value="접속자확인"  type="button" class="btn btn-warning" />
+			<!--  -->
 		</div>	
+		
+		
 		<div class="input-group mb-3">	
 			<div class="input-group-prepend">
 				<span class="input-group-text  justify-content-center ">접속자</span>
@@ -300,8 +372,8 @@
 			<div class="input-group-prepend ">
 				<span class="input-group-text  justify-content-center">메시지</span>
 			</div>
-			<div id="chatArea" class="input-group-append">
-				<div id="chatMessageArea"></div>
+			<div id="chatArea" style="overflow-x: hidden" class="input-group-append">
+				<div id="chatMessageArea" ></div>
 			</div>
 		</div>	
 					
@@ -314,7 +386,15 @@
 				placeholder="전송할 메시지 입력"/>
 			<input id="sndBtn" value="메시지전송"  type="button" class="btn btn-info" />
 		</div>
-			
+		<div class="input-group mb-3">	
+			<div class="input-group-prepend ">
+				<span class="input-group-text  justify-content-center">기타기능</span>
+			</div>		
+			<input id="ckMemBtn" value="접속자확인"  type="button" class="btn btn-warning" />
+			<input id="saveBtn" onclick="sendMessage()" value="메시지저장"  type="button" class="btn btn-info" />
+			<input id="loadBtn" onclick="loadChatMessages()" value="메시지가져오기"  type="button" class="btn btn-success" />
+			<input id="loadBtn" onclick="clearChatMessages()" value="메시지지우기"  type="button" class="btn btn-danger" />
+		</div>				
 		
 	
 	</div>

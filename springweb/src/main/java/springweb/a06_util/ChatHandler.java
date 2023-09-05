@@ -107,9 +107,23 @@ public class ChatHandler extends TextWebSocketHandler{
 		// TODO Auto-generated method stub
 		super.afterConnectionClosed(session, status);
 		System.out.println(session.getId()+"님 접속 종료되었습니다.");
+		System.out.println("코드:"+status.getCode());
 		// 전역변수로 되어있는 사용자 명단에서 삭제 처리..
+		String strMsg = ids.get(session.getId())+":연결을 종료하였습니다.";
 		users.remove(session.getId());
 		ids.remove(session.getId());
+		for(WebSocketSession ws:users.values()) {
+			for(String id:chIds) {
+				if(id.equals(ws.getId())) {
+					System.out.println("# 메시지가 보내지는 경우 #");
+					System.out.println(id+":"+ws.getId());
+					TextMessage msg = new TextMessage(strMsg.getBytes());
+					ws.sendMessage(msg);
+				}
+			}
+		}	
+		
+		
 	}
 	// 에러발생시
 	@Override
