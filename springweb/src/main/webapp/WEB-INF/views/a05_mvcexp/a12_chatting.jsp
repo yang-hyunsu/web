@@ -295,7 +295,7 @@
 	    const chatInput = document.getElementById("id");
 	    const message = chatInput.value;
 		
-	    if (message) {
+	    //if (message) {
 	        // 메시지 추가
 	        //chatBox.innerHTML += '<div>'+message+'</div>';
 
@@ -304,26 +304,36 @@
 
 	        // 입력창 초기화
 	        //chatInput.value = '';
-	    }
+	    //}
 	}
 
 	function saveChatMessage(message) {
-	    let messages = JSON.parse(localStorage.getItem("chatMessages")) || [];
-	    messages.push(message);
-	    localStorage.setItem("chatMessages", JSON.stringify(messages));
+		//localStorage.setItem("chatMessages", "") // 초기화 처리
+		//localStorage.removeItem("chatMessages")
+	    //let messages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+	    //messages.push(message);
+	    localStorage.setItem("chatMessages", JSON.stringify(message));
 	    console.log("#메시지 저장#")
 	    console.log(message)
+	    alert("저장 완료!")
 	}
 
 	function loadChatMessages() {
 	    const chatBox = document.getElementById("chatMessageArea");
-	    let messages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+	    var charMsgOb = localStorage.getItem("chatMessages")
+	    console.log("# 객체:"+typeof(charMsgOb))
+	    console.log("# 객체:"+charMsgOb)
+	    //console.log(charMsgOb)
+	    let messages = JSON.parse(charMsgOb!=""?charMsgOb:"[]") || [];
 		
 	    console.log("#메시지 가져오기#")
 	    console.log(messages)
+	    /*
 	    messages.forEach(message => {
 	        chatBox.innerHTML += '<div>'+message+'</div>';
 	    });
+	    */
+	    chatBox.innerHTML=messages;
 		//var height1 = parseInt($("#chatMessageArea").height())
 		//var height2 = parseInt($("#chatArea").height())
 		var divHeight = document.querySelector("#chatArea").offsetHeight;
